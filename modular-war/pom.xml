@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.googlecode.mkuthan</groupId>
+		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>corporate-pom</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../corporate-pom</relativePath>
 	</parent>
 
-	<groupId>com.googlecode.mkuthan</groupId>
+	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>modular-war</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -40,9 +40,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:http://mkuthan.googlecode.com/svn/trunk/maven/multimodule/</connection>
-		<developerConnection>scm:svn:https://mkuthan.googlecode.com/svn/trunk/maven/multimodule/</developerConnection>
-		<url>http://code.google.com/p/mkuthan/source/browse</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse</url>
 	</scm>
 
 	<build>

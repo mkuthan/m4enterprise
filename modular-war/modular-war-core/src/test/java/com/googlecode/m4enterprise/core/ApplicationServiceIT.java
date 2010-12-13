@@ -1,14 +1,13 @@
-package com.googlecode.mkuthan.core;
+package com.googlecode.m4enterprise.core;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.googlecode.mkuthan.core.ApplicationService;
+import com.googlecode.m4enterprise.core.ApplicationService;
 
-
-public class ApplicationServiceTest {
+public class ApplicationServiceIT {
 
     private ApplicationService applicationService;
 
@@ -18,12 +17,8 @@ public class ApplicationServiceTest {
     }
 
     @Test
-    public void testSayHello() {
+    public void testApplicationService() {
 	assertEquals("Hello: Marcin", applicationService.sayHello("Marcin"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testSayHelloWithNullName() {
-	applicationService.sayHello(null);
-    }
 }
