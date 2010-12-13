@@ -1,0 +1,103 @@
+#summary Command Reference.
+
+= Introduction =
+
+The document is Maven build commands reference. The document is organized with sections, each section for one build aspect. 
+
+= Project Build =
+
+Clean a project:
+
+{{{
+mvn clean
+}}}
+
+Run unit tests:
+
+{{{
+mvn test
+}}}
+
+Build a package (it also executes unit tests):
+
+{{{
+mvn package
+}}}
+
+Run integration test (it also builds a package):
+
+{{{
+mvn verify
+}}}
+
+Install a package (it also executes integration tests):
+
+{{{
+mvn install
+}}}
+
+= Dependency Management =
+
+Check dependencies for newer versions:
+
+{{{
+mvn versions:display-dependency-updates
+}}}
+
+Check plugins for newer versions:
+
+{{{
+mvn versions:display-plugin-updates
+}}}
+
+Check for newer versions defined as properties:
+
+{{{
+mvn versions:display-property-updates
+}}}
+
+Display project dependencies:
+
+{{{
+mvn dependency:tree
+}}}
+
+Analyze project dependencies:
+
+{{{
+mvn dependency:analyze
+}}}
+
+= Project Site =
+
+Generate site without reports (quickly):
+
+{{{
+mvn -DgenerateReports=false site
+}}}
+
+Deploy site without reports (quickly):
+
+{{{
+mvn -DgenerateReports=false site-deploy
+}}}
+
+Generate site with tests and static analysis reports (time consuming):
+{{{
+mvn verify site
+}}}
+
+Deploy site with tests and static analysis reports (time consuming):
+{{{
+mvn verify site-deploy
+}}}
+
+= Code Coverage =
+
+For the code coverage report commercial tool Clover is used. To generate report the Clover licence must be purchased. 
+
+Generate clover reports (customize Clover licence file location):
+
+{{{
+mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup verify clover2:aggregate clover2:clover
+}}}
