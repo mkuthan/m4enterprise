@@ -1,4 +1,4 @@
-package com.googlecode.mkuthan.webapp;
+package com.googlecode.m4enterprise.webapp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.googlecode.mkuthan.core.ApplicationService;
+import com.googlecode.m4enterprise.core.ApplicationService;
 
 @WebServlet(name = "applicationServlet", urlPatterns = { "/webapp" }, initParams = { @WebInitParam(name = "name", value = "Web Application") })
 public class ApplicationServlet extends HttpServlet {

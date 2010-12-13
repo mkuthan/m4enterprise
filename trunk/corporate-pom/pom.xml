@@ -3,7 +3,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.googlecode.mkuthan</groupId>
+	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>corporate-pom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -40,9 +40,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:svn:http://mkuthan.googlecode.com/svn/trunk/corporate-pom/</connection>
-		<developerConnection>scm:svn:https://mkuthan.googlecode.com/svn/trunk/corporate-pom/</developerConnection>
-		<url>http://code.google.com/p/mkuthan/source/browse/</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/</url>
 	</scm>
 
 	<!-- Developers that have contributed to the corporate pom -->
@@ -54,14 +54,14 @@
 
 	<distributionManagement>
 		<repository>
-			<id>google-mkuthan</id>
+			<id>google-m4enterprise</id>
 			<name>Google Code Repository</name>
-			<url>dav:https://mkuthan.googlecode.com/svn/repository/</url>
+			<url>dav:https://m4enterprise.googlecode.com/svn/repository/</url>
 		</repository>
 		<snapshotRepository>
-			<id>google-mkuthan</id>
+			<id>google-m4enterprise</id>
 			<name>Google Code Snapshot Repository</name>
-			<url>dav:https://mkuthan.googlecode.com/svn/repository/</url>
+			<url>dav:https://m4enterprise.googlecode.com/svn/repository/</url>
 		</snapshotRepository>
 		<site>
 			<id>site</id>

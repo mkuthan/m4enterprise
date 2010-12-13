@@ -1,4 +1,4 @@
-package com.googlecode.mkuthan.core;
+package com.googlecode.m4enterprise.core;
 
 public class ApplicationService {
 
