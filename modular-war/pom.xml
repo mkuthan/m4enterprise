@@ -1,0 +1,113 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.googlecode.mkuthan</groupId>
+		<artifactId>corporate-pom</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../corporate-pom</relativePath>
+	</parent>
+
+	<groupId>com.googlecode.mkuthan</groupId>
+	<artifactId>modular-war</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>modular-war</name>
+	<description>Parent POM for the modular WAR project</description>
+
+	<properties>
+		<junit.version>4.8.2</junit.version>
+	</properties>
+
+	<!-- All modules in the project -->
+	<modules>
+		<module>modular-war-core</module>
+		<module>modular-war-webapp</module>
+	</modules>
+
+	<!-- All developers that have contributed to the project -->
+	<developers>
+		<developer>
+			<email>developer1@gmail.com</email>
+		</developer>
+		<developer>
+			<email>developer2@gmail.com</email>
+		</developer>
+		<developer>
+			<email>developer3@gmail.com</email>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:svn:http://mkuthan.googlecode.com/svn/trunk/maven/multimodule/</connection>
+		<developerConnection>scm:svn:https://mkuthan.googlecode.com/svn/trunk/maven/multimodule/</developerConnection>
+		<url>http://code.google.com/p/mkuthan/source/browse</url>
+	</scm>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.atlassian.maven.plugins</groupId>
+				<artifactId>maven-clover2-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>modular-war-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.geronimo.specs</groupId>
+				<artifactId>geronimo-servlet_3.0_spec</artifactId>
+				<version>1.0</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
