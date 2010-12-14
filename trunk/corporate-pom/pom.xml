@@ -52,21 +52,24 @@
 		</developer>
 	</developers>
 
+	<!-- Distribution management section should be configured to use corporate enterprise repository -->
 	<distributionManagement>
 		<repository>
 			<id>google-m4enterprise</id>
 			<name>Google Code Repository</name>
-			<url>dav:https://m4enterprise.googlecode.com/svn/repository/</url>
+			<url>dav:https://m4enterprise.googlecode.com/svn/release-repository</url>
+			<uniqueVersion>false</uniqueVersion>
 		</repository>
 		<snapshotRepository>
 			<id>google-m4enterprise</id>
 			<name>Google Code Snapshot Repository</name>
-			<url>dav:https://m4enterprise.googlecode.com/svn/repository/</url>
+			<url>dav:https://m4enterprise.googlecode.com/svn/snapshot-repository</url>
+			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 		<site>
-			<id>site</id>
-			<name>Local Site</name>
-			<url>file:///c:/_data/site</url>
+			<id>google-m4enterprise</id>
+			<name>Google Code Site</name>
+			<url>dav:https://m4enterprise.googlecode.com/svn/site</url>
 		</site>
 	</distributionManagement>
 
