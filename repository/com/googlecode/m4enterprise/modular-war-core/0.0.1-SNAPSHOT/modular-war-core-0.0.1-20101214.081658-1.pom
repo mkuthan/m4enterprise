@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.googlecode.m4enterprise</groupId>
+		<artifactId>modular-war</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<artifactId>modular-war-core</artifactId>
+	<name>modular-war-core</name>
+	<description>Project module with core functionality</description>
+
+	<!-- Developers that have contributed to the module -->
+	<developers>
+		<developer>
+			<email>developer1@gmail.com</email>
+		</developer>
+		<developer>
+			<email>developer2@gmail.com</email>
+		</developer>
+	</developers>
+
+</project>
