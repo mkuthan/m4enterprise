@@ -30,7 +30,7 @@ Run integration test (it also builds a package):
 mvn verify
 }}}
 
-Install a package (it also executes integration tests):
+Install a package into local repository (it also executes integration tests):
 
 {{{
 mvn install
@@ -70,26 +70,28 @@ mvn dependency:analyze
 
 = Project Site =
 
-Generate site without reports (quickly):
+Generate site without tests reports (tests are not executed):
 
 {{{
-mvn -DgenerateReports=false site
+mvn site:site
 }}}
 
-Deploy site without reports (quickly):
+Generate site with unit tests reports:
 
 {{{
-mvn -DgenerateReports=false site-deploy
+mvn test site:site
 }}}
 
-Generate site with tests and static analysis reports (time consuming):
+Generate site with unit and integration tests reports:
+
 {{{
-mvn verify site
+mvn verify site:site
 }}}
 
-Deploy site with tests and static analysis reports (time consuming):
+Generate site stage with valid links between project modules:
+
 {{{
-mvn verify site-deploy
+mvn site:stage
 }}}
 
 = Code Coverage =
