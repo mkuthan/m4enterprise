@@ -2,5 +2,40 @@
 
 = Introduction =
 
-TODO
+Corporate POM centralizes projects configuration:
 
+  * Plugin versions.
+  * Plugin configuration.
+  * Global properties for plugins.
+  * Distribution management settings
+  * Reporting configuration
+
+= Build Setup = 
+
+Corporate POM build setup should be configured as Continuous Integration build plan. After every commit Corporate POM artifact will be deployed into the snapshot repository. Use the following command in the build plan: 
+
+{{{
+mvn clean deploy
+}}}
+
+= Release Setup =
+
+Corporate POM release setup should be configured as Continuous Integration build plan. The build strategy can be set as manual build (on demand) or scheduled build (related to Scrum iteration for example).
+
+Use the following command in the build plan:
+
+{{{
+mvn --batch-mode release:prepare release:perform
+}}}
+
+The next release version can customized by `releaseVersion` property:
+
+{{{
+mvn --batch-mode release:prepare release:perform -DreleaseVersion=1.0
+}}}
+
+The next release version can customized by `releaseVersion` property:
+
+{{{
+mvn --batch-mode release:prepare release:perform -DdevelopmentVersion=2.0-SNAPSHOT
+}}}
