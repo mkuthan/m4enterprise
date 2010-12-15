@@ -11,11 +11,20 @@
 	<description>Corporate POM</description>
 
 	<properties>
+		<!-- ================= -->
+		<!-- Global Properties -->
+		<!-- ================= -->
+
+		<!-- Set default encoding to UTF-8 (many plugins) -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Speed-up site generation (maven-project-info-reports-plugin) -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
+
+		<!-- ================================= -->
+		<!-- Corporate POM specific properties -->
+		<!-- ================================= -->
 
 		<plugins.checkstyleVersion>2.6</plugins.checkstyleVersion>
 		<plugins.cleanVersion>2.4.1</plugins.cleanVersion>
@@ -30,29 +39,16 @@
 		<plugins.pmdVersion>2.5</plugins.pmdVersion>
 		<plugins.projectinfoVersion>2.2</plugins.projectinfoVersion>
 		<plugins.resourcesVersion>2.4.3</plugins.resourcesVersion>
-
-		<!-- Downgrade version to 2.2: http://jira.codehaus.org/browse/MPIR-194 -->
-		<plugins.siteVersion>2.2</plugins.siteVersion>
-
 		<plugins.surefireVersion>2.6</plugins.surefireVersion>
 		<plugins.warVersion>2.1.1</plugins.warVersion>
 		<plugins.versionsVersion>1.2</plugins.versionsVersion>
 	</properties>
 
-	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/</url>
-	</scm>
+	<organization>
+		<name>ACME Corporation</name>
+		<url>http://www.acme.com/</url>
+	</organization>
 
-	<!-- Developers that have contributed to the corporate pom -->
-	<developers>
-		<developer>
-			<email>developer1@gmail.com</email>
-		</developer>
-	</developers>
-
-	<!-- Distribution management section should be configured to use corporate enterprise repository -->
 	<distributionManagement>
 		<repository>
 			<id>google-m4enterprise</id>
@@ -72,6 +68,20 @@
 			<url>dav:https://m4enterprise.googlecode.com/svn/site</url>
 		</site>
 	</distributionManagement>
+
+	<!-- SCM for corporate POM, should be redefined in projects' POMs -->
+	<scm>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/</url>
+	</scm>
+
+	<!-- Developers that have contributed to the corporate POM, should be redefined in projects' POMs -->
+	<developers>
+		<developer>
+			<email>developer1@acme.com</email>
+		</developer>
+	</developers>
 
 	<build>
 		<pluginManagement>
@@ -161,11 +171,6 @@
 				</plugin>
 
 				<plugin>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>${plugins.siteVersion}</version>
-				</plugin>
-
-				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${plugins.surefireVersion}</version>
@@ -191,7 +196,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 
 	<reporting>
 		<plugins>
@@ -252,8 +256,92 @@
 						<reportsDirectory>${project.build.directory}/failsafe-reports/</reportsDirectory>
 					</reportsDirectories>
 				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 		</plugins>
 	</reporting>
+
+	<profiles>
+		<!-- Maven 2 specific settings (activated automatically) -->
+		<profile>
+			<id>maven-2</id>
+			<activation>
+				<file>
+					<!-- basedir expression is only recognized by Maven 3.x (see MNG-2363) -->
+					<missing>${basedir}</missing>
+				</file>
+			</activation>
+
+			<properties>
+				<!-- ================= -->
+				<!-- Global Properties -->
+				<!-- ================= -->
+
+				<!-- ================================= -->
+				<!-- Corporate POM specific properties -->
+				<!-- ================================= -->
+
+				<!-- Downgrade version to 2.2: http://jira.codehaus.org/browse/MPIR-194 -->
+				<plugins.siteVersion>2.2</plugins.siteVersion>
+			</properties>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-site-plugin</artifactId>
+							<version>${plugins.siteVersion}</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<!-- Maven 3 specific settings (activated automatically) -->
+		<profile>
+			<id>maven-3</id>
+			<activation>
+				<file>
+					<!-- basedir expression is only recognized by Maven 3.x (see MNG-2363) -->
+					<exists>${basedir}</exists>
+				</file>
+			</activation>
+
+			<properties>
+				<!-- ================= -->
+				<!-- Global Properties -->
+				<!-- ================= -->
+
+
+				<!-- ================================= -->
+				<!-- Corporate POM specific properties -->
+				<!-- ================================= -->
+				<plugins.siteVersion>3.0-beta-3</plugins.siteVersion>
+			</properties>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-site-plugin</artifactId>
+							<version>${plugins.siteVersion}</version>
+							<configuration>
+								<reportPlugins>
+								</reportPlugins>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
 
 </project>

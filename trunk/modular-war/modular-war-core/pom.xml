@@ -17,10 +17,10 @@
 	<!-- Developers that have contributed to the module -->
 	<developers>
 		<developer>
-			<email>developer1@gmail.com</email>
+			<email>developer1@acme.com</email>
 		</developer>
 		<developer>
-			<email>developer2@gmail.com</email>
+			<email>developer2@acme.com</email>
 		</developer>
 	</developers>
 

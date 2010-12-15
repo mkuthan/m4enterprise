@@ -29,13 +29,13 @@
 	<!-- All developers that have contributed to the project -->
 	<developers>
 		<developer>
-			<email>developer1@gmail.com</email>
+			<email>developer1@acme.com</email>
 		</developer>
 		<developer>
-			<email>developer2@gmail.com</email>
+			<email>developer2@acme.com</email>
 		</developer>
 		<developer>
-			<email>developer3@gmail.com</email>
+			<email>developer3@acme.com</email>
 		</developer>
 	</developers>
 
