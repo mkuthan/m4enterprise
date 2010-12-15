@@ -39,3 +39,19 @@ The next release version can customized by `releaseVersion` property:
 {{{
 mvn --batch-mode release:prepare release:perform -DdevelopmentVersion=2.0-SNAPSHOT
 }}}
+
+TODO: use release:branch instead of release:prepare
+
+= Update Corporate POM References =
+
+The following command updates Corporate POM version to the latest release:
+
+{{{
+mvn versions:update-parent
+}}}
+
+If your project refers to the Corporate POM which has not been released yet (not recommended):
+
+{{{
+mvn versions:update-parent -DallowSnapshots=true
+}}}
