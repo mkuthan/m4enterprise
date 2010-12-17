@@ -70,6 +70,10 @@ mvn dependency:analyze
 
 = Project Site =
 
+*Notice:*
+
+  For modular Maven projects all modules must be installed in the local repository before site generation. [http://jira.codehaus.org/browse/MJAVADOC-116 Bug] in the Maven Javadoc Plugin is a root cause of this restriction.
+
 Generate site without tests reports (tests are not executed):
 
 {{{
