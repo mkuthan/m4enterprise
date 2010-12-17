@@ -1,4 +1,4 @@
-#summary Enterprise Repository.
+#summary Enterprise Repository
 
 = Introduction =
 
@@ -6,6 +6,7 @@ Enterprise Repository plays one of the most important role in corporate Maven in
 
  * Highly configurable proxy for public repositories
  * Place where corporate artifacts are deployed
+ * Place where 3rd party artifacts (not available in any public repository) are deployed
 
 = Repository Products =
 
