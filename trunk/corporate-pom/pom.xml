@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -53,13 +54,11 @@
 			<id>google-m4enterprise</id>
 			<name>Google Code Repository</name>
 			<url>dav:https://m4enterprise.googlecode.com/svn/release-repository</url>
-			<uniqueVersion>false</uniqueVersion>
 		</repository>
 		<snapshotRepository>
 			<id>google-m4enterprise</id>
 			<name>Google Code Snapshot Repository</name>
 			<url>dav:https://m4enterprise.googlecode.com/svn/snapshot-repository</url>
-			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 		<site>
 			<id>google-m4enterprise</id>
@@ -83,6 +82,14 @@
 	</developers>
 
 	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+		</extensions>
+
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -333,9 +340,15 @@
 							<artifactId>maven-site-plugin</artifactId>
 							<version>${plugins.siteVersion}</version>
 							<configuration>
-								<reportPlugins>
-								</reportPlugins>
 							</configuration>
+							<executions>
+								<execution>
+									<id>attach-descriptor</id>
+									<goals>
+										<goal>attach-descriptor</goal>
+									</goals>
+								</execution>
+							</executions>
 						</plugin>
 					</plugins>
 				</pluginManagement>
