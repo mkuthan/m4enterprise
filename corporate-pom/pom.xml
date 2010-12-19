@@ -15,33 +15,36 @@
 		<!-- Global Properties -->
 		<!-- ================= -->
 
-		<!-- Set default encoding to UTF-8 (many plugins) -->
+		<!-- Set default encoding to UTF-8 (most plugins) -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<!-- Speed-up site generation (maven-project-info-reports-plugin) -->
+		<!-- Disable report aggregation (m-jxr-p, m-pmd-p, m-surefire-report-p) -->
+		<aggregate>false</aggregate>
+
+		<!-- Speed-up site generation (m-project-info-reports-p) -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
 
-		<plugins.checkstyleVersion>2.6</plugins.checkstyleVersion>
-		<plugins.cleanVersion>2.4.1</plugins.cleanVersion>
-		<plugins.cloverVersion>3.0.2</plugins.cloverVersion>
-		<plugins.compilerVersion>2.3.2</plugins.compilerVersion>
-		<plugins.dependencyVersion>2.1</plugins.dependencyVersion>
-		<plugins.deployVersion>2.5</plugins.deployVersion>
-		<plugins.installVersion>2.3.1</plugins.installVersion>
-		<plugins.jarVersion>2.3.1</plugins.jarVersion>
-		<plugins.javadocVersion>2.7</plugins.javadocVersion>
-		<plugins.jxrVersion>2.2</plugins.jxrVersion>
-		<plugins.pmdVersion>2.5</plugins.pmdVersion>
-		<plugins.projectinfoVersion>2.2</plugins.projectinfoVersion>
-		<plugins.resourcesVersion>2.4.3</plugins.resourcesVersion>
-		<plugins.surefireVersion>2.6</plugins.surefireVersion>
-		<plugins.warVersion>2.1.1</plugins.warVersion>
-		<plugins.versionsVersion>1.2</plugins.versionsVersion>
+		<com.acme.checkstyleVersion>2.6</com.acme.checkstyleVersion>
+		<com.acme.cleanVersion>2.4.1</com.acme.cleanVersion>
+		<com.acme.cloverVersion>3.0.2</com.acme.cloverVersion>
+		<com.acme.compilerVersion>2.3.2</com.acme.compilerVersion>
+		<com.acme.dependencyVersion>2.1</com.acme.dependencyVersion>
+		<com.acme.deployVersion>2.5</com.acme.deployVersion>
+		<com.acme.installVersion>2.3.1</com.acme.installVersion>
+		<com.acme.jarVersion>2.3.1</com.acme.jarVersion>
+		<com.acme.javadocVersion>2.7</com.acme.javadocVersion>
+		<com.acme.jxrVersion>2.2</com.acme.jxrVersion>
+		<com.acme.pmdVersion>2.5</com.acme.pmdVersion>
+		<com.acme.projectinfoVersion>2.2</com.acme.projectinfoVersion>
+		<com.acme.resourcesVersion>2.4.3</com.acme.resourcesVersion>
+		<com.acme.surefireVersion>2.6</com.acme.surefireVersion>
+		<com.acme.warVersion>2.1.1</com.acme.warVersion>
+		<com.acme.versionsVersion>1.2</com.acme.versionsVersion>
 	</properties>
 
 	<organization>
@@ -82,6 +85,8 @@
 	</developers>
 
 	<build>
+		<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, https: and file: as transport protocols. Declare others 
+			transports explicitly. -->
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
@@ -90,131 +95,133 @@
 			</extension>
 		</extensions>
 
+		<!-- List of plugins in alphabetical order -->
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>${plugins.checkstyleVersion}</version>
+					<version>${com.acme.checkstyleVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>${plugins.cleanVersion}</version>
+					<version>${com.acme.cleanVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>com.atlassian.maven.plugins</groupId>
 					<artifactId>maven-clover2-plugin</artifactId>
-					<version>${plugins.cloverVersion}</version>
+					<version>${com.acme.cloverVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${plugins.compilerVersion}</version>
+					<version>${com.acme.compilerVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>${plugins.dependencyVersion}</version>
+					<version>${com.acme.dependencyVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>${plugins.deployVersion}</version>
+					<version>${com.acme.deployVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>${plugins.installVersion}</version>
+					<version>${com.acme.installVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>${plugins.jarVersion}</version>
+					<version>${com.acme.jarVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>${plugins.surefireVersion}</version>
+					<version>${com.acme.surefireVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${plugins.javadocVersion}</version>
+					<version>${com.acme.javadocVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jxr-plugin</artifactId>
-					<version>${plugins.jxrVersion}</version>
+					<version>${com.acme.jxrVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-pmd-plugin</artifactId>
-					<version>${plugins.pmdVersion}</version>
+					<version>${com.acme.pmdVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>${plugins.projectinfoVersion}</version>
+					<version>${com.acme.projectinfoVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>${plugins.resourcesVersion}</version>
+					<version>${com.acme.resourcesVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${plugins.surefireVersion}</version>
+					<version>${com.acme.surefireVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-report-plugin</artifactId>
-					<version>${plugins.surefireVersion}</version>
+					<version>${com.acme.surefireVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
-					<version>${plugins.warVersion}</version>
+					<version>${com.acme.warVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
-					<version>${plugins.versionsVersion}</version>
+					<version>${com.acme.versionsVersion}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
 
 	<reporting>
+		<!-- List of plugins in alphabetical order -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>${plugins.checkstyleVersion}</version>
+				<version>${com.acme.checkstyleVersion}</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>${plugins.javadocVersion}</version>
+				<version>${com.acme.javadocVersion}</version>
 				<configuration>
 					<!-- Default configuration for all reports -->
 				</configuration>
@@ -243,20 +250,21 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
-				<version>${plugins.jxrVersion}</version>
+				<version>${com.acme.jxrVersion}</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>${plugins.pmdVersion}</version>
+				<version>${com.acme.pmdVersion}</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>${plugins.surefireVersion}</version>
+				<version>${com.acme.surefireVersion}</version>
 				<configuration>
+					<!-- Combine surefire and failsafe into single report. -->
 					<reportsDirectories>
 						<reportsDirectory>${project.build.directory}/surefire-reports/</reportsDirectory>
 						<reportsDirectory>${project.build.directory}/failsafe-reports/</reportsDirectory>
@@ -294,7 +302,7 @@
 				<!-- ================================= -->
 
 				<!-- Downgrade version to 2.2: http://jira.codehaus.org/browse/MPIR-194 -->
-				<plugins.siteVersion>2.2</plugins.siteVersion>
+				<com.acme.siteVersion>2.2</com.acme.siteVersion>
 			</properties>
 
 			<build>
@@ -303,7 +311,7 @@
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-site-plugin</artifactId>
-							<version>${plugins.siteVersion}</version>
+							<version>${com.acme.siteVersion}</version>
 						</plugin>
 					</plugins>
 				</pluginManagement>
@@ -329,7 +337,7 @@
 				<!-- ================================= -->
 				<!-- Corporate POM specific properties -->
 				<!-- ================================= -->
-				<plugins.siteVersion>3.0-beta-3</plugins.siteVersion>
+				<com.acme.siteVersion>3.0-beta-3</com.acme.siteVersion>
 			</properties>
 
 			<build>
@@ -338,10 +346,12 @@
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-site-plugin</artifactId>
-							<version>${plugins.siteVersion}</version>
+							<version>${com.acme.siteVersion}</version>
 							<configuration>
 							</configuration>
 							<executions>
+								<!-- For Maven3 default execution of site:attach-descriptor has been removed from the built-in lifecycle bindings 
+									for projects with packaging "pom". Enable it again. -->
 								<execution>
 									<id>attach-descriptor</id>
 									<goals>
