@@ -19,8 +19,29 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+		<!-- Set compiler source and target versions (m-compiler-p) -->
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+
+		<!-- Set compiler to be more verbose (m-compiler-p) -->
+		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+
+		<!-- Configure custom release profile (m-release-p) -->
+		<useReleaseProfile>false</useReleaseProfile>
+		<releaseProfiles>acme-release</releaseProfiles>
+
+		<!-- Automatically assign submodules the parent version (m-release-p) -->
+		<autoVersionSubmodules>true</autoVersionSubmodules>
+
 		<!-- Disable report aggregation (m-jxr-p, m-pmd-p, m-surefire-report-p) -->
 		<aggregate>false</aggregate>
+
+		<!-- Shut off non-error and non-warning messages, making them easier to view (m-javadoc-p) -->
+		<quiet>true</quiet>
+
+		<!-- Set target JDK to analyze based on (m-pmd-p) -->
+		<targetJdk>${maven.compiler.target}</targetJdk>
 
 		<!-- Speed-up site generation (m-project-info-reports-p) -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
@@ -29,28 +50,77 @@
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
 
-		<com.acme.checkstyleVersion>2.6</com.acme.checkstyleVersion>
+		<!-- Core plugins -->
 		<com.acme.cleanVersion>2.4.1</com.acme.cleanVersion>
-		<com.acme.cloverVersion>3.0.2</com.acme.cloverVersion>
 		<com.acme.compilerVersion>2.3.2</com.acme.compilerVersion>
-		<com.acme.dependencyVersion>2.1</com.acme.dependencyVersion>
 		<com.acme.deployVersion>2.5</com.acme.deployVersion>
+		<com.acme.failsafeVersion>2.7</com.acme.failsafeVersion>
 		<com.acme.installVersion>2.3.1</com.acme.installVersion>
+		<com.acme.surefireVersion>2.6</com.acme.surefireVersion>
+		<com.acme.resourcesVersion>2.4.3</com.acme.resourcesVersion>
+		<com.acme.verifierVersion>1.0</com.acme.verifierVersion>
+
+		<!-- Packaging plugins -->
+		<com.acme.earVersion>2.4.2</com.acme.earVersion>
+		<com.acme.ejbVersion>2.3</com.acme.ejbVersion>
 		<com.acme.jarVersion>2.3.1</com.acme.jarVersion>
+		<com.acme.rarVersion>2.2</com.acme.rarVersion>
+		<com.acme.warVersion>2.1.1</com.acme.warVersion>
+		<com.acme.shadeVersion>1.4</com.acme.shadeVersion>
+
+		<!-- Reporting (only used report plugins) -->
+		<com.acme.checkstyleVersion>2.6</com.acme.checkstyleVersion>
+		<com.acme.cloverVersion>3.0.2</com.acme.cloverVersion>
 		<com.acme.javadocVersion>2.7</com.acme.javadocVersion>
 		<com.acme.jxrVersion>2.2</com.acme.jxrVersion>
 		<com.acme.pmdVersion>2.5</com.acme.pmdVersion>
-		<com.acme.projectinfoVersion>2.2</com.acme.projectinfoVersion>
-		<com.acme.resourcesVersion>2.4.3</com.acme.resourcesVersion>
-		<com.acme.surefireVersion>2.6</com.acme.surefireVersion>
-		<com.acme.warVersion>2.1.1</com.acme.warVersion>
+		<com.acme.projectInfoVersion>2.3</com.acme.projectInfoVersion>
+		<com.acme.surefireReportVersion>2.6</com.acme.surefireReportVersion>
+
+		<!-- Tools -->
+		<com.acme.antVersion>2.3</com.acme.antVersion>
+		<com.acme.antrunVersion>1.6</com.acme.antrunVersion>
+		<com.acme.archetypeVersion>2.0</com.acme.archetypeVersion>
+		<com.acme.assemblyVersion>2.2</com.acme.assemblyVersion>
+		<com.acme.dependencyVersion>2.1</com.acme.dependencyVersion>
+		<com.acme.enforcerVersion>1.0</com.acme.enforcerVersion>
+		<com.acme.gpgVersion>1.1</com.acme.gpgVersion>
+		<com.acme.helpVersion>2.1.1</com.acme.helpVersion>
+		<com.acme.invokerVersion>1.5</com.acme.invokerVersion>
+		<com.acme.jarsignerVersion>1.2</com.acme.jarsignerVersion>
+		<com.acme.oneVersion>1.2</com.acme.oneVersion>
+		<com.acme.patchVersion>1.1.1</com.acme.patchVersion>
+		<com.acme.pdfVersion>1.1</com.acme.pdfVersion>
+		<com.acme.pluginVersion>2.6</com.acme.pluginVersion>
+		<com.acme.releaseVersion>2.1</com.acme.releaseVersion>
+		<com.acme.reactorVersion>1.0</com.acme.reactorVersion>
+		<com.acme.remoteResourcesVersion>1.1</com.acme.remoteResourcesVersion>
+		<com.acme.repositoryVersion>2.3.1</com.acme.repositoryVersion>
+		<com.acme.scmVersion>1.4</com.acme.scmVersion>
+		<com.acme.sourceVersion>2.1.2</com.acme.sourceVersion>
+		<com.acme.stageVersion>1.0-alpha-2</com.acme.stageVersion>
+		<com.acme.toolchainsVersion>1.0</com.acme.toolchainsVersion>
+
+		<!-- IDEs -->
+		<com.acme.eclipseVersion>2.8</com.acme.eclipseVersion>
+		<com.acme.ideaVersion>2.2</com.acme.ideaVersion>
+
+		<!-- Other -->
 		<com.acme.versionsVersion>1.2</com.acme.versionsVersion>
+
 	</properties>
 
 	<organization>
 		<name>ACME Corporation</name>
 		<url>http://www.acme.com/</url>
 	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
 
 	<distributionManagement>
 		<repository>
@@ -95,25 +165,14 @@
 			</extension>
 		</extensions>
 
-		<!-- List of plugins in alphabetical order -->
+		<!-- Ordered based on http://maven.apache.org/plugins/index.html -->
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>${com.acme.checkstyleVersion}</version>
-				</plugin>
-
+				<!-- Core plugins -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>${com.acme.cleanVersion}</version>
-				</plugin>
-
-				<plugin>
-					<groupId>com.atlassian.maven.plugins</groupId>
-					<artifactId>maven-clover2-plugin</artifactId>
-					<version>${com.acme.cloverVersion}</version>
 				</plugin>
 
 				<plugin>
@@ -124,14 +183,14 @@
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<version>${com.acme.dependencyVersion}</version>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${com.acme.deployVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>${com.acme.deployVersion}</version>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${com.acme.failsafeVersion}</version>
 				</plugin>
 
 				<plugin>
@@ -142,14 +201,70 @@
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${com.acme.resourcesVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${com.acme.surefireVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-verifier-plugin</artifactId>
+					<version>${com.acme.verifierVersion}</version>
+				</plugin>
+
+				<!-- Packaging plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>${com.acme.earVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>${com.acme.ejbVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>${com.acme.jarVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>${com.acme.surefireVersion}</version>
+					<artifactId>maven-rar-plugin</artifactId>
+					<version>${com.acme.rarVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${com.acme.warVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>${com.acme.shadeVersion}</version>
+				</plugin>
+
+				<!-- Reporting (only used report plugins) -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${com.acme.checkstyleVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>com.atlassian.maven.plugins</groupId>
+					<artifactId>maven-clover2-plugin</artifactId>
+					<version>${com.acme.cloverVersion}</version>
 				</plugin>
 
 				<plugin>
@@ -173,33 +288,162 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>${com.acme.projectinfoVersion}</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>${com.acme.resourcesVersion}</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${com.acme.surefireVersion}</version>
+					<version>${com.acme.projectInfoVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-report-plugin</artifactId>
-					<version>${com.acme.surefireVersion}</version>
+					<version>${com.acme.surefireReportVersion}</version>
+				</plugin>
+
+				<!-- Tools -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ant-plugin</artifactId>
+					<version>${com.acme.antVersion}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>${com.acme.warVersion}</version>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${com.acme.antrunVersion}</version>
 				</plugin>
 
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>${com.acme.archetypeVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${com.acme.assemblyVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${com.acme.dependencyVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${com.acme.enforcerVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${com.acme.gpgVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-help-plugin</artifactId>
+					<version>${com.acme.helpVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-invoker-plugin</artifactId>
+					<version>${com.acme.invokerVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>${com.acme.jarsignerVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-one-plugin</artifactId>
+					<version>${com.acme.oneVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-patch-plugin</artifactId>
+					<version>${com.acme.patchVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pdf-plugin</artifactId>
+					<version>${com.acme.pdfVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-plugin-plugin</artifactId>
+					<version>${com.acme.pluginVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${com.acme.releaseVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-reactor-plugin</artifactId>
+					<version>${com.acme.reactorVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-remote-resources-plugin</artifactId>
+					<version>${com.acme.remoteResourcesVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-repository-plugin</artifactId>
+					<version>${com.acme.repositoryVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>${com.acme.scmVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${com.acme.sourceVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-stage-plugin</artifactId>
+					<version>${com.acme.stageVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-toolchains-plugin</artifactId>
+					<version>${com.acme.toolchainsVersion}</version>
+				</plugin>
+
+				<!-- IDEs -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${com.acme.eclipseVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-idea-plugin</artifactId>
+					<version>${com.acme.ideaVersion}</version>
+				</plugin>
+
+				<!-- Other -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
@@ -262,7 +506,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>${com.acme.surefireVersion}</version>
+				<version>${com.acme.surefireReportVersion}</version>
 				<configuration>
 					<!-- Combine surefire and failsafe into single report. -->
 					<reportsDirectories>
@@ -301,7 +545,6 @@
 				<!-- Corporate POM specific properties -->
 				<!-- ================================= -->
 
-				<!-- Downgrade version to 2.2: http://jira.codehaus.org/browse/MPIR-194 -->
 				<com.acme.siteVersion>2.2</com.acme.siteVersion>
 			</properties>
 
@@ -362,6 +605,82 @@
 						</plugin>
 					</plugins>
 				</pluginManagement>
+			</build>
+		</profile>
+
+		<!-- Profile enabled for releases to ensure project quality -->
+		<profile>
+			<id>acme-release</id>
+
+			<build>
+				<plugins>
+					<!-- Deploy sources into repository -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- Deploy Javadoc into repository -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>enforce-maven-version</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireMavenVersion>
+											<message>Only approved Maven versions are allowed.</message>
+											<version>[2.2.1,3.0),[3.0.1,4.0)</version>
+										</requireMavenVersion>
+									</rules>
+								</configuration>
+							</execution>
+							<execution>
+								<id>enforce-plugin-versions</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requirePluginVersions>
+											<message>Only released plugins with explicitly defined version are allowed.</message>
+											<banLatest>true</banLatest>
+											<banRelease>true</banRelease>
+											<banSnapshots>true</banSnapshots>
+										</requirePluginVersions>
+									</rules>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
 			</build>
 		</profile>
 	</profiles>
