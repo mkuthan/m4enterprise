@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${project.name}">
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-default-skin</artifactId>
+		<version>1.0</version>
+	</skin>
+
+	<poweredBy>
+		<logo name="Maven" href="http://maven.apache.org/" img="http://maven.apache.org/images/logos/maven-feather.png" />
+	</poweredBy>
+
+	<publishDate position="left" format="dd MMM yyyy" />
+	<version position="right" />
+
+	<body>
+		<menu ref="parent" inherit="bottom" />
+		<menu ref="modules" inherit="bottom" />
+		<menu ref="reports" inherit="bottom" />
+	</body>
+</project>
