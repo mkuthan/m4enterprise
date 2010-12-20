@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project>
-	<body>
-		<menu name="Main">
-			<item name="Overview" href="overview.html" />
-		</menu>
-	</body>
-</project>
