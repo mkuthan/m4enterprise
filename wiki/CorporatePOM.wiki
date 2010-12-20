@@ -57,7 +57,7 @@ Example scenario:
 
 == Release Setup ==
 
-Corporate POM release setup should be configured as Continuous Integration build plan. The build strategy can be set as manual build (on demand) or scheduled build (related to Scrum iteration for example).
+Corporate POM release setup should be configured as Continuous Integration build plan. The build strategy can be set as manual build (on demand) or scheduled build (related to Scrum iteration for example). For release build it is recommended to checkout the sources from repository into clean sandbox.
 
 Use the following command in the build plan:
 
