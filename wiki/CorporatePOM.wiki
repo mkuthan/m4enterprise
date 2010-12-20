@@ -1,4 +1,4 @@
-#summary Corporate POM.
+#summary Corporate POM
 
 = Introduction =
 
@@ -10,7 +10,23 @@ Corporate POM centralizes projects configuration:
   * Distribution management settings
   * Reporting configuration
 
-= Build Setup = 
+= Build Management = 
+
+== Update Plugin Versions ==
+
+All plugin versions are defined in Corporate POM within properties. First, display a report of those properties which have newer versions available:
+
+{{{
+mvn versions:display-property-updates
+}}}
+
+And update versions properties finally:
+
+{{{
+mvn versions:update-properties
+}}}
+
+== Build setup ==
 
 Corporate POM build setup should be configured as Continuous Integration build plan. After every commit Corporate POM artifact will be deployed into the snapshot repository. Use the following command in the build plan: 
 
@@ -18,7 +34,17 @@ Corporate POM build setup should be configured as Continuous Integration build p
 mvn clean deploy
 }}}
 
-= Release Setup =
+= Release Management =
+
+== Versioning ==
+
+Use the following scheme X.Y.Z where:
+
+  * X - Major version must be incremented when any backwards incompatible changes are introduced.
+  * Y - Minor version must be incremented if new, backwards compatible functionality is introduced. E.g: new plugin definition is added or plugin version is updated.
+  * Z - Patch version must be incremented if only backwards compatible bug fixes are introduced.
+
+== Release Setup ==
 
 Corporate POM release setup should be configured as Continuous Integration build plan. The build strategy can be set as manual build (on demand) or scheduled build (related to Scrum iteration for example).
 
