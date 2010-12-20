@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -26,9 +27,6 @@
 		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
 		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
 
-		<!-- Configure custom release profile (m-release-p) -->
-		<releaseProfiles>acme-release</releaseProfiles>
-
 		<!-- Automatically assign submodules the parent version (m-release-p) -->
 		<autoVersionSubmodules>true</autoVersionSubmodules>
 
@@ -38,11 +36,17 @@
 		<!-- Shut off non-error and non-warning messages, making them easier to view (m-javadoc-p) -->
 		<quiet>true</quiet>
 
+		<!-- Disable links detection between modules, it is too slow (m-javadoc-p) -->
+		<detectOfflineLinks>false</detectOfflineLinks>
+
 		<!-- Set target JDK to analyze based on (m-pmd-p) -->
 		<targetJdk>${maven.compiler.target}</targetJdk>
 
 		<!-- Speed-up site generation (m-project-info-reports-p) -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
+
+		<!-- Enforce project settings by default -->
+		<enforcer.skip>false</enforcer.skip>
 
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
@@ -162,6 +166,46 @@
 				<version>1.0-beta-2</version>
 			</extension>
 		</extensions>
+
+		<!-- Enforce project settings -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce-maven-version</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<message>Only approved Maven versions are allowed.</message>
+									<version>[2.2.1,3.0),[3.0.1,4.0)</version>
+								</requireMavenVersion>
+							</rules>
+						</configuration>
+					</execution>
+					<execution>
+						<id>enforce-plugin-versions</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requirePluginVersions>
+									<message>Only released plugin with explicitly defined version are allowed.</message>
+									<banLatest>true</banLatest>
+									<banRelease>true</banRelease>
+									<banSnapshots>true</banSnapshots>
+								</requirePluginVersions>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 
 		<!-- Ordered based on http://maven.apache.org/plugins/index.html -->
 		<pluginManagement>
@@ -603,91 +647,6 @@
 						</plugin>
 					</plugins>
 				</pluginManagement>
-			</build>
-		</profile>
-
-		<!-- Profile enabled for releases to ensure project quality -->
-		<profile>
-			<id>acme-release</id>
-
-			<build>
-				<plugins>
-					<!-- Deploy sources into repository -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<!-- Deploy Javadoc into repository -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<!-- Update latest version in metadata.xml -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-deploy-plugin</artifactId>
-						<configuration>
-							<updateReleaseInfo>true</updateReleaseInfo>
-						</configuration>
-					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-enforcer-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>enforce-maven-version</id>
-								<goals>
-									<goal>enforce</goal>
-								</goals>
-								<configuration>
-									<rules>
-										<requireMavenVersion>
-											<message>Only approved Maven versions are allowed.</message>
-											<version>[2.2.1,3.0),[3.0.1,4.0)</version>
-										</requireMavenVersion>
-									</rules>
-								</configuration>
-							</execution>
-							<execution>
-								<id>enforce-plugin-versions</id>
-								<goals>
-									<goal>enforce</goal>
-								</goals>
-								<configuration>
-									<rules>
-										<requirePluginVersions>
-											<message>Only released plugins with explicitly defined version are allowed.</message>
-											<banLatest>true</banLatest>
-											<banRelease>true</banRelease>
-											<banSnapshots>true</banSnapshots>
-										</requirePluginVersions>
-									</rules>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
 			</build>
 		</profile>
 	</profiles>
