@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.googlecode.m4enterprise</groupId>
+	<artifactId>corporate-pom</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>corporate-pom</name>
+	<description>Corporate POM</description>
+
+	<properties>
+		<!-- ================= -->
+		<!-- Global Properties -->
+		<!-- ================= -->
+
+		<!-- Set default encoding to UTF-8 (many plugins) -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Speed-up site generation (maven-project-info-reports-plugin) -->
+		<dependency.locations.enabled>false</dependency.locations.enabled>
+
+		<!-- ================================= -->
+		<!-- Corporate POM specific properties -->
+		<!-- ================================= -->
+
+		<plugins.checkstyleVersion>2.6</plugins.checkstyleVersion>
+		<plugins.cleanVersion>2.4.1</plugins.cleanVersion>
+		<plugins.cloverVersion>3.0.2</plugins.cloverVersion>
+		<plugins.compilerVersion>2.3.2</plugins.compilerVersion>
+		<plugins.dependencyVersion>2.1</plugins.dependencyVersion>
+		<plugins.deployVersion>2.5</plugins.deployVersion>
+		<plugins.installVersion>2.3.1</plugins.installVersion>
+		<plugins.jarVersion>2.3.1</plugins.jarVersion>
+		<plugins.javadocVersion>2.7</plugins.javadocVersion>
+		<plugins.jxrVersion>2.2</plugins.jxrVersion>
+		<plugins.pmdVersion>2.5</plugins.pmdVersion>
+		<plugins.projectinfoVersion>2.2</plugins.projectinfoVersion>
+		<plugins.resourcesVersion>2.4.3</plugins.resourcesVersion>
+		<plugins.surefireVersion>2.6</plugins.surefireVersion>
+		<plugins.warVersion>2.1.1</plugins.warVersion>
+		<plugins.versionsVersion>1.2</plugins.versionsVersion>
+	</properties>
+
+	<organization>
+		<name>ACME Corporation</name>
+		<url>http://www.acme.com/</url>
+	</organization>
+
+	<distributionManagement>
+		<repository>
+			<id>google-m4enterprise</id>
+			<name>Google Code Repository</name>
+			<url>dav:https://m4enterprise.googlecode.com/svn/release-repository</url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>google-m4enterprise</id>
+			<name>Google Code Snapshot Repository</name>
+			<url>dav:https://m4enterprise.googlecode.com/svn/snapshot-repository</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+		<site>
+			<id>google-m4enterprise</id>
+			<name>Google Code Site</name>
+			<url>dav:https://m4enterprise.googlecode.com/svn/site</url>
+		</site>
+	</distributionManagement>
+
+	<!-- SCM for corporate POM, should be redefined in projects' POMs -->
+	<scm>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/branches/1.0.x</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/branches/1.0.x</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/branches/1.0.x</url>
+	</scm>
+
+	<!-- Developers that have contributed to the corporate POM, should be redefined in projects' POMs -->
+	<developers>
+		<developer>
+			<email>developer1@acme.com</email>
+		</developer>
+	</developers>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${plugins.checkstyleVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${plugins.cleanVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>com.atlassian.maven.plugins</groupId>
+					<artifactId>maven-clover2-plugin</artifactId>
+					<version>${plugins.cloverVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${plugins.compilerVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${plugins.dependencyVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${plugins.deployVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${plugins.installVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${plugins.jarVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${plugins.surefireVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${plugins.javadocVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${plugins.jxrVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${plugins.pmdVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>${plugins.projectinfoVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${plugins.resourcesVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${plugins.surefireVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${plugins.surefireVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${plugins.warVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${plugins.versionsVersion}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${plugins.checkstyleVersion}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${plugins.javadocVersion}</version>
+				<configuration>
+					<!-- Default configuration for all reports -->
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<id>non-aggregate</id>
+						<configuration>
+							<!-- Specific configuration for the non aggregate report -->
+						</configuration>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>aggregate</id>
+						<configuration>
+							<!-- Specific configuration for the aggregate report -->
+						</configuration>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${plugins.jxrVersion}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${plugins.pmdVersion}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>${plugins.surefireVersion}</version>
+				<configuration>
+					<reportsDirectories>
+						<reportsDirectory>${project.build.directory}/surefire-reports/</reportsDirectory>
+						<reportsDirectory>${project.build.directory}/failsafe-reports/</reportsDirectory>
+					</reportsDirectories>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<profiles>
+		<!-- Maven 2 specific settings (activated automatically) -->
+		<profile>
+			<id>maven-2</id>
+			<activation>
+				<file>
+					<!-- basedir expression is only recognized by Maven 3.x (see MNG-2363) -->
+					<missing>${basedir}</missing>
+				</file>
+			</activation>
+
+			<properties>
+				<!-- ================= -->
+				<!-- Global Properties -->
+				<!-- ================= -->
+
+				<!-- ================================= -->
+				<!-- Corporate POM specific properties -->
+				<!-- ================================= -->
+
+				<!-- Downgrade version to 2.2: http://jira.codehaus.org/browse/MPIR-194 -->
+				<plugins.siteVersion>2.2</plugins.siteVersion>
+			</properties>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-site-plugin</artifactId>
+							<version>${plugins.siteVersion}</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<!-- Maven 3 specific settings (activated automatically) -->
+		<profile>
+			<id>maven-3</id>
+			<activation>
+				<file>
+					<!-- basedir expression is only recognized by Maven 3.x (see MNG-2363) -->
+					<exists>${basedir}</exists>
+				</file>
+			</activation>
+
+			<properties>
+				<!-- ================= -->
+				<!-- Global Properties -->
+				<!-- ================= -->
+
+
+				<!-- ================================= -->
+				<!-- Corporate POM specific properties -->
+				<!-- ================================= -->
+				<plugins.siteVersion>3.0-beta-3</plugins.siteVersion>
+			</properties>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-site-plugin</artifactId>
+							<version>${plugins.siteVersion}</version>
+							<configuration>
+								<reportPlugins>
+								</reportPlugins>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
