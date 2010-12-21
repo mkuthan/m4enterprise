@@ -1,0 +1,127 @@
+#summary Release Management
+
+= Introduction =
+
+Please keep in your mind the following release management rules:
+
+  # Release early
+  # Release often
+  # Listen to your customer
+
+= Versioning =
+
+Each release must be identified by unique version. It is important to keep versioning scheme consistent, e.g: `MAJOR.MINOR.FIX`, where:
+
+  * `MAJOR` version must be incremented when any backwards incompatible changes are introduced.
+  * `MINOR` version must be incremented if new, backwards compatible functionality is introduced.
+  * `PATCH` version must be incremented if only backwards compatible bug fixes are introduced.
+
+For further details please refer to [http://semver.org/ Semantic Versioning] article.
+
+= SCM Layout = 
+
+There are some standard, recommended ways to organize SCM (at least Subversion). For each project the following directories are created:
+
+|| *Directory* || *Description* || *Tag/Branch Name* || *Application Version* ||
+|| trunk || Current, main line of development || N/A || `MAJOR.MINOR-SNAPSHOT` ||
+|| branches || Bug fixing development || MAJOR.MINOR.x || `MAJOR.MINOR.PATH-SNAPSHOT` ||
+|| tags || Markers for released revisions, never changed || MAJOR.MINOR or MAJOR.MINOR.PATCH || `MAJOR.MINOR` or `MAJOR.MINOR.PATCH` ||
+
+= Release Management = 
+
+== Minor Release ==
+
+The most common scenario, new minor release from trunk is released.
+
+Pre-conditions:
+
+  * release in trunk
+  * application version in trunk: `1.0-SNAPSHOT`
+
+Perform a minor release (accept all defaults during interactive Maven session):
+
+{{{
+mvn release:prepare release:perform -DperformRelease=true
+}}}
+
+Post-conditions:
+
+  * application version in trunk: `1.1-SNAPSHOT`
+  * new tag _application-name-1.0_
+  * application version in tag _application-name-1.0_: `1.0`
+
+== Major Release ==
+
+The scenario when new major release from trunk is released.
+
+Pre-conditions:
+
+  * release in trunk
+  * application version in trunk: `1.1-SNAPSHOT`
+
+Perform a major release (accept all defaults during interactive Maven session):
+
+{{{
+mvn release:prepare release:perform -DperformRelease=true -DreleaseVersion=2.0
+}}}
+
+Post-conditions:
+
+  * application version in trunk: `2.1-SNAPSHOT`
+  * new tag _application-name-2.0_
+  * application version in tag _application-name-2.0_: `2.0`
+
+== Patch Release ==
+
+The scenario when previously released version must be fixed. 
+
+Pre-conditions (step 1):
+
+  * branch in tag _application-name-1.0_
+  * application version in tag _application-name-1.0_: `1.0`
+
+Create branch (choose `1.0.1-SNAPSHOT` as branch version):
+
+{{{
+mvn release:branch  -DbranchName=1.0.x -DupdateBranchVersions=true -DupdateWorkingCopyVersions=false -DsuppressCommitBeforeBranch=true -DremoteTagging=false
+}}}
+
+Post-conditions  (step 1):
+
+  * tag is unchanged
+  * new branch _application-name-1.0.x_
+  * application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`
+
+Pre-conditions (Step 2):
+
+  * release in branch _application-name-1.0.x_
+  * application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`
+
+Perform a patch release (accept all defaults during interactive Maven session):
+
+{{{
+mvn release:prepare release:perform -DperformRelease=true
+}}}
+
+*TODO* - check how to disable updateReleaseInfo for m-deploy-p?
+
+Post-conditions (Step 2):
+
+  * application version in branch _application-name-1.0.x_: `1.0.2-SNAPSHOT`
+  * new tag _application-name-1.0.1_
+  * application version in tag _application-name-1.0.1_: `1.0.1`
+
+= Release Automation = 
+
+Release management should be automated as build plan(s) on continuous integration server. Configure build plan strategy as:
+
+  * Manual build - for one-click, on demand release management
+  * Scheduled build - for fully automatic release at the end of Scrum or Kanban iteration.
+
+To enable batch mode use the `--batch-mode` Maven option, e.g for minor release automation:
+
+{{{
+mvn --batch-mode release:prepare release:perform -DperformRelease=true
+}}}
+
+*TODO:* How to automate major and patch releases?
