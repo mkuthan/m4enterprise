@@ -26,53 +26,6 @@ And update versions properties finally:
 mvn versions:update-properties
 }}}
 
-== Build setup ==
-
-Corporate POM build setup should be configured as Continuous Integration build plan. After every commit Corporate POM artifact will be deployed into the snapshot repository. Use the following command in the build plan: 
-
-{{{
-mvn clean deploy
-}}}
-
-= Release Management =
-
-== Versioning ==
-
-Use the following scheme X.Y.Z where:
-
-  * X - Major version must be incremented when any backwards incompatible changes are introduced.
-  * Y - Minor version must be incremented if new, backwards compatible functionality is introduced. E.g: new plugin definition is added or plugin version is updated.
-  * Z - Patch version must be incremented if only backwards compatible bug fixes are introduced.
-
-Example scenario:
-
-|| || *trunk* || *tags* || *branches* ||
-|| t1 || 1.0-SNAPSHOT || N/A || N/A ||
-|| t2 || 1.1-SNAPSHOT || 1.0 (corporate-pom-1.0) || N/A ||
-|| t3 || 1.1-SNAPSHOT || 1.0 (corporate-pom-1.0) || 1.0.1-SNAPSHOT (corporate-pom-1.0.x) ||
-|| t4 || 1.1-SNAPSHOT || 1.0.1 (corporate-pom-1.0.1) || 1.0.2-SNAPSHOT (corporate-pom-1.0.x) ||
-|| t5 || 1.2-SNAPSHOT || 1.1 (corporate-pom-1.1) || N/A ||
-|| t6 || 2.1-SNAPSHOT || 2.0 (corporate-pom-2.0) || N/A ||
-
-
-== Release Setup ==
-
-Corporate POM release setup should be configured as Continuous Integration build plan. The build strategy can be set as manual build (on demand) or scheduled build (related to Scrum iteration for example). For release build it is recommended to checkout the sources from repository into clean sandbox.
-
-Use the following command in the build plan:
-
-{{{
-mvn --batch-mode release:prepare release:perform -DperformRelease=true
-}}}
-
-The next release version can customized by `releaseVersion` property:
-
-{{{
-mvn --batch-mode release:prepare release:perform -DperformRelease=true -DreleaseVersion=2.0
-}}}
-
-*TODO:* documents how to use release:branch for fix releases
-
 = Update Corporate POM References =
 
 The following command updates Corporate POM version to the latest release:
