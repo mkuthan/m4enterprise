@@ -10,9 +10,7 @@ Corporate POM centralizes projects configuration:
   * Distribution management settings
   * Reporting configuration
 
-= Build Management = 
-
-== Update Plugin Versions ==
+= Update Plugin Versions =
 
 All plugin versions are defined in Corporate POM within properties. First, display a report of those properties which have newer versions available:
 
