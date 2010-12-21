@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -50,6 +51,11 @@
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
+
+		<!-- PMD configuration -->
+		<com.acme.pmdConfiguration>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</com.acme.pmdConfiguration>
+		<!-- Checkstyle configuration -->
+		<com.acme.checkstyleConfiguration>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</com.acme.checkstyleConfiguration>
 
 		<!-- Core plugins -->
 		<com.acme.cleanVersion>2.4.1</com.acme.cleanVersion>
@@ -501,6 +507,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${com.acme.checkstyleVersion}</version>
+				<configuration>
+					<configLocation>${com.acme.checkstyleConfiguration}</configLocation>
+				</configuration>
 			</plugin>
 
 			<plugin>
@@ -542,6 +551,11 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${com.acme.pmdVersion}</version>
+				<configuration>
+					<rulesets>
+						<ruleset>${com.acme.pmdConfiguration}</ruleset>
+					</rulesets>
+				</configuration>
 			</plugin>
 
 			<plugin>
