@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-default-skin</artifactId>
+		<version>1.0</version>
+	</skin>
+
+	<poweredBy>
+		<logo name="Maven" href="http://maven.apache.org/" img="http://maven.apache.org/images/logos/maven-feather.png" />
+	</poweredBy>
+
+	<publishDate position="left" format="dd MMM yyyy" />
+	<version position="right" />
+
+	<body>
+		<links>
+			<item name="${organization.name}" href="${organization.url}" />
+			<item name="Corporate POM" href="http://m4enterprise.googlecode.com/svn/site/corporate-pom/" />
+		</links>
+
+		<menu ref="reports" inherit="bottom" />
+	</body>
+</project>
