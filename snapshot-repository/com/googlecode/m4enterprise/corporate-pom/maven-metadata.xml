@@ -3,6 +3,7 @@
   <groupId>com.googlecode.m4enterprise</groupId>
   <artifactId>corporate-pom</artifactId>
   <versioning>
+    <release>1.15-SNAPSHOT</release>
     <versions>
       <version>1.1-SNAPSHOT</version>
       <version>0.0.1-SNAPSHOT</version>
@@ -16,7 +17,8 @@
       <version>1.9-SNAPSHOT</version>
       <version>1.10-SNAPSHOT</version>
       <version>1.11-SNAPSHOT</version>
+      <version>1.15-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20101222131821</lastUpdated>
+    <lastUpdated>20101222142312</lastUpdated>
   </versioning>
 </metadata>
