@@ -52,18 +52,13 @@
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
 
-		<!-- PMD configuration -->
-		<com.acme.pmdConfiguration>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</com.acme.pmdConfiguration>
-		<!-- Checkstyle configuration -->
-		<com.acme.checkstyleConfiguration>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</com.acme.checkstyleConfiguration>
-
 		<!-- Core plugins -->
 		<com.acme.cleanVersion>2.4.1</com.acme.cleanVersion>
 		<com.acme.compilerVersion>2.3.2</com.acme.compilerVersion>
 		<com.acme.deployVersion>2.5</com.acme.deployVersion>
 		<com.acme.failsafeVersion>2.7</com.acme.failsafeVersion>
 		<com.acme.installVersion>2.3.1</com.acme.installVersion>
-		<com.acme.surefireVersion>2.6</com.acme.surefireVersion>
+		<com.acme.surefireVersion>2.7</com.acme.surefireVersion>
 		<com.acme.resourcesVersion>2.4.3</com.acme.resourcesVersion>
 		<com.acme.verifierVersion>1.0</com.acme.verifierVersion>
 
@@ -78,11 +73,12 @@
 		<!-- Reporting (only used report plugins) -->
 		<com.acme.checkstyleVersion>2.6</com.acme.checkstyleVersion>
 		<com.acme.cloverVersion>3.0.2</com.acme.cloverVersion>
+		<com.acme.findbugsVersion>2.3.1</com.acme.findbugsVersion>
 		<com.acme.javadocVersion>2.7</com.acme.javadocVersion>
 		<com.acme.jxrVersion>2.2</com.acme.jxrVersion>
 		<com.acme.pmdVersion>2.5</com.acme.pmdVersion>
 		<com.acme.projectInfoVersion>2.3</com.acme.projectInfoVersion>
-		<com.acme.surefireReportVersion>2.6</com.acme.surefireReportVersion>
+		<com.acme.surefireReportVersion>2.7</com.acme.surefireReportVersion>
 
 		<!-- Tools -->
 		<com.acme.antVersion>2.3</com.acme.antVersion>
@@ -315,6 +311,12 @@
 				</plugin>
 
 				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${com.acme.findbugsVersion}</version>
+				</plugin>
+
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>${com.acme.javadocVersion}</version>
@@ -508,7 +510,19 @@
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${com.acme.checkstyleVersion}</version>
 				<configuration>
-					<configLocation>${com.acme.checkstyleConfiguration}</configLocation>
+					<!-- Corporate specific rules -->
+					<configLocation>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</configLocation>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>${com.acme.findbugsVersion}</version>
+				<configuration>
+					<!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<xmlOutput>true</xmlOutput>
 				</configuration>
 			</plugin>
 
@@ -552,8 +566,9 @@
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${com.acme.pmdVersion}</version>
 				<configuration>
+					<!-- Corporate specific rules -->
 					<rulesets>
-						<ruleset>${com.acme.pmdConfiguration}</ruleset>
+						<ruleset>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</ruleset>
 					</rulesets>
 				</configuration>
 			</plugin>
