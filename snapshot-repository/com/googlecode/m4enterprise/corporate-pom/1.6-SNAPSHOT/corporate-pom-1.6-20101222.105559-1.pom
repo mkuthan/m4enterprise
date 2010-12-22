@@ -1,0 +1,693 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.googlecode.m4enterprise</groupId>
+	<artifactId>corporate-pom</artifactId>
+	<version>1.6-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>corporate-pom</name>
+	<description>Corporate POM</description>
+
+	<properties>
+		<!-- ================= -->
+		<!-- Global Properties -->
+		<!-- ================= -->
+
+		<!-- Set default encoding to UTF-8 (most plugins) -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Set compiler source and target versions (m-compiler-p) -->
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+
+		<!-- Set compiler to be more verbose (m-compiler-p) -->
+		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+
+		<!-- Automatically assign submodules the parent version (m-release-p) -->
+		<autoVersionSubmodules>true</autoVersionSubmodules>
+
+		<!-- Disable report aggregation (m-jxr-p, m-pmd-p, m-surefire-report-p) -->
+		<aggregate>false</aggregate>
+
+		<!-- Shut off non-error and non-warning messages, making them easier to view (m-javadoc-p) -->
+		<quiet>true</quiet>
+
+		<!-- Disable links detection between modules, it is too slow (m-javadoc-p) -->
+		<detectOfflineLinks>false</detectOfflineLinks>
+
+		<!-- Set target JDK to analyze based on (m-pmd-p) -->
+		<targetJdk>${maven.compiler.target}</targetJdk>
+
+		<!-- Speed-up site generation (m-project-info-reports-p) -->
+		<dependency.locations.enabled>false</dependency.locations.enabled>
+
+		<!-- Enforce project settings by default -->
+		<enforcer.skip>false</enforcer.skip>
+
+		<!-- ================================= -->
+		<!-- Corporate POM specific properties -->
+		<!-- ================================= -->
+		<com.acme.distributionManagement.siteId>google-m4enterprise</com.acme.distributionManagement.siteId>
+		<com.acme.distributionManagement.siteUrl>dav:https://m4enterprise.googlecode.com/svn/site</com.acme.distributionManagement.siteUrl>
+
+		<!-- Core plugins -->
+		<com.acme.cleanVersion>2.4.1</com.acme.cleanVersion>
+		<com.acme.compilerVersion>2.3.2</com.acme.compilerVersion>
+		<com.acme.deployVersion>2.5</com.acme.deployVersion>
+		<com.acme.failsafeVersion>2.7</com.acme.failsafeVersion>
+		<com.acme.installVersion>2.3.1</com.acme.installVersion>
+		<com.acme.surefireVersion>2.7</com.acme.surefireVersion>
+		<com.acme.resourcesVersion>2.4.3</com.acme.resourcesVersion>
+		<com.acme.verifierVersion>1.0</com.acme.verifierVersion>
+
+		<!-- Packaging plugins -->
+		<com.acme.earVersion>2.4.2</com.acme.earVersion>
+		<com.acme.ejbVersion>2.3</com.acme.ejbVersion>
+		<com.acme.jarVersion>2.3.1</com.acme.jarVersion>
+		<com.acme.rarVersion>2.2</com.acme.rarVersion>
+		<com.acme.warVersion>2.1.1</com.acme.warVersion>
+		<com.acme.shadeVersion>1.4</com.acme.shadeVersion>
+
+		<!-- Reporting (only used report plugins) -->
+		<com.acme.checkstyleVersion>2.6</com.acme.checkstyleVersion>
+		<com.acme.cloverVersion>3.0.2</com.acme.cloverVersion>
+		<com.acme.findbugsVersion>2.3.1</com.acme.findbugsVersion>
+		<com.acme.javadocVersion>2.7</com.acme.javadocVersion>
+		<com.acme.jxrVersion>2.2</com.acme.jxrVersion>
+		<com.acme.pmdVersion>2.5</com.acme.pmdVersion>
+		<com.acme.projectInfoVersion>2.3</com.acme.projectInfoVersion>
+		<com.acme.surefireReportVersion>2.7</com.acme.surefireReportVersion>
+
+		<!-- Tools -->
+		<com.acme.antVersion>2.3</com.acme.antVersion>
+		<com.acme.antrunVersion>1.6</com.acme.antrunVersion>
+		<com.acme.archetypeVersion>2.0</com.acme.archetypeVersion>
+		<com.acme.assemblyVersion>2.2</com.acme.assemblyVersion>
+		<com.acme.dependencyVersion>2.1</com.acme.dependencyVersion>
+		<com.acme.enforcerVersion>1.0</com.acme.enforcerVersion>
+		<com.acme.gpgVersion>1.1</com.acme.gpgVersion>
+		<com.acme.helpVersion>2.1.1</com.acme.helpVersion>
+		<com.acme.invokerVersion>1.5</com.acme.invokerVersion>
+		<com.acme.jarsignerVersion>1.2</com.acme.jarsignerVersion>
+		<com.acme.oneVersion>1.2</com.acme.oneVersion>
+		<com.acme.patchVersion>1.1.1</com.acme.patchVersion>
+		<com.acme.pdfVersion>1.1</com.acme.pdfVersion>
+		<com.acme.pluginVersion>2.6</com.acme.pluginVersion>
+		<com.acme.releaseVersion>2.1</com.acme.releaseVersion>
+		<com.acme.reactorVersion>1.0</com.acme.reactorVersion>
+		<com.acme.remoteResourcesVersion>1.1</com.acme.remoteResourcesVersion>
+		<com.acme.repositoryVersion>2.3.1</com.acme.repositoryVersion>
+		<com.acme.scmVersion>1.4</com.acme.scmVersion>
+		<com.acme.sourceVersion>2.1.2</com.acme.sourceVersion>
+		<com.acme.stageVersion>1.0-alpha-2</com.acme.stageVersion>
+		<com.acme.toolchainsVersion>1.0</com.acme.toolchainsVersion>
+
+		<!-- IDEs -->
+		<com.acme.eclipseVersion>2.8</com.acme.eclipseVersion>
+		<com.acme.ideaVersion>2.2</com.acme.ideaVersion>
+
+		<!-- Other -->
+		<com.acme.versionsVersion>1.2</com.acme.versionsVersion>
+	</properties>
+
+	<organization>
+		<name>ACME Corporation</name>
+		<url>http://www.acme.com/</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+
+	<distributionManagement>
+		<repository>
+			<id>google-m4enterprise</id>
+			<name>Google Code Repository</name>
+			<url>dav:https://m4enterprise.googlecode.com/svn/release-repository</url>
+		</repository>
+		<snapshotRepository>
+			<id>google-m4enterprise</id>
+			<name>Google Code Snapshot Repository</name>
+			<url>dav:https://m4enterprise.googlecode.com/svn/snapshot-repository</url>
+		</snapshotRepository>
+		<site>
+			<id>${com.acme.distributionManagement.siteId}</id>
+			<url>${com.acme.distributionManagement.siteUrl}</url>
+		</site>
+	</distributionManagement>
+
+	<!-- SCM for corporate POM, should be redefined in projects' POMs -->
+	<scm>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/</url>
+	</scm>
+
+	<!-- Developers that have contributed to the corporate POM, should be redefined in projects' POMs -->
+	<developers>
+		<developer>
+			<email>developer1@acme.com</email>
+		</developer>
+	</developers>
+
+	<build>
+		<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, https: and file: as transport protocols. Declare others 
+			transports explicitly. -->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+		</extensions>
+
+		<!-- Enforce project settings -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce-maven-version</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<message>Only approved Maven versions are allowed.</message>
+									<version>[2.2.1,3.0),[3.0.1,4.0)</version>
+								</requireMavenVersion>
+							</rules>
+						</configuration>
+					</execution>
+					<execution>
+						<id>enforce-plugin-versions</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requirePluginVersions>
+									<message>Only released plugin with explicitly defined version are allowed.</message>
+									<banLatest>true</banLatest>
+									<banRelease>true</banRelease>
+									<banSnapshots>true</banSnapshots>
+								</requirePluginVersions>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<!-- Ordered based on http://maven.apache.org/plugins/index.html -->
+		<pluginManagement>
+			<plugins>
+				<!-- Core plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${com.acme.cleanVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${com.acme.compilerVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${com.acme.deployVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${com.acme.failsafeVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${com.acme.installVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${com.acme.resourcesVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${com.acme.surefireVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-verifier-plugin</artifactId>
+					<version>${com.acme.verifierVersion}</version>
+				</plugin>
+
+				<!-- Packaging plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>${com.acme.earVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>${com.acme.ejbVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${com.acme.jarVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-rar-plugin</artifactId>
+					<version>${com.acme.rarVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${com.acme.warVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>${com.acme.shadeVersion}</version>
+				</plugin>
+
+				<!-- Reporting (only used report plugins) -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${com.acme.checkstyleVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>com.atlassian.maven.plugins</groupId>
+					<artifactId>maven-clover2-plugin</artifactId>
+					<version>${com.acme.cloverVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${com.acme.findbugsVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${com.acme.javadocVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${com.acme.jxrVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${com.acme.pmdVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>${com.acme.projectInfoVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${com.acme.surefireReportVersion}</version>
+				</plugin>
+
+				<!-- Tools -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ant-plugin</artifactId>
+					<version>${com.acme.antVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${com.acme.antrunVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>${com.acme.archetypeVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${com.acme.assemblyVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${com.acme.dependencyVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${com.acme.enforcerVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${com.acme.gpgVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-help-plugin</artifactId>
+					<version>${com.acme.helpVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-invoker-plugin</artifactId>
+					<version>${com.acme.invokerVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>${com.acme.jarsignerVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-one-plugin</artifactId>
+					<version>${com.acme.oneVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-patch-plugin</artifactId>
+					<version>${com.acme.patchVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pdf-plugin</artifactId>
+					<version>${com.acme.pdfVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-plugin-plugin</artifactId>
+					<version>${com.acme.pluginVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${com.acme.releaseVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-reactor-plugin</artifactId>
+					<version>${com.acme.reactorVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-remote-resources-plugin</artifactId>
+					<version>${com.acme.remoteResourcesVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-repository-plugin</artifactId>
+					<version>${com.acme.repositoryVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>${com.acme.scmVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${com.acme.sourceVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-stage-plugin</artifactId>
+					<version>${com.acme.stageVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-toolchains-plugin</artifactId>
+					<version>${com.acme.toolchainsVersion}</version>
+				</plugin>
+
+				<!-- IDEs -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${com.acme.eclipseVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-idea-plugin</artifactId>
+					<version>${com.acme.ideaVersion}</version>
+				</plugin>
+
+				<!-- Other -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${com.acme.versionsVersion}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<reporting>
+		<!-- List of plugins in alphabetical order -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${com.acme.checkstyleVersion}</version>
+				<configuration>
+					<!-- Corporate specific rules -->
+					<configLocation>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</configLocation>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>${com.acme.findbugsVersion}</version>
+				<configuration>
+					<!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<xmlOutput>true</xmlOutput>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${com.acme.javadocVersion}</version>
+				<configuration>
+					<!-- Default configuration for all reports -->
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<id>non-aggregate</id>
+						<configuration>
+							<!-- Specific configuration for the non aggregate report -->
+						</configuration>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>aggregate</id>
+						<configuration>
+							<!-- Specific configuration for the aggregate report -->
+						</configuration>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${com.acme.jxrVersion}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${com.acme.pmdVersion}</version>
+				<configuration>
+					<!-- Corporate specific rules -->
+					<rulesets>
+						<ruleset>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</ruleset>
+					</rulesets>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>${com.acme.surefireReportVersion}</version>
+				<configuration>
+					<!-- Combine surefire and failsafe into single report. -->
+					<reportsDirectories>
+						<reportsDirectory>${project.build.directory}/surefire-reports/</reportsDirectory>
+						<reportsDirectory>${project.build.directory}/failsafe-reports/</reportsDirectory>
+					</reportsDirectories>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<profiles>
+		<!-- Maven 2 specific settings (activated automatically) -->
+		<profile>
+			<id>maven-2</id>
+			<activation>
+				<file>
+					<!-- basedir expression is only recognized by Maven 3.x (see MNG-2363) -->
+					<missing>${basedir}</missing>
+				</file>
+			</activation>
+
+			<properties>
+				<!-- ================= -->
+				<!-- Global Properties -->
+				<!-- ================= -->
+
+				<!-- ================================= -->
+				<!-- Corporate POM specific properties -->
+				<!-- ================================= -->
+
+				<com.acme.siteVersion>2.2</com.acme.siteVersion>
+			</properties>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-site-plugin</artifactId>
+							<version>${com.acme.siteVersion}</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<!-- Maven 3 specific settings (activated automatically) -->
+		<profile>
+			<id>maven-3</id>
+			<activation>
+				<file>
+					<!-- basedir expression is only recognized by Maven 3.x (see MNG-2363) -->
+					<exists>${basedir}</exists>
+				</file>
+			</activation>
+
+			<properties>
+				<!-- ================= -->
+				<!-- Global Properties -->
+				<!-- ================= -->
+
+
+				<!-- ================================= -->
+				<!-- Corporate POM specific properties -->
+				<!-- ================================= -->
+				<com.acme.siteVersion>3.0-beta-3</com.acme.siteVersion>
+			</properties>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-site-plugin</artifactId>
+							<version>${com.acme.siteVersion}</version>
+							<configuration>
+							</configuration>
+							<executions>
+								<!-- For Maven3 default execution of site:attach-descriptor has been removed from the built-in lifecycle bindings 
+									for projects with packaging "pom". Enable it again. -->
+								<execution>
+									<id>attach-descriptor</id>
+									<goals>
+										<goal>attach-descriptor</goal>
+									</goals>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<!-- Corporate POM specific settings (disabled by default) -->
+		<profile>
+			<id>corporate-pom</id>
+
+			<distributionManagement>
+				<site>
+					<id>${com.acme.distributionManagement.siteId}</id>
+					<url>${com.acme.distributionManagement.siteUrl}/${project.artifactId}</url>
+				</site>
+			</distributionManagement>
+		</profile>
+	</profiles>
+
+</project>
