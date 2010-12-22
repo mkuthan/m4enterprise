@@ -681,11 +681,6 @@
 		<profile>
 			<id>corporate-pom</id>
 
-			<properties>
-				<!-- Enable "corporate-pom" profile for corporate-pom release management (m-release-p) -->
-				<releaseProfiles>corporate-pom</releaseProfiles>
-			</properties>
-
 			<distributionManagement>
 				<site>
 					<id>${com.acme.distributionManagement.siteId}</id>
