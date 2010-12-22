@@ -5,7 +5,5 @@
 		<menu name="Main">
 			<item name="Overview" href="overview.html" />
 		</menu>
-
-		<menu ref="modules" inherit="bottom" />
 	</body>
 </project>

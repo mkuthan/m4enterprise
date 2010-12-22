@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>corporate-pom</artifactId>
-		<version>1.4</version>
+		<version>1.6</version>
 	</parent>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -16,10 +16,10 @@
 	<name>simple-war-webapp</name>
 	<description>Web Application</description>
 
-    <properties>
+	<properties>
 		<junit.version>4.8.2</junit.version>
 	</properties>
-    
+
 	<!-- Developers that have contributed to the module -->
 	<developers>
 		<developer>
@@ -33,16 +33,16 @@
 		</developer>
 	</developers>
 
-    <scm>
+	<scm>
 		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/simple-war/</connection>
 		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/simple-war/</developerConnection>
 		<url>http://code.google.com/p/m4enterprise/source/browse</url>
 	</scm>
-    
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
-        
-        <plugins>
+
+		<plugins>
 			<plugin>
 				<groupId>com.atlassian.maven.plugins</groupId>
 				<artifactId>maven-clover2-plugin</artifactId>
@@ -70,7 +70,7 @@
 	</build>
 
 	<dependencies>
-        <dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
@@ -79,7 +79,7 @@
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-servlet_3.0_spec</artifactId>
-            <version>1.0</version>
+			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
