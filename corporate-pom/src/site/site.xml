@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="${project.name}">
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
 	<skin>
 		<groupId>org.apache.maven.skins</groupId>
 		<artifactId>maven-default-skin</artifactId>
@@ -14,8 +15,11 @@
 	<version position="right" />
 
 	<body>
-		<menu ref="parent" inherit="bottom" />
-		<menu ref="modules" inherit="bottom" />
+		<links>
+			<item name="${organization.name}" href="${organization.url}" />
+			<item name="Corporate POM" href="http://m4enterprise.googlecode.com/svn/site/corporate-pom/" />
+		</links>
+
 		<menu ref="reports" inherit="bottom" />
 	</body>
 </project>

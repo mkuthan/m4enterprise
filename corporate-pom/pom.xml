@@ -51,6 +51,8 @@
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
+		<com.acme.distributionManagement.siteId>google-m4enterprise</com.acme.distributionManagement.siteId>
+		<com.acme.distributionManagement.siteUrl>dav:https://m4enterprise.googlecode.com/svn/site</com.acme.distributionManagement.siteUrl>
 
 		<!-- Core plugins -->
 		<com.acme.cleanVersion>2.4.1</com.acme.cleanVersion>
@@ -110,7 +112,6 @@
 
 		<!-- Other -->
 		<com.acme.versionsVersion>1.2</com.acme.versionsVersion>
-
 	</properties>
 
 	<organization>
@@ -137,9 +138,8 @@
 			<url>dav:https://m4enterprise.googlecode.com/svn/snapshot-repository</url>
 		</snapshotRepository>
 		<site>
-			<id>google-m4enterprise</id>
-			<name>Google Code Site</name>
-			<url>dav:https://m4enterprise.googlecode.com/svn/site</url>
+			<id>${com.acme.distributionManagement.siteId}</id>
+			<url>${com.acme.distributionManagement.siteUrl}</url>
 		</site>
 	</distributionManagement>
 
@@ -676,6 +676,18 @@
 					</plugins>
 				</pluginManagement>
 			</build>
+		</profile>
+
+		<!-- Corporate POM specific settings (disabled by default) -->
+		<profile>
+			<id>corporate-pom</id>
+
+			<distributionManagement>
+				<site>
+					<id>${com.acme.distributionManagement.siteId}</id>
+					<url>${com.acme.distributionManagement.siteUrl}/${project.artifactId}</url>
+				</site>
+			</distributionManagement>
 		</profile>
 	</profiles>
 
