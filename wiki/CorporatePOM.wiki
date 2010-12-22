@@ -4,30 +4,164 @@
 
 Corporate POM centralizes projects configuration:
 
-  * Plugin versions.
-  * Plugin configuration.
-  * Global properties for plugins.
+  * Plugin configurations
   * Distribution management settings
   * Reporting configuration
 
-= Update Plugin Versions =
+= Plugin Versions Update =
 
-All plugin versions are defined in Corporate POM within properties. First, display a report of those properties which have newer versions available:
+All plugin versions are defined in Corporate POM within properties. Updating plugin versions is a regular maintenance task for Corporate POM and can be automated. Call `versions:display-property-updates` goal to display a report of available plugin updates:
 
 {{{
 mvn versions:display-property-updates
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building corporate-pom 1.5-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- versions-maven-plugin:1.2:display-property-updates (default-cli) @ corporate-pom ---
+[INFO] artifact org.apache.maven.plugins:maven-dependency-plugin: checking for updates from acme-release-plugins
+(...)
+[INFO] 
+[INFO] The following version properties are referencing the newest available version:
+[INFO]   ${com.acme.surefireReportVersion} ........................ 2.6 -> 2.7
+[INFO]   ${com.acme.findbugsVersion} ............................ 2.3 -> 2.3.1
+[INFO]   ${com.acme.surefireVersion} .............................. 2.6 -> 2.7
+[INFO] The following version property updates are available:
+[INFO]   ${com.acme.surefireReportVersion} ........................ 2.6 -> 2.7
+[INFO]   ${com.acme.findbugsVersion} ............................ 2.3 -> 2.3.1
+[INFO]   ${com.acme.surefireVersion} .............................. 2.6 -> 2.7
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 56.188s
+[INFO] Finished at: Wed Dec 22 09:37:55 CET 2010
+[INFO] Final Memory: 8M/15M
+[INFO] ------------------------------------------------------------------------
 }}}
 
-And update versions properties finally:
+In the example updates for surefire, surefire report and findbugs plugins are available. The properties can be updated by calling `versions:update-properties` goal:
 
 {{{
 mvn versions:update-properties
+ mvn versions:update-properties
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building corporate-pom 1.5-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- versions-maven-plugin:1.2:update-properties (default-cli) @ corporate-pom ---
+[INFO] Property ${com.acme.dependencyVersion}: Leaving unchanged as 2.1
+[INFO] Property ${com.acme.pmdVersion}: Leaving unchanged as 2.5
+[INFO] Property ${com.acme.deployVersion}: Leaving unchanged as 2.5
+[INFO] Property ${com.acme.oneVersion}: Leaving unchanged as 1.2
+[INFO] Updated ${com.acme.surefireReportVersion} from 2.6 to 2.7
+[INFO] Property ${com.acme.resourcesVersion}: Leaving unchanged as 2.4.3
+[INFO] Property ${com.acme.jarVersion}: Leaving unchanged as 2.3.1
+[INFO] Property ${com.acme.remoteResourcesVersion}: Leaving unchanged as 1.1
+[INFO] Property ${com.acme.pluginVersion}: Leaving unchanged as 2.6
+[INFO] Property ${com.acme.versionsVersion}: Leaving unchanged as 1.2
+[INFO] Property ${com.acme.sourceVersion}: Leaving unchanged as 2.1.2
+[INFO] Property ${com.acme.cloverVersion}: Leaving unchanged as 3.0.2
+[INFO] Property ${com.acme.enforcerVersion}: Leaving unchanged as 1.0
+[INFO] Property ${com.acme.rarVersion}: Leaving unchanged as 2.2
+[INFO] Property ${com.acme.jxrVersion}: Leaving unchanged as 2.2
+[INFO] Property ${com.acme.eclipseVersion}: Leaving unchanged as 2.8
+[INFO] Property ${com.acme.cleanVersion}: Leaving unchanged as 2.4.1
+[INFO] Property ${com.acme.earVersion}: Leaving unchanged as 2.4.2
+[INFO] Property ${com.acme.shadeVersion}: Leaving unchanged as 1.4
+[INFO] Updated ${com.acme.findbugsVersion} from 2.3 to 2.3.1
+[INFO] Property ${com.acme.jarsignerVersion}: Leaving unchanged as 1.2
+[INFO] Property ${com.acme.javadocVersion}: Leaving unchanged as 2.7
+[INFO] Property ${com.acme.reactorVersion}: Leaving unchanged as 1.0
+[INFO] Property ${com.acme.ejbVersion}: Leaving unchanged as 2.3
+[INFO] Property ${com.acme.checkstyleVersion}: Leaving unchanged as 2.6
+[INFO] Property ${com.acme.assemblyVersion}: Leaving unchanged as 2.2
+[INFO] Property ${com.acme.invokerVersion}: Leaving unchanged as 1.5
+[INFO] Property ${com.acme.warVersion}: Leaving unchanged as 2.1.1
+[INFO] Property ${com.acme.verifierVersion}: Leaving unchanged as 1.0
+[INFO] Property ${com.acme.antVersion}: Leaving unchanged as 2.3
+[INFO] Property ${com.acme.compilerVersion}: Leaving unchanged as 2.3.2
+[INFO] Property ${com.acme.installVersion}: Leaving unchanged as 2.3.1
+[INFO] Property ${com.acme.stageVersion}: Leaving unchanged as 1.0-alpha-2
+[INFO] Property ${com.acme.antrunVersion}: Leaving unchanged as 1.6
+[INFO] Property ${com.acme.gpgVersion}: Leaving unchanged as 1.1
+[INFO] Property ${com.acme.patchVersion}: Leaving unchanged as 1.1.1
+[INFO] Updated ${com.acme.surefireVersion} from 2.6 to 2.7
+[INFO] Property ${com.acme.projectInfoVersion}: Leaving unchanged as 2.3
+[INFO] Property ${com.acme.helpVersion}: Leaving unchanged as 2.1.1
+[INFO] Property ${com.acme.archetypeVersion}: Leaving unchanged as 2.0
+[INFO] Property ${com.acme.siteVersion}: Leaving unchanged as 3.0-beta-3
+[INFO] Property ${com.acme.scmVersion}: Leaving unchanged as 1.4
+[INFO] Property ${com.acme.repositoryVersion}: Leaving unchanged as 2.3.1
+[INFO] Property ${com.acme.releaseVersion}: Leaving unchanged as 2.1
+[INFO] Property ${com.acme.pdfVersion}: Leaving unchanged as 1.1
+[INFO] Property ${com.acme.ideaVersion}: Leaving unchanged as 2.2
+[INFO] Property ${com.acme.toolchainsVersion}: Leaving unchanged as 1.0
+[INFO] Property ${com.acme.failsafeVersion}: Leaving unchanged as 2.7
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.977s
+[INFO] Finished at: Wed Dec 22 10:05:54 CET 2010
+[INFO] Final Memory: 9M/17M
+[INFO] ------------------------------------------------------------------------
 }}}
 
-= Update Corporate POM References =
+To verify plugin updates call `versions:display-property-updates` goal again:
 
-The following command updates Corporate POM version to the latest release:
+{{{
+mvn versions:display-property-updates
+[INFO] Scanning for projects...
+Downloading: http://repository.intranet.acme.com/release-plugins-repository/org/codehaus/mojo/findbugs-maven-plugin/2.3.1/findbugs-maven-plugin-2.3.1.jar
+Downloaded: http://repository.intranet.acme.com/release-plugins-repository/org/codehaus/mojo/findbugs-maven-plugin/2.3.1/findbugs-maven-plugin-2.3.1.jar (111 KB at 57.8 KB/sec)
+Downloading: http://repository.intranet.acme.com/release-plugins-repository/org/apache/maven/plugins/maven-surefire-report-plugin/2.7/maven-surefire-report-plugin-2.7.jar
+Downloaded: http://repository.intranet.acme.com/release-plugins-repository/org/apache/maven/plugins/maven-surefire-report-plugin/2.7/maven-surefire-report-plugin-2.7.jar (39 KB at 17.1 KB/sec)
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building corporate-pom 1.5-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- versions-maven-plugin:1.2:display-property-updates (default-cli) @ corporate-pom ---
+[INFO] 
+[INFO] The following version properties are referencing the newest available version:
+[INFO] All version properties are referencing the newest version available.
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.718s
+[INFO] Finished at: Wed Dec 22 10:07:54 CET 2010
+[INFO] Final Memory: 9M/17M
+[INFO] ------------------------------------------------------------------------
+}}}
+
+The plugin updates were successfully downloaded from corporate repository. All plugins are in the newest available versions now and Corporate POM is ready for next minor release.
+
+= References To Corporate POM Update =
+
+When new version of Corporate POM is released, references to the POM should be updated. Call `versions:update-parent` goal to update parent section in the project POM:
 
 {{{
 mvn versions:update-parent
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building simple-war-webapp 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- versions-maven-plugin:1.2:update-parent (default-cli) @ simple-war-webapp ---
+[INFO] Updating parent from 1.4 to 1.5
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.104s
+[INFO] Finished at: Wed Dec 22 10:18:45 CET 2010
+[INFO] Final Memory: 9M/17M
+[INFO] ------------------------------------------------------------------------
 }}}
+
+In the example, project parent was updated from version 1.4 to the latest released Corporate POM 1.5.
