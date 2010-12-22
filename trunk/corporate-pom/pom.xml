@@ -4,7 +4,7 @@
 
 	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>corporate-pom</artifactId>
-	<version>1.11-SNAPSHOT</version>
+	<version>1.11</version>
 	<packaging>pom</packaging>
 	<name>corporate-pom</name>
 	<description>Corporate POM</description>
@@ -144,9 +144,9 @@
 
 	<!-- SCM for corporate POM, should be redefined in projects' POMs -->
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/corporate-pom-1.11</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/corporate-pom-1.11</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/tags/corporate-pom-1.11</url>
 	</scm>
 
 	<!-- Developers that have contributed to the corporate POM, should be redefined in projects' POMs -->
