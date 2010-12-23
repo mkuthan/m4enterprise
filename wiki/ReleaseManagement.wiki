@@ -8,6 +8,8 @@ Please keep in your mind the following release management rules:
   # Release often
   # Listen to your customer
 
+Only released artifacts should be published for future reference. This document shows how to manage release management with Maven and how to avoid tedious and error-prone manual tasks.
+
 = Versioning =
 
 Each release must be identified by unique version. It is important to keep versioning scheme consistent, e.g: `MAJOR.MINOR.FIX`, where:
@@ -29,14 +31,16 @@ There are some standard, recommended ways to organize SCM (at least Subversion).
 
 = Release Management = 
 
+This section documents Maven commands aligned to the SCM layout and MAJOR.MINOR.FIX` versioning scheme.
+
 == Minor Release ==
 
 The most common scenario, new minor release from trunk is released.
 
 Pre-conditions:
 
-  * release in trunk
-  * application version in trunk: `1.0-SNAPSHOT`
+  * Release in the trunk directory.
+  * Application version in trunk: `1.0-SNAPSHOT`.
 
 Perform a minor release (accept all defaults during interactive Maven session):
 
@@ -46,9 +50,11 @@ mvn release:prepare release:perform -DperformRelease=true
 
 Post-conditions:
 
-  * application version in trunk: `1.1-SNAPSHOT`
-  * new tag _application-name-1.0_
-  * application version in tag _application-name-1.0_: `1.0`
+  * Application version in trunk: `1.1-SNAPSHOT`.
+  * New tag _application-name-1.0_.
+  * Application version in tag _application-name-1.0_: `1.0`.
+  * Released artifacts (with sources and javadoc) are published into the repository.
+  * Latest released version set to `1.0` in maven metadata (in the repository).
 
 == Major Release ==
 
@@ -56,8 +62,8 @@ The scenario when new major release from trunk is released.
 
 Pre-conditions:
 
-  * release in trunk
-  * application version in trunk: `1.1-SNAPSHOT`
+  * Release in the trunk directory.
+  * Application version in trunk: `1.1-SNAPSHOT`.
 
 Perform a major release (accept all defaults during interactive Maven session):
 
@@ -67,9 +73,11 @@ mvn release:prepare release:perform -DperformRelease=true -DreleaseVersion=2.0
 
 Post-conditions:
 
-  * application version in trunk: `2.1-SNAPSHOT`
-  * new tag _application-name-2.0_
-  * application version in tag _application-name-2.0_: `2.0`
+  * Application version in trunk: `2.1-SNAPSHOT`.
+  * New tag _application-name-2.0_.
+  * Application version in tag _application-name-2.0_: `2.0`.
+  * Released artifacts (with sources and javadoc) are published into the repository.
+  * Latest released version set to `2.0` in maven metadata (in the repository).
 
 == Patch Release ==
 
@@ -77,8 +85,8 @@ The scenario when previously released version must be fixed.
 
 Pre-conditions (step 1):
 
-  * branch in tag _application-name-1.0_
-  * application version in tag _application-name-1.0_: `1.0`
+  * Create a branch from tag _application-name-1.0_.
+  * Application version in tag _application-name-1.0_: `1.0`.
 
 Create branch (choose `1.0.1-SNAPSHOT` as branch version):
 
@@ -90,14 +98,14 @@ The command seems to be complex. And it is, due to the [http://jira.codehaus.org
 
 Post-conditions  (step 1):
 
-  * tag is unchanged
-  * new branch _application-name-1.0.x_
-  * application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`
+  * Tag is unchanged.
+  * New branch _application-name-1.0.x_.
+  * Application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`.
 
 Pre-conditions (Step 2):
 
-  * release in branch _application-name-1.0.x_
-  * application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`
+  * Release in branch directory _application-name-1.0.x_.
+  * Application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`.
 
 Perform a patch release (accept all defaults during interactive Maven session):
 
@@ -109,18 +117,34 @@ Parameter `updateReleaseInfo` is set to false to avoid metadata modification in 
 
 Post-conditions (Step 2):
 
-  * application version in branch _application-name-1.0.x_: `1.0.2-SNAPSHOT`
-  * new tag _application-name-1.0.1_
-  * application version in tag _application-name-1.0.1_: `1.0.1`
+  * Application version in branch _application-name-1.0.x_: `1.0.2-SNAPSHOT`.
+  * New tag _application-name-1.0.1_.
+  * Application version in tag _application-name-1.0.1_: `1.0.1`.
+  * Released artifacts (with sources and javadoc) are published into the repository.
+  * Latest released version left unchanged in maven metadata (in the repository).
 
 = Release Automation = 
 
-Release management should be automated as build plan(s) on continuous integration server. Configure build plan strategy as:
+Release management can be automated with continuous integration server. 
 
-  * Manual build - for one-click, on demand release management
+Advantages:
+
+  * Minimal effort (or even no effort) to perform a release.
+  * Released version is built in the independent and controlled CI server environment, not on developer workstations.
+
+Disadvantages:
+
+  * Must be configured (it can be tricky and complex).
+  * CI server is needed.
+
+== Build Plans ==
+
+To configure release management by CI server, set as build plan strategy as:
+
+  * Manual build - for one-click, on demand release management.
   * Scheduled build - for fully automatic release at the end of Scrum or Kanban iteration.
 
-To enable batch mode use the `--batch-mode` Maven option, e.g for minor release automation:
+To disable interactive Maven session use the `--batch-mode` or `-B` command line option, e.g for minor release automation:
 
 {{{
 mvn --batch-mode release:prepare release:perform -DperformRelease=true
