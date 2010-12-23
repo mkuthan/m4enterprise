@@ -88,10 +88,12 @@ Pre-conditions (step 1):
   * Create a branch from tag _application-name-1.0_.
   * Application version in tag _application-name-1.0_: `1.0`.
 
-Create branch (choose `1.0.1-SNAPSHOT` as branch version):
+Create branch (accept all defaults during interactive Maven session):
 
 {{{
-mvn release:branch  -DbranchName=application-name-1.0.x -DupdateBranchVersions=true -DupdateWorkingCopyVersions=false -DsuppressCommitBeforeBranch=true -DremoteTagging=false
+mvn release:branch  -DbranchName=application-name-1.0.x -DreleaseVersion=1.0.1-SNAPSHOT \
+  -DupdateBranchVersions=true -DupdateWorkingCopyVersions=false \
+  -DsuppressCommitBeforeBranch=true -DremoteTagging=false
 }}}
 
 The command seems to be complex. And it is, due to the [http://jira.codehaus.org/browse/MRELEASE-335 bug] in the Maven Release Plugin. By default `release:brach` goal commits intermediate results into the tag but created tags must not be modified (even if you can).
