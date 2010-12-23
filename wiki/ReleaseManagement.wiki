@@ -8,7 +8,7 @@ Please keep in your mind the following release management rules:
   # Release often
   # Listen to your customer
 
-Only released artifacts should be published for future reference. This document shows how to manage release management with Maven and how to avoid tedious and error-prone manual tasks.
+Only released artifacts should be published (for future reference). This document shows how to manage release management with Maven and how to avoid tedious and error-prone manual tasks.
 
 = Versioning =
 
@@ -25,17 +25,17 @@ For further details please refer to [http://semver.org/ Semantic Versioning] art
 There are some standard, recommended ways to organize SCM (at least Subversion). For each project the following directories are created:
 
 || *Directory* || *Description* || *Tag/Branch Name* || *Application Version* ||
-|| trunk || Main line of current development || N/A || `MAJOR.MINOR-SNAPSHOT` ||
-|| branches || Bug fixing development || MAJOR.MINOR.x || `MAJOR.MINOR.PATH-SNAPSHOT` ||
-|| tags || Markers for released revisions, never changed || MAJOR.MINOR or MAJOR.MINOR.PATCH || `MAJOR.MINOR` or `MAJOR.MINOR.PATCH` ||
+|| trunk || Main line of current development || N/A || MAJOR.MINOR-SNAPSHOT ||
+|| branches || Bug fixing development || MAJOR.MINOR.x || MAJOR.MINOR.PATH-SNAPSHOT ||
+|| tags || Markers for released revisions, never changed || MAJOR.MINOR or MAJOR.MINOR.PATCH || MAJOR.MINOR or MAJOR.MINOR.PATCH ||
 
 = Release Management = 
 
-This section documents Maven commands aligned to the SCM layout and MAJOR.MINOR.FIX` versioning scheme.
+This section documents Maven support for release management, aligned to the SCM layout and MAJOR.MINOR.FIX` versioning scheme.
 
 == Minor Release ==
 
-The most common scenario, new minor release from trunk is released.
+The most common scenario, when new minor release from trunk is released.
 
 Pre-conditions:
 
@@ -55,6 +55,7 @@ Post-conditions:
   * Application version in tag _application-name-1.0_: `1.0`.
   * Released artifacts (with sources and javadoc) are published into the repository.
   * Latest released version set to `1.0` in maven metadata (in the repository).
+  * Project site is updated.
 
 == Major Release ==
 
@@ -78,6 +79,7 @@ Post-conditions:
   * Application version in tag _application-name-2.0_: `2.0`.
   * Released artifacts (with sources and javadoc) are published into the repository.
   * Latest released version set to `2.0` in maven metadata (in the repository).
+  * Project site is updated.
 
 == Patch Release ==
 
@@ -112,10 +114,13 @@ Pre-conditions (Step 2):
 Perform a patch release (accept all defaults during interactive Maven session):
 
 {{{
-mvn release:prepare release:perform -DperformRelease=true -DupdateReleaseInfo=true
+mvn release:prepare release:perform -DperformRelease=true \
+  -DupdateReleaseInfo=false -Dgoals=deploy
 }}}
 
 Parameter `updateReleaseInfo` is set to false to avoid metadata modification in the repository by Maven Deploy Plugin. For "patch" releases we don't want to modify the latest release. E.g: if the latest release was 2.0 and the "patch" 1.0.1 is released, metadata in the repository should still define 2.0 as a latest release, not 1.0.1.
+
+Parameter `goals` specifies that only artifact (with sources and javadoc) will be deployed into repository. Project site will be unchanged (by default Maven Release Plugin calls deploy and deploy-site goals).
 
 Post-conditions (Step 2):
 
@@ -123,11 +128,12 @@ Post-conditions (Step 2):
   * New tag _application-name-1.0.1_.
   * Application version in tag _application-name-1.0.1_: `1.0.1`.
   * Released artifacts (with sources and javadoc) are published into the repository.
-  * Latest released version left unchanged in maven metadata (in the repository).
+  * Latest released version is left unchanged in maven metadata (in the repository).
+  * Project site is left unchanged.
 
 = Release Automation = 
 
-Release management can be automated with continuous integration server. 
+Release management can be automated with continuous integration (CI) server. CI server can be used for build and release management as well.
 
 Advantages:
 
@@ -141,7 +147,7 @@ Disadvantages:
 
 == Build Plans ==
 
-To configure release management by CI server, set as build plan strategy as:
+To configure release management by CI server, set build plan strategy as:
 
   * Manual build - for one-click, on demand release management.
   * Scheduled build - for fully automatic release at the end of Scrum or Kanban iteration.
