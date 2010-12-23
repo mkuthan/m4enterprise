@@ -86,7 +86,7 @@
 		<com.acme.corporate-pom.javadocVersion>2.7</com.acme.corporate-pom.javadocVersion>
 		<com.acme.corporate-pom.jxrVersion>2.2</com.acme.corporate-pom.jxrVersion>
 		<com.acme.corporate-pom.pmdVersion>2.5</com.acme.corporate-pom.pmdVersion>
-		<com.acme.corporate-pom.projectInfoVersion>2.3.1</com.acme.corporate-pom.projectInfoVersion>
+		<com.acme.corporate-pom.projectInfoVersion>2.3</com.acme.corporate-pom.projectInfoVersion>
 		<com.acme.corporate-pom.surefireReportVersion>2.7</com.acme.corporate-pom.surefireReportVersion>
 
 		<!-- Tools -->
@@ -119,15 +119,15 @@
 
 		<!-- Other -->
 		<com.acme.corporate-pom.buildnumberVersion>1.0-beta-4</com.acme.corporate-pom.buildnumberVersion>
-		<com.acme.corporate-pom.cargoVersion>1.0.3</com.acme.corporate-pom.cargoVersion>
+		<com.acme.corporate-pom.cargoVersion>1.0.1-alpha-1</com.acme.corporate-pom.cargoVersion>
 		<com.acme.corporate-pom.dbunitVersion>1.0-beta-3</com.acme.corporate-pom.dbunitVersion>
-		<com.acme.corporate-pom.execVersion>1.2</com.acme.corporate-pom.execVersion>
+		<com.acme.corporate-pom.execVersion>1.1.1</com.acme.corporate-pom.execVersion>
 		<com.acme.corporate-pom.hibernate3Version>2.2</com.acme.corporate-pom.hibernate3Version>
-		<com.acme.corporate-pom.jettyVersion>7.2.1.v20101111</com.acme.corporate-pom.jettyVersion>
+		<com.acme.corporate-pom.jettyVersion>6.1.26</com.acme.corporate-pom.jettyVersion>
 		<com.acme.corporate-pom.jrebelVersion>1.0.7</com.acme.corporate-pom.jrebelVersion>
 		<com.acme.corporate-pom.liquibaseVersion>2.0.0</com.acme.corporate-pom.liquibaseVersion>
 		<com.acme.corporate-pom.processorVersion>1.3.6</com.acme.corporate-pom.processorVersion>
-		<com.acme.corporate-pom.seleniumVersion>1.0.1</com.acme.corporate-pom.seleniumVersion>
+		<com.acme.corporate-pom.seleniumVersion>1.0</com.acme.corporate-pom.seleniumVersion>
 		<com.acme.corporate-pom.versionsVersion>1.2</com.acme.corporate-pom.versionsVersion>
 		<com.acme.corporate-pom.xmlVersion>1.0-beta-3</com.acme.corporate-pom.xmlVersion>
 	</properties>
@@ -543,7 +543,7 @@
 
 				<plugin>
 					<groupId>org.mortbay.jetty</groupId>
-					<artifactId>jetty-maven-plugin</artifactId>
+					<artifactId>maven-jetty-plugin</artifactId>
 					<version>${com.acme.corporate-pom.jettyVersion}</version>
 				</plugin>
 
@@ -767,7 +767,7 @@
 			<id>corporate-pom</id>
 
 			<properties>
-				<!-- Skip properties update for some plugins (m-versions-p) -->
+				<!-- Skip properties update (m-versions-p) -->
 				<excludeProperties>com.acme.corporate-pom.jettyVersion</excludeProperties>
 			</properties>
 
