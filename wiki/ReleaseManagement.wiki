@@ -23,7 +23,7 @@ For further details please refer to [http://semver.org/ Semantic Versioning] art
 There are some standard, recommended ways to organize SCM (at least Subversion). For each project the following directories are created:
 
 || *Directory* || *Description* || *Tag/Branch Name* || *Application Version* ||
-|| trunk || Current, main line of development || N/A || `MAJOR.MINOR-SNAPSHOT` ||
+|| trunk || Main line of current development || N/A || `MAJOR.MINOR-SNAPSHOT` ||
 || branches || Bug fixing development || MAJOR.MINOR.x || `MAJOR.MINOR.PATH-SNAPSHOT` ||
 || tags || Markers for released revisions, never changed || MAJOR.MINOR or MAJOR.MINOR.PATCH || `MAJOR.MINOR` or `MAJOR.MINOR.PATCH` ||
 
@@ -86,7 +86,7 @@ Create branch (choose `1.0.1-SNAPSHOT` as branch version):
 mvn release:branch  -DbranchName=1.0.x -DupdateBranchVersions=true -DupdateWorkingCopyVersions=false -DsuppressCommitBeforeBranch=true -DremoteTagging=false
 }}}
 
-The command seems to be complex. And it is, due to the [http://jira.codehaus.org/browse/MRELEASE-335 bug] in the release plugin. By default `release:brach` goal commits intermediate results into tag. Once created tags must not be modified (even if you can).
+The command seems to be complex. And it is, due to the [http://jira.codehaus.org/browse/MRELEASE-335 bug] in the Maven Release Plugin. By default `release:brach` goal commits intermediate results into the tag but created tags must not be modified (even if you can).
 
 Post-conditions  (step 1):
 
@@ -102,10 +102,10 @@ Pre-conditions (Step 2):
 Perform a patch release (accept all defaults during interactive Maven session):
 
 {{{
-mvn release:prepare release:perform -DperformRelease=true
+mvn release:prepare release:perform -DperformRelease=true -DupdateReleaseInfo=true
 }}}
 
-*TODO* - check how to disable updateReleaseInfo for m-deploy-p?
+Parameter `updateReleaseInfo` is set to false to avoid metadata modification in the repository by Maven Deploy Plugin. For "patch" releases we don't want to modify the latest release. E.g: if the latest release was 2.0 and the "patch" 1.0.1 is released, metadata in the repository should still define 2.0 as a latest release, not 1.0.1.
 
 Post-conditions (Step 2):
 
