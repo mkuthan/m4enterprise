@@ -86,7 +86,7 @@ Create branch (choose `1.0.1-SNAPSHOT` as branch version):
 mvn release:branch  -DbranchName=1.0.x -DupdateBranchVersions=true -DupdateWorkingCopyVersions=false -DsuppressCommitBeforeBranch=true -DremoteTagging=false
 }}}
 
-The command seems to be complex. And it is, due to the [http://jira.codehaus.org/browse/MRELEASE-335 bug] in the release plugin.
+The command seems to be complex. And it is, due to the [http://jira.codehaus.org/browse/MRELEASE-335 bug] in the release plugin. By default `release:brach` goal commits intermediate results into tag. Once created tags must not be modified (even if you can).
 
 Post-conditions  (step 1):
 
