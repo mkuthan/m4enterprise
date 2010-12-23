@@ -140,6 +140,14 @@ Downloaded: http://repository.intranet.acme.com/release-plugins-repository/org/a
 
 The plugin updates were successfully downloaded from corporate repository. All plugins are in the newest available versions now and Corporate POM is ready for next minor release.
 
+Automatic updates requires that plugin metadata files in the repository are correct. If not Maven Versions Plugin is not able to figure out the latest plugin versions.
+
+If a plugin version should not be updated automatically, define `excludeProperties` property. To disable updates for Jetty plugin:
+
+{{{
+<excludeProperties>com.acme.corporate-pom.jettyVersion</excludeProperties>
+}}} 
+
 = References To Corporate POM Update =
 
 When new version of Corporate POM is released, references to the POM should be updated. Call `versions:update-parent` goal to update parent section in the project POM:
