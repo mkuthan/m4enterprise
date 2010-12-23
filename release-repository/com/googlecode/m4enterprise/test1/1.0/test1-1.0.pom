@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.googlecode.m4enterprise</groupId>
+	<artifactId>test1</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<com.acme.deployVersion>2.5</com.acme.deployVersion>
+		<com.acme.installVersion>2.3.1</com.acme.installVersion>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>google-m4enterprise</id>
+			<name>Google Code Repository</name>
+			<url>dav:https://m4enterprise.googlecode.com/svn/release-repository</url>
+		</repository>
+		<snapshotRepository>
+			<id>google-m4enterprise</id>
+			<name>Google Code Snapshot Repository</name>
+			<url>dav:https://m4enterprise.googlecode.com/svn/snapshot-repository</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<scm>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/test1/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/test1/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/</url>
+	</scm>
+
+	<build>
+		<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, https: and file: as transport protocols. Declare others 
+			transports explicitly. -->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+		</extensions>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${com.acme.deployVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${com.acme.installVersion}</version>
+				</plugin>
+            </plugins>
+		</pluginManagement>
+	</build>
+
+</project>
