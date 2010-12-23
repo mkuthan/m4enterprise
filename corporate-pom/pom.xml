@@ -126,7 +126,7 @@
 		<com.acme.corporate-pom.jettyVersion>7.2.1.v20101111</com.acme.corporate-pom.jettyVersion>
 		<com.acme.corporate-pom.jrebelVersion>1.0.7</com.acme.corporate-pom.jrebelVersion>
 		<com.acme.corporate-pom.liquibaseVersion>2.0.0</com.acme.corporate-pom.liquibaseVersion>
-		<com.acme.corporate-pom.processorVersion>1.3.6</com.acme.corporate-pom.processorVersion>
+		<com.acme.corporate-pom.processorVersion>2.0.0</com.acme.corporate-pom.processorVersion>
 		<com.acme.corporate-pom.seleniumVersion>1.0.1</com.acme.corporate-pom.seleniumVersion>
 		<com.acme.corporate-pom.versionsVersion>1.2</com.acme.corporate-pom.versionsVersion>
 		<com.acme.corporate-pom.xmlVersion>1.0-beta-3</com.acme.corporate-pom.xmlVersion>
