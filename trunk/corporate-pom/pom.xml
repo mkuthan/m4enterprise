@@ -58,8 +58,12 @@
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
-		<com.acme.corporate-pom.distributionManagement.siteId>google-m4enterprise</com.acme.corporate-pom.distributionManagement.siteId>
-		<com.acme.corporate-pom.distributionManagement.siteUrl>dav:https://m4enterprise.googlecode.com/svn/site</com.acme.corporate-pom.distributionManagement.siteUrl>
+		<com.acme.corporate-pom.repositoryId>google-m4enterprise</com.acme.corporate-pom.repositoryId>
+		<com.acme.corporate-pom.repositoryUrl>dav:https://m4enterprise.googlecode.com/svn/release-repository</com.acme.corporate-pom.repositoryUrl>
+		<com.acme.corporate-pom.snapshotRepositoryId>google-m4enterprise</com.acme.corporate-pom.snapshotRepositoryId>
+		<com.acme.corporate-pom.snapshotRepositoryUrl>dav:https://m4enterprise.googlecode.com/svn/snapshot-repository</com.acme.corporate-pom.snapshotRepositoryUrl>
+		<com.acme.corporate-pom.siteId>google-m4enterprise</com.acme.corporate-pom.siteId>
+		<com.acme.corporate-pom.siteUrl>dav:https://m4enterprise.googlecode.com/svn/site</com.acme.corporate-pom.siteUrl>
 
 		<!-- Core plugins -->
 		<com.acme.corporate-pom.cleanVersion>2.4.1</com.acme.corporate-pom.cleanVersion>
@@ -147,18 +151,16 @@
 
 	<distributionManagement>
 		<repository>
-			<id>google-m4enterprise</id>
-			<name>Google Code Repository</name>
-			<url>dav:https://m4enterprise.googlecode.com/svn/release-repository</url>
+			<id>${com.acme.corporate-pom.repositoryId}</id>
+			<url>${com.acme.corporate-pom.repositoryUrl}</url>
 		</repository>
 		<snapshotRepository>
-			<id>google-m4enterprise</id>
-			<name>Google Code Snapshot Repository</name>
-			<url>dav:https://m4enterprise.googlecode.com/svn/snapshot-repository</url>
+			<id>${com.acme.corporate-pom.snapshotRepositoryId}</id>
+			<url>${com.acme.corporate-pom.snapshotRepositoryUrl}</url>
 		</snapshotRepository>
 		<site>
-			<id>${com.acme.corporate-pom.distributionManagement.siteId}</id>
-			<url>${com.acme.corporate-pom.distributionManagement.siteUrl}</url>
+			<id>${com.acme.corporate-pom.siteId}</id>
+			<url>${com.acme.corporate-pom.siteUrl}</url>
 		</site>
 	</distributionManagement>
 
@@ -791,8 +793,8 @@
 
 			<distributionManagement>
 				<site>
-					<id>${com.acme.corporate-pom.distributionManagement.siteId}</id>
-					<url>${com.acme.corporate-pom.distributionManagement.siteUrl}/${project.artifactId}</url>
+					<id>${com.acme.corporate-pom.siteId}</id>
+					<url>${com.acme.corporate-pom.siteUrl}/${project.artifactId}</url>
 				</site>
 			</distributionManagement>
 		</profile>
