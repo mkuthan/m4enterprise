@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>corporate-pom</artifactId>
-		<version>1.6</version>
+		<version>1.15</version>
 	</parent>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -36,7 +36,7 @@
 	<scm>
 		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/simple-war/</connection>
 		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/simple-war/</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse</url>
+		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/simple-war/</url>
 	</scm>
 
 	<build>
