@@ -132,17 +132,18 @@
 		<com.acme.corporate-pom.xmlVersion>1.0-beta-3</com.acme.corporate-pom.xmlVersion>
 	</properties>
 
-	<organization>
-		<name>ACME Corporation</name>
-		<url>http://www.acme.com/</url>
-	</organization>
-
+	<!-- Shared environment and project settings, inherited by project POMs -->
 	<licenses>
 		<license>
 			<name>Apache License 2.0</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
 		</license>
 	</licenses>
+
+	<organization>
+		<name>ACME Corporation</name>
+		<url>http://www.acme.com/</url>
+	</organization>
 
 	<distributionManagement>
 		<repository>
@@ -161,19 +162,36 @@
 		</site>
 	</distributionManagement>
 
-	<!-- SCM for corporate POM, should be redefined in projects' POMs -->
-	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/corporate-pom/</url>
-	</scm>
-
-	<!-- Developers that have contributed to the corporate POM, should be redefined in projects' POMs -->
+	<!-- Corporate POM environment and project settings, should be redefined in project's POMs -->
 	<developers>
 		<developer>
 			<email>developer1@acme.com</email>
 		</developer>
 	</developers>
+
+	<issueManagement>
+		<system>GoogleCode</system>
+		<url>http://code.google.com/p/m4enterprise/issues/</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Bamboo</system>
+		<url>http://localhost:8085/</url>
+	</ciManagement>
+
+	<mailingLists>
+		<mailingList>
+			<name>User List</name>
+			<post>m4enterprise-users@googlegroups.com</post>
+			<archive>http://groups.google.com/group/m4enterprise-users</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/corporate-pom/</url>
+	</scm>
 
 	<build>
 		<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, https: and file: as transport protocols. Declare others 
