@@ -18,7 +18,7 @@ The most comprehensive repository manager [http://docs.codehaus.org/display/MAVE
 
 = Maven Configuration =
 
-Regardless of selected repository product Maven configuration is similar. The main goal of configuration is to force Maven to use only corporate repository.
+Regardless of selected repository product Maven configuration is similar. The main goal of the configuration is to force Maven to use only corporate repository.
 
 For complete Maven settings reference please look at: [http://maven.apache.org/settings.html]
 
@@ -83,9 +83,9 @@ The profile(s) must be enabled for all builds by default:
 </activeProfiles>
 }}}
 
-If the corporate policy is to avoid snapshots, only profile for release repository should be activated. Than developer will have to activate the snapshot repository profile explicitly. 
+If the corporate policy is defined to avoid snapshots, only profile for release repository should be activated. Than developer will have to activate the snapshot repository profile explicitly.
 
-== Mirror ==
+== Mirror Configuration  ==
 
 To force Maven to use only corporate repository, `mirror` section must be defined:
 
@@ -97,6 +97,6 @@ To force Maven to use only corporate repository, `mirror` section must be define
 </mirror>
 }}}
 
-This tricky configuration assumes that under `http://repository.intranet.acme.com/empty/` empty repository is configured. It always returns 404 for any request.
+This tricky configuration assumes that under `http://repository.intranet.acme.com/empty/` fake repository is configured. It always returns 404 for any request.
 
 All requests to any external repository not listed explicitly in the `mirrorOf` element, will be redirected to the empty repository. It effectively disables distribution management section in any public POM (including root POM embedded in Maven distribution).
