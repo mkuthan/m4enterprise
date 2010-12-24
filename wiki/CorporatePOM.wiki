@@ -8,7 +8,7 @@ Corporate POM centralizes projects configuration:
   * Distribution management settings
   * Reporting configuration
 
-= Plugin Versions Update =
+= Plugin Versions Maintenance =
 
 All plugin versions are defined in Corporate POM within properties. Updating plugin versions is a regular maintenance task for Corporate POM and can be automated. Call `versions:display-property-updates` goal to display a report of available plugin updates:
 
@@ -148,7 +148,7 @@ If a plugin version should not be updated automatically, define `excludeProperti
 <excludeProperties>com.acme.corporate-pom.jettyVersion</excludeProperties>
 }}} 
 
-= References To Corporate POM Update =
+= References To Corporate POM Maintenance =
 
 When new version of Corporate POM is released, references to the POM should be updated. Call `versions:update-parent` goal to update parent section in the project POM:
 
