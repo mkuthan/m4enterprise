@@ -57,12 +57,12 @@
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
-		<com.acme.corporate-pom.repositoryId>google-m4enterprise</com.acme.corporate-pom.repositoryId>
-		<com.acme.corporate-pom.repositoryUrl>dav:https://m4enterprise.googlecode.com/svn/release-repository</com.acme.corporate-pom.repositoryUrl>
-		<com.acme.corporate-pom.snapshotRepositoryId>google-m4enterprise</com.acme.corporate-pom.snapshotRepositoryId>
-		<com.acme.corporate-pom.snapshotRepositoryUrl>dav:https://m4enterprise.googlecode.com/svn/snapshot-repository</com.acme.corporate-pom.snapshotRepositoryUrl>
-		<com.acme.corporate-pom.siteId>google-m4enterprise</com.acme.corporate-pom.siteId>
-		<com.acme.corporate-pom.siteUrl>dav:https://m4enterprise.googlecode.com/svn/site</com.acme.corporate-pom.siteUrl>
+		<com.acme.corporate-pom.repositoryId>m4enterprise</com.acme.corporate-pom.repositoryId>
+		<com.acme.corporate-pom.repositoryUrl>dav:https://oss.sonatype.org/service/local/staging/deploy/maven2</com.acme.corporate-pom.repositoryUrl>
+		<com.acme.corporate-pom.snapshotRepositoryId>m4enterprise</com.acme.corporate-pom.snapshotRepositoryId>
+		<com.acme.corporate-pom.snapshotRepositoryUrl>dav:https://oss.sonatype.org/content/repositories/snapshots</com.acme.corporate-pom.snapshotRepositoryUrl>
+		<com.acme.corporate-pom.siteId>m4enterprise</com.acme.corporate-pom.siteId>
+		<com.acme.corporate-pom.siteUrl>scp://oss.sonatype.org/home/m4enterprise</com.acme.corporate-pom.siteUrl>
 
 		<!-- Core plugins -->
 		<com.acme.corporate-pom.cleanVersion>2.4.1</com.acme.corporate-pom.cleanVersion>
