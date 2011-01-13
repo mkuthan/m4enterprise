@@ -28,7 +28,10 @@
 
 		<!-- Automatically assign submodules the parent version (m-release-p) -->
 		<autoVersionSubmodules>true</autoVersionSubmodules>
-
+        
+        <!-- http://jira.codehaus.org/browse/MRELEASE-271 (m-release-p) -->
+        <preparationGoals>clean install</preparationGoals>
+        
 		<!-- Disable report aggregation (m-jxr-p, m-pmd-p, m-surefire-report-p) -->
 		<aggregate>false</aggregate>
 
