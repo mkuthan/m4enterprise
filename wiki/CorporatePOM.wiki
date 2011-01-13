@@ -13,7 +13,7 @@ Corporate POM centralizes projects configuration:
 All plugin versions are defined in Corporate POM within properties. Updating plugin versions is a regular maintenance task for Corporate POM and can be automated. Call `versions:display-property-updates` goal to display a report of available plugin updates:
 
 {{{
-mvn -P corporte-pom versions:display-property-updates
+mvn -P corporate-pom versions:display-property-updates
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
@@ -45,7 +45,7 @@ mvn -P corporte-pom versions:display-property-updates
 In the example updates for surefire, surefire report and findbugs plugins are available. The properties can be updated by calling `versions:update-properties` goal:
 
 {{{
-mvn -P corporte-pom versions:update-properties
+mvn -P corporate-pom versions:update-properties
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
@@ -113,7 +113,7 @@ mvn -P corporte-pom versions:update-properties
 To verify plugin updates call `versions:display-property-updates` goal again:
 
 {{{
-mvn -P corporte-pom versions:display-property-updates
+mvn -P corporate-pom versions:display-property-updates
 [INFO] Scanning for projects...
 Downloading: http://repository.intranet.acme.com/release-plugins-repository/org/codehaus/mojo/findbugs-maven-plugin/2.3.1/findbugs-maven-plugin-2.3.1.jar
 Downloaded: http://repository.intranet.acme.com/release-plugins-repository/org/codehaus/mojo/findbugs-maven-plugin/2.3.1/findbugs-maven-plugin-2.3.1.jar (111 KB at 57.8 KB/sec)
