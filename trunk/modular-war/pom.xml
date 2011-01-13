@@ -1,5 +1,4 @@
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -10,7 +9,7 @@
 
 	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>modular-war</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	<name>modular-war</name>
 	<description>Parent POM for the modular WAR project</description>
@@ -39,9 +38,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war/</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.1</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.1</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/tags/modular-war-0.0.1</url>
 	</scm>
 
 	<build>
