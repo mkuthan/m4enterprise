@@ -77,7 +77,7 @@ mvn -P corporate-pom versions:update-properties
 [INFO] Property ${com.acme.corporate-pom.javadocVersion}: Leaving unchanged as 2.7
 [INFO] Property ${com.acme.corporate-pom.reactorVersion}: Leaving unchanged as 1.0
 [INFO] Property ${com.acme.corporate-pom.ejbVersion}: Leaving unchanged as 2.3
-[INFO] Property ${com.acme.checkstyleVersion}: Leaving unchanged as 2.6
+[INFO] Property ${com.acme.corporate-pom.checkstyleVersion}: Leaving unchanged as 2.6
 [INFO] Property ${com.acme.corporate-pom.assemblyVersion}: Leaving unchanged as 2.2
 [INFO] Property ${com.acme.corporate-pom.invokerVersion}: Leaving unchanged as 1.5
 [INFO] Property ${com.acme.corporate-pom.warVersion}: Leaving unchanged as 2.1.1
