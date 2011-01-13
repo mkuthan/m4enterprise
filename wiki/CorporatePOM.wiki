@@ -25,13 +25,13 @@ mvn -P corporate-pom versions:display-property-updates
 (...)
 [INFO] 
 [INFO] The following version properties are referencing the newest available version:
-[INFO]   ${com.acme.surefireReportVersion} ........................ 2.6 -> 2.7
-[INFO]   ${com.acme.findbugsVersion} ............................ 2.3 -> 2.3.1
-[INFO]   ${com.acme.surefireVersion} .............................. 2.6 -> 2.7
+[INFO]   ${com.acme.corporate-pom.surefireReportVersion} ........................ 2.6 -> 2.7
+[INFO]   ${com.acme.corporate-pom.findbugsVersion} ............................ 2.3 -> 2.3.1
+[INFO]   ${com.acme.corporate-pom.surefireVersion} .............................. 2.6 -> 2.7
 [INFO] The following version property updates are available:
-[INFO]   ${com.acme.surefireReportVersion} ........................ 2.6 -> 2.7
-[INFO]   ${com.acme.findbugsVersion} ............................ 2.3 -> 2.3.1
-[INFO]   ${com.acme.surefireVersion} .............................. 2.6 -> 2.7
+[INFO]   ${com.acme.corporate-pom.surefireReportVersion} ........................ 2.6 -> 2.7
+[INFO]   ${com.acme.corporate-pom.findbugsVersion} ............................ 2.3 -> 2.3.1
+[INFO]   ${com.acme.corporate-pom.surefireVersion} .............................. 2.6 -> 2.7
 [INFO] 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
@@ -53,54 +53,54 @@ mvn -P corporate-pom versions:update-properties
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] --- versions-maven-plugin:1.2:update-properties (default-cli) @ corporate-pom ---
-[INFO] Property ${com.acme.dependencyVersion}: Leaving unchanged as 2.1
-[INFO] Property ${com.acme.pmdVersion}: Leaving unchanged as 2.5
-[INFO] Property ${com.acme.deployVersion}: Leaving unchanged as 2.5
-[INFO] Property ${com.acme.oneVersion}: Leaving unchanged as 1.2
-[INFO] Updated ${com.acme.surefireReportVersion} from 2.6 to 2.7
-[INFO] Property ${com.acme.resourcesVersion}: Leaving unchanged as 2.4.3
-[INFO] Property ${com.acme.jarVersion}: Leaving unchanged as 2.3.1
-[INFO] Property ${com.acme.remoteResourcesVersion}: Leaving unchanged as 1.1
-[INFO] Property ${com.acme.pluginVersion}: Leaving unchanged as 2.6
-[INFO] Property ${com.acme.versionsVersion}: Leaving unchanged as 1.2
-[INFO] Property ${com.acme.sourceVersion}: Leaving unchanged as 2.1.2
-[INFO] Property ${com.acme.cloverVersion}: Leaving unchanged as 3.0.2
-[INFO] Property ${com.acme.enforcerVersion}: Leaving unchanged as 1.0
-[INFO] Property ${com.acme.rarVersion}: Leaving unchanged as 2.2
-[INFO] Property ${com.acme.jxrVersion}: Leaving unchanged as 2.2
-[INFO] Property ${com.acme.eclipseVersion}: Leaving unchanged as 2.8
-[INFO] Property ${com.acme.cleanVersion}: Leaving unchanged as 2.4.1
-[INFO] Property ${com.acme.earVersion}: Leaving unchanged as 2.4.2
-[INFO] Property ${com.acme.shadeVersion}: Leaving unchanged as 1.4
-[INFO] Updated ${com.acme.findbugsVersion} from 2.3 to 2.3.1
-[INFO] Property ${com.acme.jarsignerVersion}: Leaving unchanged as 1.2
-[INFO] Property ${com.acme.javadocVersion}: Leaving unchanged as 2.7
-[INFO] Property ${com.acme.reactorVersion}: Leaving unchanged as 1.0
-[INFO] Property ${com.acme.ejbVersion}: Leaving unchanged as 2.3
+[INFO] Property ${com.acme.corporate-pom.dependencyVersion}: Leaving unchanged as 2.1
+[INFO] Property ${com.acme.corporate-pom.pmdVersion}: Leaving unchanged as 2.5
+[INFO] Property ${com.acme.corporate-pom.deployVersion}: Leaving unchanged as 2.5
+[INFO] Property ${com.acme.corporate-pom.oneVersion}: Leaving unchanged as 1.2
+[INFO] Updated ${com.acme.corporate-pom.surefireReportVersion} from 2.6 to 2.7
+[INFO] Property ${com.acme.corporate-pom.resourcesVersion}: Leaving unchanged as 2.4.3
+[INFO] Property ${com.acme.corporate-pom.jarVersion}: Leaving unchanged as 2.3.1
+[INFO] Property ${com.acme.corporate-pom.remoteResourcesVersion}: Leaving unchanged as 1.1
+[INFO] Property ${com.acme.corporate-pom.pluginVersion}: Leaving unchanged as 2.6
+[INFO] Property ${com.acme.corporate-pom.versionsVersion}: Leaving unchanged as 1.2
+[INFO] Property ${com.acme.corporate-pom.sourceVersion}: Leaving unchanged as 2.1.2
+[INFO] Property ${com.acme.corporate-pom.cloverVersion}: Leaving unchanged as 3.0.2
+[INFO] Property ${com.acme.corporate-pom.enforcerVersion}: Leaving unchanged as 1.0
+[INFO] Property ${com.acme.corporate-pom.rarVersion}: Leaving unchanged as 2.2
+[INFO] Property ${com.acme.corporate-pom.jxrVersion}: Leaving unchanged as 2.2
+[INFO] Property ${com.acme.corporate-pom.eclipseVersion}: Leaving unchanged as 2.8
+[INFO] Property ${com.acme.corporate-pom.cleanVersion}: Leaving unchanged as 2.4.1
+[INFO] Property ${com.acme.corporate-pom.earVersion}: Leaving unchanged as 2.4.2
+[INFO] Property ${com.acme.corporate-pom.shadeVersion}: Leaving unchanged as 1.4
+[INFO] Updated ${com.acme.corporate-pom.findbugsVersion} from 2.3 to 2.3.1
+[INFO] Property ${com.acme.corporate-pom.jarsignerVersion}: Leaving unchanged as 1.2
+[INFO] Property ${com.acme.corporate-pom.javadocVersion}: Leaving unchanged as 2.7
+[INFO] Property ${com.acme.corporate-pom.reactorVersion}: Leaving unchanged as 1.0
+[INFO] Property ${com.acme.corporate-pom.ejbVersion}: Leaving unchanged as 2.3
 [INFO] Property ${com.acme.checkstyleVersion}: Leaving unchanged as 2.6
-[INFO] Property ${com.acme.assemblyVersion}: Leaving unchanged as 2.2
-[INFO] Property ${com.acme.invokerVersion}: Leaving unchanged as 1.5
-[INFO] Property ${com.acme.warVersion}: Leaving unchanged as 2.1.1
-[INFO] Property ${com.acme.verifierVersion}: Leaving unchanged as 1.0
-[INFO] Property ${com.acme.antVersion}: Leaving unchanged as 2.3
-[INFO] Property ${com.acme.compilerVersion}: Leaving unchanged as 2.3.2
-[INFO] Property ${com.acme.installVersion}: Leaving unchanged as 2.3.1
-[INFO] Property ${com.acme.stageVersion}: Leaving unchanged as 1.0-alpha-2
-[INFO] Property ${com.acme.antrunVersion}: Leaving unchanged as 1.6
-[INFO] Property ${com.acme.gpgVersion}: Leaving unchanged as 1.1
-[INFO] Property ${com.acme.patchVersion}: Leaving unchanged as 1.1.1
-[INFO] Updated ${com.acme.surefireVersion} from 2.6 to 2.7
-[INFO] Property ${com.acme.projectInfoVersion}: Leaving unchanged as 2.3
-[INFO] Property ${com.acme.helpVersion}: Leaving unchanged as 2.1.1
-[INFO] Property ${com.acme.archetypeVersion}: Leaving unchanged as 2.0
-[INFO] Property ${com.acme.siteVersion}: Leaving unchanged as 3.0-beta-3
-[INFO] Property ${com.acme.scmVersion}: Leaving unchanged as 1.4
-[INFO] Property ${com.acme.repositoryVersion}: Leaving unchanged as 2.3.1
-[INFO] Property ${com.acme.releaseVersion}: Leaving unchanged as 2.1
-[INFO] Property ${com.acme.pdfVersion}: Leaving unchanged as 1.1
-[INFO] Property ${com.acme.ideaVersion}: Leaving unchanged as 2.2
-[INFO] Property ${com.acme.toolchainsVersion}: Leaving unchanged as 1.0
-[INFO] Property ${com.acme.failsafeVersion}: Leaving unchanged as 2.7
+[INFO] Property ${com.acme.corporate-pom.assemblyVersion}: Leaving unchanged as 2.2
+[INFO] Property ${com.acme.corporate-pom.invokerVersion}: Leaving unchanged as 1.5
+[INFO] Property ${com.acme.corporate-pom.warVersion}: Leaving unchanged as 2.1.1
+[INFO] Property ${com.acme.corporate-pom.verifierVersion}: Leaving unchanged as 1.0
+[INFO] Property ${com.acme.corporate-pom.antVersion}: Leaving unchanged as 2.3
+[INFO] Property ${com.acme.corporate-pom.compilerVersion}: Leaving unchanged as 2.3.2
+[INFO] Property ${com.acme.corporate-pom.installVersion}: Leaving unchanged as 2.3.1
+[INFO] Property ${com.acme.corporate-pom.stageVersion}: Leaving unchanged as 1.0-alpha-2
+[INFO] Property ${com.acme.corporate-pom.antrunVersion}: Leaving unchanged as 1.6
+[INFO] Property ${com.acme.corporate-pom.gpgVersion}: Leaving unchanged as 1.1
+[INFO] Property ${com.acme.corporate-pom.patchVersion}: Leaving unchanged as 1.1.1
+[INFO] Updated ${com.acme.corporate-pom.surefireVersion} from 2.6 to 2.7
+[INFO] Property ${com.acme.corporate-pom.projectInfoVersion}: Leaving unchanged as 2.3
+[INFO] Property ${com.acme.corporate-pom.helpVersion}: Leaving unchanged as 2.1.1
+[INFO] Property ${com.acme.corporate-pom.archetypeVersion}: Leaving unchanged as 2.0
+[INFO] Property ${com.acme.corporate-pom.siteVersion}: Leaving unchanged as 3.0-beta-3
+[INFO] Property ${com.acme.corporate-pom.scmVersion}: Leaving unchanged as 1.4
+[INFO] Property ${com.acme.corporate-pom.repositoryVersion}: Leaving unchanged as 2.3.1
+[INFO] Property ${com.acme.corporate-pom.releaseVersion}: Leaving unchanged as 2.1
+[INFO] Property ${com.acme.corporate-pom.pdfVersion}: Leaving unchanged as 1.1
+[INFO] Property ${com.acme.corporate-pom.ideaVersion}: Leaving unchanged as 2.2
+[INFO] Property ${com.acme.corporate-pom.toolchainsVersion}: Leaving unchanged as 1.0
+[INFO] Property ${com.acme.corporate-pom.failsafeVersion}: Leaving unchanged as 2.7
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
