@@ -57,12 +57,9 @@
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
-		<com.acme.corporate-pom.repositoryId>m4enterprise</com.acme.corporate-pom.repositoryId>
-		<com.acme.corporate-pom.repositoryUrl>dav:https://oss.sonatype.org/service/local/staging/deploy/maven2</com.acme.corporate-pom.repositoryUrl>
-		<com.acme.corporate-pom.snapshotRepositoryId>m4enterprise</com.acme.corporate-pom.snapshotRepositoryId>
-		<com.acme.corporate-pom.snapshotRepositoryUrl>dav:https://oss.sonatype.org/content/repositories/snapshots</com.acme.corporate-pom.snapshotRepositoryUrl>
-		<com.acme.corporate-pom.siteId>m4enterprise</com.acme.corporate-pom.siteId>
-		<com.acme.corporate-pom.siteUrl>scp://oss.sonatype.org/home/m4enterprise</com.acme.corporate-pom.siteUrl>
+		<com.acme.corporate-pom.repositoryUrl>dav:http://repository.intranet.acme.com/releases-local</com.acme.corporate-pom.repositoryUrl>
+		<com.acme.corporate-pom.snapshotRepositoryUrl>dav:http://repository.intranet.acme.com/snapshots-local</com.acme.corporate-pom.snapshotRepositoryUrl>
+		<com.acme.corporate-pom.siteUrl>scp://sites.intranet.acme.com/home/sites</com.acme.corporate-pom.siteUrl>
 
 		<!-- Core plugins -->
 		<com.acme.corporate-pom.cleanVersion>2.4.1</com.acme.corporate-pom.cleanVersion>
@@ -84,7 +81,7 @@
 
 		<!-- Reporting (only used report plugins) -->
 		<com.acme.corporate-pom.checkstyleVersion>2.6</com.acme.corporate-pom.checkstyleVersion>
-		<com.acme.corporate-pom.cloverVersion>3.0.2</com.acme.corporate-pom.cloverVersion>
+		<com.acme.corporate-pom.cloverVersion>3.0.4</com.acme.corporate-pom.cloverVersion>
 		<com.acme.corporate-pom.findbugsVersion>2.3.1</com.acme.corporate-pom.findbugsVersion>
 		<com.acme.corporate-pom.javadocVersion>2.7</com.acme.corporate-pom.javadocVersion>
 		<com.acme.corporate-pom.jxrVersion>2.2</com.acme.corporate-pom.jxrVersion>
@@ -150,15 +147,15 @@
 
 	<distributionManagement>
 		<repository>
-			<id>${com.acme.corporate-pom.repositoryId}</id>
+			<id>acme-releases</id>
 			<url>${com.acme.corporate-pom.repositoryUrl}</url>
 		</repository>
 		<snapshotRepository>
-			<id>${com.acme.corporate-pom.snapshotRepositoryId}</id>
+			<id>acme-snapshots</id>
 			<url>${com.acme.corporate-pom.snapshotRepositoryUrl}</url>
 		</snapshotRepository>
 		<site>
-			<id>${com.acme.corporate-pom.siteId}</id>
+			<id>acme-sites</id>
 			<url>${com.acme.corporate-pom.siteUrl}</url>
 		</site>
 	</distributionManagement>
@@ -792,7 +789,7 @@
 
 			<distributionManagement>
 				<site>
-					<id>${com.acme.corporate-pom.siteId}</id>
+					<id>acme-sites</id>
 					<url>${com.acme.corporate-pom.siteUrl}/${project.artifactId}</url>
 				</site>
 			</distributionManagement>
