@@ -68,9 +68,9 @@
 		<com.acme.corporate-pom.cleanVersion>2.4.1</com.acme.corporate-pom.cleanVersion>
 		<com.acme.corporate-pom.compilerVersion>2.3.2</com.acme.corporate-pom.compilerVersion>
 		<com.acme.corporate-pom.deployVersion>2.5</com.acme.corporate-pom.deployVersion>
-		<com.acme.corporate-pom.failsafeVersion>2.7</com.acme.corporate-pom.failsafeVersion>
+		<com.acme.corporate-pom.failsafeVersion>2.7.1</com.acme.corporate-pom.failsafeVersion>
 		<com.acme.corporate-pom.installVersion>2.3.1</com.acme.corporate-pom.installVersion>
-		<com.acme.corporate-pom.surefireVersion>2.7</com.acme.corporate-pom.surefireVersion>
+		<com.acme.corporate-pom.surefireVersion>2.7.1</com.acme.corporate-pom.surefireVersion>
 		<com.acme.corporate-pom.resourcesVersion>2.4.3</com.acme.corporate-pom.resourcesVersion>
 		<com.acme.corporate-pom.verifierVersion>1.0</com.acme.corporate-pom.verifierVersion>
 
@@ -90,7 +90,7 @@
 		<com.acme.corporate-pom.jxrVersion>2.2</com.acme.corporate-pom.jxrVersion>
 		<com.acme.corporate-pom.pmdVersion>2.5</com.acme.corporate-pom.pmdVersion>
 		<com.acme.corporate-pom.projectInfoVersion>2.3.1</com.acme.corporate-pom.projectInfoVersion>
-		<com.acme.corporate-pom.surefireReportVersion>2.7</com.acme.corporate-pom.surefireReportVersion>
+		<com.acme.corporate-pom.surefireReportVersion>2.7.1</com.acme.corporate-pom.surefireReportVersion>
 
 		<!-- Tools -->
 		<com.acme.corporate-pom.antVersion>2.3</com.acme.corporate-pom.antVersion>
