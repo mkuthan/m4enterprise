@@ -126,7 +126,7 @@
 		<com.acme.corporate-pom.dbunitVersion>1.0-beta-3</com.acme.corporate-pom.dbunitVersion>
 		<com.acme.corporate-pom.execVersion>1.2</com.acme.corporate-pom.execVersion>
 		<com.acme.corporate-pom.hibernate3Version>2.2</com.acme.corporate-pom.hibernate3Version>
-		<com.acme.corporate-pom.jettyVersion>7.2.1.v20101111</com.acme.corporate-pom.jettyVersion>
+		<com.acme.corporate-pom.jettyVersion>6.1.26</com.acme.corporate-pom.jettyVersion>
 		<com.acme.corporate-pom.jrebelVersion>1.0.7</com.acme.corporate-pom.jrebelVersion>
 		<com.acme.corporate-pom.liquibaseVersion>2.0.0</com.acme.corporate-pom.liquibaseVersion>
 		<com.acme.corporate-pom.processorVersion>2.0.0</com.acme.corporate-pom.processorVersion>
@@ -562,7 +562,7 @@
 
 				<plugin>
 					<groupId>org.mortbay.jetty</groupId>
-					<artifactId>jetty-maven-plugin</artifactId>
+					<artifactId>maven-jetty-plugin</artifactId>
 					<version>${com.acme.corporate-pom.jettyVersion}</version>
 				</plugin>
 
