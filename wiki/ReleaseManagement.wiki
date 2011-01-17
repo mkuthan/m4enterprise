@@ -158,4 +158,6 @@ To disable interactive Maven session use the `--batch-mode` or `-B` command line
 mvn --batch-mode release:prepare release:perform -DperformRelease=true
 }}}
 
+Bamboo CI server on every build creates `build-number.txt` file. The file must be added to SCM ignore, Maven Release Plugin expects that local project copy is not modified.
+
 *TODO:* How to automate major and patch releases?
