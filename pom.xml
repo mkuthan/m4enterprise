@@ -1,29 +1,30 @@
-<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-    
-    <parent>
+
+	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>corporate-pom</artifactId>
-		<version>1.19</version>
+		<version>1.21</version>
 	</parent>
-    
-    <groupId>com.googlecode.m4enterprise</groupId>
-	<artifactId>aggregate-pom</artifactId>
-	<version>1.0-SNAPSHOT</version>
+
+	<groupId>com.googlecode.m4enterprise</groupId>
+	<artifactId>modular-war</artifactId>
+	<version>0.0.4</version>
 	<packaging>pom</packaging>
-	<name>aggregate-pom</name>
-	<description>Aggregate POM</description>
-    
-    <modules>
-        <module>corporate-pom</module>
-        <module>modular-war</module>
-        <module>simple-war</module>
-    </modules>
-    
-    <scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/trunk</url>
+	<name>modular-war</name>
+	<description>Aggregate POM for the modular WAR project</description>
+
+	<!-- All modules in the project -->
+	<modules>
+        <module>modular-war-parent</module>
+		<module>modular-war-core</module>
+		<module>modular-war-webapp</module>
+		<module>modular-war-deploy</module>
+	</modules>
+
+	<scm>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.4</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.4</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/tags/modular-war-0.0.4</url>
 	</scm>
 </project>
