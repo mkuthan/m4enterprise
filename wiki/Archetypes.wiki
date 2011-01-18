@@ -239,3 +239,10 @@ mvn jetty:run
 2011-01-18 10:52:59.744:INFO::Started SelectChannelConnector@0.0.0.0:8080
 [INFO] Started Jetty Server
 }}}
+
+= Archetypes Management Automation =
+
+Manual archetypes management is annoying. Archetype should be created, deployed and tested automatically by CI server.  
+
+Please refer to [http://jira.codehaus.org/browse/ARCHETYPE-334] and 
+[http://maven.40175.n5.nabble.com/unit-testing-archetypes-td75257.html#a75257].
