@@ -54,26 +54,6 @@
 				</configuration>
 			</plugin>
 
-			<!-- Run smoke tests after deployment -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>integration-test</id>
-						<goals>
-							<goal>integration-test</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>verify</id>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>wagon-maven-plugin</artifactId>
@@ -101,7 +81,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${deployableGroupId}</groupId>
-			<artifactId>modular-war-webapp</artifactId>
+			<artifactId>${deployableArtifactId}</artifactId>
 			<type>war</type>
 			<scope>runtime</scope>
 		</dependency>
