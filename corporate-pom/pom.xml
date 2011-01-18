@@ -189,9 +189,9 @@
 	</mailingLists>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/corporate-pom-1.19</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/corporate-pom-1.19</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/tags/corporate-pom-1.19</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/corporate-pom</url>
 	</scm>
 
 	<build>
