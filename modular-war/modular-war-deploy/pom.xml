@@ -5,14 +5,13 @@
 
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
-		<artifactId>corporate-pom</artifactId>
-		<version>1.17</version>
+		<artifactId>modular-war</artifactId>
+		<version>0.0.4-SNAPSHOT</version>
+		<relativePath>../</relativePath>
 	</parent>
 
-	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>modular-war-deploy</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
 	<name>modular-war-deploy</name>
 	<description>Web Application Deploy Module</description>
 
@@ -24,15 +23,14 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war-deploy/</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war-deploy/</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war-deploy/</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/modular-war-deploy/</url>
 	</scm>
 
 	<properties>
 		<deployableGroupId>${project.groupId}</deployableGroupId>
 		<deployableArtifactId>modular-war-webapp</deployableArtifactId>
-		<deployableVersion>LATEST</deployableVersion>
 	</properties>
 
 	<build>
@@ -103,8 +101,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${deployableGroupId}</groupId>
-			<artifactId>${deployableArtifactId}</artifactId>
-			<version>${deployableVersion}</version>
+			<artifactId>modular-war-webapp</artifactId>
 			<type>war</type>
 			<scope>runtime</scope>
 		</dependency>
