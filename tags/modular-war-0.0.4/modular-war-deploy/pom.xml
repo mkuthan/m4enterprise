@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.googlecode.m4enterprise</groupId>
+		<artifactId>modular-war-parent</artifactId>
+		<version>0.0.4</version>
+		<relativePath>../modular-war-parent</relativePath>
+	</parent>
+
+	<artifactId>modular-war-deploy</artifactId>
+	<packaging>war</packaging>
+	<name>modular-war-deploy</name>
+	<description>Web Application Deploy Module</description>
+
+	<!-- Developers that have contributed to the module -->
+	<developers>
+		<developer>
+			<email>developer1@acme.com</email>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.4/modular-war-deploy</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.4/modular-war-deploy</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/tags/modular-war-0.0.4/modular-war-deploy</url>
+	</scm>
+
+	<properties>
+		<deployableGroupId>${project.groupId}</deployableGroupId>
+		<deployableArtifactId>modular-war-webapp</deployableArtifactId>
+        
+        <wagonServerId />
+        <wagonUrl>file:///c:\_data</wagonUrl>
+	</properties>
+
+	<build>
+		<finalName>${deployableArtifactId}</finalName>
+
+		<plugins>
+			<!-- Customize artifact before deployment -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<overlays>
+						<overlay>
+							<groupId>${deployableGroupId}</groupId>
+							<artifactId>${deployableArtifactId}</artifactId>
+						</overlay>
+						<overlay>
+							<!-- empty groupId/artifactId detected as the current build -->
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<version>1.0-beta-3</version>
+
+				<configuration>
+					<serverId>${wagonServerId}</serverId>
+					<url>${wagonUrl}</url>
+					<fromFile>${project.build.directory}/${deployableArtifactId}.war</fromFile>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>${deployableGroupId}</groupId>
+			<artifactId>${deployableArtifactId}</artifactId>
+			<type>war</type>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+</project>
