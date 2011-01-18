@@ -6,9 +6,35 @@ Archetype helps authors create Maven project templates for users, and provides u
 
 = Archetype Creation =
 
-The easiest way to prepare archetype is to create it from existing and released project. Call `archetype:create-from-project` to create archetype from existing project:
+The easiest way to prepare archetype is to create it from existing and released project. 
+
+Checkout released SCM revision of existing project:
 
 {{{
+mvn scm:checkout '-DscmVersion=${project.artifactId}-0.0.3' -DscmVersionType=tag
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building simple-war-webapp 0.0.3-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-scm-plugin:1.4:checkout (default-cli) @ simple-war-webapp ---
+[INFO] Removing C:\_data\projects\m4enterprise\trunk\simple-war\target\checkout
+[INFO] Executing: cmd.exe /X /C "svn --non-interactive checkout http://m4enterprise.googlecode.com/svn/tags/simple-war-webapp-0.0.3 C:\_data\projects\m4enterprise\trunk\simple-war\target\checkout"
+[INFO] Working directory: C:\_data\projects\m4enterprise\trunk\simple-war\target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 19.166s
+[INFO] Finished at: Tue Jan 18 11:03:31 CET 2011
+[INFO] Final Memory: 7M/14M
+[INFO] ------------------------------------------------------------------------
+}}}
+
+Released version is checked out into `target\checkout` directory. Move to that directory and call `archetype:create-from-project` to create archetype from existing project:
+
+{{{
+cd target/checkout/
 mvn archetype:create-from-project
 [INFO] Scanning for projects...
 [INFO]                                                                         
@@ -17,6 +43,11 @@ mvn archetype:create-from-project
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] >>> maven-archetype-plugin:2.0:create-from-project (default-cli) @ simple-war-webapp >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven-version) @ simple-war-webapp ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-plugin-versions) @ simple-war-webapp ---
+[INFO] The requirePluginVersions rule is currently not compatible with Maven3.
 [INFO] 
 [INFO] <<< maven-archetype-plugin:2.0:create-from-project (default-cli) @ simple-war-webapp <<<
 [INFO] 
@@ -45,23 +76,23 @@ mvn archetype:create-from-project
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 8.288s
-[INFO] Finished at: Tue Jan 18 09:00:24 CET 2011
+[INFO] Total time: 4.729s
+[INFO] Finished at: Tue Jan 18 11:07:30 CET 2011
 [INFO] Final Memory: 5M/10M
 [INFO] ------------------------------------------------------------------------
-[INFO] Archetype created in C:\_data\projects\m4enterprise\tags\simple-war-webapp-0.0.3\target\generated-sources\archetype
+[INFO] Archetype created in C:\_data\projects\m4enterprise\trunk\simple-war\target\checkout\target\generated-sources\archetype
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 33.323s
-[INFO] Finished at: Tue Jan 18 09:00:24 CET 2011
-[INFO] Final Memory: 9M/17M
+[INFO] Total time: 19.245s
+[INFO] Finished at: Tue Jan 18 11:07:30 CET 2011
+[INFO] Final Memory: 10M/17M
 [INFO] ------------------------------------------------------------------------
 }}}
 
 = Archetype Deployment =
 
-Archetype is generated into the `target/generated-sources/archetype/` directory. Move to that generated directory and deploy archetype into repository:
+Archetype is generated into the `target/generated-sources/archetype/` directory. Move to that directory and call `deploy` goal to deploy archetype into repository:
 
 {{{
 cd target/generated-sources/archetype/
@@ -87,27 +118,29 @@ mvn deploy
 [INFO] --- maven-archetype-plugin:2.0:integration-test (default-integration-test) @ simple-war-webapp-archetype ---
 [INFO] 
 [INFO] --- maven-install-plugin:2.3.1:install (default-install) @ simple-war-webapp-archetype ---
-[INFO] Installing C:\_data\projects\m4enterprise\tags\simple-war-webapp-0.0.3\target\generated-sources\archetype\target\simple-war-webapp-archetype-0.0.3.jar to c:\_apps\apache-maven-repo\com\googlecode\m4enterprise\simple-war-webapp-archetype\0.0.3\simple-war-webapp-archetype-0.0.3.jar
-[INFO] Installing C:\_data\projects\m4enterprise\tags\simple-war-webapp-0.0.3\target\generated-sources\archetype\pom.xml to c:\_apps\apache-maven-repo\com\googlecode\m4enterprise\simple-war-webapp-archetype\0.0.3\simple-war-webapp-archetype-0.0.3.pom
+[INFO] Installing C:\_data\projects\m4enterprise\trunk\simple-war\target\checkout\target\generated-sources\archetype\target\simple-war-webapp-archetype-0.0.3.jar to c:\_apps\apache-maven-repo\com\googlecode\m4enterprise\simple-war-webapp-archetype\0.0.3\simple-war-webapp-archetype-0.0.3.jar
+[INFO] Installing C:\_data\projects\m4enterprise\trunk\simple-war\target\checkout\target\generated-sources\archetype\pom.xml to c:\_apps\apache-maven-repo\com\googlecode\m4enterprise\simple-war-webapp-archetype\0.0.3\simple-war-webapp-archetype-0.0.3.pom
 [INFO] 
 [INFO] --- maven-archetype-plugin:2.0:update-local-catalog (default-update-local-catalog) @ simple-war-webapp-archetype ---
 [INFO] 
 [INFO] --- maven-deploy-plugin:2.5:deploy (default-deploy) @ simple-war-webapp-archetype ---
 Uploading: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/0.0.3/simple-war-webapp-archetype-0.0.3.jar
-Uploaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/0.0.3/simple-war-webapp-archetype-0.0.3.jar (6 KB at 12.8 KB/sec)
+Uploaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/0.0.3/simple-war-webapp-archetype-0.0.3.jar (6 KB at 18.4 KB/sec)
 Uploading: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/0.0.3/simple-war-webapp-archetype-0.0.3.pom
-Uploaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/0.0.3/simple-war-webapp-archetype-0.0.3.pom (2 KB at 24.9 KB/sec)
+Uploaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/0.0.3/simple-war-webapp-archetype-0.0.3.pom (2 KB at 49.7 KB/sec)
 Downloading: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/maven-metadata.xml
+Downloaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/maven-metadata.xml (334 B at 10.5 KB/sec)
 Downloading: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/maven-metadata.xml
+Downloaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/maven-metadata.xml (271 B)
 Uploading: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/maven-metadata.xml
-Uploaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/maven-metadata.xml (334 B at 6.9 KB/sec)
+Uploaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/simple-war-webapp-archetype/maven-metadata.xml (334 B at 21.7 KB/sec)
 Uploading: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/maven-metadata.xml
-Uploaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/maven-metadata.xml (271 B at 8.5 KB/sec)
+Uploaded: file:///c:\_data\repository\releases/com/googlecode/m4enterprise/maven-metadata.xml (271 B at 16.5 KB/sec)
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 16.716s
-[INFO] Finished at: Tue Jan 18 10:28:19 CET 2011
+[INFO] Total time: 8.335s
+[INFO] Finished at: Tue Jan 18 11:09:13 CET 2011
 [INFO] Final Memory: 5M/10M
 [INFO] ------------------------------------------------------------------------
 }}}
@@ -154,7 +187,7 @@ package: com.acme.foo
 [INFO] ------------------------------------------------------------------------
 }}}
 
-Finally check created project:
+Finally perform smoke test on created project:
 
 {{{
 cd foo/
