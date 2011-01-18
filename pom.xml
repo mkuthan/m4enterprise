@@ -18,9 +18,7 @@
     <modules>
         <module>corporate-pom</module>
         <module>modular-war</module>
-        <module>modular-war-deploy</module>
         <module>simple-war</module>
-        <module>simple-war-deploy</module>
     </modules>
     
     <scm>
