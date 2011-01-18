@@ -31,6 +31,9 @@
 	<properties>
 		<deployableGroupId>${project.groupId}</deployableGroupId>
 		<deployableArtifactId>modular-war-webapp</deployableArtifactId>
+        
+        <wagonServerId></wagonServerId>
+        <wagonUrl>file:///c:\_data</wagonUrl>
 	</properties>
 
 	<build>
@@ -60,8 +63,8 @@
 				<version>1.0-beta-3</version>
 
 				<configuration>
-					<serverId>${wagon.serverId}</serverId>
-					<url>${wagon.url}</url>
+					<serverId>${wagonServerId}</serverId>
+					<url>${wagonUrl}</url>
 					<fromFile>${project.build.directory}/${deployableArtifactId}.war</fromFile>
 				</configuration>
 			</plugin>
