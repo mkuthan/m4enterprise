@@ -4,7 +4,7 @@
 
 	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>corporate-pom</artifactId>
-	<version>1.21-SNAPSHOT</version>
+	<version>1.21</version>
 	<packaging>pom</packaging>
 	<name>corporate-pom</name>
 	<description>Corporate POM</description>
@@ -189,9 +189,9 @@
 	</mailingLists>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/corporate-pom</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/corporate-pom-1.21</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/corporate-pom-1.21</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/tags/corporate-pom-1.21</url>
 	</scm>
 
 	<build>
