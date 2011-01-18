@@ -4,7 +4,7 @@
 
 	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>corporate-pom</artifactId>
-	<version>1.19</version>
+	<version>1.20-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>corporate-pom</name>
 	<description>Corporate POM</description>
