@@ -60,9 +60,9 @@
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
-		<com.acme.corporate-pom.repositoryUrl>dav:http://repository.intranet.acme.com/releases-local</com.acme.corporate-pom.repositoryUrl>
-		<com.acme.corporate-pom.snapshotRepositoryUrl>dav:http://repository.intranet.acme.com/snapshots-local</com.acme.corporate-pom.snapshotRepositoryUrl>
-		<com.acme.corporate-pom.siteUrl>scp://sites.intranet.acme.com/home/sites</com.acme.corporate-pom.siteUrl>
+		<com.acme.corporate-pom.repositoryUrl>file:///c:\_data\repository\releases</com.acme.corporate-pom.repositoryUrl>
+		<com.acme.corporate-pom.snapshotRepositoryUrl>file:///c:\_data\repository\snapshots</com.acme.corporate-pom.snapshotRepositoryUrl>
+		<com.acme.corporate-pom.siteUrl>file:///c:\_data\repository\sites</com.acme.corporate-pom.siteUrl>
 
 		<!-- Core plugins -->
 		<com.acme.corporate-pom.cleanVersion>2.4.1</com.acme.corporate-pom.cleanVersion>
