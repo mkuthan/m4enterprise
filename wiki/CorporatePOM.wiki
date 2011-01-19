@@ -157,18 +157,60 @@ mvn versions:update-parent
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building simple-war-webapp 0.0.1-SNAPSHOT
+[INFO] Building simple-war-webapp 0.0.4-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] --- versions-maven-plugin:1.2:update-parent (default-cli) @ simple-war-webapp ---
-[INFO] Updating parent from 1.4 to 1.5
+[INFO] Updating parent from 1.21 to 1.22
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 2.104s
-[INFO] Finished at: Wed Dec 22 10:18:45 CET 2010
-[INFO] Final Memory: 9M/17M
+[INFO] Total time: 13.190s
+[INFO] Finished at: Wed Jan 19 11:28:46 CET 2011
+[INFO] Final Memory: 10M/18M
 [INFO] ------------------------------------------------------------------------
 }}}
 
-In the example, project parent was updated from version 1.4 to the latest released Corporate POM 1.5.
+In the example, project parent was updated from version 1.21 to the latest released Corporate POM 1.22.
+
+To commit changes (Poor Man's SCM):
+
+{{{
+mvn versions:commit       
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building simple-war-webapp 0.0.4-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- versions-maven-plugin:1.2:commit (default-cli) @ simple-war-webapp ---
+[INFO] Accepting all changes to C:\_data\projects\m4enterprise\trunk\simple-war\pom.xml
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11.832s
+[INFO] Finished at: Wed Jan 19 11:29:24 CET 2011
+[INFO] Final Memory: 10M/17M
+[INFO] ------------------------------------------------------------------------
+}}}
+
+To revert changes (Poor Man's SCM):
+
+{{{
+mvn versions:revert       
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building simple-war-webapp 0.0.4-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- versions-maven-plugin:1.2:revert (default-cli) @ simple-war-webapp ---
+[INFO] Restoring C:\_data\projects\m4enterprise\trunk\simple-war\pom.xml from C:\_data\projects\m4enterprise\trunk\simple-war\pom.xml.versionsBackup
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11.286s
+[INFO] Finished at: Wed Jan 19 11:27:39 CET 2011
+[INFO] Final Memory: 10M/17M
+[INFO] ------------------------------------------------------------------------
+}}}
