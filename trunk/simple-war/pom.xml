@@ -5,7 +5,8 @@
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>corporate-pom</artifactId>
-		<version>1.21</version>
+		<version>1.22</version>
+		<relativePath />
 	</parent>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -15,6 +16,8 @@
 	<name>simple-war-webapp</name>
 	<description>Web Application</description>
 
+    <url>http://sites.intranet.acme.com/${project.artifactId}/</url>
+    
 	<properties>
 		<junit.version>4.8.2</junit.version>
 	</properties>
@@ -39,8 +42,6 @@
 	</scm>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
-
 		<plugins>
 			<plugin>
 				<groupId>com.atlassian.maven.plugins</groupId>

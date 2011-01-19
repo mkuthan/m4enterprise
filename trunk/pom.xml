@@ -5,7 +5,8 @@
     <parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>corporate-pom</artifactId>
-		<version>1.19</version>
+		<version>1.22</version>
+		<relativePath />
 	</parent>
     
     <groupId>com.googlecode.m4enterprise</groupId>
