@@ -12,7 +12,7 @@
 	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>simple-war-webapp</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.4</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>simple-war-webapp</name>
 	<description>Web Application</description>
 
@@ -36,9 +36,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/simple-war-webapp-0.0.4</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/simple-war-webapp-0.0.4</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/tags/simple-war-webapp-0.0.4</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/simple-war/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/simple-war/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/simple-war/</url>
 	</scm>
 
 	<build>
