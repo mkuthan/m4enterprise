@@ -9,6 +9,8 @@
 	<name>corporate-pom</name>
 	<description>Corporate POM</description>
 
+	<url>http://sites.intranet.acme.com/${project.artifactId}/</url>
+
 	<properties>
 		<!-- ================= -->
 		<!-- Global Properties -->
