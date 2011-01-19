@@ -14,6 +14,8 @@
 	<name>modular-war-webapp</name>
 	<description>Web Application module</description>
 
+    <url>http://sites.intranet.acme.com/modular-war-parent/${project.artifactId}/</url>
+    
 	<!-- Developers that have contributed to the module -->
 	<developers>
 		<developer>
@@ -22,8 +24,6 @@
 	</developers>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
-
 		<plugins>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
