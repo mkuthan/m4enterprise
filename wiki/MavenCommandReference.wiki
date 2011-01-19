@@ -1,4 +1,4 @@
-#summary Maven Command Reference.
+#summary Maven Command Reference
 
 = Introduction =
 
@@ -96,6 +96,12 @@ Generate site stage with valid links between project modules:
 
 {{{
 mvn site:stage
+}}}
+
+Generate site without reports (like Javadocs):
+
+{{{
+mvn site -DgenerateReports=false
 }}}
 
 = Code Coverage =
