@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -14,8 +15,8 @@
 	<name>modular-war-deploy</name>
 	<description>Web Application Deploy Module</description>
 
-    <url>http://sites.intranet.acme.com/modular-war-parent/${project.artifactId}/</url>
-    
+	<url>http://sites.intranet.acme.com/modular-war-parent/${project.artifactId}/</url>
+
 	<!-- Developers that have contributed to the module -->
 	<developers>
 		<developer>
@@ -29,55 +30,121 @@
 		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/modular-war-deploy/</url>
 	</scm>
 
-	<properties>
-		<deployableGroupId>${project.groupId}</deployableGroupId>
-		<deployableArtifactId>modular-war-webapp</deployableArtifactId>
-        
-        <wagonServerId />
-        <wagonUrl>file:///c:\_data</wagonUrl>
-	</properties>
+	<profiles>
+		<profile>
+			<id>deploy</id>
 
-	<build>
-		<finalName>${deployableArtifactId}</finalName>
+			<properties>
+				<deployableGroupId>${project.groupId}</deployableGroupId>
+				<deployableArtifactId>modular-war-webapp</deployableArtifactId>
+			</properties>
 
-		<plugins>
-			<!-- Customize artifact before deployment -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<overlays>
-						<overlay>
-							<groupId>${deployableGroupId}</groupId>
-							<artifactId>${deployableArtifactId}</artifactId>
-						</overlay>
-						<overlay>
-							<!-- empty groupId/artifactId detected as the current build -->
-						</overlay>
-					</overlays>
-				</configuration>
-			</plugin>
+			<build>
+				<finalName>${deployableArtifactId}</finalName>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>wagon-maven-plugin</artifactId>
-				<version>1.0-beta-3</version>
+				<plugins>
+					<!-- Customize artifact before deployment -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<overlays>
+								<overlay>
+									<groupId>${deployableGroupId}</groupId>
+									<artifactId>${deployableArtifactId}</artifactId>
+								</overlay>
+								<overlay>
+									<!-- empty groupId/artifactId detected as the current build -->
+								</overlay>
+							</overlays>
+						</configuration>
+					</plugin>
 
-				<configuration>
-					<serverId>${wagonServerId}</serverId>
-					<url>${wagonUrl}</url>
-					<fromFile>${project.build.directory}/${deployableArtifactId}.war</fromFile>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<version>1.0-beta-3</version>
 
-	<dependencies>
-		<dependency>
-			<groupId>${deployableGroupId}</groupId>
-			<artifactId>${deployableArtifactId}</artifactId>
-			<type>war</type>
-			<scope>runtime</scope>
-		</dependency>
-	</dependencies>
+						<executions>
+							<execution>
+								<id>upload-war</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>upload-single</goal>
+								</goals>
+							</execution>
+						</executions>
+
+						<configuration>
+							<serverId>${wagonServerId}</serverId>
+							<url>${wagonUrl}</url>
+							<fromFile>${project.build.directory}/${deployableArtifactId}.war</fromFile>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>integration-test</id>
+								<goals>
+									<goal>integration-test</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>verify</id>
+								<goals>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+
+			<dependencies>
+				<dependency>
+					<groupId>${deployableGroupId}</groupId>
+					<artifactId>${deployableArtifactId}</artifactId>
+					<type>war</type>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>env-dev</id>
+
+			<properties>
+				<wagonServerId />
+				<wagonUrl>file:///c:\_data\repository\env-dev</wagonUrl>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>env-qa</id>
+
+			<properties>
+				<!-- QA deployment is not fully automated -->
+				<maven.test.skip>true</maven.test.skip>
+
+				<wagonServerId />
+				<wagonUrl>file:///c:\_data\repository\env-qa</wagonUrl>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>env-prod</id>
+
+			<properties>
+				<!-- PROD deployment is not fully automated -->
+				<maven.test.skip>true</maven.test.skip>
+
+				<wagonServerId />
+				<wagonUrl>file:///c:\_data\repository\env-prod</wagonUrl>
+			</properties>
+		</profile>
+
+	</profiles>
 </project>
