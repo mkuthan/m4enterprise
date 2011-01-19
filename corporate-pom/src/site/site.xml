@@ -17,7 +17,7 @@
 	<body>
 		<links>
 			<item name="${organization.name}" href="${organization.url}" />
-			<item name="Corporate POM" href="http://m4enterprise.googlecode.com/svn/site/corporate-pom/" />
+			<item name="Corporate POM" href="http://sites.intranet.acme.com/corporate-pom/" />
 		</links>
 
 		<menu ref="reports" inherit="bottom" />
