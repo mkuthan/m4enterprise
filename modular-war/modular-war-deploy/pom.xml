@@ -37,6 +37,7 @@
 			<properties>
 				<deployableGroupId>${project.groupId}</deployableGroupId>
 				<deployableArtifactId>modular-war-webapp</deployableArtifactId>
+                <deployableVersion>${project.version}</deployableVersion>
 			</properties>
 
 			<build>
@@ -107,6 +108,7 @@
 				<dependency>
 					<groupId>${deployableGroupId}</groupId>
 					<artifactId>${deployableArtifactId}</artifactId>
+                    <version>${deployableVersion}</version>
 					<type>war</type>
 					<scope>runtime</scope>
 				</dependency>
