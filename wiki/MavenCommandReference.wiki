@@ -98,12 +98,6 @@ Generate site stage with valid links between project modules:
 mvn site:stage
 }}}
 
-Generate site without reports (like Javadocs):
-
-{{{
-mvn site -DgenerateReports=false
-}}}
-
 = Code Coverage =
 
 For the code coverage report commercial tool Clover is used. To generate report the Clover licence must be purchased. 
