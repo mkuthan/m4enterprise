@@ -1,14 +1,24 @@
 #summary Corporate POM
 
+<wiki:toc />
+
 = Introduction =
 
 Corporate POM centralizes projects configuration:
 
   * Plugin configurations
   * Distribution management settings
-  * Reporting configuration
+  * Reporting configurations
 
-= Plugin Versions Maintenance =
+Corporate POM defines `corporate-pom` profile. The profile is used to configure Corporate POM build itself, without influence to child POMs lifecycles. The profile has to be explicitly activated for all Corporate POM related tasks.
+
+= Plugin Versions Update =
+
+*Notice:*
+
+  Automatic updates requires that plugin metadata files in the repository are correct. If not, Maven Versions Plugin is not able to figure out the latest plugin versions, and commands below won't update these plugins.
+
+== Display Available Updates ==
 
 All plugin versions are defined in Corporate POM within properties. Updating plugin versions is a regular maintenance task for Corporate POM and can be automated. Call `versions:display-property-updates` goal to display a report of available plugin updates:
 
@@ -42,7 +52,11 @@ mvn -P corporate-pom versions:display-property-updates
 [INFO] ------------------------------------------------------------------------
 }}}
 
-In the example updates for surefire, surefire report and findbugs plugins are available. The properties can be updated by calling `versions:update-properties` goal:
+In the example updates for: _surefire_, _surefire report_ and _findbugs_ plugins are available. 
+
+== Perform Updates ==
+
+The properties can be updated by calling `versions:update-properties` goal:
 
 {{{
 mvn -P corporate-pom versions:update-properties
@@ -140,7 +154,7 @@ Downloaded: http://repository.intranet.acme.com/release-plugins-repository/org/a
 
 The plugin updates were successfully downloaded from corporate repository. All plugins are in the newest available versions now and Corporate POM is ready for next minor release.
 
-Automatic updates requires that plugin metadata files in the repository are correct. If not Maven Versions Plugin is not able to figure out the latest plugin versions.
+== Automatic Updates Exclusion ==
 
 If a plugin version should not be updated automatically, define `excludeProperties` property. To disable updates for Jetty plugin:
 
@@ -148,9 +162,11 @@ If a plugin version should not be updated automatically, define `excludeProperti
 <excludeProperties>com.acme.corporate-pom.jettyVersion</excludeProperties>
 }}} 
 
-= References To Corporate POM Maintenance =
+= References To Corporate POM Update =
 
-When new version of Corporate POM is released, references to the POM should be updated. Call `versions:update-parent` goal to update parent section in the project POM:
+When new version of Corporate POM is released, references to the POM should be updated. This manual task can be automated, you don't even need to know the latest Corporate POM version. 
+
+Call `versions:update-parent` goal to update parent section in the project POM:
 
 {{{
 mvn versions:update-parent
@@ -173,7 +189,7 @@ mvn versions:update-parent
 
 In the example, project parent was updated from version 1.21 to the latest released Corporate POM 1.22.
 
-To commit changes (Poor Man's SCM):
+To _commit_ changes (Poor Man's SCM) call `versions:commit` goal:
 
 {{{
 mvn versions:commit       
@@ -194,7 +210,7 @@ mvn versions:commit
 [INFO] ------------------------------------------------------------------------
 }}}
 
-To revert changes (Poor Man's SCM):
+To _revert_ changes (Poor Man's SCM) call `versions:revert` goal:
 
 {{{
 mvn versions:revert       
