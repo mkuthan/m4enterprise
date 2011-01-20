@@ -18,11 +18,11 @@
 
 		<!-- Set default encoding to UTF-8 (most plugins) -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 
 		<!-- Set compiler source and target versions (m-compiler-p) -->
 		<maven.compiler.target>1.6</maven.compiler.target>
-		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
 
 		<!-- Set compiler to be more verbose (m-compiler-p) -->
 		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
@@ -56,8 +56,6 @@
 		<!-- Speed-up site generation (m-project-info-reports-p) -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
-		<!-- Enforce project settings by default -->
-		<enforcer.skip>false</enforcer.skip>
 
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
@@ -66,6 +64,10 @@
 		<com.acme.corporate-pom.snapshotRepositoryUrl>file:///c:\_data\repository\snapshots</com.acme.corporate-pom.snapshotRepositoryUrl>
 		<com.acme.corporate-pom.siteUrl>file:///c:\_data\repository\sites</com.acme.corporate-pom.siteUrl>
 
+        <com.acme.corporate-pom.checkstyleUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</com.acme.corporate-pom.checkstyleUrl>
+        <com.acme.corporate-pom.pmdUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</com.acme.corporate-pom.pmdUrl>
+        
+        
 		<!-- Core plugins -->
 		<com.acme.corporate-pom.cleanVersion>2.4.1</com.acme.corporate-pom.cleanVersion>
 		<com.acme.corporate-pom.compilerVersion>2.3.2</com.acme.corporate-pom.compilerVersion>
@@ -207,7 +209,7 @@
 			</extension>
 		</extensions>
 
-		<!-- Ordered based on http://maven.apache.org/plugins/index.html -->
+		<!-- Plugin order based on http://maven.apache.org/plugins/index.html -->
 		<pluginManagement>
 			<plugins>
 				<!-- Core plugins -->
@@ -296,7 +298,7 @@
 					<version>${com.acme.corporate-pom.shadeVersion}</version>
 				</plugin>
 
-				<!-- Reporting (only used report plugins) -->
+				<!-- Reporting (only corporate allowed report plugins) -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
@@ -491,7 +493,7 @@
 					<version>${com.acme.corporate-pom.ideaVersion}</version>
 				</plugin>
 
-				<!-- Other -->
+				<!-- Others -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>buildnumber-maven-plugin</artifactId>
@@ -576,7 +578,7 @@
 				<version>${com.acme.corporate-pom.checkstyleVersion}</version>
 				<configuration>
 					<!-- Corporate specific rules -->
-					<configLocation>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</configLocation>
+					<configLocation>${com.acme.corporate-pom.checkstyleUrl}</configLocation>
 				</configuration>
 			</plugin>
 
@@ -633,7 +635,7 @@
 				<configuration>
 					<!-- Corporate specific rules -->
 					<rulesets>
-						<ruleset>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</ruleset>
+						<ruleset>${com.acme.corporate-pom.pmdUrl}</ruleset>
 					</rulesets>
 				</configuration>
 			</plugin>
@@ -795,6 +797,7 @@
 				<excludeProperties>com.acme.corporate-pom.jettyVersion</excludeProperties>
 			</properties>
 
+            <!-- Override site deployment location -->
 			<distributionManagement>
 				<site>
 					<id>acme-sites</id>
