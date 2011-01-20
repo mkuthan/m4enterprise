@@ -1,5 +1,7 @@
 #summary Maven Command Reference
 
+<wiki:toc />
+
 = Introduction =
 
 The document is Maven build commands reference. It is organized with sections, each section for one build aspect. For commands details please refer to the Maven or Maven plugins documentation.
@@ -30,10 +32,64 @@ Run integration test (it also builds a package):
 mvn verify
 }}}
 
-Install a package into local repository (it also executes integration tests):
+Install a package into local repository (it also executes integration tests).
 
 {{{
 mvn install
+}}}
+
+Goal `deploy` should not be called directly. Configure build plan on CI server to deploy artifact into corporate enterprise repository.
+
+= Project Run =
+
+Run Web application:
+
+{{{
+mvn jetty:run
+}}}
+
+= Project Site Generation =
+
+*Notice:*
+
+  For modular Maven projects all modules must be installed in the local repository before site generation. [http://jira.codehaus.org/browse/MJAVADOC-116 Bug] in the Maven Javadoc Plugin is a root cause of this restriction.
+
+Generate site without tests reports (tests are not executed):
+
+{{{
+mvn site:site
+}}}
+
+Generate site with unit tests reports:
+
+{{{
+mvn test site:site
+}}}
+
+Generate site with unit and integration tests reports:
+
+{{{
+mvn verify site:site
+}}}
+
+Generate site stage with valid links between project modules:
+
+{{{
+mvn site:stage
+}}}
+
+= Code Coverage (Clover) Reporting =
+
+Generate clover reports for unit tests:
+
+{{{
+mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup test clover2:aggregate clover2:clover
+}}}
+
+Generate clover reports for unit and integration tests:
+
+{{{
+mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup verify clover2:aggregate clover2:clover
 }}}
 
 = Dependency Management =
@@ -66,44 +122,4 @@ Analyze project dependencies:
 
 {{{
 mvn dependency:analyze
-}}}
-
-= Project Site =
-
-*Notice:*
-
-  For modular Maven projects all modules must be installed in the local repository before site generation. [http://jira.codehaus.org/browse/MJAVADOC-116 Bug] in the Maven Javadoc Plugin is a root cause of this restriction.
-
-Generate site without tests reports (tests are not executed):
-
-{{{
-mvn site:site
-}}}
-
-Generate site with unit tests reports:
-
-{{{
-mvn test site:site
-}}}
-
-Generate site with unit and integration tests reports:
-
-{{{
-mvn verify site:site
-}}}
-
-Generate site stage with valid links between project modules:
-
-{{{
-mvn site:stage
-}}}
-
-= Code Coverage =
-
-For the code coverage report commercial tool Clover is used. To generate report the Clover licence must be purchased. 
-
-Generate clover reports (customize Clover licence file location):
-
-{{{
-mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup verify clover2:aggregate clover2:clover
 }}}
