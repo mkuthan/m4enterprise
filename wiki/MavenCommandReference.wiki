@@ -78,7 +78,7 @@ Generate site stage with valid links between project modules:
 mvn site:stage
 }}}
 
-= Code Coverage (Clover) Reporting =
+= Code Coverage Reporting (Clover) =
 
 Generate clover reports for unit tests:
 
