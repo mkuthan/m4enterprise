@@ -103,4 +103,4 @@ This tricky configuration assumes that under `http://repository.intranet.acme.co
 
 All requests to any external repository not listed explicitly in the `mirrorOf` element, will be redirected to the empty repository. It effectively disables distribution management section in any POM (including root POM embedded in Maven distribution).
 
-For more details please refer to _Artifactory_ [http://wiki.jfrog.org/confluence/display/RTF/Configuring+Artifacts+Resolution documentation.].
+For more details please refer to _Artifactory_ [http://wiki.jfrog.org/confluence/display/RTF/Configuring+Artifacts+Resolution documentation].
