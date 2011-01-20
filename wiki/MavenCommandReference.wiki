@@ -20,7 +20,7 @@ Compile a project:
 mvn compile
 }}}
 
-Run unit tests:
+Run unit tests (it also compiles a project):
 
 {{{
 mvn test
