@@ -1,5 +1,7 @@
 #summary Enterprise Repository
 
+<wiki:toc />
+
 = Introduction =
 
 Enterprise Repository plays one of the most important role in corporate Maven infrastructure. It acts as:
@@ -22,7 +24,7 @@ Regardless of selected repository product Maven configuration is similar. The ma
 
 For complete Maven settings reference please look at: [http://maven.apache.org/settings.html]
 
-== Repository Profile ==
+== Repository Profiles ==
 
 Generally two profiles should be created, for releases and for snapshots. It is important to configure Maven to use only corporate repository. If new repositories are needed, configure them on corporate repository level (as a proxy) not in the Maven settings.
 
@@ -87,7 +89,7 @@ If the corporate policy is defined to avoid snapshots, only profile for release 
 
 == Mirror Configuration  ==
 
-To force Maven to use only corporate repository, `mirror` section must be defined:
+To force Maven to use only corporate repository, `mirror` section must be defined as follow:
 
 {{{
 <mirror>
@@ -99,4 +101,6 @@ To force Maven to use only corporate repository, `mirror` section must be define
 
 This tricky configuration assumes that under `http://repository.intranet.acme.com/empty/` fake repository is configured. It always returns 404 for any request.
 
-All requests to any external repository not listed explicitly in the `mirrorOf` element, will be redirected to the empty repository. It effectively disables distribution management section in any public POM (including root POM embedded in Maven distribution).
+All requests to any external repository not listed explicitly in the `mirrorOf` element, will be redirected to the empty repository. It effectively disables distribution management section in any POM (including root POM embedded in Maven distribution).
+
+For more details please refer to _Artifactory_ [http://wiki.jfrog.org/confluence/display/RTF/Configuring+Artifacts+Resolution documentation.].
