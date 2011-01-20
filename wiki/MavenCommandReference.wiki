@@ -14,6 +14,12 @@ Clean a project:
 mvn clean
 }}}
 
+Compile a project:
+
+{{{
+mvn compile
+}}}
+
 Run unit tests:
 
 {{{
@@ -25,6 +31,8 @@ Build a package (it also executes unit tests):
 {{{
 mvn package
 }}}
+
+Goal `integration-test` should not be used to run integration tests. Use `verify` goal instead. 
 
 Run integration test (it also builds a package):
 
@@ -38,7 +46,7 @@ Install a package into local repository (it also executes integration tests).
 mvn install
 }}}
 
-Goal `deploy` should not be called directly. Configure build plan on CI server to deploy artifact into corporate enterprise repository.
+Goal `deploy` should not be called directly. Configure build plan on continuous integration server to deploy artifact into corporate enterprise repository.
 
 = Project Run =
 
@@ -75,10 +83,16 @@ mvn verify site:site
 Generate site stage with valid links between project modules:
 
 {{{
-mvn site:stage
+mvn test site:stage
 }}}
 
-= Code Coverage Reporting (Clover) =
+or 
+
+{{{
+mvn verify site:stage
+}}}
+
+= Code Coverage Reporting =
 
 Generate clover reports for unit tests:
 
@@ -91,6 +105,8 @@ Generate clover reports for unit and integration tests:
 {{{
 mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup verify clover2:aggregate clover2:clover
 }}}
+
+Property `maven.clover.licenseLocation` can be specified in the _settings.xml_ file. Please refer to the [http://confluence.atlassian.com/display/CLOVER/Clover-for-Maven+2+User's+Guide documentation].
 
 = Dependency Management =
 
