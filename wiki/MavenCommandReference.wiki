@@ -50,7 +50,7 @@ Goal `deploy` should not be called directly. Configure build plan on continuous 
 
 = Project Run =
 
-Run Web application:
+Run web application:
 
 {{{
 mvn jetty:run
