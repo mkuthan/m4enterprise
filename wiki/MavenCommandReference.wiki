@@ -4,7 +4,7 @@
 
 = Introduction =
 
-The document is Maven build commands reference. It is organized with sections, each section for one build aspect. For commands details please refer to the Maven or Maven plugins documentation.
+The document is Maven build commands reference. It is organized with sections, each section for one build aspect. Commands listed below cover 90% typical use-cases. For commands details please refer to the Maven or Maven plugins documentation.
 
 = Project Build =
 
