@@ -785,6 +785,7 @@
 										</requireMavenVersion>
 										<requireReleaseDeps>
 											<message>Found snapshot dependencies, build is not reproducible! Use released dependencies.</message>
+											<failWhenParentIsSnapshot>false</failWhenParentIsSnapshot>
 										</requireReleaseDeps>
 										<requirePluginVersions>
 											<message>Found plugins without fixed release version defined, build is not reproducible! Fix all plugin
