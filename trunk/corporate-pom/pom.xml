@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>corporate-pom</artifactId>
-	<version>1.26-SNAPSHOT</version>
+	<version>1.26</version>
 	<packaging>pom</packaging>
 	<name>corporate-pom</name>
 	<description>Corporate POM</description>
@@ -200,9 +199,9 @@
 	</mailingLists>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/corporate-pom</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/corporate-pom</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/corporate-pom-1.26</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/corporate-pom-1.26</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/tags/corporate-pom-1.26</url>
 	</scm>
 
 	<build>
