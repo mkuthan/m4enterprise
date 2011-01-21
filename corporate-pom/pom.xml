@@ -60,13 +60,15 @@
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
+		<com.acme.corporate-pom.repositoryId>acme-repository</com.acme.corporate-pom.repositoryId>
 		<com.acme.corporate-pom.repositoryUrl>file:///c:\_data\repository\releases</com.acme.corporate-pom.repositoryUrl>
+		<com.acme.corporate-pom.snapshotRepositoryId>acme-repository</com.acme.corporate-pom.snapshotRepositoryId>
 		<com.acme.corporate-pom.snapshotRepositoryUrl>file:///c:\_data\repository\snapshots</com.acme.corporate-pom.snapshotRepositoryUrl>
+		<com.acme.corporate-pom.siteId>acme-site</com.acme.corporate-pom.siteId>
 		<com.acme.corporate-pom.siteUrl>file:///c:\_data\repository\sites</com.acme.corporate-pom.siteUrl>
 
         <com.acme.corporate-pom.checkstyleUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</com.acme.corporate-pom.checkstyleUrl>
         <com.acme.corporate-pom.pmdUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</com.acme.corporate-pom.pmdUrl>
-        
         
 		<!-- Core plugins -->
 		<com.acme.corporate-pom.cleanVersion>2.4.1</com.acme.corporate-pom.cleanVersion>
@@ -154,15 +156,15 @@
 
 	<distributionManagement>
 		<repository>
-			<id>acme-releases</id>
+			<id>${com.acme.corporate-pom.repositoryId}</id>
 			<url>${com.acme.corporate-pom.repositoryUrl}</url>
 		</repository>
 		<snapshotRepository>
-			<id>acme-snapshots</id>
+			<id>${com.acme.corporate-pom.snapshotRepositoryId}</id>
 			<url>${com.acme.corporate-pom.snapshotRepositoryUrl}</url>
 		</snapshotRepository>
 		<site>
-			<id>acme-sites</id>
+			<id>${com.acme.corporate-pom.siteId}</id>
 			<url>${com.acme.corporate-pom.siteUrl}</url>
 		</site>
 	</distributionManagement>
@@ -800,7 +802,7 @@
             <!-- Override site deployment location -->
 			<distributionManagement>
 				<site>
-					<id>acme-sites</id>
+					<id>${com.acme.corporate-pom.siteId}</id>
 					<url>${com.acme.corporate-pom.siteUrl}/${project.artifactId}</url>
 				</site>
 			</distributionManagement>
