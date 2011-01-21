@@ -61,11 +61,13 @@
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
 		<com.acme.corporate-pom.repositoryId>acme-repository</com.acme.corporate-pom.repositoryId>
-		<com.acme.corporate-pom.repositoryUrl>file:///c:\_data\repository\releases</com.acme.corporate-pom.repositoryUrl>
+		<com.acme.corporate-pom.repositoryUrl>dav:http://repository.intranet.acme.com/libs-releases</com.acme.corporate-pom.repositoryUrl>
+		
 		<com.acme.corporate-pom.snapshotRepositoryId>acme-repository</com.acme.corporate-pom.snapshotRepositoryId>
-		<com.acme.corporate-pom.snapshotRepositoryUrl>file:///c:\_data\repository\snapshots</com.acme.corporate-pom.snapshotRepositoryUrl>
+		<com.acme.corporate-pom.snapshotRepositoryUrl>dav:http://repository.intranet.acme.com/libs-snapshots</com.acme.corporate-pom.snapshotRepositoryUrl>
+		
 		<com.acme.corporate-pom.siteId>acme-site</com.acme.corporate-pom.siteId>
-		<com.acme.corporate-pom.siteUrl>file:///c:\_data\repository\sites</com.acme.corporate-pom.siteUrl>
+		<com.acme.corporate-pom.siteUrl>scp://sites.intranet.acme.com/var/www</com.acme.corporate-pom.siteUrl>
 
         <com.acme.corporate-pom.checkstyleUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</com.acme.corporate-pom.checkstyleUrl>
         <com.acme.corporate-pom.pmdUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</com.acme.corporate-pom.pmdUrl>
@@ -208,6 +210,11 @@
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-webdav</artifactId>
 				<version>1.0-beta-2</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>1.0-beta-7</version>
 			</extension>
 		</extensions>
 
