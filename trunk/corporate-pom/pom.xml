@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -9,7 +10,7 @@
 	<name>corporate-pom</name>
 	<description>Corporate POM</description>
 
-	<url>http://sites.intranet.acme.com/${project.artifactId}/</url>
+	<url>${com.acme.corporate-pom.siteUrl}/${project.artifactId}/</url>
 
 	<properties>
 		<!-- ================= -->
@@ -57,20 +58,27 @@
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
 		<!-- The identifier of the repository where the staging site will be deployed (m-site-p) -->
-		<stagingRepositoryId>${com.acme.corporate-pom.siteId}</stagingRepositoryId>
+		<stagingRepositoryId>${com.acme.corporate-pom.distributionManagement.siteId}</stagingRepositoryId>
 
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
-		<com.acme.corporate-pom.repositoryId>acme-repository</com.acme.corporate-pom.repositoryId>
-		<com.acme.corporate-pom.repositoryUrl>dav:http://repository.intranet.acme.com/libs-releases</com.acme.corporate-pom.repositoryUrl>
+		<com.acme.corporate-pom.distributionManagement.repositoryId>acme-repository</com.acme.corporate-pom.distributionManagement.repositoryId>
+		<com.acme.corporate-pom.distributionManagement.repositoryUrl>dav:http://repository.intranet.acme.com/libs-releases</com.acme.corporate-pom.distributionManagement.repositoryUrl>
 
-		<com.acme.corporate-pom.snapshotRepositoryId>acme-repository</com.acme.corporate-pom.snapshotRepositoryId>
-		<com.acme.corporate-pom.snapshotRepositoryUrl>dav:http://repository.intranet.acme.com/libs-snapshots</com.acme.corporate-pom.snapshotRepositoryUrl>
+		<com.acme.corporate-pom.distributionManagement.snapshotRepositoryId>acme-repository</com.acme.corporate-pom.distributionManagement.snapshotRepositoryId>
+		<com.acme.corporate-pom.distributionManagement.snapshotRepositoryUrl>dav:http://repository.intranet.acme.com/libs-snapshots</com.acme.corporate-pom.distributionManagement.snapshotRepositoryUrl>
 
-		<com.acme.corporate-pom.siteId>acme-site</com.acme.corporate-pom.siteId>
-		<com.acme.corporate-pom.siteUrl>scp://sites.intranet.acme.com/var/www</com.acme.corporate-pom.siteUrl>
+		<com.acme.corporate-pom.distributionManagement.siteId>acme-site</com.acme.corporate-pom.distributionManagement.siteId>
+		<com.acme.corporate-pom.distributionManagement.siteUrl>scp://sites.intranet.acme.com/var/www</com.acme.corporate-pom.distributionManagement.siteUrl>
 
+		<com.acme.corporate-pom.organizationName>ACME Corporation</com.acme.corporate-pom.organizationName>
+		<com.acme.corporate-pom.organizationUrl>http://www.acme.com</com.acme.corporate-pom.organizationUrl>
+		<com.acme.corporate-pom.siteUrl>http://sites.intranet.acme.com</com.acme.corporate-pom.siteUrl>
+		<com.acme.corporate-pom.bambooUrl>http://localhost:8085</com.acme.corporate-pom.bambooUrl>
+		<com.acme.corporate-pom.sonarUrl>http://localhost:9000</com.acme.corporate-pom.sonarUrl>
+
+		<!-- TODO: change to Sonar provided configuration -->
 		<com.acme.corporate-pom.checkstyleUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</com.acme.corporate-pom.checkstyleUrl>
 		<com.acme.corporate-pom.pmdUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</com.acme.corporate-pom.pmdUrl>
 
@@ -141,6 +149,7 @@
 		<com.acme.corporate-pom.liquibaseVersion>2.0.0</com.acme.corporate-pom.liquibaseVersion>
 		<com.acme.corporate-pom.processorVersion>2.0.0</com.acme.corporate-pom.processorVersion>
 		<com.acme.corporate-pom.seleniumVersion>1.0.1</com.acme.corporate-pom.seleniumVersion>
+		<com.acme.corporate-pom.sonarVersion>2.0-beta-2</com.acme.corporate-pom.sonarVersion>
 		<com.acme.corporate-pom.versionsVersion>1.2</com.acme.corporate-pom.versionsVersion>
 		<com.acme.corporate-pom.xmlVersion>1.0-beta-3</com.acme.corporate-pom.xmlVersion>
 	</properties>
@@ -154,22 +163,22 @@
 	</licenses>
 
 	<organization>
-		<name>ACME Corporation</name>
-		<url>http://www.acme.com/</url>
+		<name>${com.acme.corporate-pom.organizationName}</name>
+		<url>${com.acme.corporate-pom.organizationUrl}</url>
 	</organization>
 
 	<distributionManagement>
 		<repository>
-			<id>${com.acme.corporate-pom.repositoryId}</id>
-			<url>${com.acme.corporate-pom.repositoryUrl}</url>
+			<id>${com.acme.corporate-pom.distributionManagement.repositoryId}</id>
+			<url>${com.acme.corporate-pom.distributionManagement.repositoryUrl}</url>
 		</repository>
 		<snapshotRepository>
-			<id>${com.acme.corporate-pom.snapshotRepositoryId}</id>
-			<url>${com.acme.corporate-pom.snapshotRepositoryUrl}</url>
+			<id>${com.acme.corporate-pom.distributionManagement.snapshotRepositoryId}</id>
+			<url>${com.acme.corporate-pom.distributionManagement.snapshotRepositoryUrl}</url>
 		</snapshotRepository>
 		<site>
-			<id>${com.acme.corporate-pom.siteId}</id>
-			<url>${com.acme.corporate-pom.siteUrl}</url>
+			<id>${com.acme.corporate-pom.distributionManagement.siteId}</id>
+			<url>${com.acme.corporate-pom.distributionManagement.siteUrl}</url>
 		</site>
 	</distributionManagement>
 
@@ -187,7 +196,7 @@
 
 	<ciManagement>
 		<system>Bamboo</system>
-		<url>http://localhost:8085/</url>
+		<url>${com.acme.corporate-pom.bambooUrl}</url>
 	</ciManagement>
 
 	<mailingLists>
@@ -567,6 +576,12 @@
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${com.acme.corporate-pom.sonarVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
 					<version>${com.acme.corporate-pom.versionsVersion}</version>
 				</plugin>
@@ -808,8 +823,8 @@
 			<!-- Override site deployment location -->
 			<distributionManagement>
 				<site>
-					<id>${com.acme.corporate-pom.siteId}</id>
-					<url>${com.acme.corporate-pom.siteUrl}/${project.artifactId}</url>
+					<id>${com.acme.corporate-pom.distributionManagement.siteId}</id>
+					<url>${com.acme.corporate-pom.distributionManagement.siteUrl}/${project.artifactId}</url>
 				</site>
 			</distributionManagement>
 		</profile>
