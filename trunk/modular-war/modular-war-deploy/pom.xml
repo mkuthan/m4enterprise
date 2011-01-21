@@ -120,7 +120,7 @@
 
 			<properties>
 				<wagonServerId />
-				<wagonUrl>file:///c:\_data\repository\env-dev</wagonUrl>
+				<wagonUrl>file://${project.build.directory}/env-dev</wagonUrl>
 			</properties>
 		</profile>
 
@@ -132,7 +132,7 @@
 				<maven.test.skip>true</maven.test.skip>
 
 				<wagonServerId />
-				<wagonUrl>file:///c:\_data\repository\env-qa</wagonUrl>
+				<wagonUrl>file://${project.build.directory}/env-qa</wagonUrl>
 			</properties>
 		</profile>
 
@@ -144,7 +144,7 @@
 				<maven.test.skip>true</maven.test.skip>
 
 				<wagonServerId />
-				<wagonUrl>file:///c:\_data\repository\env-prod</wagonUrl>
+				<wagonUrl>file://${project.build.directory}/env-prod</wagonUrl>
 			</properties>
 		</profile>
 
