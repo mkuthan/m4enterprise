@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -8,8 +9,6 @@
 	<packaging>pom</packaging>
 	<name>corporate-pom</name>
 	<description>Corporate POM</description>
-
-	<url>${com.acme.corporate-pom.siteUrl}/${project.artifactId}/</url>
 
 	<properties>
 		<!-- ================= -->
@@ -99,7 +98,7 @@
 		<com.acme.corporate-pom.warVersion>2.1.1</com.acme.corporate-pom.warVersion>
 		<com.acme.corporate-pom.shadeVersion>1.4</com.acme.corporate-pom.shadeVersion>
 
-		<!-- Reporting (only used report plugins) -->
+		<!-- Reporting plugins (only used subset) -->
 		<com.acme.corporate-pom.checkstyleVersion>2.6</com.acme.corporate-pom.checkstyleVersion>
 		<com.acme.corporate-pom.cloverVersion>3.0.4</com.acme.corporate-pom.cloverVersion>
 		<com.acme.corporate-pom.findbugsVersion>2.3.1</com.acme.corporate-pom.findbugsVersion>
@@ -109,7 +108,7 @@
 		<com.acme.corporate-pom.projectInfoVersion>2.3.1</com.acme.corporate-pom.projectInfoVersion>
 		<com.acme.corporate-pom.surefireReportVersion>2.7.1</com.acme.corporate-pom.surefireReportVersion>
 
-		<!-- Tools -->
+		<!-- Tool plugins -->
 		<com.acme.corporate-pom.antVersion>2.3</com.acme.corporate-pom.antVersion>
 		<com.acme.corporate-pom.antrunVersion>1.6</com.acme.corporate-pom.antrunVersion>
 		<com.acme.corporate-pom.archetypeVersion>2.0</com.acme.corporate-pom.archetypeVersion>
@@ -133,11 +132,11 @@
 		<com.acme.corporate-pom.stageVersion>1.0-alpha-2</com.acme.corporate-pom.stageVersion>
 		<com.acme.corporate-pom.toolchainsVersion>1.0</com.acme.corporate-pom.toolchainsVersion>
 
-		<!-- IDEs -->
+		<!-- IDE plugins -->
 		<com.acme.corporate-pom.eclipseVersion>2.8</com.acme.corporate-pom.eclipseVersion>
 		<com.acme.corporate-pom.ideaVersion>2.2</com.acme.corporate-pom.ideaVersion>
 
-		<!-- Other -->
+		<!-- Other plugins -->
 		<com.acme.corporate-pom.buildnumberVersion>1.0-beta-4</com.acme.corporate-pom.buildnumberVersion>
 		<com.acme.corporate-pom.cargoVersion>1.0.3</com.acme.corporate-pom.cargoVersion>
 		<com.acme.corporate-pom.dbunitVersion>1.0-beta-3</com.acme.corporate-pom.dbunitVersion>
@@ -182,6 +181,8 @@
 	</distributionManagement>
 
 	<!-- Corporate POM environment and project settings, should be redefined in project's POMs -->
+	<url>${com.acme.corporate-pom.siteUrl}/${project.artifactId}/</url>
+
 	<developers>
 		<developer>
 			<email>developer1@acme.com</email>
@@ -218,12 +219,17 @@
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-2</version>
+				<artifactId>wagon-webdav-jackrabbit</artifactId>
+				<version>1.0-beta-7</version>
 			</extension>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-ssh</artifactId>
+				<version>1.0-beta-7</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
 				<version>1.0-beta-7</version>
 			</extension>
 		</extensions>
@@ -317,7 +323,7 @@
 					<version>${com.acme.corporate-pom.shadeVersion}</version>
 				</plugin>
 
-				<!-- Reporting (only corporate allowed report plugins) -->
+				<!-- Reporting plugins (only used subset) -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
@@ -499,7 +505,7 @@
 					<version>${com.acme.corporate-pom.toolchainsVersion}</version>
 				</plugin>
 
-				<!-- IDEs -->
+				<!-- IDE plugins -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-eclipse-plugin</artifactId>
@@ -512,7 +518,7 @@
 					<version>${com.acme.corporate-pom.ideaVersion}</version>
 				</plugin>
 
-				<!-- Others -->
+				<!-- Other plugins -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>buildnumber-maven-plugin</artifactId>
@@ -706,7 +712,6 @@
 				<!-- ================================= -->
 				<!-- Corporate POM specific properties -->
 				<!-- ================================= -->
-
 				<com.acme.corporate-pom.siteVersion>2.2</com.acme.corporate-pom.siteVersion>
 			</properties>
 
@@ -772,11 +777,11 @@
 
 		<!-- Corporate build constraints (activated by default) -->
 		<profile>
-			<id>enforce-corporate-rules</id>
+			<id>enforcer-rules</id>
 			<activation>
-				<!-- To disable profile, define property -DcorporateRulesDisabled=true -->
+				<!-- To disable profile, define property -Dcom.acme.corporate-pom.enforcerRulesDisabled=true -->
 				<property>
-					<name>!corporateRulesDisabled</name>
+					<name>!com.acme.corporate-pom.enforcerRulesDisabled</name>
 				</property>
 			</activation>
 
