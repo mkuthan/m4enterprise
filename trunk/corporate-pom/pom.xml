@@ -64,6 +64,8 @@
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
+
+		<!-- Corporate repository locations (do not overwrite) -->
 		<com.acme.maven.corporate-pom.distributionManagement.repositoryId>acme-repository</com.acme.maven.corporate-pom.distributionManagement.repositoryId>
 		<com.acme.maven.corporate-pom.distributionManagement.repositoryUrl>dav:http://repository.intranet.acme.com/libs-releases</com.acme.maven.corporate-pom.distributionManagement.repositoryUrl>
 
@@ -73,13 +75,13 @@
 		<com.acme.maven.corporate-pom.distributionManagement.siteId>acme-site</com.acme.maven.corporate-pom.distributionManagement.siteId>
 		<com.acme.maven.corporate-pom.distributionManagement.siteUrl>scp://sites.intranet.acme.com/var/www</com.acme.maven.corporate-pom.distributionManagement.siteUrl>
 
+		<!-- Corporate projects information (do not overwrite) -->
 		<com.acme.maven.corporate-pom.organizationName>ACME Corporation</com.acme.maven.corporate-pom.organizationName>
 		<com.acme.maven.corporate-pom.organizationUrl>http://www.acme.com</com.acme.maven.corporate-pom.organizationUrl>
 		<com.acme.maven.corporate-pom.siteUrl>http://sites.intranet.acme.com</com.acme.maven.corporate-pom.siteUrl>
 		<com.acme.maven.corporate-pom.bambooUrl>http://localhost:8085</com.acme.maven.corporate-pom.bambooUrl>
 		<com.acme.maven.corporate-pom.sonarUrl>http://localhost:9000</com.acme.maven.corporate-pom.sonarUrl>
 
-		<!-- TODO: change to Sonar provided configuration -->
 		<com.acme.maven.corporate-pom.checkstyleUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</com.acme.maven.corporate-pom.checkstyleUrl>
 		<com.acme.maven.corporate-pom.pmdUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</com.acme.maven.corporate-pom.pmdUrl>
 
@@ -191,6 +193,8 @@
 			<email>developer1@acme.com</email>
 		</developer>
 	</developers>
+
+	<!-- <contributors/> -->
 
 	<issueManagement>
 		<system>GoogleCode</system>
