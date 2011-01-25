@@ -229,18 +229,9 @@
 				<artifactId>wagon-webdav-jackrabbit</artifactId>
 				<version>1.0-beta-7</version>
 			</extension>
-			<!--
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ssh</artifactId>
-				<version>1.0-beta-7</version>
-			</extension>			
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ftp</artifactId>
-				<version>1.0-beta-7</version>
-			</extension>
-			-->
+			<!-- <extension> <groupId>org.apache.maven.wagon</groupId> <artifactId>wagon-ssh</artifactId> <version>1.0-beta-7</version> 
+				</extension> <extension> <groupId>org.apache.maven.wagon</groupId> <artifactId>wagon-ftp</artifactId> <version>1.0-beta-7</version> 
+				</extension> -->
 		</extensions>
 
 		<!-- Plugin order based on http://maven.apache.org/plugins/index.html -->
@@ -337,6 +328,10 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>${com.acme.maven.corporate-pom.checkstyleVersion}</version>
+					<configuration>
+						<!-- Corporate specific rules -->
+						<configLocation>${com.acme.maven.corporate-pom.checkstyleUrl}</configLocation>
+					</configuration>
 				</plugin>
 
 				<plugin>
@@ -349,6 +344,11 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>findbugs-maven-plugin</artifactId>
 					<version>${com.acme.maven.corporate-pom.findbugsVersion}</version>
+					<configuration>
+						<!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
+						<findbugsXmlOutput>true</findbugsXmlOutput>
+						<xmlOutput>true</xmlOutput>
+					</configuration>
 				</plugin>
 
 				<plugin>
@@ -367,6 +367,12 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-pmd-plugin</artifactId>
 					<version>${com.acme.maven.corporate-pom.pmdVersion}</version>
+					<configuration>
+						<!-- Corporate specific rules -->
+						<rulesets>
+							<ruleset>${com.acme.maven.corporate-pom.pmdUrl}</ruleset>
+						</rulesets>
+					</configuration>
 				</plugin>
 
 				<plugin>
@@ -612,6 +618,7 @@
 	<reporting>
 		<!-- List of plugins in alphabetical order -->
 		<plugins>
+			<!-- TODO: remove from reports -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -622,6 +629,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- TODO: remove from reports -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
@@ -668,6 +676,7 @@
 				<version>${com.acme.maven.corporate-pom.jxrVersion}</version>
 			</plugin>
 
+			<!-- TODO: remove from reports -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
