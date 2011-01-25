@@ -227,17 +227,17 @@
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-webdav-jackrabbit</artifactId>
-				<version>${com.acme.maven.corporate-pom.wagonVersion}</version>
+				<version>1.0-beta-7</version>
 			</extension>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-ssh</artifactId>
-				<version>${com.acme.maven.corporate-pom.wagonVersion}</version>
+				<version>1.0-beta-7</version>
 			</extension>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-ftp</artifactId>
-				<version>${com.acme.maven.corporate-pom.wagonVersion}</version>
+				<version>1.0-beta-7</version>
 			</extension>
 		</extensions>
 
@@ -720,7 +720,6 @@
 				<!-- Corporate POM specific properties -->
 				<!-- ================================= -->
 				<com.acme.maven.corporate-pom.siteVersion>2.2</com.acme.maven.corporate-pom.siteVersion>
-				<com.acme.maven.corporate-pom.wagonVersion>1.0-beta-6</com.acme.maven.corporate-pom.wagonVersion>
 			</properties>
 
 			<build>
@@ -756,7 +755,6 @@
 				<!-- Corporate POM specific properties -->
 				<!-- ================================= -->
 				<com.acme.maven.corporate-pom.siteVersion>3.0-beta-3</com.acme.maven.corporate-pom.siteVersion>
-				<com.acme.maven.corporate-pom.wagonVersion>1.0-beta-7</com.acme.maven.corporate-pom.wagonVersion>
 			</properties>
 
 			<build>
