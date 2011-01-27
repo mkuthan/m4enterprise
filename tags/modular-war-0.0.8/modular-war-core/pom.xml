@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.googlecode.m4enterprise</groupId>
+		<artifactId>modular-war-parent</artifactId>
+		<version>0.0.8</version>
+		<relativePath>../modular-war-parent</relativePath>
+	</parent>
+
+	<artifactId>modular-war-core</artifactId>
+	<name>modular-war-core</name>
+	<description>Project module with core functionality</description>
+
+	<url>${com.acme.corporate-pom.siteUrl}/modular-war-parent/${project.artifactId}/</url>
+
+	<!-- Developers that have contributed to the module -->
+	<developers>
+		<developer>
+			<email>developer1@acme.com</email>
+		</developer>
+		<developer>
+			<email>developer2@acme.com</email>
+		</developer>
+	</developers>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
