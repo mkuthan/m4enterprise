@@ -16,8 +16,8 @@
 
 	<body>
 		<links>
-			<item name="${com.acme.corporate-pom.organizationName}" href="${com.acme.corporate-pom.organizationUrl}" />
-			<item name="Corporate POM" href="${com.acme.corporate-pom.siteUrl}/corporate-pom" />
+			<item name="${com.acme.maven.corporate-pom.organizationName}" href="${com.acme.maven.corporate-pom.organizationUrl}" />
+			<item name="Corporate POM" href="${com.acme.maven.corporate-pom.siteUrl}/corporate-pom" />
 		</links>
 
 		<menu ref="reports" inherit="bottom" />
