@@ -20,7 +20,9 @@ svn checkout http://m4enterprise.googlecode.com/svn/ m4enterprise
 A    m4enterprise/wiki
 A    m4enterprise/wiki/ReleaseManagement.wiki
 A    m4enterprise/wiki/EnterpriseRepository.wiki
+
 (...)
+
 A    m4enterprise/tags/corporate-pom-1.29/src/site
 A    m4enterprise/tags/corporate-pom-1.29/src/site/site.xml
 A    m4enterprise/tags/corporate-pom-1.29/pom.xml
@@ -152,13 +154,15 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 If you want to generate project site call:
 
 {{{
-mvn verify site
+mvn site
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
 [INFO] Building simple-war-webapp 0.0.9-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
+
 (...)
+
 [INFO] Rendering site with org.apache.maven.skins:maven-default-skin:jar:1.0 skin.
 [INFO] Skipped "JavaDocs" report, file "apidocs/index.html" already exists for the English version.
 [INFO] Generating "Checkstyle" report    --- maven-checkstyle-plugin:2.6
@@ -202,12 +206,71 @@ Lets do something more complex now. To build modular WAR project call:
 {{{
 cd m4enterprise/trunk/modular-war
 mvn install
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] modular-war-parent
+[INFO] modular-war-core
+[INFO] modular-war-webapp
+[INFO] modular-war-deploy
+[INFO] modular-war
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building modular-war-parent 0.0.10-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+
+(...)
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] modular-war-parent ................................ SUCCESS [1.838s]
+[INFO] modular-war-core .................................. SUCCESS [2.832s]
+[INFO] modular-war-webapp ................................ SUCCESS [1.326s]
+[INFO] modular-war-deploy ................................ SUCCESS [0.980s]
+[INFO] modular-war ....................................... SUCCESS [0.058s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.577s
+[INFO] Finished at: Fri Jan 28 20:37:24 CET 2011
+[INFO] Final Memory: 33M/618M
+[INFO] ------------------------------------------------------------------------
 }}}
 
 If you want to generate modular project site call:
 
 {{{
-mvn verify site:stage
+mvn site:stage
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] modular-war-parent
+[INFO] modular-war-core
+[INFO] modular-war-webapp
+[INFO] modular-war-deploy
+[INFO] modular-war
+
+(...)
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] modular-war-parent ................................ SUCCESS [32.721s]
+[INFO] modular-war-core .................................. SUCCESS [13.261s]
+[INFO] modular-war-webapp ................................ SUCCESS [10.622s]
+[INFO] modular-war-deploy ................................ SUCCESS [2.040s]
+[INFO] modular-war ....................................... SUCCESS [4.475s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1:03.876s
+[INFO] Finished at: Fri Jan 28 20:41:31 CET 2011
+[INFO] Final Memory: 57M/582M
+[INFO] ------------------------------------------------------------------------
+
 }}}
 
 You can find generated site under `target\staging` directory.
@@ -240,12 +303,69 @@ Now you can deploy Simple WAR or Modular WAR projects with `deploy` goal:
 
 {{{
 mvn deploy
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building simple-war-webapp 0.0.9-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+
+
+(...)
+
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.5:deploy (default-deploy) @ simple-war-webapp ---
+Downloading: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml
+Downloaded: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml (1005 B at 122.7 KB/sec)
+Uploading: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2.war
+Uploaded: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2.war (6 KB at 579.8 KB/sec)
+Uploading: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2.pom
+Uploaded: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2.pom (3 KB at 839.2 KB/sec)
+Downloading: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml
+Downloaded: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml (304 B at 296.9 KB/sec)
+Uploading: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml
+Uploaded: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml (1005 B at 490.7 KB/sec)
+Uploading: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml
+Uploaded: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml (304 B at 296.9 KB/sec)
+Uploading: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2-site.xml
+Uploaded: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2-site.xml (384 B at 187.5 KB/sec)
+Uploading: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml
+Uploaded: file:////home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml (1005 B at 490.7 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.297s
+[INFO] Finished at: Fri Jan 28 20:43:13 CET 2011
+[INFO] Final Memory: 16M/618M
+[INFO] ------------------------------------------------------------------------
 }}}
 
 To deploy project sites call `site-deploy` goal:
 
 {{{
 mvn site-deploy
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building simple-war-webapp 0.0.9-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-site-plugin:3.0-beta-3:site (default-site) @ simple-war-webapp 
+
+(...)
+
+[INFO] 
+[INFO] --- maven-site-plugin:3.0-beta-3:deploy (default-deploy) @ simple-war-webapp ---
+file:////home/marcin/.m4enterprise/sites/simple-war-webapp - Session: Opened  
+file:////home/marcin/.m4enterprise/sites/simple-war-webapp - Session: Disconnecting  
+file:////home/marcin/.m4enterprise/sites/simple-war-webapp - Session: Disconnected
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 21.233s
+[INFO] Finished at: Fri Jan 28 20:44:37 CET 2011
+[INFO] Final Memory: 42M/642M
+[INFO] ------------------------------------------------------------------------
 }}}
 
 All artifacts are deployed under `$HOME\.m4enterprise\` directory.
