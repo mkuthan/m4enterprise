@@ -32,7 +32,7 @@
 
 <module name="Checker">
     <!-- M4E change default severity from error to warning-->
-    <property name="severity" default="warning"/>
+    <property name="severity" value="warning"/>
 
     <!--
         If you set the basedir property below, then all reported file
