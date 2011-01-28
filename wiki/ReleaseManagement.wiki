@@ -1,5 +1,7 @@
 #summary Release Management
 
+<wiki:toc />
+
 = Introduction =
 
 Please keep in your mind the following release management rules:
@@ -10,7 +12,7 @@ Please keep in your mind the following release management rules:
 
 Only released artifacts should be published (for future reference). This document shows how to manage release management with Maven and how to avoid tedious and error-prone manual tasks.
 
-= Versioning =
+= Semantic Versioning =
 
 Each release must be identified by unique version. It is important to keep versioning scheme consistent, e.g: `MAJOR.MINOR.FIX`, where:
 
@@ -18,20 +20,20 @@ Each release must be identified by unique version. It is important to keep versi
   * `MINOR` version must be incremented if new, backwards compatible functionality is introduced.
   * `PATCH` version must be incremented if only backwards compatible bug fixes are introduced.
 
-For further details please refer to [http://semver.org/ Semantic Versioning] article.
+For further details please refer to the [http://semver.org/ Semantic Versioning] article.
 
 = SCM Layout = 
 
-There are some standard, recommended ways to organize SCM (at least Subversion). For each project the following directories are created:
+There are some standard, recommended ways to organize SCM (at least for SVN). For each project the following directories are created:
 
 || *Directory* || *Description* || *Tag/Branch Name* || *Application Version* ||
 || trunk || Main line of current development || N/A || MAJOR.MINOR-SNAPSHOT ||
 || branches || Bug fixing development || MAJOR.MINOR.x || MAJOR.MINOR.PATH-SNAPSHOT ||
-|| tags || Markers for released revisions, never changed || MAJOR.MINOR or MAJOR.MINOR.PATCH || MAJOR.MINOR or MAJOR.MINOR.PATCH ||
+|| tags || Markers for released revisions, never changed when created || MAJOR.MINOR or MAJOR.MINOR.PATCH || MAJOR.MINOR or MAJOR.MINOR.PATCH ||
 
 = Release Management = 
 
-This section documents Maven support for release management, aligned to the SCM layout and MAJOR.MINOR.FIX` versioning scheme.
+This section documents Maven support for release management, aligned to the SCM layout and `MAJOR.MINOR.FIX` versioning scheme. If you want to know more about release management support in Maven, please refer to the great [http://www.sonatype.com/people/2011/01/using-the-maven-release-plugin-things-to-know/ article].  
 
 == Minor Release ==
 
@@ -39,7 +41,7 @@ The most common scenario, when new minor release from trunk is released.
 
 Pre-conditions:
 
-  * Release in the trunk directory.
+  * Release is performed in the trunk directory.
   * Application version in trunk: `1.0-SNAPSHOT`.
 
 Perform a minor release (accept all defaults during interactive Maven session):
@@ -53,9 +55,9 @@ Post-conditions:
   * Application version in trunk: `1.1-SNAPSHOT`.
   * New tag _application-name-1.0_.
   * Application version in tag _application-name-1.0_: `1.0`.
-  * Released artifacts (with sources and javadoc) are published into the repository.
-  * Latest released version set to `1.0` in maven metadata (in the repository).
-  * Project site is updated.
+  * Released artifacts (with sources and javadoc) are published into the _enterprise repository_.
+  * Latest released version is set to `1.0` in maven metadata (in the repository).
+  * Project site is deployed.
 
 == Major Release ==
 
@@ -63,7 +65,7 @@ The scenario when new major release from trunk is released.
 
 Pre-conditions:
 
-  * Release in the trunk directory.
+  * Release is performed in the trunk directory.
   * Application version in trunk: `1.1-SNAPSHOT`.
 
 Perform a major release (accept all defaults during interactive Maven session):
@@ -78,8 +80,8 @@ Post-conditions:
   * New tag _application-name-2.0_.
   * Application version in tag _application-name-2.0_: `2.0`.
   * Released artifacts (with sources and javadoc) are published into the repository.
-  * Latest released version set to `2.0` in maven metadata (in the repository).
-  * Project site is updated.
+  * Latest released version is set to `2.0` in maven metadata (in the repository).
+  * Project site is deployed.
 
 == Patch Release ==
 
@@ -87,7 +89,7 @@ The scenario when previously released version must be fixed.
 
 Pre-conditions (step 1):
 
-  * Create a branch from tag _application-name-1.0_.
+  * Branch is created from tag _application-name-1.0_.
   * Application version in tag _application-name-1.0_: `1.0`.
 
 Create branch (accept all defaults during interactive Maven session):
@@ -103,12 +105,12 @@ The command seems to be complex. And it is, due to the [http://jira.codehaus.org
 Post-conditions  (step 1):
 
   * Tag is unchanged.
-  * New branch _application-name-1.0.x_.
+  * New branch _application-name-1.0.x_ is created.
   * Application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`.
 
 Pre-conditions (Step 2):
 
-  * Release in branch directory _application-name-1.0.x_.
+  * Release is performed in branch directory _application-name-1.0.x_.
   * Application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`.
 
 Perform a patch release (accept all defaults during interactive Maven session):
@@ -120,7 +122,7 @@ mvn release:prepare release:perform -DperformRelease=true \
 
 Parameter `updateReleaseInfo` is set to false to avoid metadata modification in the repository by Maven Deploy Plugin. For "patch" releases we don't want to modify the latest release. E.g: if the latest release was 2.0 and the "patch" 1.0.1 is released, metadata in the repository should still define 2.0 as a latest release, not 1.0.1.
 
-Parameter `goals` specifies that only artifact (with sources and javadoc) will be deployed into repository. Project site will be unchanged (by default Maven Release Plugin calls deploy and deploy-site goals).
+Parameter `goals` specifies that only artifact (with sources and javadoc) will be deployed into repository. Project site won't be changed (by default Maven Release Plugin calls `deploy site-deploy` goals).
 
 Post-conditions (Step 2):
 
@@ -129,7 +131,7 @@ Post-conditions (Step 2):
   * Application version in tag _application-name-1.0.1_: `1.0.1`.
   * Released artifacts (with sources and javadoc) are published into the repository.
   * Latest released version is left unchanged in maven metadata (in the repository).
-  * Project site is left unchanged.
+  * Project site is unchanged.
 
 = Release Automation = 
 
@@ -150,14 +152,14 @@ Disadvantages:
 To configure release management by CI server, set build plan strategy as:
 
   * Manual build - for one-click, on demand release management.
-  * Scheduled build - for fully automatic release at the end of Scrum or Kanban iteration.
+  * Scheduled build - for fully automatic release at the end of Scrum or Kanban iteration (or when project metrics meet defined quality level).
 
 To disable interactive Maven session use the `--batch-mode` or `-B` command line option, e.g for minor release automation:
 
 {{{
-mvn --batch-mode release:prepare release:perform -DperformRelease=true
+mvn -B release:prepare release:perform -DperformRelease=true
 }}}
 
-Bamboo CI server on every build creates `build-number.txt` file. The file must be added to SCM ignore, Maven Release Plugin expects that local project copy is not modified.
+*Notice:*
 
-*TODO:* How to automate major and patch releases?
+  Bamboo CI server on every build creates `build-number.txt` file. The file must be added to SVN ignore, Maven Release Plugin expects that local project copy is not modified before releasing.
