@@ -31,6 +31,9 @@
 -->
 
 <module name="Checker">
+    <!-- M4E change default severity from error to warning-->
+    <property name="severity" default="warning"/>
+
     <!--
         If you set the basedir property below, then all reported file
         names will be relative to the specified directory. See
@@ -41,7 +44,10 @@
 
     <!-- Checks that a package-info.java file exists for each package.     -->
     <!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage -->
-    <module name="JavadocPackage"/>
+    <module name="JavadocPackage">
+        <!-- M4E -->
+        <property name="severity" value="info"/>
+    </module>
 
     <!-- Checks whether files end with a new line.                        -->
     <!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile -->
@@ -72,11 +78,23 @@
 
         <!-- Checks for Javadoc comments.                     -->
         <!-- See http://checkstyle.sf.net/config_javadoc.html -->
-        <module name="JavadocMethod"/>
-        <module name="JavadocType"/>
-        <module name="JavadocVariable"/>
-        <module name="JavadocStyle"/>
-
+        <module name="JavadocMethod">
+            <!-- M4E -->
+            <property name="severity" value="info"/>
+        </module>
+        <module name="JavadocType">
+            <!-- M4E -->
+            <property name="severity" value="info"/>
+        </module>
+        <module name="JavadocVariable">
+            <!-- M4E -->
+            <property name="severity" value="info"/>
+        </module>
+        <module name="JavadocStyle">
+            <!-- M4E -->
+            <property name="severity" value="info"/>
+        </module>
+        
 
         <!-- Checks for Naming Conventions.                  -->
         <!-- See http://checkstyle.sf.net/config_naming.html -->
@@ -174,8 +192,10 @@
 
         <!-- Checks for class design                         -->
         <!-- See http://checkstyle.sf.net/config_design.html -->
-        <!-- M4E disable DesignForExtension -->
-        <!-- module name="DesignForExtension"/-->
+        <module name="DesignForExtension">
+            <!-- M4E -->
+            <property name="severity" value="info"/>
+        </module>
         <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>
         <module name="InterfaceIsType"/>
