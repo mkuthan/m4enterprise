@@ -31,7 +31,7 @@
 -->
 
 <module name="Checker">
-    <!-- M4E change default severity from error to warning-->
+    <!-- M4E: change default severity from error to warning-->
     <property name="severity" value="warning"/>
 
     <!--
@@ -196,10 +196,22 @@
             <!-- M4E -->
             <property name="severity" value="info"/>
         </module>
-        <module name="FinalClass"/>
-        <module name="HideUtilityClassConstructor"/>
-        <module name="InterfaceIsType"/>
-        <module name="VisibilityModifier"/>
+        <module name="FinalClass">
+            <!-- M4E -->
+            <property name="severity" value="info"/>
+        </module>
+        <module name="HideUtilityClassConstructor">
+            <!-- M4E -->
+            <property name="severity" value="info"/>
+        </module>
+        <module name="InterfaceIsType">
+            <!-- M4E -->
+            <property name="severity" value="info"/>
+        </module>
+        <module name="VisibilityModifier">
+            <!-- M4E -->
+            <property name="severity" value="info"/>
+        </module>
 
 
         <!-- Miscellaneous other checks.                   -->
