@@ -197,7 +197,7 @@ mvn site
 [INFO] ------------------------------------------------------------------------
 }}}
 
-You can find generated site under `target\site` directory. Look at project information and reports. Quality of generated project site is extraordinary. 
+You can find generated site under `target\site` directory. Look at project information and reports. Quality of generated project site is extraordinary. And the quality comes from Corporate POM, keeps `pom.xml` in _Simple WAR_ short, end easy to understand.
 
 = Modular WAR Project =
 
