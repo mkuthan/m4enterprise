@@ -1,3 +1,4 @@
 #summary Table of Contents
 
   * [GettingStarted Getting Started]
+  * [MavenCommandReference Maven Command Reference]
