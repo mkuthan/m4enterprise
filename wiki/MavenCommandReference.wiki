@@ -4,7 +4,7 @@
 
 = Introduction =
 
-The document is Maven build commands reference. It is organized with sections, each section for one build aspect. Commands listed below cover 90% typical use-cases. For commands details please refer to the Maven or Maven plugins documentation.
+The document is Maven build commands reference. It is organized with sections, each section for one build aspect. Commands listed below cover 90% typical use-cases. Few commands are supported only by Maven 3.
 
 = Project Build =
 
@@ -106,7 +106,7 @@ Generate clover reports for unit and integration tests:
 mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup verify clover2:aggregate clover2:clover
 }}}
 
-Property `maven.clover.licenseLocation` can be specified in the _settings.xml_ file. Please refer to the [http://confluence.atlassian.com/display/CLOVER/Clover-for-Maven+2+User's+Guide documentation].
+Property `maven.clover.licenseLocation` can be specified in the _settings.xml_ file. Please refer to the Clover [http://confluence.atlassian.com/display/CLOVER/Clover-for-Maven+2+User's+Guide documentation].
 
 = Dependency Management =
 
@@ -138,4 +138,36 @@ Analyze project dependencies:
 
 {{{
 mvn dependency:analyze
+}}}
+
+= Getting Help =
+
+Display effective Maven settings:
+
+{{{
+mvn help:effective-settings
+}}}
+
+Display effective POM:
+
+{{{
+mvn help:effective-pom
+}}}
+
+Display all profiles (from `settings.xml` and POMs hierarchy):
+
+{{{
+mvn help:active-profiles
+}}}
+
+Display plugin goals (for `m-compiler-p` in the example below):
+
+{{{
+mvn compiler:help
+}}}
+
+Display plugin's goal description (for goal `compile` in `m-compiler-p` in the example below):
+
+{{{
+mvn compiler:help -Dgoal=compile -Ddetail
 }}}
