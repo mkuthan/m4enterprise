@@ -106,7 +106,7 @@ Generate clover reports for unit and integration tests:
 mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup verify clover2:aggregate clover2:clover
 }}}
 
-Property `maven.clover.licenseLocation` can be specified in the _settings.xml_ file. Please refer to the Clover [http://confluence.atlassian.com/display/CLOVER/Clover-for-Maven+2+User's+Guide documentation].
+Property `maven.clover.licenseLocation` can be specified in the `settings.xml` file. Please refer to the Clover [http://confluence.atlassian.com/display/CLOVER/Clover-for-Maven+2+User's+Guide documentation].
 
 = Dependency Management =
 
