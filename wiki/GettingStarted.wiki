@@ -93,16 +93,16 @@ The profile must be also activated:
 </activeProfiles>
 }}}
 
-Now you can deploy Simple WAR or Modular WAR projects with command:
+Now you can deploy Simple WAR or Modular WAR projects with `deploy` goal:
 
 {{{
 mvn deploy
 }}}
 
-To deploy project sites:
+To deploy project sites call `site-deploy` goal:
 
 {{{
 mvn site-deploy
 }}}
 
-The artifacts are deployed under `$HOME\.m4enterprise\` directory.
+All artifacts are deployed under `$HOME\.m4enterprise\` directory.
