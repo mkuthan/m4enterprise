@@ -32,13 +32,13 @@ Revision 1086.
 
 = Install Corporate POM = 
 
-There is no public repository for _m4enterprise_ project. Before any further step latest released Corporate POM must be installed in the local repository. Change the current directory to the latest Corporate POM tag (version 1.31 in the example):
+There is no public repository for _m4enterprise_ project. Before any further step, latest released Corporate POM must be installed in the local repository. Change the current directory to the latest Corporate POM tag (version 1.31 in the example below):
 
 {{{
 cd m4enterprise/tags/corporate-pom-1.31/
 }}}
 
-Finally install Corporate POM to the local repository:
+Finally, install Corporate POM to the local repository:
 
 {{{
 mvn -P corporate-pom install
@@ -67,7 +67,7 @@ mvn -P corporate-pom install
 
 = Simple WAR Project =
 
-Now you should be able to build Simple WAR project:
+Now you should be able to build and install Simple WAR project:
 
 {{{
 cd m4enterprise/trunk/simple-war
@@ -151,7 +151,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 }}}
 
-If you want to generate project site call:
+If the project was built without errors, generate project site:
 
 {{{
 mvn site
@@ -197,11 +197,11 @@ mvn site
 [INFO] ------------------------------------------------------------------------
 }}}
 
-You can find generated site under `target\site` directory.
+You can find generated site under `target\site` directory. Look at project information and reports. Quality of generated project site is extraordinary. 
 
 = Modular WAR Project =
 
-Lets do something more complex now. To build modular WAR project call:
+Lets do something more complex and build and install modular WAR project:
 
 {{{
 cd m4enterprise/trunk/modular-war
@@ -239,7 +239,7 @@ mvn install
 [INFO] ------------------------------------------------------------------------
 }}}
 
-If you want to generate modular project site call:
+If the project was built without errors, generate project site:
 
 {{{
 mvn site:stage
@@ -273,11 +273,11 @@ mvn site:stage
 
 }}}
 
-You can find generated site under `target\staging` directory.
+You can find generated site under `target\staging` directory. Please notice that project reports on a top level are aggregated. If you follow the links in the project menu you will get project sites for each submodule. Now the reports reflect only the current submodule! 
 
 = Artifacts and Sites Deployment = 
 
-Before you try artifacts and sites deployment, the deployment location must be configured. The easiest way to do that is to configure local directory as _enterprise_ repository. Add the following profile to `$HOME/.m2/settings.xml` file:
+Before you try artifacts and sites deployment, the deployment location must be configured. In corporate world it should be an _enterprise repository_, but for testing purposes local directory can be used as well. The easiest way to do that is to add the following profile to `$HOME/.m2/settings.xml` file:
 
 {{{
 <profile>
@@ -291,7 +291,7 @@ Before you try artifacts and sites deployment, the deployment location must be c
 </profile>
 }}}
 
-The profile must be also activated:
+The profile must be also activated (also in `settings.xml`):
 
 {{{
 <activeProfiles>
@@ -299,7 +299,7 @@ The profile must be also activated:
 </activeProfiles>
 }}}
 
-Now you can deploy Simple WAR or Modular WAR projects with `deploy` goal:
+Now you can deploy Simple WAR or Modular WAR projects calling `deploy` goal:
 
 {{{
 mvn deploy
@@ -369,3 +369,7 @@ file:////home/marcin/.m4enterprise/sites/simple-war-webapp - Session: Disconnect
 }}}
 
 All artifacts are deployed under `$HOME\.m4enterprise\` directory.
+
+= Summary =
+
+After a few minutes you ended up with working web application projects. You could say: OK, I would use one of many available Maven archetype to create project template. That's true, but with _Maven For Enterprise_ you have created projects configured to use centralized enterprise build configuration - Your Corporate POM.
