@@ -291,7 +291,7 @@ Before you try artifacts and sites deployment, the deployment location must be c
 </profile>
 }}}
 
-The profile must be also activated (also in `settings.xml`):
+The profile must be also activated:
 
 {{{
 <activeProfiles>
