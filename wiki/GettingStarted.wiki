@@ -21,7 +21,7 @@ svn checkout http://m4enterprise.googlecode.com/svn/ m4enterprise
 
 = Install Corporate POM = 
 
-There is no public repository for _M4Enterprise_ project. Before any further step latest released Corporate POM must be installed in the local repository. Change the current directory to the latest Corporate POM tag (version 1.31 in the example):
+There is no public repository for _m4enterprise_ project. Before any further step latest released Corporate POM must be installed in the local repository. Change the current directory to the latest Corporate POM tag (version 1.31 in the example):
 
 {{{
 cd m4enterprise/tags/corporate-pom-1.31/
