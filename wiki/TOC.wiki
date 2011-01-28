@@ -2,3 +2,5 @@
 
   * [GettingStarted Getting Started]
   * [MavenCommandReference Maven Command Reference]
+  * Continuous Delivery
+    * [ReleaseManagement Release Management]
