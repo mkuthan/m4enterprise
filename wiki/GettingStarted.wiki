@@ -21,7 +21,7 @@ svn checkout http://m4enterprise.googlecode.com/svn/ m4enterprise
 
 = Install Corporate POM = 
 
-There is no public project repository. Before any further step latest released Corporate POM must be installed locally. Change the current directory to the latest Corporate POM tag (version 1.31 in the example):
+There is no public repository for _M4Enterprise_ project. Before any further step latest released Corporate POM must be installed in the local repository. Change the current directory to the latest Corporate POM tag (version 1.31 in the example):
 
 {{{
 cd m4enterprise/tags/corporate-pom-1.31/
@@ -32,6 +32,8 @@ Finally install Corporate POM to the local repository:
 {{{
 mvn -P corporate-pom install
 }}}
+
+Corporate POM should be installed in the local repository. Default repository location is `$HOME\.m2\repository`.
 
 = Simple WAR Project =
 
@@ -50,10 +52,9 @@ mvn verify site
 
 You can find generated site under `target\site` directory.
 
-
 = Modular WAR Project =
 
-Next lets do something more complex. To build modular WAR project call:
+Lets do something more complex now. To build modular WAR project call:
 
 {{{
 cd m4enterprise/trunk/modular-war
@@ -91,3 +92,17 @@ The profile must be also activated:
   <activeProfile>m4enterprise</activeProfile>
 </activeProfiles>
 }}}
+
+Now you can deploy Simple WAR or Modular WAR projects with command:
+
+{{{
+mvn deploy
+}}}
+
+To deploy project sites:
+
+{{{
+mvn site-deploy
+}}}
+
+The artifacts are deployed under `$HOME\.m4enterprise\` directory.
