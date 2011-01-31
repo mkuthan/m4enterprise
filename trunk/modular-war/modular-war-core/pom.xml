@@ -13,7 +13,7 @@
 	<name>modular-war-core</name>
 	<description>Project module with core functionality</description>
 
-	<url>${com.acme.corporate-pom.siteUrl}/modular-war-parent/${project.artifactId}/</url>
+	<url>${com.acme.maven.corporate-pom.siteUrl}/modular-war-parent/${project.artifactId}/</url>
 
 	<!-- Developers that have contributed to the module -->
 	<developers>

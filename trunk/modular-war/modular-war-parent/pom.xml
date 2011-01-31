@@ -15,7 +15,7 @@
 	<name>modular-war-parent</name>
 	<description>Parent POM for the modular WAR project</description>
 
-	<url>${com.acme.corporate-pom.siteUrl}/${project.artifactId}/</url>
+	<url>${com.acme.maven.corporate-pom.siteUrl}/${project.artifactId}/</url>
 
 	<properties>
 		<junit.version>4.8.2</junit.version>
