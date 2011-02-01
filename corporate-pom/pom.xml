@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -153,6 +154,7 @@
 		<com.acme.maven.corporate-pom.seleniumVersion>1.0.1</com.acme.maven.corporate-pom.seleniumVersion>
 		<com.acme.maven.corporate-pom.sonarVersion>2.0-beta-2</com.acme.maven.corporate-pom.sonarVersion>
 		<com.acme.maven.corporate-pom.versionsVersion>1.2</com.acme.maven.corporate-pom.versionsVersion>
+		<com.acme.maven.corporate-pom.wagonVersion>1.0-beta-3</com.acme.maven.corporate-pom.wagonVersion>
 		<com.acme.maven.corporate-pom.xmlVersion>1.0-beta-3</com.acme.maven.corporate-pom.xmlVersion>
 	</properties>
 
@@ -600,6 +602,12 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
 					<version>${com.acme.maven.corporate-pom.versionsVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>wagon-maven-plugin</artifactId>
+					<version>${com.acme.maven.corporate-pom.wagonVersion}</version>
 				</plugin>
 
 				<plugin>

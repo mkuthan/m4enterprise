@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -36,7 +37,7 @@
 			<properties>
 				<deployableGroupId>${project.groupId}</deployableGroupId>
 				<deployableArtifactId>modular-war-webapp</deployableArtifactId>
-                <deployableVersion>${project.version}</deployableVersion>
+				<deployableVersion>${project.version}</deployableVersion>
 			</properties>
 
 			<build>
@@ -63,7 +64,6 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>wagon-maven-plugin</artifactId>
-						<version>1.0-beta-3</version>
 
 						<executions>
 							<execution>
@@ -107,7 +107,7 @@
 				<dependency>
 					<groupId>${deployableGroupId}</groupId>
 					<artifactId>${deployableArtifactId}</artifactId>
-                    <version>${deployableVersion}</version>
+					<version>${deployableVersion}</version>
 					<type>war</type>
 					<scope>runtime</scope>
 				</dependency>
