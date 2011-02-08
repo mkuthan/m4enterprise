@@ -15,7 +15,7 @@
 	<name>modular-war-deploy</name>
 	<description>Web Application Deploy Module</description>
 
-	<url>${com.acme.maven.corporate-pom.siteUrl}/modular-war-parent/${project.artifactId}/</url>
+	<url>${acme-corporate-pom.siteUrl}/modular-war-parent/${project.artifactId}/</url>
 
 	<!-- Developers that have contributed to the module -->
 	<developers>
