@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>modular-war-parent</artifactId>
-		<version>0.0.10</version>
+		<version>0.0.11-SNAPSHOT</version>
 		<relativePath>../modular-war-parent</relativePath>
 	</parent>
 
@@ -24,9 +24,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.10/modular-war-deploy</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.10/modular-war-deploy</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/tags/modular-war-0.0.10/modular-war-deploy</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/modular-war-deploy/</url>
 	</scm>
 
 	<profiles>
