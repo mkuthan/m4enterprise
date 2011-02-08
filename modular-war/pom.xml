@@ -15,7 +15,7 @@
 	<name>modular-war</name>
 	<description>Aggregate POM for the modular WAR project</description>
 
-	<url>${com.acme.maven.corporate-pom.siteUrl}/${project.artifactId}/</url>
+	<url>${acme-corporate-pom.siteUrl}/${project.artifactId}/</url>
 
 	<properties>
 		<!-- Enable report aggregation -->
