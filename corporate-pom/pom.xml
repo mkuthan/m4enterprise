@@ -60,6 +60,9 @@
 		<!-- A comma separated list of locales (m-site-p) -->
 		<locales>en</locales>
 
+		<!-- Exclude build-number.txt file created by Bamboo in the project directory (m-release-p) -->
+		<checkModificationExcludeList>build-number.txt</checkModificationExcludeList>
+
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
