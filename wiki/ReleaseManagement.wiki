@@ -100,7 +100,7 @@ mvn release:branch  -DbranchName=application-name-1.0.x -DreleaseVersion=1.0.1-S
   -DsuppressCommitBeforeBranch=true -DremoteTagging=false
 }}}
 
-The command seems to be complex. And it is, due to the [http://jira.codehaus.org/browse/MRELEASE-335 bug] in the Maven Release Plugin. By default `release:brach` goal commits intermediate results into the tag but created tags must not be modified (even if you can).
+The command seems to be complex. And it is, due to the [http://jira.codehaus.org/browse/MRELEASE-335 bug] in the Maven Release Plugin. By default `release:branch` goal commits intermediate results into the tag but created tags must not be modified (even if you can).
 
 Post-conditions  (step 1):
 
@@ -159,7 +159,3 @@ To disable interactive Maven session use the `--batch-mode` or `-B` command line
 {{{
 mvn -B release:prepare release:perform -DperformRelease=true
 }}}
-
-*Notice:*
-
-  Bamboo CI server on every build creates `build-number.txt` file. The file must be added to SVN ignore, Maven Release Plugin expects that local project copy is not modified before releasing.
