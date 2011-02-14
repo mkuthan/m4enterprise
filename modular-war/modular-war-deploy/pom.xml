@@ -52,7 +52,7 @@
 							<overlays>
 								<overlay>
 									<groupId>${project.groupId}</groupId>
-									<artifactId>${deployableArtifactId}</artifactId>
+									<artifactId>modular-war-webapp</artifactId>
 								</overlay>
 								<overlay>
 									<!-- empty groupId/artifactId detected as the current build -->
