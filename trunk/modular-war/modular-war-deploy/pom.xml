@@ -34,14 +34,14 @@
 		<profile>
 			<id>deploy</id>
 
-			<properties>
-				<deployableGroupId>${project.groupId}</deployableGroupId>
-				<deployableArtifactId>modular-war-webapp</deployableArtifactId>
-				<deployableVersion>${project.version}</deployableVersion>
-			</properties>
+			<activation>
+				<property>
+					<name>environment</name>
+				</property>
+			</activation>
 
 			<build>
-				<finalName>${deployableArtifactId}</finalName>
+				<finalName>modular-war</finalName>
 
 				<plugins>
 					<!-- Customize artifact before deployment -->
@@ -51,7 +51,7 @@
 						<configuration>
 							<overlays>
 								<overlay>
-									<groupId>${deployableGroupId}</groupId>
+									<groupId>${project.groupId}</groupId>
 									<artifactId>${deployableArtifactId}</artifactId>
 								</overlay>
 								<overlay>
@@ -61,6 +61,7 @@
 						</configuration>
 					</plugin>
 
+					<!-- Deploy application -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>wagon-maven-plugin</artifactId>
@@ -78,10 +79,11 @@
 						<configuration>
 							<serverId>${wagonServerId}</serverId>
 							<url>${wagonUrl}</url>
-							<fromFile>${project.build.directory}/${deployableArtifactId}.war</fromFile>
+							<fromFile>${project.build.directory}/${project.build.finalName}.war</fromFile>
 						</configuration>
 					</plugin>
 
+					<!-- Execute smoke tests -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
@@ -91,9 +93,9 @@
 
 			<dependencies>
 				<dependency>
-					<groupId>${deployableGroupId}</groupId>
-					<artifactId>${deployableArtifactId}</artifactId>
-					<version>${deployableVersion}</version>
+					<groupId>${project.groupId}</groupId>
+					<artifactId>modular-war-webapp</artifactId>
+					<version>${project.version}</version>
 					<type>war</type>
 					<scope>runtime</scope>
 				</dependency>
@@ -103,6 +105,13 @@
 		<profile>
 			<id>env-dev</id>
 
+			<activation>
+				<property>
+					<name>environment</name>
+					<value>dev</value>
+				</property>
+			</activation>
+
 			<properties>
 				<wagonServerId />
 				<wagonUrl>file://${project.build.directory}/env-dev</wagonUrl>
@@ -111,6 +120,13 @@
 
 		<profile>
 			<id>env-qa</id>
+
+			<activation>
+				<property>
+					<name>environment</name>
+					<value>qa</value>
+				</property>
+			</activation>
 
 			<properties>
 				<!-- QA deployment is not fully automated -->
@@ -123,6 +139,13 @@
 
 		<profile>
 			<id>env-prod</id>
+
+			<activation>
+				<property>
+					<name>environment</name>
+					<value>prod</value>
+				</property>
+			</activation>
 
 			<properties>
 				<!-- PROD deployment is not fully automated -->
