@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -35,4 +36,13 @@
 		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/</developerConnection>
 		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/</url>
 	</scm>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.atlassian.maven.plugins</groupId>
+				<artifactId>maven-clover2-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
