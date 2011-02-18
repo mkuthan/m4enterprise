@@ -159,3 +159,9 @@ To disable interactive Maven session use the `--batch-mode` or `-B` command line
 {{{
 mvn -B release:prepare release:perform -DperformRelease=true
 }}}
+
+TODO (for parent and aggregate):
+
+{{{
+mvn versions:set -DnewVersion=1.0-SNAPSHOT
+}}}
