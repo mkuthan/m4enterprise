@@ -30,6 +30,11 @@
 		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/modular-war-deploy/</url>
 	</scm>
 
+	<properties>
+		<!-- Overlay has no web.xml file (m-war-c) -->
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+	</properties>
+
 	<profiles>
 		<profile>
 			<id>deploy</id>
@@ -39,6 +44,17 @@
 					<name>environment</name>
 				</property>
 			</activation>
+
+			<properties>
+				<modular-war-deploy.configDir>${basedir}/src/main/config</modular-war-deploy.configDir>
+				<modular-war-deploy.warFile>${project.build.directory}/${project.build.finalName}.war</modular-war-deploy.warFile>
+
+				<modular-war-deploy.host>localhost</modular-war-deploy.host>
+				<modular-war-deploy.dir>/opt/jboss-4.2.3.GA/server/default/deploy</modular-war-deploy.dir>
+				<modular-war-deploy.stopCommand>/etc/init.d/jboss stop</modular-war-deploy.stopCommand>
+				<modular-war-deploy.startCommand>/etc/init.d/jboss start</modular-war-deploy.startCommand>
+				<modular-war-deploy.url>${modular-war-deploy.username}:${modular-war-deploy.password}@${modular-war-deploy.host}:${modular-war-deploy.dir}</modular-war-deploy.url>
+			</properties>
 
 			<build>
 				<finalName>modular-war</finalName>
@@ -61,32 +77,62 @@
 						</configuration>
 					</plugin>
 
-					<!-- Deploy application -->
+					<!-- Deploys WAR file (deployment tasks are configured in the environment specific profile) -->
 					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>wagon-maven-plugin</artifactId>
-
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>upload-war</id>
+								<id>deploy</id>
 								<phase>pre-integration-test</phase>
 								<goals>
-									<goal>upload-single</goal>
+									<goal>run</goal>
 								</goals>
 							</execution>
 						</executions>
-
-						<configuration>
-							<serverId>${wagonServerId}</serverId>
-							<url>${wagonUrl}</url>
-							<fromFile>${project.build.directory}/${project.build.finalName}.war</fromFile>
-						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.apache.ant</groupId>
+								<artifactId>ant-jsch</artifactId>
+								<version>1.8.2</version>
+							</dependency>
+							<dependency>
+								<groupId>com.jcraft</groupId>
+								<artifactId>jsch</artifactId>
+								<version>0.1.42</version>
+							</dependency>
+						</dependencies>
 					</plugin>
 
 					<!-- Execute smoke tests -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
+					</plugin>
+
+					<!-- Check that credentials are defined -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>enforce-credentials</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireProperty>
+											<property>modular-war-deploy.username</property>
+										</requireProperty>
+										<requireProperty>
+											<property>modular-war-deploy.password</property>
+										</requireProperty>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
@@ -113,9 +159,38 @@
 			</activation>
 
 			<properties>
-				<wagonServerId />
-				<wagonUrl>file://${project.build.directory}/env-dev</wagonUrl>
+
 			</properties>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<configuration>
+							<target>
+								<echo message="Stopping server" />
+								<sshexec host="${modular-war-deploy.host}" username="${modular-war-deploy.username}" password="${modular-war-deploy.password}"
+									command="${modular-war-deploy.stopCommand}" trust="true" failonerror="false" />
+
+								<echo message="Uploading WAR file" />
+								<scp toDir="${modular-war-deploy.url}" trust="true">
+									<fileset file="${modular-war-deploy.warFile}" />
+								</scp>
+
+								<echo message="Uploading descriptors" />
+								<scp toDir="${modular-war-deploy.url}" trust="true">
+									<fileset dir="${modular-war-deploy.configDir}/env-dev" />
+								</scp>
+
+								<echo message="Starting server" />
+								<sshexec host="${modular-war-deploy.host}" username="${modular-war-deploy.username}" password="${modular-war-deploy.password}"
+									command="${modular-war-deploy.startCommand}" trust="true" failonerror="false" />
+							</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 
 		<profile>
@@ -132,8 +207,7 @@
 				<!-- QA deployment is not fully automated -->
 				<maven.test.skip>true</maven.test.skip>
 
-				<wagonServerId />
-				<wagonUrl>file://${project.build.directory}/env-qa</wagonUrl>
+				<!-- TODO: handle uploading on QA "dropfolder" -->
 			</properties>
 		</profile>
 
@@ -151,8 +225,7 @@
 				<!-- PROD deployment is not fully automated -->
 				<maven.test.skip>true</maven.test.skip>
 
-				<wagonServerId />
-				<wagonUrl>file://${project.build.directory}/env-prod</wagonUrl>
+				<!-- TODO: handle uploading on PROD "dropfolder" -->
 			</properties>
 		</profile>
 
