@@ -2,12 +2,51 @@
 
 = Introduction =
 
-Add your content here.
+With the configured deployment pipeline after every commit, changes are delivered to the customer (or at least deployed on production-like environment).
+
+Please remember that _deployment_ in this context, means deployment to application server, not deployment artifact to the enterprise repository.
+
+= Deployment Module =
+
+Deployment pipeline is configured in a separate project module `modular-war-deploy`. Deployment configuration is environment specific and should not obscure main project modules. In addition, all deployment configuration is defined in the profiles which are not activated by default. When deployment profiles are disabled the module can be built without any deployment action. It is useful when you need to release the whole project, and definitely don't want to deploy application on the server.
+
+= Deployment Flow =
+
+For the deployment pipeline the following flow is configured:
+
+  # Web application from `modular-war-webapp` module is downloaded from the enterprise repository. For the DEV server deployment it will be a SNAPSHOT version, for QA and PROD deployment it will be a RELEASED version.
+  # Optionally, overlay with environment specific configuration is applied . Don't overuse overlay, configure environment specific settings as JNDI entries in the application server.
+  # Final WAR file is uploaded and deployed on the application server.
+  # Smoke tests are executed to ensure that application has been deployed and it is up and running.
+
+= Deployment Details =
+
+There are various method to upload files to remote server, the most straightforward is to use one of the Maven Wagon providers. But Wagon does not support remote command invocation, and deployment pipeline needs remote command to stop/start application server.
+
+Module `modular-war-deploy` is configured to use Ant tasks: `<scp/>` and `<sshexec/>`. Ant tasks are executed by Maven Antrun Plugin.
+
+= Deployment Automation =
+
+Deployment should be configured as a CI build plans. There are many advantages over manual execution of deployment pipeline:
+  * Application is deployed after every commit on DEV server.
+  * Deployment on QA and PROD is a one-click button operation, no mistakes in command line parameters.
+  * Faster; SCM, CI and application servers are very often co-located.
+
+== DEV ==
+
+{{{
+mvn -B clean verify -Denvironment=dev -Dmodular-war-deploy.username=... -Dmodular-war-deploy.password=...
+}}}
+
+== QA ==
+
+{{{
+mvn -B clean verify -Denvironment=qa -Dmodular-war-deploy.username=... -Dmodular-war-deploy.password=...
+}}}
 
 
-= Details =
+== PROD ==
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+{{{
+mvn -B clean verify -Denvironment=prod -Dmodular-war-deploy.username=... -Dmodular-war-deploy.password=...
+}}}
