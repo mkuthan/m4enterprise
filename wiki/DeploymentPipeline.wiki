@@ -52,3 +52,7 @@ mvn -B clean verify -Denvironment=qa -Dmodular-war-deploy.username=... -Dmodular
 {{{
 mvn -B clean verify -Denvironment=prod -Dmodular-war-deploy.username=... -Dmodular-war-deploy.password=...
 }}}
+
+= Utilities =
+
+http://code.google.com/p/m4enterprise/downloads/detail?name=jboss-init.tar.gz
