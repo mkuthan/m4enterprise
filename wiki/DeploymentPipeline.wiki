@@ -27,6 +27,8 @@ There are various method to upload files to remote server, the most straightforw
 
 Module `modular-war-deploy` is configured to use Ant tasks: `<scp/>` and `<sshexec/>`. Ant tasks are executed by Maven Antrun Plugin.
 
+The example configuration for WebDAV upload is commented out in the `modular-war-deploy` module.
+
 = Deployment Automation =
 
 Deployment should be configured as a CI build plans. There are many advantages over manual execution of deployment pipeline:
