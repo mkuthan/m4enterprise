@@ -55,4 +55,4 @@ mvn -B clean verify -Denvironment=prod -Dmodular-war-deploy.username=... -Dmodul
 
 = Utilities =
 
-http://code.google.com/p/m4enterprise/downloads/detail?name=jboss-init.tar.gz
+[http://code.google.com/p/m4enterprise/downloads/detail?name=jboss-init.tar.gz JBoss Startup Scripts]
