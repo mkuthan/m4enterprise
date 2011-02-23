@@ -1,5 +1,7 @@
 #summary Deployment Pipeline
 
+<wiki:toc />
+
 = Introduction =
 
 With the configured deployment pipeline after every commit, changes are delivered to the customer (or at least deployed on production-like environment).
