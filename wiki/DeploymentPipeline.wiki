@@ -38,7 +38,9 @@ _Deployment pipeline_ should be configured as a Continuous Integration (CI) serv
 Let's assume that developer has a full control over DEV environment (with SSH access). Profile _env-dev_ is configured to use Ant task `<scp/>` to upload WAR file and task `<sshexec/>` to restart application server. Define the following build plan trigerred after every commit:
 
 {{{
-mvn -B -U clean verify -Denvironment=dev -Dmodular-war-deploy.sshUsername=... -Dmodular-war-deploy.sshPassword=...
+mvn -B -U clean verify -Denvironment=dev \
+  -Dmodular-war-deploy.sshUsername=... \
+  -Dmodular-war-deploy.sshPassword=...
 }}}
 
 Option `-U` is crucial, to ensure that latest `SNAPSHOT` version will be deployed.
