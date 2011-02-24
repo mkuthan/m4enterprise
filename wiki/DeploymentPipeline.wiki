@@ -55,7 +55,7 @@ In the perfect world deployment on DEV, QA and PROD should be the same. But in r
 
 Profiles _env-qa_ and _env-prod_ are configured to use Maven _Wagon_. WAR file and descriptors are uploaded, but application is not deployed automatically. Smoke tests are disabled.
 
-On the DEV application server, latest SNAPSHOT version is deployed. *On QA and PROD only released versions deployment is allowed*. One of _Continous Delivery_ principle is to keep traceability between deployed binaries and source code. And the SCM revision number is not good candidate, releases are much better.
+On the DEV application server, latest SNAPSHOT version is deployed. *On QA and PROD only released versions are allowed*. One of _Continous Delivery_ principles is to keep traceability between deployed binaries and source code. And the SCM revision number is not good candidate, releases are much better.
 
 Define the following build plan trigerred manually (one-click operation):
 
