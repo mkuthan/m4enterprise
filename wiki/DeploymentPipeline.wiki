@@ -4,57 +4,61 @@
 
 = Introduction =
 
-With the configured deployment pipeline after every commit, changes are delivered to the customer (or at least deployed on production-like environment).
+Every time when a change is committed to version control, the expectation is that it will pass all of its tests, produce working code, and can be released into production. With configured _deployment pipeline_ after every commit, changes are delivered to the customer (or at least deployed on production-like environment). 
 
-Please remember that _deployment_ in this context, means deployment to application server, not deployment artifact to the enterprise repository.
+Please remember that deployment in this context means deployment to _application server_, not deployment artifact to the _enterprise repository_.
 
 = Deployment Module =
 
-Deployment pipeline is configured in a separate project module `modular-war-deploy`. Deployment configuration is environment specific and should not obscure main project modules. In addition, all deployment configuration is defined in the profiles which are not activated by default. When deployment profiles are disabled the module can be built without any deployment action. It is useful when you need to release the whole project, and definitely don't want to deploy application on the server.
+_Deployment pipeline_ is configured in a separate project module `modular-war-deploy`. Deployment configuration is environment specific and should not obscure main project modules. In addition, all deployment configuration is defined within the separate profiles which are not activated by default. When deployment profiles are disabled the module is built without any deployment action. It is useful when you need to release the whole project, and definitely don't want to deploy application on the server during releasing.
+
+Profiles _env-dev_, _env-qa_ and _env-prod_ define deployment configuration for each target environment. All configuration entries common for all environments, are defined in _deploy_ profile. Profile _deploy_ is activated automatically when one of _env-dev_, _env-qa_, _env-prod_ profiles is activated by command line option.
 
 = Deployment Flow =
 
-For the deployment pipeline the following flow is configured:
+Regardless of deployment target environment, the following flow is configured for the _deployment pipeline_:
 
-  # Web application from `modular-war-webapp` module is downloaded from the enterprise repository. For the DEV server deployment it will be a SNAPSHOT version, for QA and PROD deployment it will be a RELEASED version.
-  # Optionally, overlay with environment specific configuration is applied . Don't overuse overlay, configure environment specific settings as JNDI entries in the application server.
-  # Final WAR file is uploaded and deployed on the application server.
-  # Smoke tests are executed to ensure that application has been deployed and it is up and running.
+  # Web application `modular-war-webapp` module is downloaded from the _enterprise repository_ (WAR file).
+  # Optionally, overlay with environment specific configuration is applied . Don't overuse overlay, configure environment specific settings as application server JNDI entries.
+  # Final WAR file is uploaded and optionally deployed on the application server.
+  # Smoke tests are executed, to ensure that application has been deployed and it is up and running.
 
 = Deployment Details =
 
-There are various method to upload files to remote server, the most straightforward is to use one of the Maven Wagon providers. But Wagon does not support remote command invocation, and deployment pipeline needs remote command to stop/start application server.
+There are various method to upload files to the remote server, the most straightforward is to use one of the Maven _Wagon_ providers. But _Wagon_ does not support remote command invocation, needed to stop and start application server. If remote command invocation is necessary to complete deployment process, SSH could be used. 
 
-Module `modular-war-deploy` is configured to use Ant tasks: `<scp/>` and `<sshexec/>`. Ant tasks are executed by Maven Antrun Plugin.
+_Deployment pipeline_ should be configured as a Continuous Integration (CI) server build plan(s). There are many advantages over manual execution:
+  * It could be faster; SCM, CI server and application server are very often co-located. Developer workstation is far, far away.
+  * Deployment on DEV could be fully automated.
+  * Deployment on QA and PROD could be a one-click button operation, no more mistakes and typos. 
+  * Deployment on QA and PROD could be self-serviced (by QA or OPS teams).
 
-The example configuration for WebDAV upload is commented out in the `modular-war-deploy` module.
+== DEV Environment ==
 
-= Deployment Automation =
-
-Deployment should be configured as a CI build plans. There are many advantages over manual execution of deployment pipeline:
-  * Application is deployed after every commit on DEV server.
-  * Deployment on QA and PROD is a one-click button operation, no mistakes in command line parameters.
-  * Faster; SCM, CI and application servers are very often co-located.
-
-== DEV ==
+Let's assume that developer has a full control over DEV environment (with SSH access). Profile _env-dev_ is configured to use Ant task `<scp/>` to upload WAR file and task `<sshexec/>` to restart application server. Define the following build plan trigerred after every commit:
 
 {{{
-mvn -B clean verify -Denvironment=dev -Dmodular-war-deploy.username=... -Dmodular-war-deploy.password=...
+mvn -B -U clean verify -Denvironment=dev -Dmodular-war-deploy.sshUsername=... -Dmodular-war-deploy.sshPassword=...
 }}}
 
-== QA ==
+Option `-U` is crucial, to ensure that latest `SNAPSHOT` version will be deployed.
+
+On Bamboo CI server you can configure _Quite period_. It allows you to delay building after a single commit is detected, aggregating multiple commits per build.
+
+The `modular-war-deploy` module is configured to deploy on JBoss application server. JBoss startup script delivered with application server distribution is a crap, use this one: [http://code.google.com/p/m4enterprise/downloads/detail?name=jboss-init.tar.gz JBoss Startup Scripts]
+
+== QA and PROD Environments ==
+
+In the perfect world deployment on DEV, QA and PROD should be the same. But in reality you cannot automate deployment on QA and PROD due to formal process restrictions. Automate what you can, than. In the following scenario WAR file and descriptors are uploaded into _dropfolder_, share configured as a place for WAR files queued for deployment.
+
+Profiles _env-qa_ and _env-prod_ are configured to use Maven _Wagon_. WAR file and descriptors are uploaded, but application is not deployed automatically. Smoke tests are disabled.
+
+On the DEV application server, latest SNAPSHOT version is deployed. *On QA and PROD only released versions deployment is allowed*. One of _Continous Delivery_ principle is to keep traceability between deployed binaries and source code. And the SCM revision number is not good candidate, releases are much better.
+
+Define the following build plan trigerred manually (one-click operation):
 
 {{{
-mvn -B clean verify -Denvironment=qa -Dmodular-war-deploy.username=... -Dmodular-war-deploy.password=...
+mvn -B clean verify -Denvironment=[qa|prod]
 }}}
 
-
-== PROD ==
-
-{{{
-mvn -B clean verify -Denvironment=prod -Dmodular-war-deploy.username=... -Dmodular-war-deploy.password=...
-}}}
-
-= Utilities =
-
-[http://code.google.com/p/m4enterprise/downloads/detail?name=jboss-init.tar.gz JBoss Startup Scripts]
+To deploy released version, SCM configuration section on the CI server needs to be configured to use the code from the SCM tag. Check CI server documentation how to parametrize SCM location.
