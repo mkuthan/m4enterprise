@@ -65,4 +65,4 @@ mvn -B clean verify -Denvironment=[qa|prod]
 
 Credential for _Wagon_ provider are configured in `settings.xml`. It is advantage over SSH Ant task configuration in _env-dev_ profile. 
 
-To deploy released version, SCM configuration section on the CI server needs to be configured to use the code from the SCM tag. Check CI server documentation how to parametrize SCM location.
+To deploy released version, SCM configuration section on the CI server needs to be configured to checkout the code from the SCM tag. Check CI server documentation how to parametrize SCM location.
