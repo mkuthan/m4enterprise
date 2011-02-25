@@ -65,4 +65,10 @@ mvn -B clean verify -Denvironment=[qa|prod]
 
 Credential for _Wagon_ provider are configured in `settings.xml`. It is advantage over SSH Ant task configuration in _env-dev_ profile. 
 
+Location of target directory can be specified as `modular-war-deploy.wagonUrl` property, e.g:
+
+{{{
+dav:http://host/dropfolder
+}}}
+
 To deploy released version, SCM configuration section on the CI server needs to be configured to checkout the code from the SCM tag. Check CI server documentation how to parametrize SCM location.
