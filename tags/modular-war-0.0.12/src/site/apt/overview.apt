@@ -1,0 +1,179 @@
+Overview
+
+%{toc|fromDepth=2}
+
+* Overview
+
+	This document is a short introduction for developers. 
+	After reading, developer will be able to configure database and run application on their workstation.  
+
+* Setting up database
+
+	For daily basis development, project is configured to use <MySQL> database . 
+	Please setup MySQL database, default connection parameters are defined in the <<<account-janitor-parent>>> module.
+	
+	Initially keep database schema empty, all tables will be created during first application startup.
+	
+* Managing database
+	
+	You can manage database application schema manually using <Liquibase> command line tool. 
+	Install <Liquibase> and add database driver(s) to the tool classpath.
+	
+	To drop all database objects call:
+
++-----------------------------------------------------------------------------+	
+account-janitor$ liquibase.bat \
+	--driver=com.mysql.jdbc.Driver \
+	--changeLogFile=account-janitor-core/src/main/resources/db.changelog-0.2.xml \
+	--url=jdbc:mysql://localhost/accountjanitor \
+	--username=root \
+	--password=root \
+	dropAll
+INFO 16.02.11 15:03:liquibase: Can not use class liquibase.executor.LoggingExecutor as (...)
+2011-02-16 15:03:23 liquibase.logging.jvm.JavaUtilLogger info
+INFO: Successfully acquired change log lock
+2011-02-16 15:03:23 liquibase.logging.jvm.JavaUtilLogger info
+INFO: Dropping Database Objects in schema: accountjanitor
+2011-02-16 15:03:23 liquibase.logging.jvm.JavaUtilLogger info
+INFO: Successfully released change log lock
+All objects dropped from root@localhost@jdbc:mysql://localhost/accountjanitor	
++-----------------------------------------------------------------------------+	
+	
+	To update database schema call:
+
++-----------------------------------------------------------------------------+	
+account-janitor$ liquibase.bat \
+	--driver=com.mysql.jdbc.Driver \
+	--changeLogFile=account-janitor-core/src/main/resources/db.changelog-0.2.xml \
+	--url=jdbc:mysql://localhost/accountjanitor \
+	--username=root \
+	--password=root \
+	update
+INFO 16.02.11 15:04:liquibase: Can not use class liquibase.executor.LoggingExecutor as (...)
+2011-02-16 15:04:49 liquibase.logging.jvm.JavaUtilLogger info
+INFO: Successfully acquired change log lock
+2011-02-16 15:04:49 liquibase.logging.jvm.JavaUtilLogger info
+INFO: Reading from `DATABASECHANGELOG`
+2011-02-16 15:04:49 liquibase.logging.jvm.JavaUtilLogger info
+INFO: Reading from `DATABASECHANGELOG`
+2011-02-16 15:04:49 liquibase.logging.jvm.JavaUtilLogger info
+(...)
+2011-02-16 15:05:06 liquibase.logging.jvm.JavaUtilLogger info
+INFO: Successfully released change log lock
+Liquibase Update Successful
++-----------------------------------------------------------------------------+	
+	
+* Running application
+
+	First, all project modules must be installed to the local <Maven> repository: 
+	
++-----------------------------------------------------------------------------+
+account-janitor$ mvn install
+[INFO] Scanning for projects...
+[INFO] Reactor build order: 
+[INFO]   account-janitor-parent
+[INFO]   account-janitor-common
+[INFO]   account-janitor-google
+[INFO]   account-janitor-gpeople
+[INFO]   account-janitor-core
+[INFO]   account-janitor-deploy
+[INFO]   account-janitor-webapp
+[INFO]   account-janitor
+[INFO] ------------------------------------------------------------------------
+[INFO] Building account-janitor-parent
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+(...)
+[INFO] 
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] ------------------------------------------------------------------------
+[INFO] account-janitor-parent ................................ SUCCESS [3.075s]
+[INFO] account-janitor-common ................................ SUCCESS [4.418s]
+[INFO] account-janitor-google ................................ SUCCESS [1:32.028s]
+[INFO] account-janitor-gpeople ............................... SUCCESS [36.999s]
+[INFO] account-janitor-core .................................. SUCCESS [10.319s]
+[INFO] account-janitor-deploy ................................ SUCCESS [1.092s]
+[INFO] account-janitor-webapp ................................ SUCCESS [10.554s]
+[INFO] account-janitor ....................................... SUCCESS [0.296s]
+[INFO] ------------------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2 minutes 42 seconds
+[INFO] Finished at: Wed Feb 16 14:49:48 CET 2011
+[INFO] Final Memory: 46M/87M
+[INFO] ------------------------------------------------------------------------
++-----------------------------------------------------------------------------+	
+
+	When all modules are installed to the local Maven repository, 
+	go to the <<<account-janitor-webapp>>> module and run local JMS and web servers.
+	Server runtimes will be downloaded automatically by <Maven>.
+		
+	In the first console run JMS server (<ActiveMQ>):
+	
++-----------------------------------------------------------------------------+	
+account-janitor$ cd account-janitor-webapp/
+account-janitor-webapp$ mvn activemq:run
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building account-janitor-webapp
+[INFO]    task-segment: [activemq:run]
+[INFO] ------------------------------------------------------------------------
+[INFO] [activemq:run {execution: default-cli}]
+[INFO] Loading broker configUri: broker:(tcp://localhost:61616)?useJmx=true&persistent=false
+2011-02-16 14:53:17 org.apache.activemq.broker.BrokerService start
+INFO: Using Persistence Adapter: MemoryPersistenceAdapter
+2011-02-16 14:53:17 org.apache.activemq.broker.BrokerService getBroker
+INFO: ActiveMQ 5.3.2 JMS Message Broker (localhost) is starting
+2011-02-16 14:53:17 org.apache.activemq.broker.BrokerService getBroker
+INFO: For help or more information please see: http://activemq.apache.org/
+2011-02-16 14:53:18 org.apache.activemq.broker.jmx.ManagementContext$1 run
+INFO: JMX consoles can connect to service:jmx:rmi:///jndi/rmi://localhost:1099/jmxrmi
+2011-02-16 14:53:18 org.apache.activemq.transport.TransportServerThreadSupport doStart
+INFO: Listening for connections at: tcp://localhost:61616
+2011-02-16 14:53:18 org.apache.activemq.broker.TransportConnector start
+INFO: Connector tcp://localhost:61616 Started
+2011-02-16 14:53:18 org.apache.activemq.broker.BrokerService start
+INFO: ActiveMQ JMS Message Broker (localhost, ID:RWAMWCOE1762-3019-1297864398046-0:0) started
++-----------------------------------------------------------------------------+
+
+	In the second console run web server (<Jetty>):
+	
++-----------------------------------------------------------------------------+
+account-janitor$ cd account-janitor-webapp/
+account-janitor-webapp$ mvn jetty:run
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building account-janitor-webapp
+[INFO]    task-segment: [jetty:run]
+[INFO] ------------------------------------------------------------------------
+[INFO] Preparing jetty:run
+(...)
+2011-02-16 15:33:08.988:INFO::Started SelectChannelConnector@0.0.0.0:8080
+[INFO] Started Jetty Server
++-----------------------------------------------------------------------------+
+	
+	Now, application is now and running. 
+	You can access application at http://localhost:8080/ address.
+	
+	Shutdown the servers in the reverse order.
+	
+	To avoid manual modules installation on every change, install and configure <JRebel> tool.
+	All changes will be deployed into <Jetty> automatically (hot redeployment).
+
+* Releasing and deploying
+
+	There are configured Bamboo plans for releasing and deploying application.
+	
+	* Application is deployed automatically on DEV after every commit, don't do this manually.
+	
+	* Release application using Bamboo plan, don't do this on your desktop.
+	
+	* Deploy application using Bamboo plan, don't do this on your desktop.
+	
+	* Deploy only released application version (on QA and PROD), don't deploy SNAPSHOT version.
+	
+	* That's all :-)
+	 
