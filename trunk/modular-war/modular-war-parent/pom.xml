@@ -10,7 +10,7 @@
 
 	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>modular-war-parent</artifactId>
-	<version>0.0.11</version>
+	<version>0.0.12-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>modular-war-parent</name>
 	<description>Parent POM for the modular WAR project</description>
@@ -35,9 +35,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.11/modular-war-parent</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.11/modular-war-parent</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/tags/modular-war-0.0.11/modular-war-parent</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-parent/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-parent/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/modular-war-parent/</url>
 	</scm>
 
 	<build>
