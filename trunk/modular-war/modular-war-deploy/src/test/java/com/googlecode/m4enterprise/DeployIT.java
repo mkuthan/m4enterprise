@@ -36,9 +36,9 @@ public class DeployIT {
 		HtmlPage page = webClient.getPage(testProperties.getString("url"));
 		String title = page.getTitleText();
 		if ("Hello World".equals(title)) {
-		    logger.info("Page title does not match: " + title);
 		    break;
 		}
+		logger.info("Page title does not match: " + title);
 	    } catch (Exception e) {
 		logger.info(e.getMessage());
 	    }
