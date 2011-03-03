@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -25,14 +26,44 @@
 
 	<scm>
 		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/</developerConnection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/
+		</developerConnection>
 		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/modular-war-deploy/</url>
 	</scm>
 
 	<properties>
 		<!-- Overlay has no web.xml file (m-war-c) -->
 		<failOnMissingWebXml>false</failOnMissingWebXml>
+
+		<modular-war-deploy.configDir>${basedir}/src/main/config</modular-war-deploy.configDir>
+		<modular-war-deploy.warFile>${project.build.directory}/${project.build.finalName}.war</modular-war-deploy.warFile>
+
+		<modular-war-deploy.sshHost>localhost</modular-war-deploy.sshHost>
+		<modular-war-deploy.sshDir>/opt/jboss-4.2.3.GA/server/default/deploy</modular-war-deploy.sshDir>
+		<modular-war-deploy.sshUrl>${modular-war-deploy.sshUsername}:${modular-war-deploy.sshPassword}@${modular-war-deploy.sshHost}:${modular-war-deploy.sshDir}
+				</modular-war-deploy.sshUrl>
+		<modular-war-deploy.sshStopCommand>/etc/init.d/jboss stop</modular-war-deploy.sshStopCommand>
+		<modular-war-deploy.sshStartCommand>/etc/init.d/jboss start</modular-war-deploy.sshStartCommand>
+		<modular-war-deploy.sshUsername />
+		<modular-war-deploy.sshPassword />
+
+		<modular-war-deploy.smokeTestUrl>http://localhost:8080/modular-war/</modular-war-deploy.smokeTestUrl>
+
+		<modular-war-deploy.wagonServerId>modular-war</modular-war-deploy.wagonServerId>
+		<modular-war-deploy.wagonUrl>file:///${env.HOME}/.m4enterprise/dropfolder</modular-war-deploy.wagonUrl>
 	</properties>
+
+	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>test.properties</include>
+				</includes>
+			</testResource>
+		</testResources>
+	</build>
 
 	<profiles>
 		<profile>
@@ -44,21 +75,6 @@
 				</property>
 			</activation>
 
-			<properties>
-				<modular-war-deploy.configDir>${basedir}/src/main/config</modular-war-deploy.configDir>
-				<modular-war-deploy.warFile>${project.build.directory}/${project.build.finalName}.war</modular-war-deploy.warFile>
-
-				<modular-war-deploy.sshHost>localhost</modular-war-deploy.sshHost>
-				<modular-war-deploy.sshDir>/opt/jboss-4.2.3.GA/server/default/deploy</modular-war-deploy.sshDir>
-				<modular-war-deploy.sshUrl>${modular-war-deploy.sshUsername}:${modular-war-deploy.sshPassword}@${modular-war-deploy.sshHost}:${modular-war-deploy.sshDir}</modular-war-deploy.sshUrl>
-				<modular-war-deploy.sshStopCommand>/etc/init.d/jboss stop</modular-war-deploy.sshStopCommand>
-				<modular-war-deploy.sshStartCommand>/etc/init.d/jboss start</modular-war-deploy.sshStartCommand>
-				<modular-war-deploy.sshUsername />
-				<modular-war-deploy.sshPassword />
-
-				<modular-war-deploy.wagonServerId>modular-war</modular-war-deploy.wagonServerId>
-				<modular-war-deploy.wagonUrl>file:///${env.HOME}/.m4enterprise/dropfolder</modular-war-deploy.wagonUrl>
-			</properties>
 
 			<build>
 				<finalName>modular-war</finalName>
@@ -104,7 +120,8 @@
 									<configuration>
 										<target>
 											<echo message="Stopping server" />
-											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}" command="${modular-war-deploy.sshStopCommand}" trust="true" failonerror="false" />
+											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}"
+												command="${modular-war-deploy.sshStopCommand}" trust="true" failonerror="false" />
 
 											<echo message="Uploading WAR file" />
 											<scp toDir="${modular-war-deploy.sshUrl}" trust="true">
@@ -117,7 +134,8 @@
 											</scp>
 
 											<echo message="Starting server" />
-											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}" command="${modular-war-deploy.sshStartCommand}" trust="true" failonerror="false" />
+											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}"
+												command="${modular-war-deploy.sshStartCommand}" trust="true" failonerror="false" />
 										</target>
 									</configuration>
 								</execution>
@@ -170,16 +188,6 @@
 					</plugins>
 				</pluginManagement>
 			</build>
-
-			<dependencies>
-				<dependency>
-					<groupId>${project.groupId}</groupId>
-					<artifactId>modular-war-webapp</artifactId>
-					<version>${project.version}</version>
-					<type>war</type>
-					<scope>runtime</scope>
-				</dependency>
-			</dependencies>
 		</profile>
 
 		<profile>
@@ -254,6 +262,22 @@
 				</plugins>
 			</build>
 		</profile>
-
 	</profiles>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>modular-war-webapp</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.8</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 </project>
