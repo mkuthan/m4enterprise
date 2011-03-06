@@ -48,18 +48,23 @@ Install a package into local repository (it also executes integration tests):
 mvn install
 }}}
 
-Install a package into local repository without integration test:
+Install an artifact into local repository without integration test:
 
 {{{
 mvn -DskipITs=true install
 }}}
 
-Install a package into local repository without unit and integration test:
+Install an artifact e into local repository without unit and integration test:
 
 {{{
 mvn -DskipTests=true install
 }}}
 
+Deploy artifact into enterprise repository:
+
+{{{
+mvn deploy
+}}}
 
 *Notice:*
 
