@@ -32,11 +32,15 @@ Build a package (it also executes unit tests):
 mvn package
 }}}
 
-Goal `integration-test` should not be used to run integration tests. Use `verify` goal instead. Run integration test (it also builds a package):
+Run integration test (it also builds a package):
 
 {{{
 mvn verify
 }}}
+
+*Notice:*
+
+   Goal `integration-test` should not be used to run integration tests. Use `verify` goal instead (see [http://maven.apache.org/plugins/maven-failsafe-plugin/ m-failsafe-p]).  
 
 Install a package into local repository (it also executes integration tests):
 
@@ -57,7 +61,9 @@ mvn -DskipTests=true install
 }}}
 
 
-Goal `deploy` should not be called directly. Configure build plan on continuous integration server to deploy artifact into corporate enterprise repository.
+*Notice:*
+
+  Goal `deploy` should not be called directly. Configure build plan on continuous integration server to deploy artifact into corporate enterprise repository.
 
 = Project Run =
 
@@ -71,7 +77,7 @@ mvn jetty:run
 
 *Notice:*
 
-  For modular Maven projects all modules must be installed in the local repository before site generation. [http://jira.codehaus.org/browse/MJAVADOC-116 Bug] in the Maven Javadoc Plugin is a root cause of this restriction.
+  For modular Maven projects all modules must be installed in the local repository before site generation (see [http://jira.codehaus.org/browse/MJAVADOC-116 MJAVADOC-116]).
 
 Generate site without tests reports (tests are not executed):
 
@@ -117,7 +123,9 @@ Generate clover reports for unit and integration tests:
 mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup verify clover2:aggregate clover2:clover
 }}}
 
-Property `maven.clover.licenseLocation` can be specified in the `settings.xml` file. Please refer to the Clover [http://confluence.atlassian.com/display/CLOVER/Clover-for-Maven+2+User's+Guide documentation].
+*Notice:*
+
+  Property `maven.clover.licenseLocation` can be specified in the `settings.xml` file (see [http://confluence.atlassian.com/display/CLOVER/Clover-for-Maven+2+User's+Guide Clover for Maven User's Guide]).
 
 = Dependency Management =
 
