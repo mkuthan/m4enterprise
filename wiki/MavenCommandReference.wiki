@@ -4,7 +4,7 @@
 
 = Introduction =
 
-The document is Maven build commands reference. It is organized with sections, each section for one build aspect. Commands listed below cover 90% typical use-cases. Few commands are supported only by Maven 3.
+The document is Maven commands reference. It is organized as sections, each section for one build aspect. Commands listed below cover 90% typical use-cases. Few commands are supported only by Maven 3.
 
 = Project Build =
 
@@ -32,19 +32,30 @@ Build a package (it also executes unit tests):
 mvn package
 }}}
 
-Goal `integration-test` should not be used to run integration tests. Use `verify` goal instead. 
-
-Run integration test (it also builds a package):
+Goal `integration-test` should not be used to run integration tests. Use `verify` goal instead. Run integration test (it also builds a package):
 
 {{{
 mvn verify
 }}}
 
-Install a package into local repository (it also executes integration tests).
+Install a package into local repository (it also executes integration tests):
 
 {{{
 mvn install
 }}}
+
+Install a package into local repository without integration test:
+
+{{{
+mvn -DskipITs=true install
+}}}
+
+Install a package into local repository without unit and integration test:
+
+{{{
+mvn -DskipTests=true install
+}}}
+
 
 Goal `deploy` should not be called directly. Configure build plan on continuous integration server to deploy artifact into corporate enterprise repository.
 
