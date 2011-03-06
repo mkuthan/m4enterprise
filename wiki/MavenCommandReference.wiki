@@ -48,13 +48,13 @@ Install a package into local repository (it also executes integration tests):
 mvn install
 }}}
 
-Install an artifact into local repository without integration test:
+Install an artifact into local repository (skip integration test execution):
 
 {{{
 mvn -DskipITs=true install
 }}}
 
-Install an artifact e into local repository without unit and integration test:
+Install an artifact e into local repository (skip unit and integration test execution):
 
 {{{
 mvn -DskipTests=true install
@@ -72,10 +72,16 @@ mvn deploy
 
 = Project Run =
 
-Run web application:
+Run local web server (Jetty):
 
 {{{
 mvn jetty:run
+}}}
+
+Run local JMS server (ActiveMQ):
+
+{{{
+mvn activemq:run
 }}}
 
 = Project Site Generation =
