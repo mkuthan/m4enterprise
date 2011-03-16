@@ -10,7 +10,7 @@
 
 	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>modular-war</artifactId>
-	<version>0.0.13</version>
+	<version>0.0.14-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>modular-war</name>
 	<description>Aggregate POM for the modular WAR project</description>
@@ -31,9 +31,9 @@
 	</modules>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.13</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.13</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/tags/modular-war-0.0.13</url>
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war/</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/</developerConnection>
+		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/</url>
 	</scm>
 
 	<build>
