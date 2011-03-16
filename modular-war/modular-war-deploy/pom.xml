@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>modular-war-parent</artifactId>
-		<version>0.0.13-SNAPSHOT</version>
+		<version>0.0.13</version>
 		<relativePath>../modular-war-parent</relativePath>
 	</parent>
 
@@ -25,10 +24,10 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/
+		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.13/modular-war-deploy</connection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/tags/modular-war-0.0.13/modular-war-deploy
 		</developerConnection>
-		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/modular-war-deploy/</url>
+		<url>http://code.google.com/p/m4enterprise/source/browse/tags/modular-war-0.0.13/modular-war-deploy</url>
 	</scm>
 
 	<properties>
@@ -119,8 +118,7 @@
 									<configuration>
 										<target>
 											<echo message="Stopping server" />
-											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}"
-												command="${modular-war-deploy.sshStopCommand}" trust="true" failonerror="false" />
+											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}" command="${modular-war-deploy.sshStopCommand}" trust="true" failonerror="false" />
 
 											<echo message="Uploading WAR file" />
 											<scp toDir="${modular-war-deploy.sshUrl}" trust="true">
@@ -133,8 +131,7 @@
 											</scp>
 
 											<echo message="Starting server" />
-											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}"
-												command="${modular-war-deploy.sshStartCommand}" trust="true" failonerror="false" />
+											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}" command="${modular-war-deploy.sshStartCommand}" trust="true" failonerror="false" />
 										</target>
 									</configuration>
 								</execution>

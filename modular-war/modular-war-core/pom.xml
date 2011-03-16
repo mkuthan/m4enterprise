@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>modular-war-parent</artifactId>
-		<version>0.0.13-SNAPSHOT</version>
+		<version>0.0.13</version>
 		<relativePath>../modular-war-parent</relativePath>
 	</parent>
 
