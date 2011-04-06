@@ -152,7 +152,7 @@ To configure release management by CI server, set build plan strategy as:
 To disable interactive Maven session use the `-B` command line option, e.g for minor release automation:
 
 {{{
-mvn -B -Darguments="-DskipTests" release:prepare release:perform -DperformRelease=true
+mvn -B release:prepare release:perform -DperformRelease=true
 }}}
 
 == SCM Authentication ==
