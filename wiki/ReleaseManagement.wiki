@@ -133,14 +133,6 @@ Post-conditions (Step 2):
   * Latest released version is left unchanged in maven metadata (in the repository).
   * Project site is unchanged.
 
-= Various Utilities =
-
-TODO (for parent and aggregate):
-
-{{{
-mvn versions:set -DnewVersion=1.0-SNAPSHOT
-}}}
-
 = Release Automation = 
 
 Release management can be automated with continuous integration (CI) server. CI server can be used for build and release management as well.
@@ -160,9 +152,17 @@ To configure release management by CI server, set build plan strategy as:
 To disable interactive Maven session use the `-B` command line option, e.g for minor release automation:
 
 {{{
-mvn -B release:prepare release:perform -DperformRelease=true
+mvn -B -Darguments="-DskipTests" release:prepare release:perform -DperformRelease=true
 }}}
 
 == SCM Authentication ==
 
 On Bamboo, SCM credentials must be defined in the build plan explicitly. For more details please refer to the [http://jira.atlassian.com/browse/BAM-8019] issue.
+
+= Various Utilities =
+
+TODO (for parent and aggregate):
+
+{{{
+mvn versions:set -DnewVersion=1.0-SNAPSHOT
+}}}
