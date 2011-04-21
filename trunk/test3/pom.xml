@@ -13,8 +13,8 @@
 
 	<distributionManagement>
 		<site>
-			<id>rmavm233.mad.roche.com</id>
-			<url>scp://rmavm233.mad.roche.com/tmp</url>
+			<id>acme-id</id>
+			<url>scp://localhost/tmp</url>
 		</site>
 	</distributionManagement>
 
