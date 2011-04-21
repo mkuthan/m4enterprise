@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.googlecode.m4enterprise</groupId>
+	<artifactId>test3</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<acme-corporate-pom.siteVersion>3.0-beta-4-SNAPSHOT</acme-corporate-pom.siteVersion>
+	</properties>
+
+	<distributionManagement>
+		<site>
+			<id>rmavm233.mad.roche.com</id>
+			<url>scp://rmavm233.mad.roche.com/tmp</url>
+		</site>
+	</distributionManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${acme-corporate-pom.siteVersion}</version>					
+					<!--
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.wagon</groupId>
+							<artifactId>wagon-ssh</artifactId>
+							<version>1.0-beta-7</version>
+						</dependency>
+					</dependencies>
+					-->
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
