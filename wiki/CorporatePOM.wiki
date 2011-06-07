@@ -14,6 +14,8 @@ Corporate POM defines `corporate-pom` profile. The profile is used to configure 
 
 = Plugin Versions Update =
 
+One of the Corporate POM maintenance tasks is keeping configured plugin versions uptodate. Plugin versions can be managed automatically within Maven Versions Plugin.
+
 *Notice:*
 
   Automatic updates requires correct plugin metadata files in the repository. If metadata files are invalid, Maven Versions Plugin is not able to figure out the latest plugin versions, and commands below won't update these plugins.
