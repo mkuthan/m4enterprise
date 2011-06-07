@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>corporate-pom</artifactId>
-		<version>1.39</version>
+		<version>1.39-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 
@@ -15,11 +15,11 @@
 	<name>modular-war</name>
 	<description>Aggregate POM for the modular WAR project</description>
 
-	<url>${acme-corporate-pom.siteUrl}/${project.artifactId}/</url>
+	<url>http://sites.intranet.acme.com/${modular-war}/</url>
 
 	<properties>
 		<!-- Enable report aggregation -->
-		<aggregate>true</aggregate>
+		<aggregate>true</aggregate>		
 	</properties>
 
 	<!-- All modules in the project -->
