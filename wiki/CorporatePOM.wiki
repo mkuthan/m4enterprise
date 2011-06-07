@@ -16,7 +16,7 @@ Corporate POM defines `corporate-pom` profile. The profile is used to configure 
 
 *Notice:*
 
-  Automatic updates requires that plugin metadata files in the repository are correct. If not, Maven Versions Plugin is not able to figure out the latest plugin versions, and commands below won't update these plugins.
+  Automatic updates requires correct plugin metadata files in the repository. If metadata files are invalid, Maven Versions Plugin is not able to figure out the latest plugin versions, and commands below won't update these plugins.
 
 == Display Available Updates ==
 
