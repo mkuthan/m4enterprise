@@ -111,13 +111,13 @@ mvn verify site:site
 Generate site stage with valid links between project modules:
 
 {{{
-mvn test site:stage
+mvn test site:site site:stage
 }}}
 
 or 
 
 {{{
-mvn verify site:stage
+mvn verify site:site site:stage
 }}}
 
 = Code Coverage Reporting =
