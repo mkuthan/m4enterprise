@@ -15,7 +15,7 @@
 	<name>modular-war</name>
 	<description>Aggregate POM for the modular WAR project</description>
 
-	<url>http://sites.intranet.acme.com/${modular-war}/</url>
+	<url>${acme-corporate-pom.siteUrl}/${modular-war}/</url>
 
 	<properties>
 		<!-- Enable report aggregation -->
