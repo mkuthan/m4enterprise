@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>corporate-pom</artifactId>
-		<version>1.39</version>
+		<version>1.39-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 
@@ -15,7 +15,7 @@
 	<name>modular-war-parent</name>
 	<description>Parent POM for the modular WAR project</description>
 
-	<url>${acme-corporate-pom.siteUrl}/modular-war/${project.artifactId}/</url>
+	<url>http://sites.intranet.acme.com/${project.artifactId}/</url>
 
 	<properties>
 		<junit.version>4.8.2</junit.version>
@@ -39,13 +39,6 @@
 		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-parent/</developerConnection>
 		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/modular-war-parent/</url>
 	</scm>
-
-	<distributionManagement>
-		<site>
-			<id>${acme-corporate-pom.siteRepositoryId}</id>
-			<url>${acme-corporate-pom.siteRepositoryUrl}/modular-war/modular-war-parent</url>
-		</site>
-	</distributionManagement>
 
 	<build>
 		<pluginManagement>
