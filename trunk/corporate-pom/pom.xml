@@ -58,9 +58,6 @@
 		<!-- Speed-up site generation (m-project-info-reports-p) -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
-		<!-- The identifier of the repository where the staging site will be deployed (m-site-p) -->
-		<stagingRepositoryId>${acme-corporate-pom.siteRepositoryId}</stagingRepositoryId>
-
 		<!-- A comma separated list of locales (m-site-p) -->
 		<locales>en</locales>
 
