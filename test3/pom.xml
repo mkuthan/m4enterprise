@@ -13,8 +13,8 @@
 
 	<distributionManagement>
 		<site>
-			<id>acme-id</id>
-			<url>scp://localhost/tmp</url>
+			<id>rmavm233.mad.roche.comTo co</id>
+			<url>scp://rmavm233.mad.roche.com/tmp</url>
 		</site>
 	</distributionManagement>
 
@@ -25,7 +25,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${acme-corporate-pom.siteVersion}</version>					
-					<!--
 					<dependencies>
 						<dependency>
 							<groupId>org.apache.maven.wagon</groupId>
@@ -33,7 +32,6 @@
 							<version>1.0-beta-7</version>
 						</dependency>
 					</dependencies>
-					-->
 				</plugin>
 			</plugins>
 		</pluginManagement>
