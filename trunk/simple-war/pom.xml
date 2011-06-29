@@ -9,7 +9,6 @@
 		<relativePath />
 	</parent>
 
-	<groupId>com.googlecode.m4enterprise</groupId>
 	<artifactId>simple-war-webapp</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.20-SNAPSHOT</version>
