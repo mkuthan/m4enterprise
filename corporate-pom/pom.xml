@@ -33,6 +33,9 @@
 		<!-- Automatically assign submodules the parent version (m-release-p) -->
 		<autoVersionSubmodules>true</autoVersionSubmodules>
 
+		<!-- Suppress a commit of changes to the working copy before the tag is created (m-release-p) -->
+		<suppressCommitBeforeTag>true</suppressCommitBeforeTag>
+
 		<!-- http://jira.codehaus.org/browse/MRELEASE-271 (m-release-p) -->
 		<preparationGoals>clean install</preparationGoals>
 
