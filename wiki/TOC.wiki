@@ -2,9 +2,10 @@
 
   * [GettingStarted Getting Started]
   * [MavenCommandReference Maven Command Reference]
-  * [CorporatePOM Corporate POM]
-  * [Archetypes Archetypes]
-  * [EnterpriseRepository Enterprise Repository]
   * Continuous Delivery
     * [ReleaseManagement Release Management]
     * [DeploymentPipeline Deployment Pipeline]
+  * Enterprise Infrastructure
+    * [EnterpriseRepository Enterprise Repository]
+    * [CorporatePOM Corporate POM]
+    * [Archetypes Archetypes]
