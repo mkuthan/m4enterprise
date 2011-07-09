@@ -78,19 +78,6 @@ Run Java EE application on local server (Jetty):
 mvn jetty:run
 }}}
 
-Run GWT application in the developer (hosted) mode:
-
-{{{
-mvn gwt:run
-}}}
-
-Run local JMS server (ActiveMQ):
-
-{{{
-mvn activemq:run
-}}}
-
-
 = Project Site Generation =
 
 *Notice:*
