@@ -54,7 +54,7 @@ Install an artifact into local repository (skip integration test execution):
 mvn -DskipITs=true install
 }}}
 
-Install an artifact e into local repository (skip unit and integration test execution):
+Install an artifact into local repository (skip unit and integration test execution):
 
 {{{
 mvn -DskipTests=true install
@@ -72,10 +72,16 @@ mvn deploy
 
 = Project Run =
 
-Run local web server (Jetty):
+Run Java EE application on local server (Jetty):
 
 {{{
 mvn jetty:run
+}}}
+
+Run GWT application in the developer (hosted) mode:
+
+{{{
+mvn gwt:run
 }}}
 
 Run local JMS server (ActiveMQ):
@@ -84,11 +90,12 @@ Run local JMS server (ActiveMQ):
 mvn activemq:run
 }}}
 
+
 = Project Site Generation =
 
 *Notice:*
 
-  For modular Maven projects all modules must be installed in the local repository before site generation (see [http://jira.codehaus.org/browse/MJAVADOC-116 MJAVADOC-116]).
+  For modular Maven projects all modules must be installed in the local repository before site generation (issue 12).
 
 Generate site without tests reports (tests are not executed):
 
@@ -108,7 +115,7 @@ Generate site with unit and integration tests reports:
 mvn verify site:site
 }}}
 
-Generate site stage with valid links between project modules:
+Generate site stage with valid links between project modules (look at issue 9):
 
 {{{
 mvn test site:site site:stage
@@ -119,6 +126,7 @@ or
 {{{
 mvn verify site:site site:stage
 }}}
+
 
 = Code Coverage Reporting =
 
