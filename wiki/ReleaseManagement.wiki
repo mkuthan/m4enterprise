@@ -14,13 +14,14 @@ Only released artifacts should be published (for future reference). This documen
 
 = Semantic Versioning =
 
-Each release must be identified by unique version. It is important to keep versioning scheme consistent, e.g: `MAJOR.MINOR.FIX`, where:
+Each release must be identified by unique version. It is important to keep versioning scheme consistent, e.g: `MAJOR.MINOR.FIX-QUALIFIER`, where:
 
   * `MAJOR` version must be incremented when any backwards incompatible changes are introduced.
   * `MINOR` version must be incremented if new, backwards compatible functionality is introduced.
   * `PATCH` version must be incremented if only backwards compatible bug fixes are introduced.
+  * `QUALIFIER` part can be used to capture milestone builds.
 
-For further details please refer to the [http://semver.org/ Semantic Versioning] article.
+For further details please refer to the [http://semver.org/ Semantic Versioning] article and [http://www.sonatype.com/books/mvnref-book/reference/pom-relationships-sect-pom-syntax.html#pom-reationships-sect-versions Project Versions] Maven Reference book chapter.
 
 = SCM Layout = 
 
@@ -29,7 +30,7 @@ There are some standard, recommended ways to organize SCM (at least for SVN). Fo
 || *Directory* || *Description* || *Tag/Branch Name* || *Application Version* ||
 || trunk || Main line of current development || N/A || MAJOR.MINOR-SNAPSHOT ||
 || branches || Bug fixing development || MAJOR.MINOR.x || MAJOR.MINOR.PATH-SNAPSHOT ||
-|| tags || Markers for released revisions, never changed when created || MAJOR.MINOR or MAJOR.MINOR.PATCH || MAJOR.MINOR or MAJOR.MINOR.PATCH ||
+|| tags || Markers for released revisions, *never changed when created* || MAJOR.MINOR or MAJOR.MINOR.PATCH || MAJOR.MINOR or MAJOR.MINOR.PATCH ||
 
 = Release Management = 
 
@@ -87,12 +88,13 @@ Post-conditions:
 
 The scenario when previously released version must be fixed. 
 
-Pre-conditions (step 1):
+=== Step 1 ===
 
-  * Branch is created from tag _application-name-1.0_.
+Pre-conditions:
+
   * Application version in tag _application-name-1.0_: `1.0`.
 
-Create branch (accept all defaults during interactive Maven session):
+Create branch from from tag _application-name-1.0_ (accept all defaults during interactive Maven session):
 
 {{{
 mvn release:branch  -DbranchName=application-name-1.0.x -DreleaseVersion=1.0.1-SNAPSHOT \
@@ -100,20 +102,21 @@ mvn release:branch  -DbranchName=application-name-1.0.x -DreleaseVersion=1.0.1-S
   -DsuppressCommitBeforeBranch=true -DremoteTagging=false
 }}}
 
-The command seems to be complex. And it is, due to the [http://jira.codehaus.org/browse/MRELEASE-335 bug] in the Maven Release Plugin. By default `release:branch` goal commits intermediate results into the tag but created tags must not be modified (even if you can).
+The command seems to be complex. And it is, due to the issue 10. By default `release:branch` goal commits intermediate results into the tag but once created tag must not be modified (even if you technically can).
 
-Post-conditions  (step 1):
+Post-conditions:
 
   * Tag is unchanged.
   * New branch _application-name-1.0.x_ is created.
   * Application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`.
 
-Pre-conditions (Step 2):
+=== Step 2 ===
 
-  * Release is performed in branch directory _application-name-1.0.x_.
+Pre-conditions:
+
   * Application version in branch _application-name-1.0.x_: `1.0.1-SNAPSHOT`.
 
-Perform a patch release (accept all defaults during interactive Maven session):
+Perform a patch release in branch directory _application-name-1.0.x_ (accept all defaults during interactive Maven session):
 
 {{{
 mvn release:prepare release:perform -DperformRelease=true \
@@ -122,9 +125,9 @@ mvn release:prepare release:perform -DperformRelease=true \
 
 Parameter `updateReleaseInfo` is set to false to avoid metadata modification in the repository by Maven Deploy Plugin. For "patch" releases we don't want to modify the latest release. E.g: if the latest release was 2.0 and the "patch" 1.0.1 is released, metadata in the repository should still define 2.0 as a latest release, not 1.0.1.
 
-Parameter `goals` specifies that only artifact (with sources and javadoc) will be deployed into repository. Project site won't be changed (by default Maven Release Plugin calls `deploy site-deploy` goals).
+Parameter `goals` specifies that only artifact (with sources and javadoc) will be deployed into repository. Project site will not be changed (by default Maven Release Plugin calls `deploy site-deploy` goals).
 
-Post-conditions (Step 2):
+Post-conditions:
 
   * Application version in branch _application-name-1.0.x_: `1.0.2-SNAPSHOT`.
   * New tag _application-name-1.0.1_.
@@ -140,29 +143,17 @@ Release management can be automated with continuous integration (CI) server. CI 
 Advantages:
 
   * Minimal effort (or even no effort) to perform a release.
-  * Released version is built in the independent and controlled CI server environment, not on developer workstations.
+  * Released version is built in the independent and controlled CI server environment, not on developer workstation.
 
-== Build Plans ==
+== Bamboo Configuration ==
 
-To configure release management by CI server, set build plan strategy as:
-
-  * Manual build - for one-click, on demand release management.
-  * Scheduled build - for fully automatic release at the end of Scrum or Kanban iteration (or when project metrics meet defined quality level).
-
-To disable interactive Maven session use the `-B` command line option, e.g for minor release automation:
+To configure release management in Bamboo server, set build plan strategy as manual build. Define the following _Bamboo_ task goal:
 
 {{{
-mvn -B release:prepare release:perform -DperformRelease=true
+mvn -B release:prepare release:perform -DperformRelease=true \
+-Dusername=${bamboo.scm.username} -Dusername=${bamboo.scm.password}
 }}}
 
-== SCM Authentication ==
+_${bamboo.scm.username}_ and _${bamboo.scm.password}_ are build plan variables. You can specify the variables in the build plan configuration or as input values for parametrized manual build.
 
-On Bamboo, SCM credentials must be defined in the build plan explicitly. For more details please refer to the [http://jira.atlassian.com/browse/BAM-8019] issue.
-
-= Various Utilities =
-
-TODO (for parent and aggregate):
-
-{{{
-mvn versions:set -DnewVersion=1.0-SNAPSHOT
-}}}
+*Note:* SCM credentials are shown in the Bamboo log (issue 11).
