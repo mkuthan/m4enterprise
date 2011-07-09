@@ -138,11 +138,9 @@ Post-conditions:
 
 = Release Automation = 
 
-Release management can be automated with continuous integration (CI) server. CI server can be used for build and release management as well.
+Release management can be automated with continuous integration (CI) server. CI server can be used for build and release management as well. Advantages:
 
-Advantages:
-
-  * Minimal effort (or even no effort) to perform a release.
+  * Minimal effort to perform a release (one button push).
   * Released version is built in the independent and controlled CI server environment, not on developer workstation.
 
 == Bamboo Configuration ==
