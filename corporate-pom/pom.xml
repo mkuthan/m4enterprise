@@ -68,6 +68,9 @@
 			(m-release-p) -->
 		<checkModificationExcludeList>build-number.txt</checkModificationExcludeList>
 
+		<!-- Set JDK for Clover instrumentation (m-clover2-p) -->
+		<maven.clover.jdk>${maven.compiler.target}</maven.clover.jdk>
+
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
@@ -124,6 +127,7 @@
 		<acme-corporate-pom.antrunVersion>1.6</acme-corporate-pom.antrunVersion>
 		<acme-corporate-pom.archetypeVersion>2.0</acme-corporate-pom.archetypeVersion>
 		<acme-corporate-pom.assemblyVersion>2.2.1</acme-corporate-pom.assemblyVersion>
+		<acme-corporate-pom.cloverVersion>3.1.0</acme-corporate-pom.cloverVersion>
 		<acme-corporate-pom.dependencyVersion>2.2</acme-corporate-pom.dependencyVersion>
 		<acme-corporate-pom.enforcerVersion>1.0</acme-corporate-pom.enforcerVersion>
 		<acme-corporate-pom.gpgVersion>1.2</acme-corporate-pom.gpgVersion>
@@ -410,6 +414,12 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<version>${acme-corporate-pom.assemblyVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>com.atlassian.maven.plugins</groupId>
+					<artifactId>maven-clover2-plugin</artifactId>
+					<version>${acme-corporate-pom.cloverVersion}</version>
 				</plugin>
 
 				<plugin>
@@ -800,40 +810,6 @@
 									</goals>
 								</execution>
 							</executions>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
-
-		<profile>
-			<id>clover</id>
-			<activation>
-				<property>
-					<name>maven.clover.licenseLocation</name>
-				</property>
-			</activation>
-
-			<properties>
-				<!-- ================= -->
-				<!-- Global Properties -->
-				<!-- ================= -->
-				<!-- Set JDK for Clover instrumentation (m-clover2-p) -->
-				<maven.clover.jdk>${maven.compiler.target}</maven.clover.jdk>
-
-				<!-- ================================= -->
-				<!-- Corporate POM specific properties -->
-				<!-- ================================= -->
-				<acme-corporate-pom.cloverVersion>3.1.0</acme-corporate-pom.cloverVersion>
-			</properties>
-
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>com.atlassian.maven.plugins</groupId>
-							<artifactId>maven-clover2-plugin</artifactId>
-							<version>${acme-corporate-pom.cloverVersion}</version>
 						</plugin>
 					</plugins>
 				</pluginManagement>

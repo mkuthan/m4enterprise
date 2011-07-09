@@ -4,8 +4,8 @@
 	<parent>
 		<groupId>com.googlecode.m4enterprise</groupId>
 		<artifactId>corporate-pom</artifactId>
-		<version>1.40</version>
-		<relativePath />
+		<version>1.41-SNAPSHOT</version>
+		<relativePath>../corporate-pom</relativePath>
 	</parent>
 
 	<artifactId>modular-war</artifactId>
