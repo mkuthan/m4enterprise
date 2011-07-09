@@ -145,7 +145,7 @@ Release management can be automated with continuous integration (CI) server. CI 
 
 == Bamboo Configuration ==
 
-To configure release management in Bamboo server, set build plan strategy as manual build. Define the following _Bamboo_ task goal:
+To configure release management in Bamboo server, set build plan strategy as manual build. Define the following Bamboo task goal:
 
 {{{
 mvn -B release:prepare release:perform -DperformRelease=true \
