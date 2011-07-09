@@ -154,4 +154,6 @@ mvn -B release:prepare release:perform -DperformRelease=true \
 
 _${bamboo.scm.username}_ and _${bamboo.scm.password}_ are build plan variables. You can specify the variables in the build plan configuration or as input values for parametrized manual build.
 
-*Note:* SCM credentials are shown in the Bamboo log (issue 11).
+*Notice:* 
+
+  SCM credentials (all variables in general) are shown in the Bamboo log (issue 11).
