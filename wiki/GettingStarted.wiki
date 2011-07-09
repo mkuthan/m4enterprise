@@ -16,53 +16,21 @@ This document is a 5 minute introduction to the project. After this short lectur
 To anonymously check out the latest project source code call:
 
 {{{
-svn checkout http://m4enterprise.googlecode.com/svn/ m4enterprise
-A    m4enterprise/wiki
-A    m4enterprise/wiki/ReleaseManagement.wiki
-A    m4enterprise/wiki/EnterpriseRepository.wiki
+svn checkout http://m4enterprise.googlecode.com/svn/trunk m4enterprise
+A    m4enterprise/simple-war
+A    m4enterprise/simple-war/src
+A    m4enterprise/simple-war/src/test
+A    m4enterprise/simple-war/src/test/java
+A    m4enterprise/simple-war/src/test/java/com
 
 (...)
 
-A    m4enterprise/tags/corporate-pom-1.29/src/site
-A    m4enterprise/tags/corporate-pom-1.29/src/site/site.xml
-A    m4enterprise/tags/corporate-pom-1.29/pom.xml
-Revision 1086.
-}}}
-
-
-= Install Corporate POM = 
-
-Sample projects inherit from corporate pom. Because there is no public repository for _m4enterprise_ project, before any further step, latest released Corporate POM must be installed in the local repository. Change the current directory to the latest Corporate POM tag (version 1.31 in the example below):
-
-{{{
-cd m4enterprise/tags/corporate-pom-1.31/
-}}}
-
-Finally, install Corporate POM to the local repository:
-
-{{{
-mvn -P corporate-pom install
-[INFO] Scanning for projects...
-[INFO]                                                                         
-[INFO] ------------------------------------------------------------------------
-[INFO] Building corporate-pom 1.31
-[INFO] ------------------------------------------------------------------------
-[INFO] 
-[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-corporate-rules) @ corporate-pom ---
-[INFO] The requirePluginVersions rule is currently not compatible with Maven3.
-[INFO] 
-[INFO] --- maven-site-plugin:3.0-beta-3:attach-descriptor (attach-descriptor) @ corporate-pom ---
-[INFO] 
-[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ corporate-pom ---
-[INFO] Installing /tmp/m4enterprise/tags/corporate-pom-1.31/pom.xml to /home/marcin/.m2/repository/com/googlecode/m4enterprise/corporate-pom/1.31/corporate-pom-1.31.pom
-[INFO] Installing /tmp/m4enterprise/tags/corporate-pom-1.31/target/corporate-pom-1.31-site.xml to /home/marcin/.m2/repository/com/googlecode/m4enterprise/corporate-pom/1.31/corporate-pom-1.31-site.xml
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time: 2.333s
-[INFO] Finished at: Fri Jan 28 19:07:22 CET 2011
-[INFO] Final Memory: 11M/490M
-[INFO] ------------------------------------------------------------------------
+A    m4enterprise/modular-war/src/site/site.xml
+A    m4enterprise/modular-war/src/site/apt
+A    m4enterprise/modular-war/src/site/apt/overview.apt
+A    m4enterprise/modular-war/pom.xml
+A    m4enterprise/pom.xml
+Revision 1259.
 }}}
 
 = Simple WAR Project =
@@ -70,39 +38,44 @@ mvn -P corporate-pom install
 Now you should be able to build and install Simple WAR project:
 
 {{{
-cd m4enterprise/trunk/simple-war
+cd m4enterprise/simple-war
 mvn install
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building simple-war-webapp 0.0.9-SNAPSHOT
+[INFO] Building simple-war-webapp 0.0.20-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-corporate-rules) @ simple-war-webapp ---
 [INFO] The requirePluginVersions rule is currently not compatible with Maven3.
 [INFO] 
-[INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ simple-war-webapp ---
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ simple-war-webapp ---
+[debug] execute contextualize
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 0 resource
 [INFO] 
-[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ simple-war-webapp ---
-[INFO] Compiling 2 source files to /tmp/m4enterprise/trunk/simple-war/target/classes
+[INFO] --- jrebel-maven-plugin:1.0.7:generate (generate-rebel-xml) @ simple-war-webapp ---
+[INFO] Processing com.googlecode.m4enterprise:simple-war-webapp with packaging war
 [INFO] 
-[INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ simple-war-webapp ---
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ simple-war-webapp ---
+[INFO] Compiling 2 source files to /tmp/m4enterprise/simple-war/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ simple-war-webapp ---
+[debug] execute contextualize
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 0 resource
 [INFO] 
 [INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ simple-war-webapp ---
-[INFO] Compiling 2 source files to /tmp/m4enterprise/trunk/simple-war/target/test-classes
+[INFO] Compiling 2 source files to /tmp/m4enterprise/simple-war/target/test-classes
 [INFO] 
-[INFO] --- maven-surefire-plugin:2.7.2:test (default-test) @ simple-war-webapp ---
-[INFO] Surefire report directory: /tmp/m4enterprise/trunk/simple-war/target/surefire-reports
+[INFO] --- maven-surefire-plugin:2.8.1:test (default-test) @ simple-war-webapp ---
+[INFO] Surefire report directory: /tmp/m4enterprise/simple-war/target/surefire-reports
 
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running com.googlecode.m4enterprise.core.ApplicationServiceTest
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 sec
 
 Results :
 
@@ -111,43 +84,42 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] --- maven-war-plugin:2.1.1:war (default-war) @ simple-war-webapp ---
 [INFO] Packaging webapp
-[INFO] Assembling webapp [simple-war-webapp] in [/tmp/m4enterprise/trunk/simple-war/target/simple-war-webapp-0.0.9-SNAPSHOT]
+[INFO] Assembling webapp [simple-war-webapp] in [/tmp/m4enterprise/simple-war/target/simple-war]
 [INFO] Processing war project
-[INFO] Copying webapp resources [/tmp/m4enterprise/trunk/simple-war/src/main/webapp]
-[INFO] Webapp assembled in [35 msecs]
-[INFO] Building war: /tmp/m4enterprise/trunk/simple-war/target/simple-war-webapp-0.0.9-SNAPSHOT.war
+[INFO] Copying webapp resources [/tmp/m4enterprise/simple-war/src/main/webapp]
+[INFO] Webapp assembled in [36 msecs]
+[INFO] Building war: /tmp/m4enterprise/simple-war/target/simple-war.war
 [INFO] WEB-INF/web.xml already added, skipping
 [INFO] 
 [INFO] --- maven-site-plugin:3.0-beta-3:attach-descriptor (attach-descriptor) @ simple-war-webapp ---
-[INFO] Parent project loaded from repository.
 [INFO] 
-[INFO] --- maven-failsafe-plugin:2.7.1:integration-test (integration-test) @ simple-war-webapp ---
-[INFO] Failsafe report directory: /tmp/m4enterprise/trunk/simple-war/target/failsafe-reports
+[INFO] --- maven-failsafe-plugin:2.8.1:integration-test (integration-test) @ simple-war-webapp ---
+[INFO] Failsafe report directory: /tmp/m4enterprise/simple-war/target/failsafe-reports
 
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running com.googlecode.m4enterprise.core.ApplicationServiceIT
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 sec
 
 Results :
 
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] 
-[INFO] --- maven-failsafe-plugin:2.7.1:verify (verify) @ simple-war-webapp ---
-[INFO] Failsafe report directory: /tmp/m4enterprise/trunk/simple-war/target/failsafe-reports
+[INFO] --- maven-failsafe-plugin:2.8.1:verify (verify) @ simple-war-webapp ---
+[INFO] Failsafe report directory: /tmp/m4enterprise/simple-war/target/failsafe-reports
 [INFO] 
 [INFO] --- maven-install-plugin:2.3.1:install (default-install) @ simple-war-webapp ---
-[INFO] Installing /tmp/m4enterprise/trunk/simple-war/target/simple-war-webapp-0.0.9-SNAPSHOT.war to /home/marcin/.m2/repository/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-SNAPSHOT.war
-[INFO] Installing /tmp/m4enterprise/trunk/simple-war/pom.xml to /home/marcin/.m2/repository/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-SNAPSHOT.pom
-[INFO] Installing /tmp/m4enterprise/trunk/simple-war/target/simple-war-webapp-0.0.9-SNAPSHOT-site.xml to /home/marcin/.m2/repository/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-SNAPSHOT-site.xml
+[INFO] Installing /tmp/m4enterprise/simple-war/target/simple-war.war to /home/marcin/.m2/repository/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-SNAPSHOT.war
+[INFO] Installing /tmp/m4enterprise/simple-war/pom.xml to /home/marcin/.m2/repository/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-SNAPSHOT.pom
+[INFO] Installing /tmp/m4enterprise/simple-war/target/simple-war-webapp-0.0.20-SNAPSHOT-site.xml to /home/marcin/.m2/repository/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-SNAPSHOT-site.xml
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 5.401s
-[INFO] Finished at: Fri Jan 28 19:08:47 CET 2011
-[INFO] Final Memory: 23M/618M
+[INFO] Total time: 5.113s
+[INFO] Finished at: Sat Jul 09 12:12:39 CEST 2011
+[INFO] Final Memory: 16M/490M
 [INFO] ------------------------------------------------------------------------
 }}}
 
@@ -158,53 +130,91 @@ mvn site
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building simple-war-webapp 0.0.9-SNAPSHOT
+[INFO] Building simple-war-webapp 0.0.20-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-
-(...)
-
+[INFO] 
+[INFO] --- maven-site-plugin:3.0-beta-3:site (default-site) @ simple-war-webapp ---
+[INFO] configuring report plugin org.apache.maven.plugins:maven-checkstyle-plugin:2.6
+[INFO] configuring report plugin org.codehaus.mojo:findbugs-maven-plugin:2.3.2
+[INFO] canGenerate is true
+[INFO] configuring report plugin org.apache.maven.plugins:maven-javadoc-plugin:2.8
+[INFO] 
+[INFO] >>> maven-javadoc-plugin:2.8:aggregate (report:aggregate) @ simple-war-webapp >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-corporate-rules) @ simple-war-webapp ---
+[INFO] The requirePluginVersions rule is currently not compatible with Maven3.
+[INFO] 
+[INFO] <<< maven-javadoc-plugin:2.8:aggregate (report:aggregate) @ simple-war-webapp <<<
+[INFO] 
+[INFO] >>> maven-javadoc-plugin:2.8:javadoc (report:javadoc) @ simple-war-webapp >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-corporate-rules) @ simple-war-webapp ---
+[INFO] The requirePluginVersions rule is currently not compatible with Maven3.
+[INFO] 
+[INFO] <<< maven-javadoc-plugin:2.8:javadoc (report:javadoc) @ simple-war-webapp <<<
+[INFO] configuring report plugin org.apache.maven.plugins:maven-jxr-plugin:2.2
+[INFO] configuring report plugin org.apache.maven.plugins:maven-pmd-plugin:2.5
+[INFO] configuring report plugin org.apache.maven.plugins:maven-surefire-report-plugin:2.8.1
+[INFO] 
+[INFO] >>> maven-surefire-report-plugin:2.8.1:report-only (report:report-only) @ simple-war-webapp >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-corporate-rules) @ simple-war-webapp ---
+[INFO] The requirePluginVersions rule is currently not compatible with Maven3.
+[INFO] 
+[INFO] <<< maven-surefire-report-plugin:2.8.1:report-only (report:report-only) @ simple-war-webapp <<<
+[INFO] configuring report plugin org.apache.maven.plugins:maven-project-info-reports-plugin:2.4
 [INFO] Rendering site with org.apache.maven.skins:maven-default-skin:jar:1.0 skin.
 [INFO] Skipped "JavaDocs" report, file "apidocs/index.html" already exists for the English version.
 [INFO] Generating "Checkstyle" report    --- maven-checkstyle-plugin:2.6
 [INFO] 
-[INFO] Generating "FindBugs Report" report    --- findbugs-maven-plugin:2.3.1
+[INFO] Generating "FindBugs Report" report    --- findbugs-maven-plugin:2.3.2
+[INFO] canGenerate is true
+[INFO] canGenerate is true
 [INFO] Locale is en
+[INFO] ****** FindBugsMojo executeReport *******
+[INFO] XML outputFile is /tmp/m4enterprise/simple-war/target/findbugsXml.xml
+[INFO] XML output Directory is /tmp/m4enterprise/simple-war/target
+[INFO] ****** FindBugsMojo executeFindbugs *******
+[INFO] Temp File is /tmp/m4enterprise/simple-war/target/findbugsTemp.xml
+[INFO] Fork Value is true
      [java] Warnings generated: 1
-[INFO] Generating "JavaDocs" report    --- maven-javadoc-plugin:2.7
+[INFO] xmlOutput is true
+[INFO] xmlOutput is true
+[INFO] Generating "JavaDocs" report    --- maven-javadoc-plugin:2.8
 [INFO] Generating "Source Xref" report    --- maven-jxr-plugin:2.2
 [INFO] Generating "Test Source Xref" report    --- maven-jxr-plugin:2.2
 [INFO] Generating "CPD Report" report    --- maven-pmd-plugin:2.5
 [INFO] Generating "PMD Report" report    --- maven-pmd-plugin:2.5
-[INFO] Generating "Surefire Report" report    --- maven-surefire-report-plugin:2.7.2
-[INFO] Generating "Continuous Integration" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Dependencies" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Distribution Management" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "About" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Issue Tracking" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Project License" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Mailing Lists" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Plugin Management" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Project Plugins" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Project Team" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Source Repository" report    --- maven-project-info-reports-plugin:2.3.1
-[INFO] Generating "Project Summary" report    --- maven-project-info-reports-plugin:2.3.1
+[INFO] Generating "Surefire Report" report    --- maven-surefire-report-plugin:2.8.1
+[INFO] Generating "Continuous Integration" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Dependencies" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Distribution Management" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "About" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Issue Tracking" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Project License" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Mailing Lists" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Plugin Management" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Project Plugins" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Project Team" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Source Repository" report    --- maven-project-info-reports-plugin:2.4
+[INFO] Generating "Project Summary" report    --- maven-project-info-reports-plugin:2.4
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 47.772s
-[INFO] Finished at: Fri Jan 28 19:10:12 CET 2011
-[INFO] Final Memory: 44M/631M
+[INFO] Total time: 20.332s
+[INFO] Finished at: Sat Jul 09 12:19:38 CEST 2011
+[INFO] Final Memory: 32M/614M
 [INFO] ------------------------------------------------------------------------
 }}}
 
-You can find generated site under `target\site` directory. Look at project information and reports. Quality of generated project site is extraordinary. And the quality comes from Corporate POM, keeps `pom.xml` in _Simple WAR_ short, end easy to understand.
+You can find generated site under `target\site` directory. Look at project information and reports. Quality of generated project site is extraordinary. And the quality comes from Corporate POM, keeps `pom.xml` in your project short end easy to understand.
 
 = Modular WAR Project =
 
 Lets do something more complex and build and install modular WAR project:
 
 {{{
-cd m4enterprise/trunk/modular-war
+cd m4enterprise/modular-war
 mvn install
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
@@ -217,32 +227,33 @@ mvn install
 [INFO] modular-war
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building modular-war-parent 0.0.10-SNAPSHOT
+[INFO] Building modular-war-parent 0.0.17-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
+[INFO] 
 
 (...)
 
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
 [INFO] 
-[INFO] modular-war-parent ................................ SUCCESS [1.838s]
-[INFO] modular-war-core .................................. SUCCESS [2.832s]
-[INFO] modular-war-webapp ................................ SUCCESS [1.326s]
-[INFO] modular-war-deploy ................................ SUCCESS [0.980s]
-[INFO] modular-war ....................................... SUCCESS [0.058s]
+[INFO] modular-war-parent ................................ SUCCESS [2.221s]
+[INFO] modular-war-core .................................. SUCCESS [3.565s]
+[INFO] modular-war-webapp ................................ SUCCESS [1.230s]
+[INFO] modular-war-deploy ................................ SUCCESS [7.526s]
+[INFO] modular-war ....................................... SUCCESS [0.055s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 7.577s
-[INFO] Finished at: Fri Jan 28 20:37:24 CET 2011
-[INFO] Final Memory: 33M/618M
+[INFO] Total time: 15.232s
+[INFO] Finished at: Sat Jul 09 12:22:47 CEST 2011
+[INFO] Final Memory: 24M/490M
 [INFO] ------------------------------------------------------------------------
 }}}
 
-If the project was built without errors, generate project site. For multi-module project site must be deployed, if not links between modules are broken.
+If the project was built without errors, generate project site. 
 
 {{{
-mvn site-deploy '-Dacme-corporate-pom.siteRepositoryUrl=file://${env.HOME}/.m4enterprise/sites'
+mvn site
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Build Order:
@@ -252,25 +263,68 @@ mvn site-deploy '-Dacme-corporate-pom.siteRepositoryUrl=file://${env.HOME}/.m4en
 [INFO] modular-war-webapp
 [INFO] modular-war-deploy
 [INFO] modular-war
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building modular-war-parent 0.0.17-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
 
 (...)
 
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
 [INFO] 
-[INFO] modular-war-parent ................................ SUCCESS [32.721s]
-[INFO] modular-war-core .................................. SUCCESS [13.261s]
-[INFO] modular-war-webapp ................................ SUCCESS [10.622s]
-[INFO] modular-war-deploy ................................ SUCCESS [2.040s]
-[INFO] modular-war ....................................... SUCCESS [4.475s]
+[INFO] modular-war-parent ................................ SUCCESS [14.564s]
+[INFO] modular-war-core .................................. SUCCESS [12.770s]
+[INFO] modular-war-webapp ................................ SUCCESS [9.686s]
+[INFO] modular-war-deploy ................................ SUCCESS [4.358s]
+[INFO] modular-war ....................................... SUCCESS [3.786s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 1:03.876s
-[INFO] Finished at: Fri Jan 28 20:41:31 CET 2011
-[INFO] Final Memory: 57M/582M
+[INFO] Total time: 45.711s
+[INFO] Finished at: Sat Jul 09 12:25:25 CEST 2011
+[INFO] Final Memory: 52M/559M
+[INFO] ------------------------------------------------------------------------
+}}}
+
+Note that each site is generated in each individual project's target location. As a result, relative links between different modules do not work. They will however work when you deploy the site. Theoretically you can also stage a site, but there is a bug in the site plugin (issue 8).
+
+{{{
+mvn site:deploy '-Dacme-corporate-pom.siteRepositoryUrl=file://${env.HOME}/.m4enterprise/sites'
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] modular-war-parent
+[INFO] modular-war-core
+[INFO] modular-war-webapp
+[INFO] modular-war-deploy
+[INFO] modular-war
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building modular-war-parent 0.0.17-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 
+(...)
+
+file:///home/marcin/.m4enterprise/sites/modular-war - Session: Opened  
+file:///home/marcin/.m4enterprise/sites/modular-war - Session: Disconnecting  
+file:///home/marcin/.m4enterprise/sites/modular-war - Session: Disconnected
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] modular-war-parent ................................ SUCCESS [1.397s]
+[INFO] modular-war-core .................................. SUCCESS [0.129s]
+[INFO] modular-war-webapp ................................ SUCCESS [0.085s]
+[INFO] modular-war-deploy ................................ SUCCESS [0.040s]
+[INFO] modular-war ....................................... SUCCESS [0.056s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.436s
+[INFO] Finished at: Sat Jul 09 12:33:08 CEST 2011
+[INFO] Final Memory: 9M/490M
+[INFO] ------------------------------------------------------------------------
 }}}
 
 You can find generated site under `$HOME/.m4enterprise/sites` directory. Please notice that project reports on a top level are aggregated. If you follow the links in the project menu you will get project sites for each submodule. Now the reports reflect only the current submodule! 
@@ -306,65 +360,100 @@ mvn deploy
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building simple-war-webapp 0.0.9-SNAPSHOT
+[INFO] Building simple-war-webapp 0.0.20-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-corporate-rules) @ simple-war-webapp ---
+[INFO] The requirePluginVersions rule is currently not compatible with Maven3.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ simple-war-webapp ---
+[debug] execute contextualize
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- jrebel-maven-plugin:1.0.7:generate (generate-rebel-xml) @ simple-war-webapp ---
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ simple-war-webapp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ simple-war-webapp ---
+[debug] execute contextualize
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ simple-war-webapp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.8.1:test (default-test) @ simple-war-webapp ---
+[INFO] Surefire report directory: /tmp/m4enterprise/simple-war/target/surefire-reports
 
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.googlecode.m4enterprise.core.ApplicationServiceTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 sec
 
-(...)
+Results :
+
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] 
-[INFO] --- maven-deploy-plugin:2.5:deploy (default-deploy) @ simple-war-webapp ---
-Downloading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml
-Downloaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml (1005 B at 122.7 KB/sec)
-Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2.war
-Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2.war (6 KB at 579.8 KB/sec)
-Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2.pom
-Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2.pom (3 KB at 839.2 KB/sec)
+[INFO] --- maven-war-plugin:2.1.1:war (default-war) @ simple-war-webapp ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [simple-war-webapp] in [/tmp/m4enterprise/simple-war/target/simple-war]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/tmp/m4enterprise/simple-war/src/main/webapp]
+[INFO] Webapp assembled in [39 msecs]
+[INFO] Building war: /tmp/m4enterprise/simple-war/target/simple-war.war
+[INFO] WEB-INF/web.xml already added, skipping
+[INFO] 
+[INFO] --- maven-site-plugin:3.0-beta-3:attach-descriptor (attach-descriptor) @ simple-war-webapp ---
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.8.1:integration-test (integration-test) @ simple-war-webapp ---
+[INFO] Failsafe report directory: /tmp/m4enterprise/simple-war/target/failsafe-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.googlecode.m4enterprise.core.ApplicationServiceIT
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.8.1:verify (verify) @ simple-war-webapp ---
+[INFO] Failsafe report directory: /tmp/m4enterprise/simple-war/target/failsafe-reports
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ simple-war-webapp ---
+[INFO] Installing /tmp/m4enterprise/simple-war/target/simple-war.war to /home/marcin/.m2/repository/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-SNAPSHOT.war
+[INFO] Installing /tmp/m4enterprise/simple-war/pom.xml to /home/marcin/.m2/repository/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-SNAPSHOT.pom
+[INFO] Installing /tmp/m4enterprise/simple-war/target/simple-war-webapp-0.0.20-SNAPSHOT-site.xml to /home/marcin/.m2/repository/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-SNAPSHOT-site.xml
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.6:deploy (default-deploy) @ simple-war-webapp ---
+Downloading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/maven-metadata.xml
+Downloaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/maven-metadata.xml (1009 B at 164.2 KB/sec)
+Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-20110709.103704-2.war
+Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-20110709.103704-2.war (6 KB at 807.5 KB/sec)
+Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-20110709.103704-2.pom
+Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-20110709.103704-2.pom (3 KB at 684.8 KB/sec)
 Downloading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml
-Downloaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml (304 B at 296.9 KB/sec)
-Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml
-Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml (1005 B at 490.7 KB/sec)
+Downloaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml (345 B at 168.5 KB/sec)
+Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/maven-metadata.xml
+Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/maven-metadata.xml (1009 B at 328.5 KB/sec)
 Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml
-Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml (304 B at 296.9 KB/sec)
-Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2-site.xml
-Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/simple-war-webapp-0.0.9-20110128.194313-2-site.xml (384 B at 187.5 KB/sec)
-Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml
-Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.9-SNAPSHOT/maven-metadata.xml (1005 B at 490.7 KB/sec)
+Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/maven-metadata.xml (345 B at 168.5 KB/sec)
+Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-20110709.103704-2-site.xml
+Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/simple-war-webapp-0.0.20-20110709.103704-2-site.xml (384 B at 375.0 KB/sec)
+Uploading: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/maven-metadata.xml
+Uploaded: file:///home/marcin/.m4enterprise/snapshots/com/googlecode/m4enterprise/simple-war-webapp/0.0.20-SNAPSHOT/maven-metadata.xml (1009 B at 985.4 KB/sec)
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 4.297s
-[INFO] Finished at: Fri Jan 28 20:43:13 CET 2011
-[INFO] Final Memory: 16M/618M
-[INFO] ------------------------------------------------------------------------
-}}}
-
-To deploy project sites call `site-deploy` goal:
-
-{{{
-mvn site-deploy
-[INFO] Scanning for projects...
-[INFO]                                                                         
-[INFO] ------------------------------------------------------------------------
-[INFO] Building simple-war-webapp 0.0.9-SNAPSHOT
-[INFO] ------------------------------------------------------------------------
-[INFO] 
-[INFO] --- maven-site-plugin:3.0-beta-3:site (default-site) @ simple-war-webapp 
-
-(...)
-
-[INFO] 
-[INFO] --- maven-site-plugin:3.0-beta-3:deploy (default-deploy) @ simple-war-webapp ---
-file:///home/marcin/.m4enterprise/sites/simple-war-webapp - Session: Opened  
-file:///home/marcin/.m4enterprise/sites/simple-war-webapp - Session: Disconnecting  
-file:///home/marcin/.m4enterprise/sites/simple-war-webapp - Session: Disconnected
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time: 21.233s
-[INFO] Finished at: Fri Jan 28 20:44:37 CET 2011
-[INFO] Final Memory: 42M/642M
+[INFO] Total time: 4.428s
+[INFO] Finished at: Sat Jul 09 12:37:04 CEST 2011
+[INFO] Final Memory: 11M/490M
 [INFO] ------------------------------------------------------------------------
 }}}
 
@@ -372,4 +461,4 @@ All artifacts are deployed under `$HOME\.m4enterprise\` directory.
 
 = Summary =
 
-After a few minutes you ended up with working web application projects. You could say: OK, I would use one of many available Maven archetype to create project template. That's true, but with _Maven For Enterprise_ you have created projects configured to use centralized enterprise build configuration - Your Corporate POM.
+After a few minutes you ended up with working web application projects. You could say: OK, I would use one of many available Maven archetype to create project template. That's true, but with _Maven For Enterprise_ you have created projects configured with centralized enterprise build configuration - Your Corporate POM.
