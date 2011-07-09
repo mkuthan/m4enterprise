@@ -8,7 +8,7 @@ This document is a 5 minute introduction to the project. After this short lectur
 
 = Requirements =
 
-  * Apache Maven (tested with 2.2.1 and 3.0.2)
+  * Apache Maven (tested with 2.2.1 and 3.0.3)
   * SVN client (tested with Subversion 1.6.6)
 
 = Checkout Source Code =
