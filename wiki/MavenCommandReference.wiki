@@ -115,7 +115,7 @@ Generate site with unit and integration tests reports:
 mvn verify site:site
 }}}
 
-Generate site stage with valid links between project modules (look at issue 9):
+Generate site stage with valid links between project modules (for multimodule projects site stage is broken, look at issue 9):
 
 {{{
 mvn test site:site site:stage
