@@ -20,13 +20,13 @@ The most comprehensive repository manager [http://docs.codehaus.org/display/MAVE
 
 = Maven Configuration =
 
-Regardless of selected repository product Maven configuration is similar. The main goal of the configuration is to force Maven to use only corporate repository.
+Regardless of selected repository product, Maven configuration is similar. The main goal of the configuration is to force Maven to use only corporate repository.
 
 For complete Maven settings reference please look at: [http://maven.apache.org/settings.html]
 
 == Repository Profiles ==
 
-Generally two profiles should be created, for releases and for snapshots. It is important to configure Maven to use only corporate repository. If new repositories are needed, configure them on corporate repository level (as a proxy) not in the Maven settings.
+Generally two profiles should be created, for releases and for snapshots. 
 
 {{{
 <profile>
@@ -76,7 +76,7 @@ Generally two profiles should be created, for releases and for snapshots. It is 
 </profile>
 }}}
 
-The profile(s) must be enabled for all builds by default:
+The profile(s) must be enabled by default:
 
 {{{
 <activeProfiles>
@@ -104,3 +104,9 @@ This tricky configuration assumes that under `http://repository.intranet.acme.co
 All requests to any external repository not listed explicitly in the `mirrorOf` element, will be redirected to the empty repository. It effectively disables distribution management section in any POM (including root POM embedded in Maven distribution).
 
 For more details please refer to _Artifactory_ [http://wiki.jfrog.org/confluence/display/RTF/Configuring+Artifacts+Resolution documentation].
+
+== Configuration distribution ==
+
+It is crucial to distribute Maven configuration. Maven installation and configuration must be as easy as downloading official Maven distribution and applying corporate specific settings. The configuration documentation and `settings.xml` should be published, e.g: on corporate Wiki. 
+
+If new repositories are needed, configure them on corporate repository level (as a proxy) not in the Maven settings. Avoid any modification in the Maven client configuration, the configuration distribution to hundreds developers is painful. 
