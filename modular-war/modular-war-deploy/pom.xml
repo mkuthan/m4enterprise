@@ -43,7 +43,7 @@
 		<modular-war-deploy.smokeTestTitle>Hello World</modular-war-deploy.smokeTestTitle>
 
 		<modular-war-deploy.sshHost>localhost</modular-war-deploy.sshHost>
-		<modular-war-deploy.sshDir>/opt/jboss-4.2.3.GA/server/default/deploy</modular-war-deploy.sshDir>
+		<modular-war-deploy.sshDir>/opt/jboss-eap-4.3.0.GA_CP06/jboss-as/server/default/deploy</modular-war-deploy.sshDir>
 		<modular-war-deploy.sshUrl>${modular-war-deploy.sshUsername}:${modular-war-deploy.sshPassword}@${modular-war-deploy.sshHost}:${modular-war-deploy.sshDir}</modular-war-deploy.sshUrl>
 		<modular-war-deploy.sshStopCommand>/etc/init.d/jboss stop</modular-war-deploy.sshStopCommand>
 		<modular-war-deploy.sshStartCommand>/etc/init.d/jboss start</modular-war-deploy.sshStartCommand>
@@ -80,7 +80,7 @@
 			</activation>
 
 			<build>
-				<finalName>modular-war</finalName>
+				<finalName>${modular-war-deploy.deployableId}</finalName>
 
 				<filters>
 					<filter>src/main/filters/default.properties</filter>
@@ -170,7 +170,7 @@
 												command="${modular-war-deploy.sshStartCommand}" trust="true" failonerror="false" />
 
 											<echo message="Waiting for server ..." />
-											<waitfor maxwait="240" maxwaitunit="second" checkevery="1" checkeveryunit="second" timeoutproperty="modular-war-deploy">
+											<waitfor maxwait="240" maxwaitunit="second" checkevery="5" checkeveryunit="second" timeoutproperty="modular-war-deploy">
 												<http url="${modular-war-deploy.smokeTestUrl}" />
 											</waitfor>
 
