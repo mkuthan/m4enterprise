@@ -26,8 +26,7 @@
 
 	<scm>
 		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/</connection>
-		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/
-		</developerConnection>
+		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/modular-war-deploy/</developerConnection>
 		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/modular-war-deploy/</url>
 	</scm>
 
