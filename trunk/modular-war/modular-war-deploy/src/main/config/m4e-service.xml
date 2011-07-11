@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mbean code="org.jboss.naming.JNDIBindingServiceMgr" name="jboss.apps:service=JNDIBindingServiceMgr">
+	<attribute name="BindingsConfig" serialDataType="jbxb">
+		<jndi:bindings xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns:jndi="urn:jboss:jndi-binding-service:1.0"
+			xs:schemaLocation="urn:jboss:jndi-binding-service resource:jndi-binding-service_1_0.xsd">
+			<jndi:binding name="m4e/hibernateDialect">
+				<jndi:value type="java.lang.String">${modular-war-deploy.hibernateDialect}</jndi:value>
+			</jndi:binding>
+			<jndi:binding name="m4e/liquibaseContexts">
+				<jndi:value type="java.lang.String">${modular-war-deploy.liquibaseContexts}</jndi:value>
+			</jndi:binding>
+			<jndi:binding name="m4e/liquibaseDropFirst">
+				<jndi:value type="java.lang.Boolean">${modular-war-deploy.liquibaseDropFirst}</jndi:value>
+			</jndi:binding>
+		</jndi:bindings>
+	</attribute>
+</mbean> 
