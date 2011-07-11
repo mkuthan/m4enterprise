@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -26,6 +27,7 @@ public class DeployIT {
 	webClient.closeAllWindows();
     }
 
+    @Test
     public void smokeDeploymentTest() throws Exception {
 	HtmlPage page = webClient.getPage(testProperties.getString("url"));
 	assertEquals(testProperties.getString("title"), page.getTitleText());
