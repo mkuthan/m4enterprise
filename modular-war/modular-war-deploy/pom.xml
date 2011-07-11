@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -34,32 +35,37 @@
 		<!-- Overlay has no web.xml file (m-war-c) -->
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 
-		<modular-war-deploy.configDir>${basedir}/src/main/config</modular-war-deploy.configDir>
-		<modular-war-deploy.warFile>${project.build.directory}/${project.build.finalName}.war</modular-war-deploy.warFile>
+		<modular-war-deploy.deployableId>modular-war-webapp</modular-war-deploy.deployableId>
+		<modular-war-deploy.warFile>${project.build.directory}/${modular-war-deploy.deployableId}.war</modular-war-deploy.warFile>
+
+		<modular-war-deploy.configDir>${project.build.directory}/config-resources</modular-war-deploy.configDir>
+
+		<modular-war-deploy.smokeTestUrl>http://${modular-war-deploy.sshHost}:8080/${modular-war-deploy.deployableId}/</modular-war-deploy.smokeTestUrl>
+		<modular-war-deploy.smokeTestTitle>Hello World</modular-war-deploy.smokeTestTitle>
 
 		<modular-war-deploy.sshHost>localhost</modular-war-deploy.sshHost>
 		<modular-war-deploy.sshDir>/opt/jboss-4.2.3.GA/server/default/deploy</modular-war-deploy.sshDir>
-		<modular-war-deploy.sshUrl>${modular-war-deploy.sshUsername}:${modular-war-deploy.sshPassword}@${modular-war-deploy.sshHost}:${modular-war-deploy.sshDir}
-				</modular-war-deploy.sshUrl>
+		<modular-war-deploy.sshUrl>${modular-war-deploy.sshUsername}:${modular-war-deploy.sshPassword}@${modular-war-deploy.sshHost}:${modular-war-deploy.sshDir}</modular-war-deploy.sshUrl>
 		<modular-war-deploy.sshStopCommand>/etc/init.d/jboss stop</modular-war-deploy.sshStopCommand>
 		<modular-war-deploy.sshStartCommand>/etc/init.d/jboss start</modular-war-deploy.sshStartCommand>
 		<modular-war-deploy.sshUsername />
 		<modular-war-deploy.sshPassword />
-
-		<modular-war-deploy.smokeTestUrl>http://localhost:8080/modular-war/</modular-war-deploy.smokeTestUrl>
 
 		<modular-war-deploy.wagonServerId>modular-war</modular-war-deploy.wagonServerId>
 		<modular-war-deploy.wagonUrl>file:///${env.HOME}/.m4enterprise/dropfolder</modular-war-deploy.wagonUrl>
 	</properties>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<testResources>
 			<testResource>
 				<directory>src/test/resources</directory>
 				<filtering>true</filtering>
-				<includes>
-					<include>test.properties</include>
-				</includes>
 			</testResource>
 		</testResources>
 	</build>
@@ -77,7 +83,36 @@
 			<build>
 				<finalName>modular-war</finalName>
 
+				<filters>
+					<filter>src/main/filters/default.properties</filter>
+					<filter>src/main/filters/${environment}.properties</filter>
+				</filters>
+
 				<plugins>
+					<!-- Filter Application Server descriptors -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${modular-war-deploy.configDir}</outputDirectory>
+									<resources>
+										<resource>
+											<directory>src/main/config</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
 					<!-- Customize artifact before deployment -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -118,7 +153,8 @@
 									<configuration>
 										<target>
 											<echo message="Stopping server" />
-											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}" command="${modular-war-deploy.sshStopCommand}" trust="true" failonerror="false" />
+											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}"
+												command="${modular-war-deploy.sshStopCommand}" trust="true" failonerror="false" />
 
 											<echo message="Uploading WAR file" />
 											<scp toDir="${modular-war-deploy.sshUrl}" trust="true">
@@ -127,11 +163,21 @@
 
 											<echo message="Uploading descriptors" />
 											<scp toDir="${modular-war-deploy.sshUrl}" trust="true">
-												<fileset dir="${modular-war-deploy.configDir}/env-${environment}" />
+												<fileset dir="${modular-war-deploy.configDir}" />
 											</scp>
 
 											<echo message="Starting server" />
-											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}" command="${modular-war-deploy.sshStartCommand}" trust="true" failonerror="false" />
+											<sshexec host="${modular-war-deploy.sshHost}" username="${modular-war-deploy.sshUsername}" password="${modular-war-deploy.sshPassword}"
+												command="${modular-war-deploy.sshStartCommand}" trust="true" failonerror="false" />
+
+											<echo message="Waiting for server ..." />
+											<waitfor maxwait="240" maxwaitunit="second" checkevery="1" checkeveryunit="second" timeoutproperty="modular-war-deploy">
+												<http url="${modular-war-deploy.smokeTestUrl}" />
+											</waitfor>
+
+											<fail if="modular-war-deploy" message="Could not start server" />
+
+											<echo message="Server started" />
 										</target>
 									</configuration>
 								</execution>
@@ -145,7 +191,7 @@
 								<dependency>
 									<groupId>com.jcraft</groupId>
 									<artifactId>jsch</artifactId>
-									<version>0.1.42</version>
+									<version>0.1.44-1</version>
 								</dependency>
 							</dependencies>
 						</plugin>
@@ -263,7 +309,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>modular-war-webapp</artifactId>
+			<artifactId>${modular-war-deploy.deployableId}</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
 			<scope>runtime</scope>
