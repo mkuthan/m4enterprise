@@ -122,9 +122,6 @@
 									<groupId>${project.groupId}</groupId>
 									<artifactId>modular-war-webapp</artifactId>
 								</overlay>
-								<overlay>
-									<!-- empty groupId/artifactId detected as the current build -->
-								</overlay>
 							</overlays>
 						</configuration>
 					</plugin>
