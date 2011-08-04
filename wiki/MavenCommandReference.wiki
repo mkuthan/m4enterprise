@@ -117,7 +117,7 @@ mvn verify site:site site:stage
 
 = Code Coverage Reporting =
 
-Generate clover reports for unit tests:
+Generate Clover reports for unit tests:
 
 {{{
 mvn clover2:setup test clover2:aggregate clover2:clover
@@ -135,7 +135,7 @@ mvn clover2:setup verify clover2:aggregate clover2:clover
 
 = Code Quality Analysis =
 
-Analyse code quality:
+Analyse code quality with Sonar:
 
 {{{
 mvn sonar:sonar
