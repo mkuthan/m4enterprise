@@ -73,10 +73,10 @@
 
 		<!-- Sonar settings (m-sonar-p) -->
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
-		
+
 		<sonar.profile>Sonar</sonar.profile>
 		<sonar.language>java</sonar.language>
-				
+
 		<sonar.sourceEncoding>${project.build.sourceEncoding}</sonar.sourceEncoding>
 		<sonar.java.target>${maven.compiler.target}</sonar.java.target>
 		<sonar.java.source>${maven.compiler.source}</sonar.java.source>
@@ -246,21 +246,6 @@
 	</scm>
 
 	<build>
-		<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, https: 
-			and file: as transport protocols. Declare others transports explicitly. -->
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ssh</artifactId>
-				<version>1.0</version>
-			</extension>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav-jackrabbit</artifactId>
-				<version>1.0</version>
-			</extension>
-		</extensions>
-
 		<!-- Plugin order based on http://maven.apache.org/plugins/index.html -->
 		<pluginManagement>
 			<plugins>
@@ -299,6 +284,12 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>${acme-corporate-pom.resourcesVersion}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${acme-corporate-pom.siteVersion}</version>
 				</plugin>
 
 				<plugin>
@@ -771,15 +762,6 @@
 			</properties>
 
 			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-site-plugin</artifactId>
-							<version>${acme-corporate-pom.siteVersion}</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
 			</build>
 		</profile>
 
@@ -809,6 +791,21 @@
 					<plugins>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-deploy-plugin</artifactId>
+							<version>${acme-corporate-pom.deployVersion}</version>
+							<dependencies>
+								<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, 
+									https: and file: as transport protocols. Declare others transports explicitly. -->
+								<dependency>
+									<groupId>org.apache.maven.wagon</groupId>
+									<artifactId>wagon-webdav-jackrabbit</artifactId>
+									<version>1.0</version>
+								</dependency>
+							</dependencies>
+						</plugin>
+
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-site-plugin</artifactId>
 							<version>${acme-corporate-pom.siteVersion}</version>
 							<configuration>
@@ -824,6 +821,15 @@
 									</goals>
 								</execution>
 							</executions>
+							<dependencies>
+								<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, 
+									https: and file: as transport protocols. Declare others transports explicitly. -->
+								<dependency>
+									<groupId>org.apache.maven.wagon</groupId>
+									<artifactId>wagon-ssh</artifactId>
+									<version>1.0</version>
+								</dependency>
+							</dependencies>
 						</plugin>
 					</plugins>
 				</pluginManagement>
