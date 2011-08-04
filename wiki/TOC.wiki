@@ -9,5 +9,5 @@
     * [EnterpriseRepository Enterprise Repository]
     * [CorporatePOM Corporate POM]
     * [Archetypes Archetypes]
-    * [CloverConfiguration]
-    * [SonarConfiguration]
+    * [CloverConfiguration Clover Configuration]
+    * [SonarConfiguration Sonar Configuration]
