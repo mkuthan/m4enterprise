@@ -120,18 +120,30 @@ mvn verify site:site site:stage
 Generate clover reports for unit tests:
 
 {{{
-mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup test clover2:aggregate clover2:clover
+mvn clover2:setup test clover2:aggregate clover2:clover
 }}}
 
 Generate clover reports for unit and integration tests:
 
 {{{
-mvn -Dmaven.clover.licenseLocation='c:\_data\clover.licence' clover2:setup verify clover2:aggregate clover2:clover
+mvn clover2:setup verify clover2:aggregate clover2:clover
 }}}
 
 *Notice:*
 
-  Property `maven.clover.licenseLocation` can be specified in the `settings.xml` file (see [http://confluence.atlassian.com/display/CLOVER/Clover-for-Maven+2+User's+Guide Clover for Maven User's Guide]).
+  Read CloverConfiguration guide.
+
+= Code Quality Analysis =
+
+Analyse code quality:
+
+{{{
+mvn sonar:sonar
+}}}
+
+*Notice:*
+
+  Read SonarConfiguration guide.
 
 = Dependency Management =
 
