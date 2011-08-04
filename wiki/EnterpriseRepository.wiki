@@ -107,6 +107,8 @@ For more details please refer to _Artifactory_ [http://wiki.jfrog.org/confluence
 
 == Configuration distribution ==
 
-It is crucial to distribute Maven configuration. Maven installation and configuration must be as easy as downloading official Maven distribution and applying corporate specific settings. The configuration documentation and `settings.xml` should be published, e.g: on corporate Wiki. 
+It is crucial to distribute Maven configuration in the corporation. Maven installation and configuration must be as easy as downloading official Maven distribution and applying corporate specific settings. The configuration documentation and predefined `settings.xml` should be published, e.g: on corporate Wiki. 
 
 If new repositories are needed, configure them on corporate repository level (as a proxy) not in the Maven settings. Avoid any modification in the Maven client configuration, the configuration distribution to hundreds developers is painful. 
+
+The configuration must be also applied on Continuous Integration server. The Continuous Integrations server is often configured as agents located on multiple servers. Manage Maven configuration with SCM and distribute it to all agents (configuration overlay). The process can be also automated within tools like [http://linux.die.net/man/1/rdist rdist]. 
