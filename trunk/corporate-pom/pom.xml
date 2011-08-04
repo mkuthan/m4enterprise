@@ -37,6 +37,7 @@
 		<!-- Suppress a commit of changes to the working copy before the tag is 
 			created (m-release-p) -->
 		<suppressCommitBeforeTag>true</suppressCommitBeforeTag>
+		<remoteTagging>false</remoteTagging>
 
 		<!-- http://jira.codehaus.org/browse/MRELEASE-271 (m-release-p) -->
 		<preparationGoals>clean install</preparationGoals>
