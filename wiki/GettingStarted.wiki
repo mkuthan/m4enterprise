@@ -461,4 +461,8 @@ All artifacts are deployed under `$HOME\.m4enterprise\` directory.
 
 = Summary =
 
-After a few minutes you ended up with working web application projects. You could say: OK, I would use one of many available Maven archetypes to create project template. That's true, but with _Maven For Enterprise_ you have created projects configured with centralized enterprise build configuration - *Your Corporate POM*.
+After a few minutes you ended up with working web application projects. The example projects are focused on Maven configuration in corporate environment, not on one particular technology or framework. There are many archetypes available in the repositories, but they are rarely fit to the corporate Maven infrastructure. 
+
+Corporate POM from _Maven for Enterprise_ can be easily adopted to the corporate specific rules.
+
+The example projects are good candidates for further enhancement. Finally they could be used as a corporate technology stack artifacts.
