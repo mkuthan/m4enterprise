@@ -14,7 +14,7 @@
 	<name>modular-war-webapp</name>
 	<description>Web Application module</description>
 
-	<url>${acme-corporate-pom.siteUrl}/${parent.artifactId}/${project.artifactId}/</url>
+	<url>${acme-corporate-pom.siteUrl}/${project.parent.artifactId}/${project.artifactId}/</url>
 
 	<!-- Developers that have contributed to the module -->
 	<developers>
