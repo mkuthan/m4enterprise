@@ -71,6 +71,16 @@
 		<!-- Set JDK for Clover instrumentation (m-clover2-p) -->
 		<maven.clover.jdk>${maven.compiler.target}</maven.clover.jdk>
 
+		<!-- Sonar settings (m-sonar-p) -->
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		
+		<sonar.profile>Sonar</sonar.profile>
+		<sonar.language>java</sonar.language>
+				
+		<sonar.sourceEncoding>${project.build.sourceEncoding}</sonar.sourceEncoding>
+		<sonar.java.target>${maven.compiler.target}</sonar.java.target>
+		<sonar.java.source>${maven.compiler.source}</sonar.java.source>
+
 		<!-- ================================= -->
 		<!-- Corporate POM specific properties -->
 		<!-- ================================= -->
@@ -90,10 +100,11 @@
 		<acme-corporate-pom.organizationUrl>http://www.acme.com</acme-corporate-pom.organizationUrl>
 		<acme-corporate-pom.siteUrl>http://sites.intranet.acme.com</acme-corporate-pom.siteUrl>
 		<acme-corporate-pom.bambooUrl>http://localhost:8085</acme-corporate-pom.bambooUrl>
-		<acme-corporate-pom.sonarUrl>http://localhost:9000</acme-corporate-pom.sonarUrl>
 
-		<acme-corporate-pom.checkstyleUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/checkstyle-1.0.xml</acme-corporate-pom.checkstyleUrl>
-		<acme-corporate-pom.pmdUrl>http://m4enterprise.googlecode.com/svn/trunk/conf/pmd-1.0.xml</acme-corporate-pom.pmdUrl>
+		<!-- Requires mod_rewrite (http://code.google.com/p/m4enterprise/issues/detail?id=13) -->
+		<acme-corporate-pom.checkstyleUrl>${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/checkstyle</acme-corporate-pom.checkstyleUrl>
+		<acme-corporate-pom.findbugsUrl>${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/findbugs</acme-corporate-pom.findbugsUrl>
+		<acme-corporate-pom.pmdUrl>${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/pmd</acme-corporate-pom.pmdUrl>
 
 		<!-- Core plugins -->
 		<acme-corporate-pom.cleanVersion>2.4.1</acme-corporate-pom.cleanVersion>
@@ -355,6 +366,8 @@
 					<artifactId>findbugs-maven-plugin</artifactId>
 					<version>${acme-corporate-pom.findbugsVersion}</version>
 					<configuration>
+						<!-- Corporate specific rules -->
+						<includeFilterFile>${acme-corporate-pom.findbugsUrl}</includeFilterFile>
 						<!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
 						<findbugsXmlOutput>true</findbugsXmlOutput>
 						<xmlOutput>true</xmlOutput>
@@ -685,29 +698,6 @@
 	<reporting>
 		<!-- List of plugins in alphabetical order -->
 		<plugins>
-			<!-- TODO: remove from reports -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>${acme-corporate-pom.checkstyleVersion}</version>
-				<configuration>
-					<!-- Corporate specific rules -->
-					<configLocation>${acme-corporate-pom.checkstyleUrl}</configLocation>
-				</configuration>
-			</plugin>
-
-			<!-- TODO: remove from reports -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>${acme-corporate-pom.findbugsVersion}</version>
-				<configuration>
-					<!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
-					<findbugsXmlOutput>true</findbugsXmlOutput>
-					<xmlOutput>true</xmlOutput>
-				</configuration>
-			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -735,25 +725,6 @@
 						</reports>
 					</reportSet>
 				</reportSets>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>${acme-corporate-pom.jxrVersion}</version>
-			</plugin>
-
-			<!-- TODO: remove from reports -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>${acme-corporate-pom.pmdVersion}</version>
-				<configuration>
-					<!-- Corporate specific rules -->
-					<rulesets>
-						<ruleset>${acme-corporate-pom.pmdUrl}</ruleset>
-					</rulesets>
-				</configuration>
 			</plugin>
 
 			<plugin>
