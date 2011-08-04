@@ -34,13 +34,13 @@ mvn package
 
 Run integration test (it also builds a package):
 
+*Notice:*
+
+   Goal `integration-test` should not be used directly to run integration tests. Use `verify` goal instead (see [http://maven.apache.org/plugins/maven-failsafe-plugin/ m-failsafe-p]) for details.  
+
 {{{
 mvn verify
 }}}
-
-*Notice:*
-
-   Goal `integration-test` should not be used to run integration tests. Use `verify` goal instead (see [http://maven.apache.org/plugins/maven-failsafe-plugin/ m-failsafe-p]).  
 
 Install a package into local repository (it also executes integration tests):
 
@@ -62,13 +62,13 @@ mvn -DskipTests=true install
 
 Deploy artifact into enterprise repository:
 
-{{{
-mvn deploy
-}}}
-
 *Notice:*
 
   Goal `deploy` should not be called directly. Configure build plan on continuous integration server to deploy artifact into corporate enterprise repository.
+
+{{{
+mvn deploy
+}}}
 
 = Project Run =
 
