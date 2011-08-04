@@ -101,7 +101,7 @@
 		<acme-corporate-pom.siteUrl>http://sites.intranet.acme.com</acme-corporate-pom.siteUrl>
 		<acme-corporate-pom.bambooUrl>http://localhost:8085</acme-corporate-pom.bambooUrl>
 
-		<!-- Requires mod_rewrite (http://code.google.com/p/m4enterprise/issues/detail?id=13) -->
+		<!-- Corporate projects code quality rules (do not overwrite) -->
 		<acme-corporate-pom.checkstyleUrl>${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/checkstyle</acme-corporate-pom.checkstyleUrl>
 		<acme-corporate-pom.findbugsUrl>${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/findbugs</acme-corporate-pom.findbugsUrl>
 		<acme-corporate-pom.pmdUrl>${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/pmd</acme-corporate-pom.pmdUrl>
