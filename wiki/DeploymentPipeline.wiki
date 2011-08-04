@@ -51,7 +51,7 @@ The `modular-war-deploy` module is configured to deploy on JBoss application ser
 
 == QA and PROD Environments ==
 
-In the perfect world deployment on DEV, QA and PROD should be the same. But in reality you cannot automate deployment on QA and PROD due to formal process restrictions. Automate what you can, than. In the following scenario WAR file and descriptors are uploaded into _dropfolder_, share configured as a place for WAR files queued for deployment.
+In the perfect world deployment on DEV, QA and PROD should be the same. But in reality you cannot automate deployment on QA and PROD due to formal process restrictions. Automate what you can, than. In the following scenario WAR file and descriptors are uploaded into _dropfolder_, network share configured as a place for WAR files queued for deployment.
 
 Profiles _env-qa_ and _env-prod_ are configured to use Maven _Wagon_. WAR file and descriptors are uploaded, but application is not deployed automatically. Smoke tests are disabled.
 
@@ -63,12 +63,12 @@ Define the following build plan trigerred manually (one-click operation):
 mvn -B clean verify -Denvironment=[qa|prod]
 }}}
 
-Credential for _Wagon_ provider are configured in `settings.xml`. It is advantage over SSH Ant task configuration in _env-dev_ profile. 
+Credential for _Wagon_ provider are configured in `settings.xml`. It is advantage over SSH Ant task configuration in _env-dev_ profile. Passwords in `settings.xml` can be encrypted for security reasons.
 
 Location of target directory can be specified as `modular-war-deploy.wagonUrl` property, e.g:
 
 {{{
-dav:http://host/dropfolder
+-Dmodular-war-deploy.wagonUrl=dav:http://host/dropfolder
 }}}
 
 To deploy released version, SCM configuration section on the CI server needs to be configured to checkout the code from the SCM tag. Check CI server documentation how to parametrize SCM location.
