@@ -2,12 +2,10 @@
 
   * [GettingStarted Getting Started]
   * [MavenCommandReference Maven Command Reference]
-  * Continuous Delivery
-    * [ReleaseManagement Release Management]
-    * [DeploymentPipeline Deployment Pipeline]
-  * Enterprise Infrastructure
-    * [EnterpriseRepository Enterprise Repository]
-    * [CorporatePOM Corporate POM]
-    * [Archetypes Archetypes]
-    * [CloverConfiguration Clover Configuration]
-    * [SonarConfiguration Sonar Configuration]
+  * [ReleaseManagement Release Management]
+  * [DeploymentPipeline Deployment Pipeline]
+  * [CorporatePOM Corporate POM]
+  * [Archetypes Corporate Archetypes]
+  * [EnterpriseRepository Enterprise Repository]
+  * [CloverConfiguration Clover Configuration]
+  * [SonarConfiguration Sonar Configuration]
