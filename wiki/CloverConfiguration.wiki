@@ -1,4 +1,4 @@
-#summary Clover configuration.
+#summary Clover configuration
 
 = Introduction =
 
