@@ -13,7 +13,7 @@
 		<module>corporate-pom</module>
 		<module>modular-war</module>
 		<module>simple-war</module>
-  </modules>
+  	</modules>
 
 	<scm>
 		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk</connection>
