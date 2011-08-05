@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>modular-war</artifactId>
-	<version>0.0.17-SNAPSHOT</version>
+	<version>0.0.18-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>modular-war</name>
 	<description>Aggregate POM for the modular WAR project</description>
