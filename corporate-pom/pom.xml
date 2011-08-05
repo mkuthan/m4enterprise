@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -691,6 +692,29 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${acme-corporate-pom.checkstyleVersion}</version>
+				<configuration>
+					<!-- Corporate specific rules -->
+					<configLocation>${acme-corporate-pom.checkstyleUrl}</configLocation>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>${acme-corporate-pom.findbugsVersion}</version>
+				<configuration>
+					<!-- Corporate specific rules -->
+					<includeFilterFile>${acme-corporate-pom.findbugsUrl}</includeFilterFile>
+					<!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<xmlOutput>true</xmlOutput>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>${acme-corporate-pom.javadocVersion}</version>
 				<configuration>
@@ -716,6 +740,24 @@
 						</reports>
 					</reportSet>
 				</reportSets>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${acme-corporate-pom.jxrVersion}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${acme-corporate-pom.pmdVersion}</version>
+				<configuration>
+					<!-- Corporate specific rules -->
+					<rulesets>
+						<ruleset>${acme-corporate-pom.pmdUrl}</ruleset>
+					</rulesets>
+				</configuration>
 			</plugin>
 
 			<plugin>
