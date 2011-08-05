@@ -13,7 +13,6 @@
 		<module>corporate-pom</module>
 		<module>modular-war</module>
 		<module>simple-war</module>
-    <module>corporate-pmd</module>
   </modules>
 
 	<scm>
