@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -33,8 +34,7 @@
 		<!-- Automatically assign submodules the parent version (m-release-p) -->
 		<autoVersionSubmodules>true</autoVersionSubmodules>
 
-		<!-- Suppress a commit of changes to the working copy before the tag is 
-			created (m-release-p) -->
+		<!-- Suppress a commit of changes to the working copy before the tag is created (m-release-p) -->
 		<suppressCommitBeforeTag>true</suppressCommitBeforeTag>
 		<remoteTagging>false</remoteTagging>
 
@@ -44,8 +44,7 @@
 		<!-- Disable report aggregation (m-jxr-p, m-pmd-p, m-surefire-report-p) -->
 		<aggregate>false</aggregate>
 
-		<!-- Shut off non-error and non-warning messages, making them easier to 
-			view (m-javadoc-p) -->
+		<!-- Shut off non-error and non-warning messages, making them easier to view (m-javadoc-p) -->
 		<quiet>true</quiet>
 
 		<!-- Disable links detection between modules, it is too slow (m-javadoc-p) -->
@@ -64,8 +63,7 @@
 		<!-- A comma separated list of locales (m-site-p) -->
 		<locales>en</locales>
 
-		<!-- Exclude build-number.txt file created by Bamboo in the project directory 
-			(m-release-p) -->
+		<!-- Exclude build-number.txt file created by Bamboo in the project directory (m-release-p) -->
 		<checkModificationExcludeList>build-number.txt</checkModificationExcludeList>
 
 		<!-- Set JDK for Clover instrumentation (m-clover2-p) -->
@@ -209,8 +207,7 @@
 		</site>
 	</distributionManagement>
 
-	<!-- Corporate POM environment and project settings, should be redefined 
-		in project's POMs -->
+	<!-- Corporate POM environment and project settings, should be redefined in project's POMs -->
 	<url>${acme-corporate-pom.siteUrl}/${project.artifactId}/</url>
 
 	<developers>
@@ -821,7 +818,6 @@
 				<!-- Global Properties -->
 				<!-- ================= -->
 
-
 				<!-- ================================= -->
 				<!-- Corporate POM specific properties -->
 				<!-- ================================= -->
@@ -835,8 +831,8 @@
 							<artifactId>maven-deploy-plugin</artifactId>
 							<version>${acme-corporate-pom.deployVersion}</version>
 							<dependencies>
-								<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, 
-									https: and file: as transport protocols. Declare others transports explicitly. -->
+								<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, https: and file: as transport protocols. Declare 
+									others transports explicitly. -->
 								<dependency>
 									<groupId>org.apache.maven.wagon</groupId>
 									<artifactId>wagon-webdav-jackrabbit</artifactId>
@@ -852,9 +848,8 @@
 							<configuration>
 							</configuration>
 							<executions>
-								<!-- For Maven3 default execution of site:attach-descriptor has been 
-									removed from the built-in lifecycle bindings for projects with packaging 
-									"pom". Enable it again. -->
+								<!-- For Maven3 default execution of site:attach-descriptor has been removed from the built-in lifecycle bindings 
+									for projects with packaging "pom". Enable it again. -->
 								<execution>
 									<id>attach-descriptor</id>
 									<goals>
@@ -863,8 +858,8 @@
 								</execution>
 							</executions>
 							<dependencies>
-								<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, 
-									https: and file: as transport protocols. Declare others transports explicitly. -->
+								<!-- Unlike Maven 2, Maven 3 supports out of the box only http:, https: and file: as transport protocols. Declare 
+									others transports explicitly. -->
 								<dependency>
 									<groupId>org.apache.maven.wagon</groupId>
 									<artifactId>wagon-ssh</artifactId>
