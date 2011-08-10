@@ -173,7 +173,6 @@
 		<acme-corporate-pom.liquibaseVersion>2.0.1</acme-corporate-pom.liquibaseVersion>
 		<acme-corporate-pom.processorVersion>2.0.3</acme-corporate-pom.processorVersion>
 		<acme-corporate-pom.seleniumVersion>2.0</acme-corporate-pom.seleniumVersion>
-		<acme-corporate-pom.sonarVersion>2.0-beta-2</acme-corporate-pom.sonarVersion>
 		<acme-corporate-pom.versionsVersion>1.2</acme-corporate-pom.versionsVersion>
 		<acme-corporate-pom.wagonVersion>1.0-beta-3</acme-corporate-pom.wagonVersion>
 		<acme-corporate-pom.xmlVersion>1.0</acme-corporate-pom.xmlVersion>
@@ -797,6 +796,7 @@
 				<!-- ================================= -->
 				<!-- Corporate POM specific properties -->
 				<!-- ================================= -->
+				<acme-corporate-pom.sonarVersion>1.0-beta-2</acme-corporate-pom.sonarVersion>
 			</properties>
 
 			<build>
@@ -821,6 +821,7 @@
 				<!-- ================================= -->
 				<!-- Corporate POM specific properties -->
 				<!-- ================================= -->
+				<acme-corporate-pom.sonarVersion>2.0-beta-2</acme-corporate-pom.sonarVersion>
 			</properties>
 
 			<build>
