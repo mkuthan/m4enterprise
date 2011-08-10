@@ -149,7 +149,7 @@ To configure release management in Bamboo server, set build plan strategy as man
 
 {{{
 mvn -B release:prepare release:perform -DperformRelease=true \
--Dusername=${bamboo.scm.username} -Dusername=${bamboo.scm.password}
+-Dusername=${bamboo.scm.username} -Dpassword=${bamboo.scm.password}
 }}}
 
 _${bamboo.scm.username}_ and _${bamboo.scm.password}_ are build plan variables. You can specify the variables in the build plan configuration or as input values for parametrized manual build.
