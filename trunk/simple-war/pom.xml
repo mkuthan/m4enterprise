@@ -42,13 +42,13 @@
 
 	<build>
 		<finalName>simple-war</finalName>
-		
+				
 		<plugins>
 			<plugin>
 				<groupId>com.atlassian.maven.plugins</groupId>
 				<artifactId>maven-clover2-plugin</artifactId>
 			</plugin>
-
+			
 			<plugin>
 				<groupId>org.zeroturnaround</groupId>
 				<artifactId>jrebel-maven-plugin</artifactId>
