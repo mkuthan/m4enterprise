@@ -97,12 +97,17 @@
 		<acme-corporate-pom.organizationName>ACME Corporation</acme-corporate-pom.organizationName>
 		<acme-corporate-pom.organizationUrl>http://www.acme.com</acme-corporate-pom.organizationUrl>
 		<acme-corporate-pom.siteUrl>http://sites.intranet.acme.com</acme-corporate-pom.siteUrl>
-		<acme-corporate-pom.bambooUrl>http://localhost:8085</acme-corporate-pom.bambooUrl>
+
+		<acme-corporate-pom.ciManagementUrl>http://bamboo.intranet.acme.com/</acme-corporate-pom.ciManagementUrl>
+		<acme-corporate-pom.issueManagementUrl>http://jira.intranet.acme.com/</acme-corporate-pom.issueManagementUrl>
 
 		<!-- Corporate projects code quality rules (do not overwrite) -->
-		<acme-corporate-pom.checkstyleUrl>${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/checkstyle</acme-corporate-pom.checkstyleUrl>
-		<acme-corporate-pom.findbugsUrl>${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/findbugs</acme-corporate-pom.findbugsUrl>
-		<acme-corporate-pom.pmdUrl>${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/pmd</acme-corporate-pom.pmdUrl>
+		<acme-corporate-pom.checkstyleUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=checkstyle]]></acme-corporate-pom.checkstyleUrl>
+		<acme-corporate-pom.pmdUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=pmd]]></acme-corporate-pom.pmdUrl>
+
+		<!-- http://jira.codehaus.org/browse/MFINDBUGS-146, configure mod_rewrite in front of Sonar -->
+		<!--acme-corporate-pom.findbugsUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=findbugs]]></acme-corporate-pom.findbugsUrl -->		
+		<acme-corporate-pom.findbugsUrl><![CDATA[${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/findbugs]]></acme-corporate-pom.findbugsUrl>
 
 		<!-- Core plugins -->
 		<acme-corporate-pom.cleanVersion>2.4.1</acme-corporate-pom.cleanVersion>
@@ -128,7 +133,8 @@
 		<acme-corporate-pom.findbugsVersion>2.3.2</acme-corporate-pom.findbugsVersion>
 		<acme-corporate-pom.javadocVersion>2.8</acme-corporate-pom.javadocVersion>
 		<acme-corporate-pom.jxrVersion>2.3</acme-corporate-pom.jxrVersion>
-		<acme-corporate-pom.pmdVersion>2.5</acme-corporate-pom.pmdVersion>
+		<!-- TODO: change to 2.6 -->
+		<acme-corporate-pom.pmdVersion>2.6-SNAPSHOT</acme-corporate-pom.pmdVersion>
 		<acme-corporate-pom.projectInfoVersion>2.4</acme-corporate-pom.projectInfoVersion>
 		<acme-corporate-pom.surefireReportVersion>2.9</acme-corporate-pom.surefireReportVersion>
 
@@ -218,13 +224,11 @@
 	<!-- <contributors /> -->
 
 	<issueManagement>
-		<system>GoogleCode</system>
-		<url>http://code.google.com/p/m4enterprise/issues/</url>
+		<url>${acme-corporate-pom.issueManagementUrl}</url>
 	</issueManagement>
 
 	<ciManagement>
-		<system>Bamboo</system>
-		<url>${acme-corporate-pom.bambooUrl}</url>
+		<url>${acme-corporate-pom.ciManagementUrl}</url>
 	</ciManagement>
 
 	<mailingLists>
