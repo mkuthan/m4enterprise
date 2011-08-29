@@ -106,7 +106,7 @@
 		<acme-corporate-pom.pmdUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=pmd]]></acme-corporate-pom.pmdUrl>
 
 		<!-- http://jira.codehaus.org/browse/MFINDBUGS-146, configure mod_rewrite in front of Sonar -->
-		<!--acme-corporate-pom.findbugsUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=findbugs]]></acme-corporate-pom.findbugsUrl -->		
+		<!--acme-corporate-pom.findbugsUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=findbugs]]></acme-corporate-pom.findbugsUrl -->
 		<acme-corporate-pom.findbugsUrl><![CDATA[${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/findbugs]]></acme-corporate-pom.findbugsUrl>
 
 		<!-- Core plugins -->
@@ -184,7 +184,9 @@
 		<acme-corporate-pom.xmlVersion>1.0</acme-corporate-pom.xmlVersion>
 	</properties>
 
-	<!-- Shared environment and project settings, inherited by project POMs -->
+	<!-- ================= -->
+	<!-- Shared settings, should not be redefined in project's POMs -->
+	<!-- ================= -->
 	<licenses>
 		<license>
 			<name>Apache License 2.0</name>
@@ -212,7 +214,17 @@
 		</site>
 	</distributionManagement>
 
-	<!-- Corporate POM environment and project settings, should be redefined in project's POMs -->
+	<issueManagement>
+		<url>${acme-corporate-pom.issueManagementUrl}</url>
+	</issueManagement>
+
+	<ciManagement>
+		<url>${acme-corporate-pom.ciManagementUrl}</url>
+	</ciManagement>
+
+	<!-- ================= -->
+	<!-- Project specific settings, should be redefined in project's POMs -->
+	<!-- ================= -->
 	<url>${acme-corporate-pom.siteUrl}/${project.artifactId}/</url>
 
 	<developers>
@@ -222,22 +234,6 @@
 	</developers>
 
 	<!-- <contributors /> -->
-
-	<issueManagement>
-		<url>${acme-corporate-pom.issueManagementUrl}</url>
-	</issueManagement>
-
-	<ciManagement>
-		<url>${acme-corporate-pom.ciManagementUrl}</url>
-	</ciManagement>
-
-	<mailingLists>
-		<mailingList>
-			<name>User List</name>
-			<post>m4enterprise-users@googlegroups.com</post>
-			<archive>http://groups.google.com/group/m4enterprise-users</archive>
-		</mailingList>
-	</mailingLists>
 
 	<scm>
 		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk/corporate-pom</connection>
@@ -930,7 +926,7 @@
 				<excludeProperties>acme-corporate-pom.jettyVersion</excludeProperties>
 			</properties>
 
-			<!-- Override site deployment location -->
+			<!-- Override site deployment location, deploy the corporate pom site under separate directory (not under top level directory) -->
 			<distributionManagement>
 				<site>
 					<id>${acme-corporate-pom.siteRepositoryId}</id>
