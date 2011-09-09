@@ -101,7 +101,7 @@
 		<acme-corporate-pom.ciManagementUrl>http://bamboo.intranet.acme.com/</acme-corporate-pom.ciManagementUrl>
 		<acme-corporate-pom.issueManagementUrl>http://jira.intranet.acme.com/</acme-corporate-pom.issueManagementUrl>
 		
-		<acme-corporate-pom.sonarUrl>http://sonar.intranet.acme.com/</acme-corporate-pom.sonarUrl>
+		<acme-corporate-pom.sonarUrl>http://sonar.intranet.acme.com/sonar</acme-corporate-pom.sonarUrl>
 		<acme-corporate-pom.sonarProfile>Acme</acme-corporate-pom.sonarProfile>
 
 		<!-- Corporate projects code quality rules (do not overwrite) -->
