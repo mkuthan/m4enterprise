@@ -70,9 +70,9 @@
 		<maven.clover.jdk>${maven.compiler.target}</maven.clover.jdk>
 
 		<!-- Sonar settings (m-sonar-p) -->
-		<sonar.host.url>http://localhost:9000</sonar.host.url>
-
-		<sonar.profile>Sonar</sonar.profile>
+		<sonar.host.url>${acme-corporate-pom.sonarUrl}</sonar.host.url>
+		<sonar.profile>${acme-corporate-pom.sonarProfile}</sonar.profile>
+		
 		<sonar.language>java</sonar.language>
 
 		<sonar.sourceEncoding>${project.build.sourceEncoding}</sonar.sourceEncoding>
@@ -100,14 +100,14 @@
 
 		<acme-corporate-pom.ciManagementUrl>http://bamboo.intranet.acme.com/</acme-corporate-pom.ciManagementUrl>
 		<acme-corporate-pom.issueManagementUrl>http://jira.intranet.acme.com/</acme-corporate-pom.issueManagementUrl>
+		
+		<acme-corporate-pom.sonarUrl>http://sonar.intranet.acme.com/</acme-corporate-pom.sonarUrl>
+		<acme-corporate-pom.sonarProfile>Acme</acme-corporate-pom.sonarProfile>
 
 		<!-- Corporate projects code quality rules (do not overwrite) -->
 		<acme-corporate-pom.checkstyleUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=checkstyle]]></acme-corporate-pom.checkstyleUrl>
 		<acme-corporate-pom.pmdUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=pmd]]></acme-corporate-pom.pmdUrl>
-
-		<!-- http://jira.codehaus.org/browse/MFINDBUGS-146, configure mod_rewrite in front of Sonar -->
-		<!--acme-corporate-pom.findbugsUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=findbugs]]></acme-corporate-pom.findbugsUrl -->
-		<acme-corporate-pom.findbugsUrl><![CDATA[${sonar.host.url}/profiles/export/${sonar.profile}/${sonar.language}/findbugs]]></acme-corporate-pom.findbugsUrl>
+		<acme-corporate-pom.findbugsUrl><![CDATA[${sonar.host.url}/profiles/export?name=${sonar.profile}&language=${sonar.language}&format=findbugs]]></acme-corporate-pom.findbugsUrl>
 
 		<!-- Core plugins -->
 		<acme-corporate-pom.cleanVersion>2.4.1</acme-corporate-pom.cleanVersion>
@@ -130,7 +130,8 @@
 
 		<!-- Reporting plugins (only used subset) -->
 		<acme-corporate-pom.checkstyleVersion>2.6</acme-corporate-pom.checkstyleVersion>
-		<acme-corporate-pom.findbugsVersion>2.3.2</acme-corporate-pom.findbugsVersion>
+		<!-- TODO: change to 2.3.3 -->
+		<acme-corporate-pom.findbugsVersion>2.3.3-SNAPSHOT</acme-corporate-pom.findbugsVersion>
 		<acme-corporate-pom.javadocVersion>2.8</acme-corporate-pom.javadocVersion>
 		<acme-corporate-pom.jxrVersion>2.3</acme-corporate-pom.jxrVersion>
 		<!-- TODO: change to 2.6 -->
