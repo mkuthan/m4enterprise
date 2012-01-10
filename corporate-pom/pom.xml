@@ -130,12 +130,10 @@
 
 		<!-- Reporting plugins (only used subset) -->
 		<acme-corporate-pom.checkstyleVersion>2.6</acme-corporate-pom.checkstyleVersion>
-		<!-- TODO: change to 2.3.3 -->
-		<acme-corporate-pom.findbugsVersion>2.3.3-SNAPSHOT</acme-corporate-pom.findbugsVersion>
+		<acme-corporate-pom.findbugsVersion>2.3.3</acme-corporate-pom.findbugsVersion>
 		<acme-corporate-pom.javadocVersion>2.8</acme-corporate-pom.javadocVersion>
 		<acme-corporate-pom.jxrVersion>2.3</acme-corporate-pom.jxrVersion>
-		<!-- TODO: change to 2.6 -->
-		<acme-corporate-pom.pmdVersion>2.6-SNAPSHOT</acme-corporate-pom.pmdVersion>
+		<acme-corporate-pom.pmdVersion>2.6</acme-corporate-pom.pmdVersion>
 		<acme-corporate-pom.projectInfoVersion>2.4</acme-corporate-pom.projectInfoVersion>
 		<acme-corporate-pom.surefireReportVersion>2.9</acme-corporate-pom.surefireReportVersion>
 
