@@ -24,69 +24,6 @@ Regardless of selected repository product, Maven configuration is similar. The m
 
 For complete Maven settings reference please look at: [http://maven.apache.org/settings.html]
 
-== Repository Profiles ==
-
-Generally two profiles should be created, for releases and for snapshots. 
-
-{{{
-<profile>
-  <id>acme-release-repository</id>
-  <repositories>
-    <repository>
-      <id>acme-release</id>
-      <url>http://repository.intranet.acme.com/release-repository/</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>acme-release-plugins</id>
-      <url>http://repository.intranet.acme.com/release-plugins-repository/</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
-</profile>
-}}}
-
-{{{
-<profile>
-  <id>acme-snapshot-repository</id>
-  <repositories>
-    <repository>
-      <id>acme-snapshot</id>
-      <url>http://repository.intranet.acme.com/snapshot-repository/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>acme-snapshot-plugins</id>
-      <url>http://repository.intranet.acme.com/snapshot-plugins-repository/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>      
-    </pluginRepository>
-  </pluginRepositories>
-</profile>
-}}}
-
-The profile(s) must be enabled by default:
-
-{{{
-<activeProfiles>
-  <activeProfile>acme-release-repository</activeProfile>
-  <activeProfile>acme-snapshot-repository</activeProfile>
-</activeProfiles>
-}}}
-
-If the corporate policy is defined to avoid snapshots, only profile for release repository should be activated. Than developer will have to activate the snapshot repository profile explicitly.
-
 == Mirror Configuration  ==
 
 To force Maven to use only corporate repository, `mirror` section must be defined as follow:
@@ -94,16 +31,44 @@ To force Maven to use only corporate repository, `mirror` section must be define
 {{{
 <mirror>
   <id>acme-repository</id>
-  <url>http://repository.intranet.acme.com/empty/</url>
-  <mirrorOf>external:*,!acme-release,!acme-release-plugins,!acme-snapshot,!acme-snapshot-plugins</mirrorOf>
+  <url>http://repository.intranet.acme.com/acme/</url>
+  <mirrorOf>*</mirrorOf>
 </mirror>
 }}}
 
-This tricky configuration assumes that under `http://repository.intranet.acme.com/empty/` fake repository is configured. It always returns 404 for any request.
+For more details please refer to [http://www.sonatype.com/books/nexus-book/reference/maven-sect-single-group.html documentation].
 
-All requests to any external repository not listed explicitly in the `mirrorOf` element, will be redirected to the empty repository. It effectively disables distribution management section in any POM (including root POM embedded in Maven distribution).
+== Repository Profiles ==
 
-For more details please refer to _Artifactory_ [http://wiki.jfrog.org/confluence/display/RTF/Configuring+Artifacts+Resolution documentation].
+{{{
+<profile>
+  <id>acme-repository</id>
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>http://central</url>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>true</enabled></snapshots>
+    </repository>
+    </repositories>
+    <pluginRepositories>
+      <pluginRepository>
+      <id>central</id>
+      <url>http://central</url>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>true</enabled></snapshots>     </pluginRepository>
+  </pluginRepositories>
+</profile>
+}}}
+
+The profile must be enabled by default:
+
+{{{
+<activeProfiles>
+  <activeProfile>acme-repository</activeProfile>
+</activeProfiles>
+}}}
+
 
 == Configuration distribution ==
 
