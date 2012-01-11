@@ -22,7 +22,11 @@ The most comprehensive repository manager [http://docs.codehaus.org/display/MAVE
 
 Regardless of selected repository product, Maven configuration is similar. The main goal of the configuration is to force Maven to use only corporate repository.
 
+For more details please refer to [http://www.sonatype.com/books/nexus-book/reference/maven-sect-single-group.html documentation].
+
 For complete Maven settings reference please look at: [http://maven.apache.org/settings.html]
+
+Below you can find quick reference how to setup Maven configuration.
 
 == Mirror Configuration  ==
 
@@ -36,9 +40,9 @@ To force Maven to use only corporate repository, `mirror` section must be define
 </mirror>
 }}}
 
-For more details please refer to [http://www.sonatype.com/books/nexus-book/reference/maven-sect-single-group.html documentation].
+== Repository Profile ==
 
-== Repository Profiles ==
+The built-in central repository location must be overwritten with bogus URL, to avoid calls to central repository.
 
 {{{
 <profile>
@@ -69,7 +73,6 @@ The profile must be enabled by default:
   <activeProfile>acme-repository</activeProfile>
 </activeProfiles>
 }}}
-
 
 == Configuration distribution ==
 
