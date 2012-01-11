@@ -2,4 +2,14 @@
 
 = Introduction =
 
-TODO
+Clover is distributed under commercial licence. Maven must be configured to use the licence. Below you can find quick guide, for more details please refer to the [http://confluence.atlassian.com/display/CLOVER/Clover-for-Maven+2+and+3 documenation].
+
+= Licence Configuration =
+
+Define license file location in the `settings.xml` file:
+
+{{{
+<properties>
+  <maven.clover.licenseLocation>/path/to/clover.license</maven.clover.licenseLocation>
+</properties>
+}}}
