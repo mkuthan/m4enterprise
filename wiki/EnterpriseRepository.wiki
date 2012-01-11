@@ -50,13 +50,14 @@ For more details please refer to [http://www.sonatype.com/books/nexus-book/refer
       <releases><enabled>true</enabled></releases>
       <snapshots><enabled>true</enabled></snapshots>
     </repository>
-    </repositories>
-    <pluginRepositories>
-      <pluginRepository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
       <id>central</id>
       <url>http://central</url>
       <releases><enabled>true</enabled></releases>
-      <snapshots><enabled>true</enabled></snapshots>     </pluginRepository>
+      <snapshots><enabled>true</enabled></snapshots>              
+    </pluginRepository>
   </pluginRepositories>
 </profile>
 }}}
