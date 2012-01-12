@@ -101,10 +101,8 @@
 		<acme-corporate-pom.ciManagementUrl>http://bamboo.intranet.acme.com/</acme-corporate-pom.ciManagementUrl>
 		<acme-corporate-pom.issueManagementUrl>http://jira.intranet.acme.com/</acme-corporate-pom.issueManagementUrl>
 		
-		<!--
 		<acme-corporate-pom.sonarUrl>http://sonar.intranet.acme.com/sonar</acme-corporate-pom.sonarUrl>
 		<acme-corporate-pom.sonarProfile>Acme</acme-corporate-pom.sonarProfile>
-		-->
 		
 		<acme-corporate-pom.checkstyleUrl><![CDATA[${acme-corporate-pom.sonarUrl}/profiles/export?name=${acme-corporate-pom.sonarProfile}&language=${sonar.language}&format=checkstyle]]></acme-corporate-pom.checkstyleUrl>
 		<acme-corporate-pom.pmdUrl><![CDATA[${acme-corporate-pom.sonarUrl}/profiles/export?name=${acme-corporate-pom.sonarProfile}&language=${sonar.language}&format=pmd]]></acme-corporate-pom.pmdUrl>
@@ -342,7 +340,28 @@
 				</plugin>
 
 				<!-- Reporting plugins (only used subset) -->
-				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${acme-corporate-pom.checkstyleVersion}</version>
+					<configuration>
+						<!-- Corporate specific rules -->
+						<configLocation>${acme-corporate-pom.checkstyleUrl}</configLocation>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${acme-corporate-pom.findbugsVersion}</version>
+					<configuration>
+						<!-- Corporate specific rules -->
+						<includeFilterFile>${acme-corporate-pom.findbugsUrl}</includeFilterFile>
+						<!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
+						<findbugsXmlOutput>true</findbugsXmlOutput>
+						<xmlOutput>true</xmlOutput>
+					</configuration>
+				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -356,6 +375,18 @@
 					<version>${acme-corporate-pom.jxrVersion}</version>
 				</plugin>
 
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${acme-corporate-pom.pmdVersion}</version>
+					<configuration>
+						<!-- Corporate specific rules -->
+						<rulesets>
+							<ruleset>${acme-corporate-pom.pmdUrl}</ruleset>
+						</rulesets>
+					</configuration>
+				</plugin>
+				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -809,117 +840,6 @@
 			</build>
 		</profile>
 
-		<!-- Sonar configuration for m-checkstyle-p, m-findbugs-p and m-pmd-p (disabled by default) -->
-		<profile>
-			<id>sonar-reports</id>
-			<activation>
-				<!-- To enable the profile, define property acme-corporate-pom.sonarUrl in settings.xml file (Maven 3) or specify command line parameters (Maven 2) -->
-				<property>
-					<name>acme-corporate-pom.sonarUrl</name>
-				</property>
-			</activation>
-			
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-checkstyle-plugin</artifactId>
-							<version>${acme-corporate-pom.checkstyleVersion}</version>
-							<configuration>
-								<!-- Corporate specific rules -->
-								<configLocation>${acme-corporate-pom.checkstyleUrl}</configLocation>
-							</configuration>
-						</plugin>
-
-						<plugin>
-							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>findbugs-maven-plugin</artifactId>
-							<version>${acme-corporate-pom.findbugsVersion}</version>
-							<configuration>
-								<!-- Corporate specific rules -->
-								<includeFilterFile>${acme-corporate-pom.findbugsUrl}</includeFilterFile>
-								<!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
-								<findbugsXmlOutput>true</findbugsXmlOutput>
-								<xmlOutput>true</xmlOutput>
-							</configuration>
-						</plugin>
-						
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-pmd-plugin</artifactId>
-							<version>${acme-corporate-pom.pmdVersion}</version>
-							<configuration>
-								<!-- Corporate specific rules -->
-								<rulesets>
-									<ruleset>${acme-corporate-pom.pmdUrl}</ruleset>
-								</rulesets>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-			
-			<reporting>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-checkstyle-plugin</artifactId>
-						<version>${acme-corporate-pom.checkstyleVersion}</version>
-						<configuration>
-							<!-- Corporate specific rules -->
-							<configLocation>${acme-corporate-pom.checkstyleUrl}</configLocation>
-						</configuration>
-						<reportSets>
-							<reportSet>
-								<id>non-aggregate</id>
-								<!-- Specific configuration for the non aggregated report -->
-								<configuration>
-								</configuration>
-								<reports>
-									<report>checkstyle</report>
-								</reports>
-							</reportSet>
-							<reportSet>
-								<id>aggregate</id>
-								<!-- Specific configuration for the aggregated report -->
-								<configuration>
-								</configuration>
-								<reports>
-									<report>checkstyle-aggregate</report>
-								</reports>
-							</reportSet>
-						</reportSets>
-					</plugin>
-
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>findbugs-maven-plugin</artifactId>
-						<version>${acme-corporate-pom.findbugsVersion}</version>
-						<configuration>
-							<!-- Corporate specific rules -->
-							<includeFilterFile>${acme-corporate-pom.findbugsUrl}</includeFilterFile>
-							<!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
-							<findbugsXmlOutput>true</findbugsXmlOutput>
-							<xmlOutput>true</xmlOutput>
-						</configuration>
-					</plugin>
-					
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-pmd-plugin</artifactId>
-						<version>${acme-corporate-pom.pmdVersion}</version>
-						<configuration>
-							<!-- Corporate specific rules -->
-							<rulesets>
-								<ruleset>${acme-corporate-pom.pmdUrl}</ruleset>
-							</rulesets>
-						</configuration>
-					</plugin>
-				</plugins>
-			</reporting>
-		</profile>
-		
 		<!-- Corporate build constraints (activated by default) -->
 		<profile>
 			<id>enforcer-rules</id>
