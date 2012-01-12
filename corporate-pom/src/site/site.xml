@@ -21,5 +21,8 @@
 		</links>
 
 		<menu ref="reports" inherit="bottom" />
+		<menu name="Links" inherit="bottom">
+			<item name="Sonar" href="${acme-corporate-pom.sonarUrl}" />
+		</menu>
 	</body>
 </project>
