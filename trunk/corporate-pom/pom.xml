@@ -108,8 +108,8 @@
 		<acme-corporate-pom.pmdUrl><![CDATA[${acme-corporate-pom.sonarUrl}/profiles/export?name=${acme-corporate-pom.sonarProfile}&language=${sonar.language}&format=pmd]]></acme-corporate-pom.pmdUrl>
 		
 		<!-- TODO: get rid of apache-rewrite and use direct URL for Sonar rules for Findbugs (http://jira.codehaus.org/browse/MFINDBUGS-146) -->
-		<acme-corporate-pom.findbugsUrl><![CDATA[${acme-corporate-pom.sonarUrl}/profiles/export/${acme-corporate-pom.sonarProfile}/${sonar.language}/findbugs]]></acme-corporate-pom.findbugsUrl>
-		<!-- acme-corporate-pom.findbugsUrl><![CDATA[${acme-corporate-pom.sonarUrl}/profiles/export?name=${acme-corporate-pom.sonarProfile}&language=${sonar.language}&format=findbugs]]></acme-corporate-pom.findbugsUrl -->
+		<!-- acme-corporate-pom.findbugsUrl><![CDATA[${acme-corporate-pom.sonarUrl}/profiles/export/${acme-corporate-pom.sonarProfile}/${sonar.language}/findbugs]]></acme-corporate-pom.findbugsUrl -->
+		<acme-corporate-pom.findbugsUrl><![CDATA[${acme-corporate-pom.sonarUrl}/profiles/export?name=${acme-corporate-pom.sonarProfile}&language=${sonar.language}&format=findbugs]]></acme-corporate-pom.findbugsUrl>
 		
 		<!-- Core plugins -->
 		<acme-corporate-pom.cleanVersion>2.4.1</acme-corporate-pom.cleanVersion>
@@ -133,7 +133,7 @@
 		<!-- Reporting plugins (only used subset) -->
 		<!-- TODO: update to 2.9 (http://jira.codehaus.org/browse/MCHECKSTYLE-167) -->
 		<acme-corporate-pom.checkstyleVersion>2.8</acme-corporate-pom.checkstyleVersion>
-		<acme-corporate-pom.findbugsVersion>2.3.3</acme-corporate-pom.findbugsVersion>
+		<acme-corporate-pom.findbugsVersion>2.4.0</acme-corporate-pom.findbugsVersion>
 		<acme-corporate-pom.javadocVersion>2.8</acme-corporate-pom.javadocVersion>
 		<acme-corporate-pom.jxrVersion>2.3</acme-corporate-pom.jxrVersion>
 		<acme-corporate-pom.pmdVersion>2.6</acme-corporate-pom.pmdVersion>
