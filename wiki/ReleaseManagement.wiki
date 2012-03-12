@@ -169,5 +169,5 @@ mvn versions:set -DnewVersion=1.0.1-SNAPSHOT -DallowSnapshots
 To commit changes (Poor Man's SCM) call `versions:commit` goal:
 
 {{{
-mvn:commit
+mvn versions:commit
 }}}
