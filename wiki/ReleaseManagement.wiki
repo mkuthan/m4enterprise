@@ -157,3 +157,17 @@ _${bamboo.scm.username}_ and _${bamboo.scm.password}_ are build plan variables. 
 *Notice:* 
 
   SCM credentials (all variables in general) are shown in the Bamboo log (issue 11).
+
+== Customize Versions ==
+
+Sometimes it is feasible to customize application version before automated release. If the current trunk version is `1.1-SNAPSHOT` but only the patch release is needed (and the branch has not been created), update the version with `versions:set` goal: 
+
+{{{
+mvn versions:set -DnewVersion=1.0.1-SNAPSHOT -DallowSnapshots
+}}}
+
+To commit changes (Poor Man's SCM) call `versions:commit` goal:
+
+{{{
+mvn:commit
+}}}
