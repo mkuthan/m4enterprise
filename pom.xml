@@ -7,7 +7,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>aggregate-pom</name>
-	<description>Aggregate POM</description>
+	<description>Aggregate POM created solely for the convenience. With the aggregate POM, all M4Enterprise modules can be managed at this level. In the enterprise scenarion it does not make sense to aggregate all company projects.</description>
 
 	<modules>
 		<module>corporate-pom</module>
