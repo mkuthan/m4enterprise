@@ -117,6 +117,8 @@ mvn verify site:site site:stage
 
 = Code Coverage Reporting =
 
+I found that it is much more feasible to generate code coverage reports from IDE than from Maven. Write test, write code, run coverage for separated test, and check that all important branches are covered.
+
 Generate Clover reports for unit tests:
 
 {{{
