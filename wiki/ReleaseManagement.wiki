@@ -12,6 +12,10 @@ Please keep in your mind the following release management rules:
 
 Only released artifacts should be published (for future reference). This document shows how to manage release management with Maven and how to avoid tedious and error-prone manual tasks.
 
+= Notice =
+
+The release management described in this document is a little bit outdated. With distributed repositories like Git, where creating branches is cheap like a box of chocolates there are better methods for release management. In general the rule of thumb is that every commit and build can be promoted as production ready version. There is no place for Maven Release Plugin beast. 
+
 = Semantic Versioning =
 
 Each release must be identified by unique version. It is important to keep versioning scheme consistent, e.g: `MAJOR.MINOR.FIX-QUALIFIER`, where:
