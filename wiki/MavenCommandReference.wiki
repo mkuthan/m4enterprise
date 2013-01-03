@@ -72,10 +72,10 @@ mvn deploy
 
 = Project Run =
 
-Run Java EE application on local server (Jetty):
+Run Java EE application on local server (Tomcat):
 
 {{{
-mvn jetty:run
+mvn tomcat6:run
 }}}
 
 = Project Site Generation =
