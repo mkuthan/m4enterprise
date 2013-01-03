@@ -40,6 +40,9 @@
 		<!-- Disable report aggregation (m-jxr-p, m-pmd-p, m-surefire-report-p) -->
 		<aggregate>false</aggregate>
 
+		<!-- Disable report when there is no tests (m-surefire-p) -->
+		<alwaysGenerateSurefireReport>false</alwaysGenerateSurefireReport>
+
 		<!-- Shut off non-error and non-warning messages, making them easier to view (m-javadoc-p) -->
 		<quiet>true</quiet>
 
