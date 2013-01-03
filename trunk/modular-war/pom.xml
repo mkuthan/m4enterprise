@@ -34,13 +34,4 @@
 		<developerConnection>scm:svn:https://m4enterprise.googlecode.com/svn/trunk/modular-war/</developerConnection>
 		<url>http://code.google.com/p/m4enterprise/source/browse/trunk/modular-war/</url>
 	</scm>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>com.atlassian.maven.plugins</groupId>
-				<artifactId>maven-clover2-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>

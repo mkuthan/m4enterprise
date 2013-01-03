@@ -4,7 +4,7 @@
 	<skin>
 		<groupId>org.apache.maven.skins</groupId>
 		<artifactId>maven-default-skin</artifactId>
-		<version>1.0</version>
+		<version>1.1</version>
 	</skin>
 
 	<poweredBy>
@@ -21,6 +21,7 @@
 		</links>
 
 		<menu ref="reports" inherit="bottom" />
+		
 		<menu name="Links" inherit="bottom">
 			<item name="Sonar" href="${acme-corporate-pom.sonarUrl}" />
 		</menu>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.m4enterprise</groupId>
@@ -7,13 +8,17 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>aggregate-pom</name>
-	<description>Aggregate POM created solely for the convenience. With the aggregate POM, all M4Enterprise modules can be managed at this level. In the enterprise scenarion it does not make sense to aggregate all company projects.</description>
+	<description>
+		Aggregate POM created solely for the convenience. 
+		With the aggregate POM, all M4Enterprise modules can be managed at this level. 
+		In the real enterprise scenario it does not make sense to aggregate all company projects.
+	</description>
 
 	<modules>
 		<module>corporate-pom</module>
 		<module>modular-war</module>
 		<module>simple-war</module>
-  	</modules>
+	</modules>
 
 	<scm>
 		<connection>scm:svn:http://m4enterprise.googlecode.com/svn/trunk</connection>
