@@ -17,7 +17,6 @@
 	<body>
 		<links>
 			<item name="${acme-corporate-pom.organizationName}" href="${acme-corporate-pom.organizationUrl}" />
-			<item name="Corporate POM" href="${acme-corporate-pom.siteUrl}/corporate-pom" />
 		</links>
 
 		<menu ref="reports" inherit="bottom" />
