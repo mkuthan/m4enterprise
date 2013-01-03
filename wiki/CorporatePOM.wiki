@@ -158,10 +158,10 @@ The plugin updates were successfully downloaded from corporate repository. All p
 
 == Automatic Updates Exclusion ==
 
-If a plugin version should not be updated automatically, define `excludeProperties` property. To disable updates for Jetty plugin:
+If a plugin version should not be updated automatically, define `excludeProperties` property. To disable updates for Sonar plugin:
 
 {{{
-<excludeProperties>com.acme.corporate-pom.jettyVersion</excludeProperties>
+<excludeProperties>com.acme.corporate-pom.sonarVersion</excludeProperties>
 }}} 
 
 = References To Corporate POM Update =
