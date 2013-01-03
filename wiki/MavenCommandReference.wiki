@@ -124,10 +124,6 @@ or
 mvn verify site:site site:stage
 }}}
 
-= Code coverage reporting =
-
-I found that it is much more feasible to generate code coverage reports from IDE than from Maven. Write test, write code, run coverage for separated test, and check that all important branches are covered.
-
 = Code quality analysis =
 
 Analyse code quality with Sonar:
@@ -137,9 +133,13 @@ mvn clean install -DskipTests=true
 mvn sonar:sonar
 }}}
 
+Read Sonar configuration [SonarConfiguration guide].
+
+= Code coverage reporting =
+
 *Notice:*
 
-  Read Sonar configuration [SonarConfiguration guide].
+   It is much more feasible to generate code coverage reports directly from IDE than from Maven. Write test, write code, run coverage for separated test, and check that all important branches are covered.
 
 Generate Clover reports for unit tests:
 
@@ -153,9 +153,7 @@ Generate clover reports for unit and integration tests:
 mvn clover2:setup verify clover2:aggregate clover2:clover
 }}}
 
-*Notice:*
-
-  Read Clover configuration [CloverConfiguration guide].
+Read Clover configuration [CloverConfiguration guide].
 
 = Dependency Management =
 
