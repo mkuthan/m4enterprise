@@ -16,6 +16,15 @@ Only released artifacts should be published (for future reference). This documen
 
 The release management described in this document is a little bit outdated. With distributed repositories like Git, where creating branches is cheap like a box of chocolates there are better methods for release management. In general the rule of thumb is that every commit and build can be promoted as production ready version. There is no place for Maven Release Plugin beast. 
 
+In general the concept is already documented by others, just try to
+adopt the ideas by yourself:
+
+[http://nvie.com/posts/a-successful-git-branching-model/]
+
+[http://www.insaneprogramming.be/?p=362]
+
+[http://www.slideshare.net/wakaleo/continuous-deliverywithmaven]
+
 = Semantic Versioning =
 
 Each release must be identified by unique version. It is important to keep versioning scheme consistent, e.g: `MAJOR.MINOR.FIX-QUALIFIER`, where:
