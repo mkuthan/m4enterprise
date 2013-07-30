@@ -25,6 +25,10 @@ adopt the ideas by yourself:
 
 [http://www.slideshare.net/wakaleo/continuous-deliverywithmaven]
 
+[https://www.atlassian.com/git/workflows#!workflow-gitflow]
+
+[https://bitbucket.org/atlassian/maven-jgitflow-plugin/wiki/Home]
+
 = Semantic Versioning =
 
 Each release must be identified by unique version. It is important to keep versioning scheme consistent, e.g: `MAJOR.MINOR.FIX-QUALIFIER`, where:
