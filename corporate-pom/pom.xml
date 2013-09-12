@@ -20,7 +20,7 @@
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 
 		<!-- Set compiler source and target versions (m-compiler-p) -->
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
 
 		<!-- Set compiler to be more verbose (m-compiler-p) -->
@@ -123,7 +123,6 @@
 		<acme-corporate-pom.shadeVersion>2.1</acme-corporate-pom.shadeVersion>
 
 		<!-- Reporting plugins (only used subset) -->
-		<!-- TODO: update to 2.10 (http://jira.codehaus.org/browse/MCHECKSTYLE-167) -->
 		<acme-corporate-pom.checkstyleVersion>2.10</acme-corporate-pom.checkstyleVersion>
 		<acme-corporate-pom.findbugsVersion>2.5.2</acme-corporate-pom.findbugsVersion>
 		<acme-corporate-pom.javadocVersion>2.9.1</acme-corporate-pom.javadocVersion>
