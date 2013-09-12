@@ -105,13 +105,13 @@
 
 		<!-- Core plugins -->
 		<acme-corporate-pom.cleanVersion>2.5</acme-corporate-pom.cleanVersion>
-		<acme-corporate-pom.compilerVersion>3.0</acme-corporate-pom.compilerVersion>
+		<acme-corporate-pom.compilerVersion>3.1</acme-corporate-pom.compilerVersion>
 		<acme-corporate-pom.deployVersion>2.7</acme-corporate-pom.deployVersion>
-		<acme-corporate-pom.failsafeVersion>2.13</acme-corporate-pom.failsafeVersion>
+		<acme-corporate-pom.failsafeVersion>2.16</acme-corporate-pom.failsafeVersion>
 		<acme-corporate-pom.installVersion>2.4</acme-corporate-pom.installVersion>
 		<acme-corporate-pom.resourcesVersion>2.6</acme-corporate-pom.resourcesVersion>
-		<acme-corporate-pom.siteVersion>3.2</acme-corporate-pom.siteVersion>
-		<acme-corporate-pom.surefireVersion>2.13</acme-corporate-pom.surefireVersion>
+		<acme-corporate-pom.siteVersion>3.3</acme-corporate-pom.siteVersion>
+		<acme-corporate-pom.surefireVersion>2.16</acme-corporate-pom.surefireVersion>
 		<acme-corporate-pom.verifierVersion>1.0</acme-corporate-pom.verifierVersion>
 
 		<!-- Packaging plugins -->
@@ -119,37 +119,37 @@
 		<acme-corporate-pom.ejbVersion>2.3</acme-corporate-pom.ejbVersion>
 		<acme-corporate-pom.jarVersion>2.4</acme-corporate-pom.jarVersion>
 		<acme-corporate-pom.rarVersion>2.3</acme-corporate-pom.rarVersion>
-		<acme-corporate-pom.warVersion>2.2</acme-corporate-pom.warVersion>
-		<acme-corporate-pom.shadeVersion>2.0</acme-corporate-pom.shadeVersion>
+		<acme-corporate-pom.warVersion>2.4</acme-corporate-pom.warVersion>
+		<acme-corporate-pom.shadeVersion>2.1</acme-corporate-pom.shadeVersion>
 
 		<!-- Reporting plugins (only used subset) -->
 		<!-- TODO: update to 2.10 (http://jira.codehaus.org/browse/MCHECKSTYLE-167) -->
-		<acme-corporate-pom.checkstyleVersion>2.9.1</acme-corporate-pom.checkstyleVersion>
+		<acme-corporate-pom.checkstyleVersion>2.10</acme-corporate-pom.checkstyleVersion>
 		<acme-corporate-pom.findbugsVersion>2.5.2</acme-corporate-pom.findbugsVersion>
-		<acme-corporate-pom.javadocVersion>2.9</acme-corporate-pom.javadocVersion>
+		<acme-corporate-pom.javadocVersion>2.9.1</acme-corporate-pom.javadocVersion>
 		<acme-corporate-pom.jxrVersion>2.3</acme-corporate-pom.jxrVersion>
-		<acme-corporate-pom.pmdVersion>2.7.1</acme-corporate-pom.pmdVersion>
-		<acme-corporate-pom.projectInfoVersion>2.6</acme-corporate-pom.projectInfoVersion>
-		<acme-corporate-pom.surefireReportVersion>2.13</acme-corporate-pom.surefireReportVersion>
+		<acme-corporate-pom.pmdVersion>3.0.1</acme-corporate-pom.pmdVersion>
+		<acme-corporate-pom.projectInfoVersion>2.7</acme-corporate-pom.projectInfoVersion>
+		<acme-corporate-pom.surefireReportVersion>2.16</acme-corporate-pom.surefireReportVersion>
 
 		<!-- Tool plugins -->
 		<acme-corporate-pom.antVersion>2.3</acme-corporate-pom.antVersion>
 		<acme-corporate-pom.antrunVersion>1.7</acme-corporate-pom.antrunVersion>
 		<acme-corporate-pom.archetypeVersion>2.2</acme-corporate-pom.archetypeVersion>
 		<acme-corporate-pom.assemblyVersion>2.4</acme-corporate-pom.assemblyVersion>
-		<acme-corporate-pom.dependencyVersion>2.6</acme-corporate-pom.dependencyVersion>
-		<acme-corporate-pom.enforcerVersion>1.2</acme-corporate-pom.enforcerVersion>
+		<acme-corporate-pom.dependencyVersion>2.8</acme-corporate-pom.dependencyVersion>
+		<acme-corporate-pom.enforcerVersion>1.3.1</acme-corporate-pom.enforcerVersion>
 		<acme-corporate-pom.gpgVersion>1.4</acme-corporate-pom.gpgVersion>
-		<acme-corporate-pom.helpVersion>2.1.1</acme-corporate-pom.helpVersion>
+		<acme-corporate-pom.helpVersion>2.2</acme-corporate-pom.helpVersion>
 		<acme-corporate-pom.invokerVersion>1.8</acme-corporate-pom.invokerVersion>
 		<acme-corporate-pom.jarsignerVersion>1.2</acme-corporate-pom.jarsignerVersion>
-		<acme-corporate-pom.oneVersion>1.2</acme-corporate-pom.oneVersion>
+		<acme-corporate-pom.oneVersion>1.3</acme-corporate-pom.oneVersion>
 		<acme-corporate-pom.patchVersion>1.1.1</acme-corporate-pom.patchVersion>
 		<acme-corporate-pom.pdfVersion>1.2</acme-corporate-pom.pdfVersion>
 		<acme-corporate-pom.pluginVersion>3.2</acme-corporate-pom.pluginVersion>
-		<acme-corporate-pom.releaseVersion>2.4</acme-corporate-pom.releaseVersion>
+		<acme-corporate-pom.releaseVersion>2.4.1</acme-corporate-pom.releaseVersion>
 		<acme-corporate-pom.reactorVersion>1.0</acme-corporate-pom.reactorVersion>
-		<acme-corporate-pom.remoteResourcesVersion>1.4</acme-corporate-pom.remoteResourcesVersion>
+		<acme-corporate-pom.remoteResourcesVersion>1.5</acme-corporate-pom.remoteResourcesVersion>
 		<acme-corporate-pom.repositoryVersion>2.3.1</acme-corporate-pom.repositoryVersion>
 		<acme-corporate-pom.scmVersion>1.8.1</acme-corporate-pom.scmVersion>
 		<acme-corporate-pom.scmPublishVersion>1.0-beta-2</acme-corporate-pom.scmPublishVersion>
@@ -624,7 +624,7 @@
 				<!-- ================================= -->
 				<!-- Corporate POM specific properties -->
 				<!-- ================================= -->
-				<acme-corporate-pom.sonarVersion>2.0</acme-corporate-pom.sonarVersion>
+				<acme-corporate-pom.sonarVersion>2.1</acme-corporate-pom.sonarVersion>
 			</properties>
 
 			<build>
