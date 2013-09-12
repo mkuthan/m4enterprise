@@ -60,9 +60,9 @@
 
 		<!-- Exclude build-number.txt file created by Bamboo in the project directory (m-release-p) -->
 		<checkModificationExcludeList>build-number.txt</checkModificationExcludeList>
-
-		<!-- Set JDK for Clover instrumentation (m-clover2-p) -->
-		<maven.clover.jdk>${maven.compiler.target}</maven.clover.jdk>
+		
+		<!-- For multimodule build, if the build fails, none of the reactor projects is deployed (m-install-p, m-deploy-p) -->
+		<installAtEnd>true</installAtEnd>
 
 		<!-- Sonar settings (m-sonar-p) -->
 		<sonar.host.url>${acme-corporate-pom.sonarUrl}</sonar.host.url>
