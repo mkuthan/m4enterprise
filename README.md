@@ -37,7 +37,7 @@ J2EE 1.4 compatible web project organized as multi module Maven project. _Modula
 
 # Documentation #
 
-[GettingStarted](https://github.com/mkuthan/m4enterprise/wiki/GettingStarted) with _Maven For Enterprise_.
+[GettingStarted](https://github.com/mkuthan/m4enterprise/wiki/GettingStarted)
 
 [Wiki](https://github.com/mkuthan/m4enterprise/wiki)
 
